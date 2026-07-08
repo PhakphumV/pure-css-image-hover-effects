@@ -61,6 +61,12 @@ window.__EFFECTS_MANIFEST__ = {
       "folder": "slide-reveal"
     },
     {
+      "id": "vertical-zoom-n-pan",
+      "title": "Vertical Zoom N Pan",
+      "desc": "Vertical Zoom-n-pan",
+      "folder": "vertical-zoom-n-pan"
+    },
+    {
       "id": "vignette",
       "title": "Vignette",
       "desc": "Pure CSS hover effect for Vignette.",

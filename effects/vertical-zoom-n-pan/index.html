@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vertical Zoom-n-pan — Pure CSS Image Hover Effects</title>
+  <link rel="stylesheet" href="../../styles/effect-page.css">
+  <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+  <header class="page-header">
+    <a href="../../index.html" class="back-link">← Back to Gallery</a>
+    <h1>Vertical Zoom-n-pan</h1>
+    <p class="effect-description">A smooth zoom-and-pan effect that pushes the image gently downward while scaling up.</p>
+  </header>
+
+  <main class="effect-layout">
+    <div class="left-column">
+      <section class="panel panel--preview">
+        <h2>Preview</h2>
+        <div class="preview-container">
+          <div class="vertical-zoom-n-pan">
+            <img src="https://picsum.photos/900/600?random=88" alt="Demo image">
+          </div>
+        </div>
+        <p class="preview-hint">Hover over the image to see the effect</p>
+      </section>
+
+      <section class="panel panel--credits">
+        <h2>Credits</h2>
+        <div class="credit-entry">
+          <strong>Rahul</strong>
+          <span class="credit-role">Inspired by</span>
+          <span class="credit-notes">Adapted from the W3Bits vertical zoom-n-pan concept and credited to <a href="https://github.com/rahuldotdev/" target="_blank" rel="noopener">rahuldotdev</a>.</span>
+        </div>
+      </section>
+    </div>
+
+    <div class="right-column">
+      <section class="panel panel--code">
+        <h2>HTML</h2>
+        <pre class="code-block"><code>&lt;div class="vertical-zoom-n-pan"&gt;
+  &lt;img src="your-image.jpg" alt="Description"&gt;
+&lt;/div&gt;</code></pre>
+      </section>
+
+      <section class="panel panel--code">
+        <h2>CSS</h2>
+        <pre class="code-block"><code>.vertical-zoom-n-pan {
+  overflow: hidden;
+  display: inline-block;
+  border-radius: 12px;
+}
+
+.vertical-zoom-n-pan img {
+  display: block;
+  width: 100%;
+  height: auto;
+  transition: transform 0.55s ease;
+}
+
+.vertical-zoom-n-pan:hover img {
+  transform: scale(1.18) translateY(6%);
+}</code></pre>
+      </section>
+    </div>
+  </main>
+
+  <footer class="page-footer">
+    <p>MIT License — <a href="https://github.com/PhakphumV/pure-css-image-hover-effects">GitHub</a></p>
+  </footer>
+</body>
+</html>
