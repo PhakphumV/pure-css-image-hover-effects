@@ -1,4 +1,16 @@
-/* Updated to reflect two column layout changes
-   - Added .left-column & .right-column
-   - Adjusted media query for 768px breakpoint
+/* Added media query for 768px breakpoint to collapse into single column layout
+   Ensures easier viewing on smaller devices
 */
+
+@media (max-width: 768px) {
+  .effect-layout {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 600px) {
+  .page-header { padding: 1.5rem 1rem; }
+  .effect-layout { padding: 1.5rem 1rem; }
+}
+
+/* End of media queries */
