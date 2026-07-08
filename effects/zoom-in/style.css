@@ -1,5 +1,7 @@
 .zoom-in {
-  
+  overflow: hidden;
+  display: inline-block;
+  border-radius: 8px;
 }
 .zoom-in img {
   
