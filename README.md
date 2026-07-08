@@ -112,7 +112,7 @@ Run the following command whenever a new effect folder is added or removed:
 node scripts/generate-effects-data.js
 ```
 
-This refreshes [effects.json](effects.json) so the gallery can load the current list of effects from the folder structure.
+This refreshes [effects-manifest.js](effects-manifest.js) so the gallery can load the current list of effects from the folder structure.
 
 ## Contributing
 

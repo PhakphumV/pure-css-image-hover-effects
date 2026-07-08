@@ -6,8 +6,7 @@ const path = require('node:path');
 
 const repoRoot = path.resolve(__dirname, '..');
 const effectsDir = path.join(repoRoot, 'effects');
-const outputPath = path.join(repoRoot, 'effects.json');
-const clientManifestPath = path.join(repoRoot, 'effects-manifest.js');
+const outputPath = path.join(repoRoot, 'effects-manifest.js');
 
 function toTitle(slug) {
   return slug
@@ -15,10 +14,6 @@ function toTitle(slug) {
     .filter(Boolean)
     .map((part) => part.charAt(0).toUpperCase() + part.slice(1))
     .join(' ');
-}
-
-function escapeForJs(value) {
-  return JSON.stringify(value);
 }
 
 function getReadmeSummary(folderPath, folderName) {
@@ -67,10 +62,8 @@ function buildEffectsData() {
 
 function writeEffectsData() {
   const effects = buildEffectsData();
-  const payload = JSON.stringify({ effects }, null, 2) + '\n';
-  const clientPayload = `window.__EFFECTS_MANIFEST__ = ${escapeForJs({ effects })};\n`;
+  const payload = `window.__EFFECTS_MANIFEST__ = ${JSON.stringify({ effects }, null, 2)};\n`;
   fs.writeFileSync(outputPath, payload, 'utf8');
-  fs.writeFileSync(clientManifestPath, clientPayload, 'utf8');
   console.log(`Generated ${path.relative(repoRoot, outputPath)} with ${effects.length} effects.`);
 }
 

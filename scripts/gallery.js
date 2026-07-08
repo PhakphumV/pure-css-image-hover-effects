@@ -13,8 +13,6 @@
   const IMAGE_HEIGHT = 300;
   const DEFAULT_IMAGE_INDEX = 0;
 
-  const MANIFEST_URL = './effects.json';
-
   let effects = [];
   let currentImageIndex = DEFAULT_IMAGE_INDEX;
   const imageElements = [];
@@ -38,38 +36,18 @@
   /**
    * Load the effect manifest generated from the effects directory.
    */
-  async function loadEffects() {
-    if (window.__EFFECTS_MANIFEST__) {
-      const data = window.__EFFECTS_MANIFEST__;
-      if (Array.isArray(data)) {
-        return data;
-      }
-
-      if (data && Array.isArray(data.effects)) {
-        return data.effects;
-      }
+  function loadEffects() {
+    const data = window.__EFFECTS_MANIFEST__;
+    if (Array.isArray(data)) {
+      return data;
     }
 
-    try {
-      const response = await fetch(MANIFEST_URL);
-      if (!response.ok) {
-        throw new Error(`Unable to load ${MANIFEST_URL}: ${response.status}`);
-      }
-
-      const data = await response.json();
-      if (Array.isArray(data)) {
-        return data;
-      }
-
-      if (data && Array.isArray(data.effects)) {
-        return data.effects;
-      }
-
-      throw new Error('The effect manifest does not contain an effects array.');
-    } catch (error) {
-      console.warn('Falling back to an empty effect list:', error);
-      return [];
+    if (data && Array.isArray(data.effects)) {
+      return data.effects;
     }
+
+    console.warn('The effect manifest is not available.');
+    return [];
   }
 
   /**
@@ -170,14 +148,14 @@
   /**
    * Initialize the gallery
    */
-  async function initGallery() {
+  function initGallery() {
     const gallery = document.getElementById('gallery');
     if (!gallery) return;
 
     // Create header switcher first
     createSwitcher();
 
-    effects = await loadEffects();
+    effects = loadEffects();
 
     // Load effect styles
     loadEffectStyles();
@@ -215,11 +193,9 @@
 
   // Initialize when DOM is ready
   if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', () => {
-      void initGallery();
-    });
+    document.addEventListener('DOMContentLoaded', initGallery);
   } else {
-    void initGallery();
+    initGallery();
   }
 
 })();
