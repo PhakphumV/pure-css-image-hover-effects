@@ -17,14 +17,12 @@ pure-css-image-hover-effects/
 │   └── gallery.css         # Shared gallery styles + effect classes
 ├── scripts/
 │   └── gallery.js          # Handles image switching (no effect logic)
-├── effects/
-│   ├── effect-name/
-│   │   ├── index.html      # Dedicated demo page
-│   │   ├── style.css       # Standalone CSS for the effect
-│   │   └── README.md       # Documentation for each effect
-│   └── ... (10 total)
-└── assets/
-    └── previews/           # Preview screenshots
+└── effects/
+    ├── effect-name/
+    │   ├── index.html      # Dedicated demo page
+    │   ├── style.css       # Standalone CSS for the effect
+    │   └── README.md       # Documentation for each effect
+    └── ... (10 total)
 ```
 
 ## Usage
