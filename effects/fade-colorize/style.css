@@ -1,1 +1,16 @@
-/* placeholder */
+.fade-colorize {
+  overflow: hidden;
+  display: inline-block;
+  border-radius: 8px;
+}
+.fade-colorize img {
+  display: block;
+  width: 100%;
+  height: auto;
+  filter: grayscale(1);
+  transition: filter 0.4s ease-out, transform 0.4s ease-out;
+}
+.fade-colorize:hover img {
+  filter: grayscale(0);
+  transform: scale(1.05);
+}
