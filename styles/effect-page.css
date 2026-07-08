@@ -1,16 +1,29 @@
-/* Added media query for 768px breakpoint to collapse into single column layout
-   Ensures easier viewing on smaller devices
-*/
+/* Left/Right column layout for single effect page
+   ==================================================== */
 
+.effect-layout {
+  display: flex;
+  gap: 3rem;
+  padding-top: 1rem;
+  padding-bottom: 2rem;
+}
+
+.left-column, .right-column {
+  flex: 1;
+}
+
+/* Ensure height match when columns contain content of different size */
+.effect-layout > * {
+  min-height: 1px;
+}
+
+/* Responsive: collapse to single column on small screens */
 @media (max-width: 768px) {
   .effect-layout {
-    grid-template-columns: 1fr;
+    flex-direction: column;
+    gap: 1.5rem;
   }
 }
 
-@media (max-width: 600px) {
-  .page-header { padding: 1.5rem 1rem; }
-  .effect-layout { padding: 1.5rem 1rem; }
-}
-
-/* End of media queries */
+/* Existing panel styles keep their spacing; no changes needed.
+   =============================== */
