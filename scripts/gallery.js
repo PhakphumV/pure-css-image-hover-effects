@@ -57,9 +57,9 @@
     card.setAttribute('role', 'link');
     card.setAttribute('aria-label', `View ${effect.title} effect`);
 
-    const imgIndex = index + 1;
+    // Initial image uses currentImageIndex (all cards start with same image)
     const img = document.createElement('img');
-    img.src = getImageUrl(imgIndex);
+    img.src = getImageUrl(currentImageIndex + 1);
     img.alt = effect.title + ' demo';
     img.loading = 'lazy';
 
@@ -103,9 +103,9 @@
         });
         btn.setAttribute('aria-selected', 'true');
 
-        // Change all images
+        // Change all images to the SAME selected image
         currentImageIndex = i - 1;
-        updateAllImages();
+        updateAllImages(i);
       });
 
       container.appendChild(btn);
@@ -118,14 +118,14 @@
   }
 
   /**
-   * Update all images to the current index
+   * Update all images to the same selected image
    */
-  function updateAllImages() {
-    imageElements.forEach((img, idx) => {
-      const imageId = ((idx % IMAGES_PER_EFFECT) + 1) + currentImageIndex;
+  function updateAllImages(selectedImageNum) {
+    const newSrc = getImageUrl(selectedImageNum);
+    imageElements.forEach(img => {
       img.style.opacity = '0';
       setTimeout(() => {
-        img.src = getImageUrl(((idx % IMAGES_PER_EFFECT) + 1) + currentImageIndex);
+        img.src = newSrc;
         img.style.opacity = '1';
       }, 150);
     });
