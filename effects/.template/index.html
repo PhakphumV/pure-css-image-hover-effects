@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{EFFECT_NAME}} — Pure CSS Image Hover Effects</title>
+  <link rel="stylesheet" href="../../styles/effect-page.css">
+</head>
+<body>
+  <header class="page-header">
+    <a href="../../index.html" class="back-link">← Back to Gallery</a>
+    <h1>{{EFFECT_NAME}}</h1>
+    <p class="effect-description">{{DESCRIPTION}}</p>
+  </header>
+
+  <main class="effect-layout">
+    <!-- Preview Panel -->
+    <section class="panel panel--preview">
+      <h2>Preview</h2>
+      <div class="preview-container">
+        <div class="{{EFFECT_ID}}">
+          <img src="https://picsum.photos/600/400?random=1" alt="Demo image">
+        </div>
+      </div>
+      <p class="preview-hint">Hover over the image to see the effect</p>
+    </section>
+
+    <!-- HTML Panel -->
+    <section class="panel panel--code">
+      <h2>HTML</h2>
+      <pre class="code-block"><code>&lt;div class="{{EFFECT_ID}}"&gt;
+  &lt;img src="your-image.jpg" alt="Description"&gt;
+&lt;/div&gt;</code></pre>
+    </section>
+
+    <!-- CSS Panel -->
+    <section class="panel panel--code">
+      <h2>CSS</h2>
+      <pre class="code-block"><code>{{CSS_CODE}}</code></pre>
+    </section>
+
+    <!-- Contributor Panel -->
+    <section class="panel panel--credits">
+      <h2>Credits</h2>
+      <div class="credit-entry">
+        <strong>{{CONTRIBUTOR_NAME}}</strong>
+        <span class="credit-role">{{CONTRIBUTOR_ROLE}}</span>
+        <span class="credit-notes">{{CONTRIBUTOR_NOTES}}</span>
+      </div>
+    </section>
+  </main>
+
+  <footer class="page-footer">
+    <p>MIT License — <a href="https://github.com/PhakphumV/pure-css-image-hover-effects">GitHub</a></p>
+  </footer>
+</body>
+</html>
