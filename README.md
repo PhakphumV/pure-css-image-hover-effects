@@ -81,18 +81,26 @@ All effects work in evergreen browsers. Specific feature support varies:
 - [x] Publish as Github page
 - [ ] Dynamically build JSON file from directory structure for collection of effects
 - [ ] Dynamically display style.css code in the single effect page
+- [ ] Copy css code button
+- [ ] CSS code preview with css styling format
 - [ ] Dark mode switcher
 - [ ] A11Y: Font resizer
 - [ ] A11Y: Keyboard navigation
 - [ ] Curate 100 hover effects
+- [ ] Categorize effects
+- [ ] Add tags to each effects, to mention which css properties used for the effect.
+- [ ] Filter by tags
+- [ ] Pagination and sorting
+- [ ] OR Random cards
+- [ ] Probably have to reorganize so it's easier to navigate and avoid duplicates.
 - [ ] Curate 500 hover effects
-- [ ] Curate 1000 hover effects
-- [ ] Curate 2000 hover effects
-- [ ] Curate 5000 hover effects
-- [ ] Curate 10000 hover effects
-- [ ] Curate 20000 hover effects
-- [ ] Curate 50000 hover effects
-- [ ] Curate 100000 hover effects
+- [ ] Curate 1k hover effects
+- [ ] Curate 2k hover effects
+- [ ] Curate 5k hover effects
+- [ ] Curate 10k hover effects, is it possible?
+- [ ] Curate 20k hover effects, is the sky limit?
+- [ ] Curate 50k hover effects, or are we going to the moon?
+- [ ] Curate 100k hover effects, anyone really believe this?
 
 
 ## Contributing
