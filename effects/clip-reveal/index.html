@@ -1,0 +1,26 @@
+
+<div class="clip-reveal">
+  <img class="clip-reveal__img" src="https://picsum.photos/400/300?random=6" alt="Demo image">
+</div>
+
+<style>
+/* Clip Reveal */
+.clip-reveal {
+  overflow: hidden;
+  display: inline-block;
+  border: 1px solid #e5e5e5;
+  border-radius: 8px;
+  transition: box-shadow 0.2s ease;
+}
+.clip-reveal__img {
+  display: block;
+  width: 100%;
+  height: auto;
+  clip-path: inset(0 50% 0 50%); /* center only visible */
+  transition: clip-path 0.5s ease-out, transform 0.5s ease-out;
+}
+.clip-reveal:hover .clip-reveal__img {
+  clip-path: inset(0 0 0 0); /* all visible */
+  transform: scale(1.1);
+}
+</style>

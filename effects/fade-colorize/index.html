@@ -1,0 +1,26 @@
+
+<div class="fade-colorize">
+  <img class="fade-colorize__img" src="https://picsum.photos/400/300?random=3" alt="Demo image">
+</div>
+
+<style>
+/* Fade Colorize */
+.fade-colorize {
+  overflow: hidden;
+  display: inline-block;
+  border: 1px solid #e5e5e5;
+  border-radius: 8px;
+  transition: box-shadow 0.2s ease;
+}
+.fade-colorize__img {
+  display: block;
+  width: 100%;
+  height: auto;
+  filter: grayscale(1);
+  transition: filter 0.4s ease-out, transform 0.4s ease-out;
+}
+.fade-colorize:hover .fade-colorize__img {
+  filter: grayscale(0);
+  transform: scale(1.05);
+}
+</style>

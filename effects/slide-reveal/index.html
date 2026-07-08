@@ -1,0 +1,24 @@
+
+<div class="slide-reveal">
+  <img class="slide-reveal__img" src="https://picsum.photos/400/300?random=2" alt="Demo image">
+</div>
+
+<style>
+/* Slide Reveal */
+.slide-reveal {
+  overflow: hidden;
+  display: inline-block;
+  border: 1px solid #e5e5e5;
+  border-radius: 8px;
+  transition: box-shadow 0.2s ease;
+}
+.slide-reveal__img {
+  display: block;
+  width: 100%;
+  height: auto;
+  transition: transform 0.4s ease-out;
+}
+.slide-reveal:hover .slide-reveal__img {
+  transform: translateX(-15%) scale(1.15);
+}
+</style>
