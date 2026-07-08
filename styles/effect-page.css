@@ -4,9 +4,9 @@
  * but scoped only to a single effect page.
  */
 
-/* ====================================================
-   CSS Custom Properties – duplicated from gallery.css
-   ==================================================== */
+/* ============================================================
+   CSS Custom Properties
+   ============================================================ */
 :root {
   --color-bg: #fafafa;
   --color-text: #1a1a1a;
@@ -20,6 +20,7 @@
   --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1);
   --radius: 8px;
   --transition: 0.2s ease;
+  --max-width: 1200px;
   --gap: 1.5rem;
 }
 
@@ -42,13 +43,48 @@ a:hover { color: var(--color-primary-hover); text-decoration: underline; }
 
 code { font-family: ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, monospace; font-size: .9em; background: var(--color-code-bg); padding: .15em .4em; border-radius: 4px; }
 
+/* ============================================================
+   Layout
+   ============================================================ */
+header {
+  padding: 3rem 1.5rem 2rem;
+  text-align: center;
+  border-bottom: 1px solid var(--color-border);
+  background: var(--color-card-bg);
+}
+
+header h1 {
+  margin: 0 0 0.5rem;
+  font-size: clamp(1.75rem, 4vw, 2.5rem);
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.subtitle {
+  margin: 0.5rem auto 0;
+  max-width: 700px;
+  color: var(--color-text-muted);
+  font-size: 1rem;
+}
+
+main { flex: 1; padding: 2rem 1.5rem; }
+
+footer {
+  padding: 2rem 1.5rem;
+  text-align: center;
+  color: var(--color-text-muted);
+  font-size: 0.875rem;
+  border-top: 1px solid var(--color-border);
+  background: var(--color-card-bg);
+}
+
 /* ====================================================
    Layout – single page editing area
    ==================================================== */
 
 .effect-layout {
   display: flex;
-  gap: 3rem;
+  gap: 2rem;
   flex: 1;
   max-width: 1200px;
   margin: 2rem auto 0;
@@ -64,6 +100,7 @@ code { font-family: ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, mo
 /* ====================================================
    Panel base – identical to .card in gallery page
    ==================================================== */
+
 .panel {
   background: var(--color-card-bg);
   border: 1px solid var(--color-border);
@@ -71,6 +108,7 @@ code { font-family: ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, mo
   padding: 1.25rem;
   box-shadow: var(--shadow-sm);
   margin: 0;
+  margin-bottom: 1.5rem;
 }
 
 .panel h2 {
@@ -88,7 +126,7 @@ code { font-family: ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, mo
   overflow: hidden;
   border-radius: var(--radius);
   background: #f0f0f0;
-  aspect-ratio: 4 / 3;
+  aspect-ratio: 6 / 4;
 }
 
 .panel--preview img {
