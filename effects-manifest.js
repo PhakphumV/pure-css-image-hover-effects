@@ -31,6 +31,12 @@ window.__EFFECTS_MANIFEST__ = {
       "folder": "glow-border"
     },
     {
+      "id": "horizontal-zoom-n-pan",
+      "title": "Horizontal Zoom N Pan",
+      "desc": "Horizontal Zoom-n-pan",
+      "folder": "horizontal-zoom-n-pan"
+    },
+    {
       "id": "point-zoom",
       "title": "Point Zoom",
       "desc": "Pure CSS hover effect for Point Zoom.",

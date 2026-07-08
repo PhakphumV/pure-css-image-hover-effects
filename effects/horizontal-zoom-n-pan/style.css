@@ -1,0 +1,19 @@
+.horizontal-zoom-n-pan {
+  overflow: hidden;
+  display: inline-block;
+  border-radius: 12px;
+  max-width: 100%;
+}
+
+.horizontal-zoom-n-pan img {
+  display: block;
+  width: 100%;
+  height: auto;
+  transform-origin: center center;
+  transition: transform 0.55s ease;
+  will-change: transform;
+}
+
+.horizontal-zoom-n-pan:hover img {
+  transform: scale(1.18) translateX(6%);
+}
