@@ -76,6 +76,25 @@ All effects work in evergreen browsers. Specific feature support varies:
 | CSS `clip-path` | Chrome 28+, Firefox 28+, Safari 9+ |
 | CSS `perspective` | Chrome 12+, Firefox 12+, Safari 7+ |
 
+## TODO
+
+- [x] Publish as Github page
+- [ ] Dynamically build JSON file from directory structure for collection of effects
+- [ ] Dynamically display style.css code in the single effect page
+- [ ] Dark mode switcher
+- [ ] A11Y: Font resizer
+- [ ] A11Y: Keyboard navigation
+- [ ] Curate 100 hover effects
+- [ ] Curate 500 hover effects
+- [ ] Curate 1000 hover effects
+- [ ] Curate 2000 hover effects
+- [ ] Curate 5000 hover effects
+- [ ] Curate 10000 hover effects
+- [ ] Curate 20000 hover effects
+- [ ] Curate 50000 hover effects
+- [ ] Curate 100000 hover effects
+
+
 ## Contributing
 
 Each new effect should include:
