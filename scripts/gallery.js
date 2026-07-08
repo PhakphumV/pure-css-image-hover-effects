@@ -14,6 +14,8 @@
   const DEFAULT_IMAGE_INDEX = 0;
 
   // Effect definitions
+  // TODO: make it dynamic by reading from a JSON file or directory structure
+  
   const effects = [
     { id: 'scale-reveal', title: 'Scale Reveal', desc: 'Image scales up within a clipped container', folder: 'scale-reveal' },
     { id: 'slide-reveal', title: 'Slide Reveal', desc: 'Image slides and scales on hover', folder: 'slide-reveal' },
