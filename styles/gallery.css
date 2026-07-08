@@ -17,7 +17,6 @@
   --color-code-bg: #f4f4f4;
   --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
   --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1);
-  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1);
   --radius: 8px;
   --transition: 0.2s ease;
   --max-width: 1200px;
@@ -110,17 +109,11 @@ footer {
   border-radius: var(--radius);
   overflow: hidden;
   box-shadow: var(--shadow-sm);
-  transition: box-shadow var(--transition), transform var(--transition);
   cursor: pointer;
   text-decoration: none;
   color: inherit;
   display: flex;
   flex-direction: column;
-}
-
-.card:hover {
-  box-shadow: var(--shadow-lg);
-  transform: translateY(-2px);
 }
 
 .card:focus-visible {
@@ -167,44 +160,56 @@ footer {
   flex: 1;
 }
 
-/* Image switcher */
-.card__switcher {
+/* ============================================================
+   Header Image Switcher
+   ============================================================ */
+.image-switcher {
+  margin-top: 1.5rem;
   display: flex;
   align-items: center;
+  justify-content: center;
   gap: 0.5rem;
-  margin-top: auto;
-  padding-top: 0.5rem;
-  border-top: 1px solid var(--color-border);
+  flex-wrap: wrap;
 }
 
-.card__counter {
-  font-size: 0.75rem;
+.switcher-label {
+  font-size: 0.875rem;
   color: var(--color-text-muted);
-  min-width: 2.5rem;
-  text-align: right;
-  font-variant-numeric: tabular-nums;
+  font-weight: 500;
 }
 
-.btn {
+.switcher-buttons {
+  display: flex;
+  gap: 0.25rem;
+  flex-wrap: wrap;
+}
+
+.switcher-btn {
   appearance: none;
   border: 1px solid var(--color-border);
   background: var(--color-card-bg);
   color: var(--color-text);
-  padding: 0.4rem 0.75rem;
-  border-radius: 6px;
-  font-size: 0.8rem;
+  padding: 0.35rem 0.65rem;
+  border-radius: 4px;
+  font-size: 0.85rem;
   font-weight: 500;
   cursor: pointer;
-  transition: background var(--transition), border-color var(--transition);
-  flex: 1;
+  transition: background var(--transition), border-color var(--transition), color var(--transition);
+  min-width: 2.25rem;
 }
 
-.btn:hover {
+.switcher-btn:hover {
   background: var(--color-code-bg);
   border-color: #d4d4d4;
 }
 
-.btn:focus-visible {
+.switcher-btn[aria-selected="true"] {
+  background: var(--color-primary);
+  color: white;
+  border-color: var(--color-primary);
+}
+
+.switcher-btn:focus-visible {
   outline: 2px solid var(--color-primary);
   outline-offset: 2px;
 }
@@ -346,4 +351,5 @@ footer {
 @media (max-width: 480px) {
   .gallery { grid-template-columns: 1fr; }
   header { padding: 2rem 1rem 1.5rem; }
+  .image-switcher { flex-direction: column; }
 }
