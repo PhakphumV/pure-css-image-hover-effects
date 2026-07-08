@@ -76,31 +76,6 @@ All effects work in evergreen browsers. Specific feature support varies:
 | CSS `clip-path` | Chrome 28+, Firefox 28+, Safari 9+ |
 | CSS `perspective` | Chrome 12+, Firefox 12+, Safari 7+ |
 
-## Customization
-
-All effects use CSS custom properties (CSS variables) for easy theming:
-
-```css
-:root {
-  --color-primary: #2563eb;  /* Change accent color */
-  --transition: 0.3s ease;   /* Adjust timing */
-}
-```
-
-## Running Locally
-
-```bash
-# Clone or navigate to the directory
-cd pure-css-image-hover-effects
-
-# Serve with any static server (optional but recommended)
-npx serve .
-# or
-python -m http.server 8000
-```
-
-Open `http://localhost:8000` in your browser.
-
 ## Contributing
 
 Each new effect should include:
