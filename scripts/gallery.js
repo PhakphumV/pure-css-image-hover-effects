@@ -18,6 +18,7 @@
 
   const effects = [
     { id: 'zoom-in', title: 'Zoom In', desc: 'Subtle zoom in effect on hover', folder: 'zoom-in' },
+    { id: 'zoom-out', title: 'Zoom Out', desc: 'Subtle zoom out effect on hover', folder: 'zoom-out' },
     { id: 'slide-reveal', title: 'Slide Reveal', desc: 'Image slides and scales on hover', folder: 'slide-reveal' },
     { id: 'fade-colorize', title: 'Fade to Color', desc: 'Grayscale to full color transition', folder: 'fade-colorize' },
     { id: 'glow-border', title: 'Glow Border', desc: 'Radial glow expands on hover', folder: 'glow-border' },

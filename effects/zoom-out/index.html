@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Zoom Out — Pure CSS Image Hover Effects</title>
+  <link rel="stylesheet" href="../../styles/effect-page.css">
+  <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+  <header class="page-header">
+    <a href="../../index.html" class="back-link">← Back to Gallery</a>
+    <h1>Zoom Out</h1>
+    <p class="effect-description">Subtle zoom out effect on hover.</p>
+  </header>
+
+  <main class="effect-layout">
+    <div class="left-column">
+      <section class="panel panel--preview">
+        <h2>Preview</h2>
+        <div class="preview-container">
+          <div class="zoom-out">
+            <img src="https://picsum.photos/600/400?random=1" alt="Demo image">
+          </div>
+        </div>
+        <p class="preview-hint">Hover over the image to see the effect</p>
+      </section>
+
+      <section class="panel panel--credits">
+        <h2>Credits</h2>
+        <div class="credit-entry">
+          <strong>PhakphumV</strong>
+          <span class="credit-role">Creator</span>
+          <span class="credit-notes">Initial implementation</span>
+        </div>
+      </section>
+    </div>
+
+    <div class="right-column">
+      <section class="panel panel--code">
+        <h2>HTML</h2>
+        <pre class="code-block"><code>&lt;div class="zoom-out"&gt;
+  &lt;img src="your-image.jpg" alt="Description"&gt;
+&lt;/div&gt;</code></pre>
+      </section>
+
+      <section class="panel panel--code">
+        <h2>CSS</h2>
+        <!-- TODO: To dynamically load effect-specific styles to the page -->
+        <pre class="code-block"><code>.zoom-out {
+  overflow: hidden;
+  display: inline-block;
+  border-radius: 8px;
+}
+.zoom-out img {
+  transition: transform .45s ease;
+  transform: scale(1.2);
+}
+.zoom-out:hover img {
+  transform: scale(1);
+}</code></pre>
+      </section>
+    </div>
+  </main>
+
+  <footer class="page-footer">
+    <p>MIT License — <a href="https://github.com/PhakphumV/pure-css-image-hover-effects">GitHub</a></p>
+  </footer>
+</body>
+</html>
