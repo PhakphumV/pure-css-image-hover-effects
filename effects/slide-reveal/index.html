@@ -30,29 +30,38 @@
   </header>
 
   <main class="effect-layout">
-    <!-- Preview Panel -->
-    <section class="panel panel--preview">
-      <h2>Preview</h2>
-      <div class="preview-container">
-        <div class="slide-reveal">
-          <img src="https://picsum.photos/600/400?random=1" alt="Demo image">
+    <div class="left-column">
+      <section class="panel panel--preview">
+        <h2>Preview</h2>
+        <div class="preview-container">
+          <div class="slide-reveal">
+            <img src="https://picsum.photos/600/400?random=1" alt="Demo image">
+          </div>
         </div>
-      </div>
-      <p class="preview-hint">Hover over the image to see the effect</p>
-    </section>
+        <p class="preview-hint">Hover over the image to see the effect</p>
+      </section>
 
-    <!-- HTML Panel -->
-    <section class="panel panel--code">
-      <h2>HTML</h2>
-      <pre class="code-block"><code>&lt;div class="slide-reveal"&gt;
+      <section class="panel panel--credits">
+        <h2>Credits</h2>
+        <div class="credit-entry">
+          <strong>PhakphumV</strong>
+          <span class="credit-role">Creator</span>
+          <span class="credit-notes">Initial implementation</span>
+        </div>
+      </section>
+    </div>
+
+    <div class="right-column">
+      <section class="panel panel--code">
+        <h2>HTML</h2>
+        <pre class="code-block"><code>&lt;div class="slide-reveal"&gt;
   &lt;img src="your-image.jpg" alt="Description"&gt;
 &lt;/div&gt;</code></pre>
-    </section>
+      </section>
 
-    <!-- CSS Panel -->
-    <section class="panel panel--code">
-      <h2>CSS</h2>
-      <pre class="code-block"><code>.slide-reveal {
+      <section class="panel panel--code">
+        <h2>CSS</h2>
+        <pre class="code-block"><code>.slide-reveal {
   overflow: hidden;
   display: inline-block;
   border-radius: 8px;
@@ -66,17 +75,8 @@
 .slide-reveal:hover img {
   transform: translateX(-15%) scale(1.15);
 }</code></pre>
-    </section>
-
-    <!-- Credits Panel -->
-    <section class="panel panel--credits">
-      <h2>Credits</h2>
-      <div class="credit-entry">
-        <strong>PhakphumV</strong>
-        <span class="credit-role">Creator</span>
-        <span class="credit-notes">Initial implementation</span>
-      </div>
-    </section>
+      </section>
+    </div>
   </main>
 
   <footer class="page-footer">
