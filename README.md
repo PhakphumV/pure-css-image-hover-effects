@@ -8,21 +8,6 @@ This repository showcases interesting CSS techniques that add visual appeal to o
 
 **Live Demo:** Open `index.html` in your browser to explore all effects.
 
-## Effects Gallery
-
-| Effect | Description | CSS Features |
-|--------|-------------|--------------|
-| Scale Reveal | Image scales up within a clipped container | `transform: scale()`, `overflow: hidden` |
-| Slide Reveal | Image slides sideways while zooming | `transform: translateX() scale()` |
-| Fade Colorize | Grayscale to full color transition | `filter: grayscale()`, smooth transitions |
-| Glow Border | Radial glow expands around the image | `box-shadow` animation |
-| 3D Rotate | Perspective-based 3D rotation | `perspective`, `transform-style: preserve-3d` |
-| Clip Reveal | Center-expanding clip path reveal | `clip-path: inset()` |
-| Zoom & Rotate | Combined zoom with subtle rotation | `transform: scale() rotate()` |
-| Blur Sharpen | Blurred grayscale sharpens on hover | `filter: blur() grayscale()` |
-| Vignette | Dark vignette overlay fades in | `::after` pseudo-element, gradient |
-| Duotone Shift | Duotone filter transitions to normal | `filter: sepia() hue-rotate() saturate()` |
-
 ## Structure
 
 ```
