@@ -136,7 +136,7 @@ body {
 }
 
 /* Credits Panel */
-.credit-entry {
+.panel--credits .credit-entry {
   display: flex;
   flex-direction: column;
   gap: 0.25rem;
