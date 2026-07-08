@@ -14,6 +14,7 @@ Use this template to create a new effect page.
   - `{{CONTRIBUTOR_NOTES}}` - Brief notes about your contribution
 
 - `../styles/effect-page.css` - Shared stylesheet (linked, no changes needed)
+- `style.css` - Effect stylesheet
 
 ## Steps to Add New Effect
 
