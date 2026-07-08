@@ -1,1 +1,15 @@
 /* placeholder */
+.slide-reveal {
+  overflow: hidden;
+  display: inline-block;
+  border-radius: 8px;
+}
+.slide-reveal img {
+  display: block;
+  width: 100%;
+  height: auto;
+  transition: transform 0.4s ease-out;
+}
+.slide-reveal:hover img {
+  transform: translateX(-15%) scale(1.15);
+}
