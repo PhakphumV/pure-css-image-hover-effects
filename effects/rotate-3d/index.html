@@ -1,26 +1,90 @@
-
-<div class="rotate-3d">
-  <img class="rotate-3d__img" src="https://picsum.photos/400/300?random=5" alt="Demo image">
-</div>
-
-<style>
-/* Rotate 3D */
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>3D Rotate — Pure CSS Image Hover Effects</title>
+  <link rel="stylesheet" href="../../styles/effect-page.css">
+  <style>
 .rotate-3d {
   overflow: hidden;
   display: inline-block;
-  border: 1px solid #e5e5e5;
   border-radius: 8px;
-  transition: box-shadow 0.2s ease;
   perspective: 1000px;
 }
-.rotate-3d__img {
+.rotate-3d img {
   display: block;
   width: 100%;
   height: auto;
   transition: transform 0.5s ease-out;
   transform-style: preserve-3d;
 }
-.rotate-3d:hover .rotate-3d__img {
+.rotate-3d:hover img {
   transform: rotateY(15deg) rotateX(-5deg) scale(1.1);
 }
-</style>
+  </style>
+</head>
+<body>
+  <header class="page-header">
+    <a href="../../index.html" class="back-link">← Back to Gallery</a>
+    <h1>3D Rotate</h1>
+    <p class="effect-description">Perspective-based 3D rotation with scale on hover.</p>
+  </header>
+
+  <main class="effect-layout">
+    <!-- Preview Panel -->
+    <section class="panel panel--preview">
+      <h2>Preview</h2>
+      <div class="preview-container">
+        <div class="rotate-3d">
+          <img src="https://picsum.photos/600/400?random=1" alt="Demo image">
+        </div>
+      </div>
+      <p class="preview-hint">Hover over the image to see the effect</p>
+    </section>
+
+    <!-- HTML Panel -->
+    <section class="panel panel--code">
+      <h2>HTML</h2>
+      <pre class="code-block"><code>&lt;div class="rotate-3d"&gt;
+  &lt;img src="your-image.jpg" alt="Description"&gt;
+&lt;/div&gt;</code></pre>
+    </section>
+
+    <!-- CSS Panel -->
+    <section class="panel panel--code">
+      <h2>CSS</h2>
+      <pre class="code-block"><code>.rotate-3d {
+  overflow: hidden;
+  display: inline-block;
+  border-radius: 8px;
+  perspective: 1000px;
+}
+.rotate-3d img {
+  display: block;
+  width: 100%;
+  height: auto;
+  transition: transform 0.5s ease-out;
+  transform-style: preserve-3d;
+}
+.rotate-3d:hover img {
+  transform: rotateY(15deg) rotateX(-5deg) scale(1.1);
+}</code></pre>
+    </section>
+
+    <!-- Credits Panel -->
+    <section class="panel panel--credits">
+      <h2>Credits</h2>
+      <div class="credit-entry">
+        <strong>PhakphumV</strong>
+        <span class="credit-role">Creator</span>
+        <span class="credit-notes">Initial implementation</span>
+      </div>
+    </section>
+  </main>
+
+  <footer class="page-footer">
+    <p>MIT License — <a href="https://github.com/PhakphumV/pure-css-image-hover-effects">GitHub</a></p>
+  </footer>
+</body>
+</html>

@@ -1,24 +1,76 @@
-
-<div class="glow-border">
-  <img class="glow-border__img" src="https://picsum.photos/400/300?random=4" alt="Demo image">
-</div>
-
-<style>
-/* Glow Border */
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Glow Border — Pure CSS Image Hover Effects</title>
+  <link rel="stylesheet" href="../../styles/effect-page.css">
+  <style>
 .glow-border {
   overflow: hidden;
   display: inline-block;
   border: 1px solid #e5e5e5;
   border-radius: 8px;
-  transition: box-shadow 0.2s ease;
 }
-.glow-border__img {
-  display: block;
-  width: 100%;
-  height: auto;
-  transition: box-shadow 0.4s ease-out;
+.glow-border:hover {
+  box-shadow: 0 0 20px 4px #2563eb;
 }
-.glow-border:hover .glow-border__img {
-  box-shadow: 0 0 20px 4px var(--color-primary, #2563eb);
+  </style>
+</head>
+<body>
+  <header class="page-header">
+    <a href="../../index.html" class="back-link">← Back to Gallery</a>
+    <h1>Glow Border</h1>
+    <p class="effect-description">Radial glow expands around the image on hover.</p>
+  </header>
+
+  <main class="effect-layout">
+    <!-- Preview Panel -->
+    <section class="panel panel--preview">
+      <h2>Preview</h2>
+      <div class="preview-container">
+        <div class="glow-border">
+          <img src="https://picsum.photos/600/400?random=1" alt="Demo image">
+        </div>
+      </div>
+      <p class="preview-hint">Hover over the image to see the effect</p>
+    </section>
+
+    <!-- HTML Panel -->
+    <section class="panel panel--code">
+      <h2>HTML</h2>
+      <pre class="code-block"><code>&lt;div class="glow-border"&gt;
+  &lt;img src="your-image.jpg" alt="Description"&gt;
+&lt;/div&gt;</code></pre>
+    </section>
+
+    <!-- CSS Panel -->
+    <section class="panel panel--code">
+      <h2>CSS</h2>
+      <pre class="code-block"><code>.glow-border {
+  overflow: hidden;
+  display: inline-block;
+  border: 1px solid #e5e5e5;
+  border-radius: 8px;
 }
-</style>
+.glow-border:hover {
+  box-shadow: 0 0 20px 4px #2563eb;
+}</code></pre>
+    </section>
+
+    <!-- Credits Panel -->
+    <section class="panel panel--credits">
+      <h2>Credits</h2>
+      <div class="credit-entry">
+        <strong>PhakphumV</strong>
+        <span class="credit-role">Creator</span>
+        <span class="credit-notes">Initial implementation</span>
+      </div>
+    </section>
+  </main>
+
+  <footer class="page-footer">
+    <p>MIT License — <a href="https://github.com/PhakphumV/pure-css-image-hover-effects">GitHub</a></p>
+  </footer>
+</body>
+</html>

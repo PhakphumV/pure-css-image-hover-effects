@@ -1,26 +1,90 @@
-
-<div class="fade-colorize">
-  <img class="fade-colorize__img" src="https://picsum.photos/400/300?random=3" alt="Demo image">
-</div>
-
-<style>
-/* Fade Colorize */
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fade to Color — Pure CSS Image Hover Effects</title>
+  <link rel="stylesheet" href="../../styles/effect-page.css">
+  <style>
 .fade-colorize {
   overflow: hidden;
   display: inline-block;
-  border: 1px solid #e5e5e5;
   border-radius: 8px;
-  transition: box-shadow 0.2s ease;
 }
-.fade-colorize__img {
+.fade-colorize img {
   display: block;
   width: 100%;
   height: auto;
   filter: grayscale(1);
   transition: filter 0.4s ease-out, transform 0.4s ease-out;
 }
-.fade-colorize:hover .fade-colorize__img {
+.fade-colorize:hover img {
   filter: grayscale(0);
   transform: scale(1.05);
 }
-</style>
+  </style>
+</head>
+<body>
+  <header class="page-header">
+    <a href="../../index.html" class="back-link">← Back to Gallery</a>
+    <h1>Fade to Color</h1>
+    <p class="effect-description">Grayscale image transitions to full color on hover.</p>
+  </header>
+
+  <main class="effect-layout">
+    <!-- Preview Panel -->
+    <section class="panel panel--preview">
+      <h2>Preview</h2>
+      <div class="preview-container">
+        <div class="fade-colorize">
+          <img src="https://picsum.photos/600/400?random=1" alt="Demo image">
+        </div>
+      </div>
+      <p class="preview-hint">Hover over the image to see the effect</p>
+    </section>
+
+    <!-- HTML Panel -->
+    <section class="panel panel--code">
+      <h2>HTML</h2>
+      <pre class="code-block"><code>&lt;div class="fade-colorize"&gt;
+  &lt;img src="your-image.jpg" alt="Description"&gt;
+&lt;/div&gt;</code></pre>
+    </section>
+
+    <!-- CSS Panel -->
+    <section class="panel panel--code">
+      <h2>CSS</h2>
+      <pre class="code-block"><code>.fade-colorize {
+  overflow: hidden;
+  display: inline-block;
+  border-radius: 8px;
+}
+.fade-colorize img {
+  display: block;
+  width: 100%;
+  height: auto;
+  filter: grayscale(1);
+  transition: filter 0.4s ease-out, transform 0.4s ease-out;
+}
+.fade-colorize:hover img {
+  filter: grayscale(0);
+  transform: scale(1.05);
+}</code></pre>
+    </section>
+
+    <!-- Credits Panel -->
+    <section class="panel panel--credits">
+      <h2>Credits</h2>
+      <div class="credit-entry">
+        <strong>PhakphumV</strong>
+        <span class="credit-role">Creator</span>
+        <span class="credit-notes">Initial implementation</span>
+      </div>
+    </section>
+  </main>
+
+  <footer class="page-footer">
+    <p>MIT License — <a href="https://github.com/PhakphumV/pure-css-image-hover-effects">GitHub</a></p>
+  </footer>
+</body>
+</html>

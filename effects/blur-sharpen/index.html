@@ -3,32 +3,32 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Clip Reveal — Pure CSS Image Hover Effects</title>
+  <title>Blur to Sharp — Pure CSS Image Hover Effects</title>
   <link rel="stylesheet" href="../../styles/effect-page.css">
   <style>
-.clip-reveal {
+.blur-sharpen {
   overflow: hidden;
   display: inline-block;
   border-radius: 8px;
 }
-.clip-reveal img {
+.blur-sharpen img {
   display: block;
   width: 100%;
   height: auto;
-  clip-path: inset(0 50% 0 50%);
-  transition: clip-path 0.5s ease-out, transform 0.5s ease-out;
+  filter: blur(4px) grayscale(0.5);
+  transition: filter 0.4s ease-out, transform 0.4s ease-out;
 }
-.clip-reveal:hover img {
-  clip-path: inset(0 0 0 0);
-  transform: scale(1.1);
+.blur-sharpen:hover img {
+  filter: blur(0) grayscale(0);
+  transform: scale(1.05);
 }
   </style>
 </head>
 <body>
   <header class="page-header">
     <a href="../../index.html" class="back-link">← Back to Gallery</a>
-    <h1>Clip Reveal</h1>
-    <p class="effect-description">Center-expanding clip path reveals the image on hover.</p>
+    <h1>Blur to Sharp</h1>
+    <p class="effect-description">Blurred grayscale image sharpens on hover.</p>
   </header>
 
   <main class="effect-layout">
@@ -36,7 +36,7 @@
     <section class="panel panel--preview">
       <h2>Preview</h2>
       <div class="preview-container">
-        <div class="clip-reveal">
+        <div class="blur-sharpen">
           <img src="https://picsum.photos/600/400?random=1" alt="Demo image">
         </div>
       </div>
@@ -46,7 +46,7 @@
     <!-- HTML Panel -->
     <section class="panel panel--code">
       <h2>HTML</h2>
-      <pre class="code-block"><code>&lt;div class="clip-reveal"&gt;
+      <pre class="code-block"><code>&lt;div class="blur-sharpen"&gt;
   &lt;img src="your-image.jpg" alt="Description"&gt;
 &lt;/div&gt;</code></pre>
     </section>
@@ -54,21 +54,21 @@
     <!-- CSS Panel -->
     <section class="panel panel--code">
       <h2>CSS</h2>
-      <pre class="code-block"><code>.clip-reveal {
+      <pre class="code-block"><code>.blur-sharpen {
   overflow: hidden;
   display: inline-block;
   border-radius: 8px;
 }
-.clip-reveal img {
+.blur-sharpen img {
   display: block;
   width: 100%;
   height: auto;
-  clip-path: inset(0 50% 0 50%);
-  transition: clip-path 0.5s ease-out, transform 0.5s ease-out;
+  filter: blur(4px) grayscale(0.5);
+  transition: filter 0.4s ease-out, transform 0.4s ease-out;
 }
-.clip-reveal:hover img {
-  clip-path: inset(0 0 0 0);
-  transform: scale(1.1);
+.blur-sharpen:hover img {
+  filter: blur(0) grayscale(0);
+  transform: scale(1.05);
 }</code></pre>
     </section>
 
