@@ -22,6 +22,7 @@
     { id: 'quick-zoom', title: 'Quick Zoom', desc: 'Quick zoom effect on hover', folder: 'quick-zoom' },
     { id: 'point-zoom', title: 'Point Zoom', desc: 'Zoom effect centered on a specific point', folder: 'point-zoom' },
     { id: 'zoom-in-slowmo', title: 'Zoom In Slowmo', desc: 'Subtle zoom effect on hover', folder: 'zoom-in-slowmo' },
+    { id: 'zoom-brightness', title: 'Zoom & Brightness', desc: 'Zoom and brightness transition on hover', folder: 'zoom-brightness' },
     { id: 'slide-reveal', title: 'Slide Reveal', desc: 'Image slides and scales on hover', folder: 'slide-reveal' },
     { id: 'fade-colorize', title: 'Fade to Color', desc: 'Grayscale to full color transition', folder: 'fade-colorize' },
     { id: 'glow-border', title: 'Glow Border', desc: 'Radial glow expands on hover', folder: 'glow-border' },

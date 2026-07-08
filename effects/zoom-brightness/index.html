@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Zoom Brightness — Pure CSS Image Hover Effects</title>
+  <link rel="stylesheet" href="../../styles/effect-page.css">
+  <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+  <header class="page-header">
+    <a href="../../index.html" class="back-link">← Back to Gallery</a>
+    <h1>Zoom Brightness</h1>
+    <p class="effect-description">Subtle zoom and brightness effect on hover.</p>
+  </header>
+
+  <main class="effect-layout">
+    <div class="left-column">
+      <section class="panel panel--preview">
+        <h2>Preview</h2>
+        <div class="preview-container">
+          <div class="zoom-brightness">
+            <img src="https://picsum.photos/600/400?random=1" alt="Demo image">
+          </div>
+        </div>
+        <p class="preview-hint">Hover over the image to see the effect</p>
+      </section>
+
+      <section class="panel panel--credits">
+        <h2>Credits</h2>
+        <div class="credit-entry">
+          <strong>rahuldotdev</strong>
+          <span class="credit-role">Creator</span>
+          <span class="credit-notes">https://github.com/rahuldotdev</span>
+        </div>
+      </section>
+    </div>
+
+    <div class="right-column">
+      <section class="panel panel--code">
+        <h2>HTML</h2>
+        <pre class="code-block"><code>&lt;div class="zoom-brightness"&gt;
+  &lt;img src="your-image.jpg" alt="Description"&gt;
+&lt;/div&gt;</code></pre>
+      </section>
+
+      <section class="panel panel--code">
+        <h2>CSS</h2>
+        <!-- TODO: To dynamically load effect-specific styles to the page -->
+        <pre class="code-block"><code>.zoom-brightness {
+  overflow: hidden;
+  display: inline-block;
+  border-radius: 8px;
+}
+.zoom-brightness img {
+  transition: transform 2s, filter 1.5s ease-in-out;
+  transform-origin: center center;
+  filter: brightness(50%);
+}
+.zoom-brightness:hover img {
+  filter: brightness(100%);
+  transform: scale(1.3);
+}</code></pre>
+      </section>
+    </div>
+  </main>
+
+  <footer class="page-footer">
+    <p>MIT License — <a href="https://github.com/PhakphumV/pure-css-image-hover-effects">GitHub</a></p>
+  </footer>
+</body>
+</html>
