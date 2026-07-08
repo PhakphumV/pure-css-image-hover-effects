@@ -86,7 +86,7 @@
     effects.forEach(effect => {
       const link = document.createElement('link');
       link.rel = 'stylesheet';
-      link.href = `effects/${effect.folder}/styles.css`;
+      link.href = `effects/${effect.folder}/style.css`;
       document.head.appendChild(link);
     });
   }
