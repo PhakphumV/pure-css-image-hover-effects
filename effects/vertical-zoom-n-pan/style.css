@@ -9,11 +9,12 @@
   display: block;
   width: 100%;
   height: auto;
-  transform-origin: center center;
-  transition: transform 0.55s ease;
+  transform-origin: 0 0;
+  transition: transform 0.55s ease-in-out;
   will-change: transform;
+  transform: scale(1.2);
 }
 
 .vertical-zoom-n-pan:hover img {
-  transform: scale(1.18) translateY(6%);
+  transform: scale(1.4) translateY(30%);
 }
