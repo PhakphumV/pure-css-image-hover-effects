@@ -81,6 +81,16 @@
     return card;
   }
 
+  // To add css style from each effect folder, we can dynamically create a link element and append it to the head
+  function loadEffectStyles() {
+    effects.forEach(effect => {
+      const link = document.createElement('link');
+      link.rel = 'stylesheet';
+      link.href = `effects/${effect.folder}/styles.css`;
+      document.head.appendChild(link);
+    });
+  }
+
   /**
    * Create header button group
    */
@@ -140,6 +150,9 @@
 
     // Create header switcher first
     createSwitcher();
+
+    // Load effect styles
+    loadEffectStyles();
 
     // Create and append all cards
     effects.forEach((effect, index) => {
