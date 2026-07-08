@@ -39,7 +39,7 @@ pure-css-image-hover-effects/
 </div>
 ```
 
-2. Include the CSS (either from `styles/gallery.css` or a standalone `style.css`):
+2. Include the CSS (either from `styles/gallery.css`:
 
 ```html
 <link rel="stylesheet" href="styles/gallery.css">
@@ -63,7 +63,6 @@ Each effect folder contains standalone files you can drop into any project:
 - **Pure CSS**: All animations use only CSS transitions and transforms
 - **No JS for Effects**: JavaScript is only used for gallery navigation, not the animations themselves
 - **Responsive**: Grid adapts to screen size
-- **Accessible**: Keyboard navigation support, reduced motion respect
 - **Lightweight**: Minimal CSS, no external dependencies
 
 ## Browser Support
@@ -112,7 +111,7 @@ Each new effect should include:
 1. Folder under `effects/` with kebab-case naming
 2. `index.html` - Self-contained demo
 3. `style.css` - Standalone CSS
-4. `README.md` - Description and browser support table
+4. `README.md` - (Optional) Description and browser support table
 5. Update `scripts/gallery.js` to register the new effect
 
 ## License
