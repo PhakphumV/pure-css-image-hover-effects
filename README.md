@@ -80,7 +80,7 @@ All effects work in evergreen browsers. Specific feature support varies:
 ## TODO
 
 - [x] Publish as Github page
-- [ ] Dynamically build JSON file from directory structure for collection of effects
+- [x] Dynamically build JSON file from directory structure for collection of effects
 - [ ] Dynamically display style.css code in the single effect page
 - [ ] Copy css code button
 - [ ] CSS code preview with css styling format
@@ -104,6 +104,16 @@ All effects work in evergreen browsers. Specific feature support varies:
 - [ ] Curate 100k hover effects, anyone really believe this?
 
 
+## Regenerating the effect catalog
+
+Run the following command whenever a new effect folder is added or removed:
+
+```bash
+node scripts/generate-effects-data.js
+```
+
+This refreshes [effects.json](effects.json) so the gallery can load the current list of effects from the folder structure.
+
 ## Contributing
 
 Each new effect should include:
@@ -112,7 +122,6 @@ Each new effect should include:
 2. `index.html` - Self-contained demo
 3. `style.css` - Standalone CSS
 4. `README.md` - (Optional) Description and browser support table
-5. Update `scripts/gallery.js` to register the new effect
 
 ## License
 

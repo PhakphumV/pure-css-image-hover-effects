@@ -13,27 +13,9 @@
   const IMAGE_HEIGHT = 300;
   const DEFAULT_IMAGE_INDEX = 0;
 
-  // Effect definitions
-  // TODO: make it dynamic by reading from a JSON file or directory structure
+  const MANIFEST_URL = './effects.json';
 
-  const effects = [
-    { id: 'zoom-in', title: 'Zoom In', desc: 'Subtle zoom in effect on hover', folder: 'zoom-in' },
-    { id: 'zoom-out', title: 'Zoom Out', desc: 'Subtle zoom out effect on hover', folder: 'zoom-out' },
-    { id: 'quick-zoom', title: 'Quick Zoom', desc: 'Quick zoom effect on hover', folder: 'quick-zoom' },
-    { id: 'point-zoom', title: 'Point Zoom', desc: 'Zoom effect centered on a specific point', folder: 'point-zoom' },
-    { id: 'zoom-in-slowmo', title: 'Zoom In Slowmo', desc: 'Subtle zoom effect on hover', folder: 'zoom-in-slowmo' },
-    { id: 'zoom-brightness', title: 'Zoom & Brightness', desc: 'Zoom and brightness transition on hover', folder: 'zoom-brightness' },
-    { id: 'slide-reveal', title: 'Slide Reveal', desc: 'Image slides and scales on hover', folder: 'slide-reveal' },
-    { id: 'fade-colorize', title: 'Fade to Color', desc: 'Grayscale to full color transition', folder: 'fade-colorize' },
-    { id: 'glow-border', title: 'Glow Border', desc: 'Radial glow expands on hover', folder: 'glow-border' },
-    { id: 'rotate-3d', title: '3D Rotate', desc: 'Perspective rotation with scale', folder: 'rotate-3d' },
-    { id: 'clip-reveal', title: 'Clip Reveal', desc: 'Center-expanding clip path reveal', folder: 'clip-reveal' },
-    { id: 'blur-sharpen', title: 'Blur to Sharp', desc: 'Blurred grayscale sharpens on hover', folder: 'blur-sharpen' },
-    { id: 'zoom-rotate', title: 'Zoom & Rotate', desc: 'Subtle rotation with zoom', folder: 'zoom-rotate' },
-    { id: 'vignette', title: 'Vignette', desc: 'Dark vignette fades in on hover', folder: 'vignette' },
-    { id: 'duotone', title: 'Duotone Shift', desc: 'Duotone filter transitions to normal', folder: 'duotone' }
-  ];
-
+  let effects = [];
   let currentImageIndex = DEFAULT_IMAGE_INDEX;
   const imageElements = [];
 
@@ -51,6 +33,43 @@
     const img = new Image();
     img.src = url;
     return img;
+  }
+
+  /**
+   * Load the effect manifest generated from the effects directory.
+   */
+  async function loadEffects() {
+    if (window.__EFFECTS_MANIFEST__) {
+      const data = window.__EFFECTS_MANIFEST__;
+      if (Array.isArray(data)) {
+        return data;
+      }
+
+      if (data && Array.isArray(data.effects)) {
+        return data.effects;
+      }
+    }
+
+    try {
+      const response = await fetch(MANIFEST_URL);
+      if (!response.ok) {
+        throw new Error(`Unable to load ${MANIFEST_URL}: ${response.status}`);
+      }
+
+      const data = await response.json();
+      if (Array.isArray(data)) {
+        return data;
+      }
+
+      if (data && Array.isArray(data.effects)) {
+        return data.effects;
+      }
+
+      throw new Error('The effect manifest does not contain an effects array.');
+    } catch (error) {
+      console.warn('Falling back to an empty effect list:', error);
+      return [];
+    }
   }
 
   /**
@@ -151,15 +170,22 @@
   /**
    * Initialize the gallery
    */
-  function initGallery() {
+  async function initGallery() {
     const gallery = document.getElementById('gallery');
     if (!gallery) return;
 
     // Create header switcher first
     createSwitcher();
 
+    effects = await loadEffects();
+
     // Load effect styles
     loadEffectStyles();
+
+    if (!effects.length) {
+      gallery.innerHTML = '<p class="card__desc">No effects are available yet. Run <code>node scripts/generate-effects-data.js</code> to generate the manifest.</p>';
+      return;
+    }
 
     // Create and append all cards
     effects.forEach((effect, index) => {
@@ -189,9 +215,11 @@
 
   // Initialize when DOM is ready
   if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', initGallery);
+    document.addEventListener('DOMContentLoaded', () => {
+      void initGallery();
+    });
   } else {
-    initGallery();
+    void initGallery();
   }
 
 })();
