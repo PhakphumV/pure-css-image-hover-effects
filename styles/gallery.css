@@ -126,6 +126,7 @@ footer {
   aspect-ratio: 6 / 4;
   background: #f0f0f0;
   line-height: 0;
+  border-radius: var(--radius) var(--radius) 0 0;
 }
 
 .card__media img {
