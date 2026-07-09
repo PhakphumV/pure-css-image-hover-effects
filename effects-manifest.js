@@ -67,6 +67,18 @@ window.__EFFECTS_MANIFEST__ = {
       "folder": "quick-zoom"
     },
     {
+      "id": "rectangle-in",
+      "title": "Rectangle In",
+      "desc": "Rectangle In",
+      "folder": "rectangle-in"
+    },
+    {
+      "id": "rectangle-out",
+      "title": "Rectangle Out",
+      "desc": "Rectangle Out",
+      "folder": "rectangle-out"
+    },
+    {
       "id": "radial-in",
       "title": "Radial In",
       "desc": "Radial In",
