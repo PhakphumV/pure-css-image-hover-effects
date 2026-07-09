@@ -91,7 +91,7 @@ footer {
   padding: 0 1.5rem;
 }
 
-.left-column, .right-column { flex: 1; }
+.left-column, .right-column { flex: 1; max-width: 50%; }
 
 @media (max-width: 768px) {
   .effect-layout { flex-direction: column; gap: 1.5rem; }
