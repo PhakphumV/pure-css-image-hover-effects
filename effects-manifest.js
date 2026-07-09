@@ -61,6 +61,12 @@ window.__EFFECTS_MANIFEST__ = {
       "folder": "slide-reveal"
     },
     {
+      "id": "slide-reveal-right",
+      "title": "Slide Reveal Right",
+      "desc": "Pure CSS hover effect for Slide Reveal Right.",
+      "folder": "slide-reveal-right"
+    },
+    {
       "id": "vertical-zoom-n-pan",
       "title": "Vertical Zoom N Pan",
       "desc": "Vertical Zoom-n-pan",
