@@ -67,6 +67,18 @@ window.__EFFECTS_MANIFEST__ = {
       "folder": "quick-zoom"
     },
     {
+      "id": "radial-in",
+      "title": "Radial In",
+      "desc": "Radial In",
+      "folder": "radial-in"
+    },
+    {
+      "id": "radial-out",
+      "title": "Radial Out",
+      "desc": "Radial Out",
+      "folder": "radial-out"
+    },
+    {
       "id": "rotate-3d",
       "title": "Rotate 3d",
       "desc": "Rotate 3D",

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Radial Out — Pure CSS Image Hover Effects</title>
+  <link rel="stylesheet" href="../../styles/effect-page.css">
+  <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+  <header class="page-header">
+    <a href="../../index.html" class="back-link">← Back to Gallery</a>
+    <h1>Radial Out</h1>
+    <p class="effect-description">Image reveals from center outward on hover using radial mask transition.</p>
+  </header>
+
+  <main class="effect-layout">
+    <div class="left-column">
+      <section class="panel panel--preview">
+        <h2>Preview</h2>
+        <div class="preview-container">
+          <div class="radial-out">
+            <img src="https://picsum.photos/600/400?random=4" alt="Demo image">
+          </div>
+        </div>
+        <p class="preview-hint">Hover over the image to see the effect</p>
+      </section>
+
+      <section class="panel panel--credits">
+        <h2>Credits</h2>
+        <div class="credit-entry">
+          <strong>PhakphumV</strong>
+          <span class="credit-role">Creator</span>
+          <span class="credit-notes">Radial reveal effect</span>
+        </div>
+      </section>
+    </div>
+
+    <div class="right-column">
+      <section class="panel panel--code">
+        <h2>HTML</h2>
+        <pre class="code-block"><code>&lt;div class="radial-out"&gt;
+  &lt;img src="your-image.jpg" alt="Description"&gt;
+&lt;/div&gt;</code></pre>
+      </section>
+
+      <section class="panel panel--code">
+        <h2>CSS</h2>
+        <pre class="code-block"><code>.radial-out {
+  overflow: hidden;
+  display: inline-block;
+  border-radius: 8px;
+  position: relative;
+}
+.radial-out::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: white;
+  border-radius: 8px;
+  transform: scale(0);
+  transform-origin: center;
+  transition: transform 0.6s ease;
+  pointer-events: none;
+  z-index: 1;
+}
+.radial-out:hover::before {
+  transform: scale(1.5);
+}</code></pre>
+      </section>
+    </div>
+  </main>
+
+  <footer class="page-footer">
+    <p>MIT License — <a href="https://github.com/PhakphumV/pure-css-image-hover-effects">GitHub</a></p>
+  </footer>
+</body>
+</html>
