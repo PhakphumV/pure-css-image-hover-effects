@@ -25,6 +25,18 @@ window.__EFFECTS_MANIFEST__ = {
       "folder": "fade-colorize"
     },
     {
+      "id": "flip-horizontal",
+      "title": "Flip Horizontal",
+      "desc": "Flip Horizontal",
+      "folder": "flip-horizontal"
+    },
+    {
+      "id": "flip-vertical",
+      "title": "Flip Vertical",
+      "desc": "Flip Vertical",
+      "folder": "flip-vertical"
+    },
+    {
       "id": "glow-border",
       "title": "Glow Border",
       "desc": "Glow Border",
