@@ -11,7 +11,7 @@
   <header class="page-header">
     <a href="../../index.html" class="back-link">← Back to Gallery</a>
     <h1>Radial Out</h1>
-    <p class="effect-description">Image reveals from center outward on hover using radial mask transition.</p>
+    <p class="effect-description">Image reveals from center outward on hover using circular radial mask transition.</p>
   </header>
 
   <main class="effect-layout">
@@ -52,20 +52,26 @@
   border-radius: 8px;
   position: relative;
 }
+.radial-out img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
 .radial-out::before {
   content: '';
   position: absolute;
-  top: 0; left: 0; right: 0; bottom: 0;
+  top: 50%; left: 50%;
+  width: 100%; height: 100%;
   background: white;
-  border-radius: 8px;
-  transform: scale(0);
+  border-radius: 50%;
+  transform: translate(-50%, -50%) scale(0);
   transform-origin: center;
   transition: transform 0.6s ease;
   pointer-events: none;
   z-index: 1;
 }
 .radial-out:hover::before {
-  transform: scale(1.5);
+  transform: translate(-50%, -50%) scale(1.5);
 }</code></pre>
       </section>
     </div>
