@@ -12,5 +12,5 @@
   transform-style: preserve-3d;
 }
 .rotate-3d:hover img {
-  transform: rotateY(15deg) rotateX(-5deg) scale(1.1);
+  transform: rotateY(20deg) rotateX(-20deg) scale(1.3);
 }
