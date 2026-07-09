@@ -37,6 +37,12 @@ window.__EFFECTS_MANIFEST__ = {
       "folder": "horizontal-zoom-n-pan"
     },
     {
+      "id": "overlay-fade-in-neon-grid",
+      "title": "Overlay Fade In Neon Grid",
+      "desc": "Pure CSS hover effect for Overlay Fade In Neon Grid.",
+      "folder": "overlay-fade-in-neon-grid"
+    },
+    {
       "id": "point-zoom",
       "title": "Point Zoom",
       "desc": "Pure CSS hover effect for Point Zoom.",

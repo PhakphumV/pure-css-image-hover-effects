@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Overlay Fade In Neon Grid — Pure CSS Image Hover Effects</title>
+  <link rel="stylesheet" href="../../styles/effect-page.css">
+  <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+  <header class="page-header">
+    <a href="../../index.html" class="back-link">← Back to Gallery</a>
+    <h1>Overlay Fade In Neon Grid</h1>
+    <p class="effect-description">A neon grid fade in effect on hover.</p>
+  </header>
+
+  <main class="effect-layout">
+    <div class="left-column">
+      <!-- Preview Panel -->
+      <section class="panel panel--preview">
+        <h2>Preview</h2>
+        <div class="preview-container">
+          <div class="overlay-fade-in-neon-grid">
+            <img src="https://picsum.photos/600/400?random=1" alt="Demo image">
+          </div>
+        </div>
+        <p class="preview-hint">Hover over the image to see the effect</p>
+      </section>
+
+      <!-- Credits Panel -->
+      <section class="panel panel--credits">
+        <h2>Credits</h2>
+        <div class="credit-entry">
+          <strong>{{CONTRIBUTOR_NAME}}</strong>
+          <span class="credit-role">{{CONTRIBUTOR_ROLE}}</span>
+          <span class="credit-notes">{{CONTRIBUTOR_NOTES}}</span>
+        </div>
+      </section>
+    </div>
+
+    <div class="right-column">
+      <!-- HTML Panel -->
+      <section class="panel panel--code">
+        <h2>HTML</h2>
+        <pre class="code-block"><code>&lt;div class="overlay-fade-in-neon-grid"&gt;
+  &lt;img src="your-image.jpg" alt="Description"&gt;
+&lt;/div&gt;</code></pre>
+      </section>
+
+      <!-- CSS Panel -->
+      <section class="panel panel--code">
+        <h2>CSS</h2>
+        <pre class="code-block"><code>.overlay-fade-in-neon-grid {
+    position: relative;
+    border-radius: 8px;
+}
+
+.overlay-fade-in-neon-grid::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    transition: opacity .5s ease, background-size .5s ease;
+    background-size: 10px 10px;
+    background-position: center center;
+    background-image: linear-gradient(rgba(0, 255, 255, .5) 1px, transparent 1px), linear-gradient(90deg, rgba(0, 255, 255, .5) 1px, transparent 1px);
+    opacity: 0;
+}
+
+.overlay-fade-in-neon-grid img {}
+
+.overlay-fade-in-neon-grid:hover img {}
+
+.overlay-fade-in-neon-grid:hover::after {
+    opacity: 1;
+    background-size: 40px 40px;
+}</code></pre>
+      </section>
+    </div>
+  </main>
+
+  <footer class="page-footer">
+    <p>MIT License — <a href="https://github.com/PhakphumV/pure-css-image-hover-effects">GitHub</a></p>
+  </footer>
+</body>
+</html>
