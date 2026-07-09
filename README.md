@@ -2,7 +2,7 @@
 
 <img width="890" height="484" alt="image" src="https://github.com/user-attachments/assets/9ca9f515-30c0-49ce-a6de-6dfe8d03f3ab" />
 
-A curated gallery of pure CSS hover effects designed for simple `<img>` tags wrapped in `<div>` containers. No JavaScript required for the visual effects — just hover to see them in action.
+A curated gallery of pure CSS hover effects designed for a simple `<img>` tag wrapped in a single `<div>` container. No extra DOM. No JavaScript required for the visual effects — just hover to see them in action.
 
 ## Overview
 
