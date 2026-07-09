@@ -7,6 +7,30 @@ window.__EFFECTS_MANIFEST__ = {
       "folder": "blur-sharpen"
     },
     {
+      "id": "bounce-bottom",
+      "title": "Bounce Bottom",
+      "desc": "Bounce Bottom",
+      "folder": "bounce-bottom"
+    },
+    {
+      "id": "bounce-left",
+      "title": "Bounce Left",
+      "desc": "Bounce Left",
+      "folder": "bounce-left"
+    },
+    {
+      "id": "bounce-right",
+      "title": "Bounce Right",
+      "desc": "Bounce Right",
+      "folder": "bounce-right"
+    },
+    {
+      "id": "bounce-top",
+      "title": "Bounce Top",
+      "desc": "Bounce Top",
+      "folder": "bounce-top"
+    },
+    {
       "id": "clip-reveal",
       "title": "Clip Reveal",
       "desc": "Clip Reveal",
