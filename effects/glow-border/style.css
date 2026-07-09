@@ -2,6 +2,11 @@
   display: inline-block;
   border: 1px solid #e5e5e5;
   border-radius: 8px;
+  transition: box-shadow 0.3s ease-in-out;
+}
+.glow-border img {
+  display: block;
+  border-radius: 8px;
 }
 .glow-border:hover {
   box-shadow: 0 0 20px 4px #2563eb;
