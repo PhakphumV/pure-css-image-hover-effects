@@ -1,13 +1,13 @@
 /* Glass Mosaic Effect */
 
-.hover-card.glass-mosaic {
+.glass-mosaic {
   position: relative;
   overflow: hidden;
   --gap: 4px;
   --blur: 4px;
 }
 
-.hover-card.glass-mosaic::after {
+.glass-mosaic::after {
   content: "";
   position: absolute;
   inset: 0;
@@ -17,6 +17,6 @@
   transition: opacity 0.3s;
 }
 
-.hover-card.glass-mosaic:hover::after {
+.glass-mosaic:hover::after {
   opacity: 0.2;
 }

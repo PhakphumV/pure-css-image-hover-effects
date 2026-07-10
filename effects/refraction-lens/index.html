@@ -2,12 +2,39 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Refraction Lens</title>
-  <link rel="stylesheet" href="style.css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Refraction Lens — Pure CSS Image Hover Effects</title>
+  <link rel="stylesheet" href="../../styles/effect-page.css" />
+  <link rel="stylesheet" href="./style.css" />
 </head>
 <body>
-  <div class="hover-card refraction-lens">
-    <img src="https://via.placeholder.com/400x300" alt="Demo image" />
-  </div>
+  <header class="page-header">
+    <a href="../../index.html" class="back-link">← Back to Gallery</a>
+    <h1>Refraction Lens</h1>
+    <p class="effect-description">Magnifying‑lens look‑ahead effect that enlarges slightly on hover.</p>
+  </header>
+  <main class="effect-layout">
+    <section class="panel panel--preview">
+      <div class="preview-container">
+        <div class="refraction-lens">
+          <img src="https://picsum.photos/600/400?random=4" alt="Demo image" />
+        </div>
+      </div>
+      <p class="preview-hint">Hover over the image to see the effect</p>
+    </section>
+
+    <section class="panel panel--code">
+      <h2>HTML</h2>
+      <pre class="code-block"><code><div class="refraction-lens"><img src="your-image.jpg" alt="Description" /></div></code></pre>
+    </section>
+
+    <section class="panel panel--code">
+      <h2>CSS</h2>
+      <pre class="code-block"><code>.refraction-lens{position:relative;overflow:hidden}.refraction-lens::after{content:"";position:absolute;border-radius:50%;width:120px;height:120px;background:linear-gradient(rgba(255,255,255,0.8),transparent);transform:translate(-50%, -50%)scale(1);pointer-events:none;transition:transform .3s}.refraction-lens:hover::after{transform:translate(-50%, -50%)scale(1.5)}</code></pre>
+    </section>
+  </main>
+  <footer class="page-footer">
+    <p>MIT License — <a href="https://github.com/PhakphumV/pure-css-image-hover-effects" target="_blank" rel="noopener">GitHub</a></p>
+  </footer>
 </body>
 </html>

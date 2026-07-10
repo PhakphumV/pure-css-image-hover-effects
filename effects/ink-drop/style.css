@@ -1,21 +1,23 @@
-/* Ink‑Drop Effect */
+/* Ink Drop Effect */
 
-.hover-card.ink-drop {
+.ink-drop {
   position: relative;
   overflow: hidden;
 }
 
-.hover-card.ink-drop::after {
+.ink-drop::after {
   content: "";
   position: absolute;
   inset: 50%;
-  width: 0; height: 0;
+  width: 0;
+  height: 0;
   border-radius: 50%;
   background: rgba(0,0,0,.1);
   transform: translate(-50%, -50%);
   transition: width .3s, height .3s;
 }
-.hover-card.ink-drop:hover::after {
+
+.ink-drop:hover::after {
   width: 200%;
   height: 200%;
 }

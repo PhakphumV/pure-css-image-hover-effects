@@ -1,11 +1,11 @@
 /* Refraction Lens Effect */
 
-.hover-card.refraction-lens {
+.refraction-lens {
   position: relative;
   overflow: hidden;
 }
 
-.hover-card.refraction-lens::after {
+.refraction-lens::after {
   content: "";
   position: absolute;
   border-radius: 50%;
@@ -15,6 +15,7 @@
   pointer-events: none;
   transition: transform .3s;
 }
-.hover-card.refraction-lens:hover::after {
+
+.refraction-lens:hover::after {
   transform: translate(-50%, -50%) scale(1.5);
 }
