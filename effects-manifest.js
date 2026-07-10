@@ -9,25 +9,25 @@ window.__EFFECTS_MANIFEST__ = {
     {
       "id": "bounce-bottom",
       "title": "Bounce Bottom",
-      "desc": "Bounce Bottom",
+      "desc": "Pure CSS hover effect for Bounce Bottom.",
       "folder": "bounce-bottom"
     },
     {
       "id": "bounce-left",
       "title": "Bounce Left",
-      "desc": "Bounce Left",
+      "desc": "Pure CSS hover effect for Bounce Left.",
       "folder": "bounce-left"
     },
     {
       "id": "bounce-right",
       "title": "Bounce Right",
-      "desc": "Bounce Right",
+      "desc": "Pure CSS hover effect for Bounce Right.",
       "folder": "bounce-right"
     },
     {
       "id": "bounce-top",
       "title": "Bounce Top",
-      "desc": "Bounce Top",
+      "desc": "Pure CSS hover effect for Bounce Top.",
       "folder": "bounce-top"
     },
     {
@@ -35,6 +35,12 @@ window.__EFFECTS_MANIFEST__ = {
       "title": "Clip Reveal",
       "desc": "Clip Reveal",
       "folder": "clip-reveal"
+    },
+    {
+      "id": "color-splash",
+      "title": "Color Splash",
+      "desc": "Color Splash",
+      "folder": "color-splash"
     },
     {
       "id": "duotone",
@@ -61,6 +67,12 @@ window.__EFFECTS_MANIFEST__ = {
       "folder": "flip-vertical"
     },
     {
+      "id": "glass-mosaic",
+      "title": "Glass Mosaic",
+      "desc": "Glass Mosaic",
+      "folder": "glass-mosaic"
+    },
+    {
       "id": "glow-border",
       "title": "Glow Border",
       "desc": "Glow Border",
@@ -71,6 +83,12 @@ window.__EFFECTS_MANIFEST__ = {
       "title": "Horizontal Zoom N Pan",
       "desc": "Horizontal Zoom-n-pan",
       "folder": "horizontal-zoom-n-pan"
+    },
+    {
+      "id": "ink-drop",
+      "title": "Ink Drop",
+      "desc": "Ink Drop",
+      "folder": "ink-drop"
     },
     {
       "id": "overlay-fade-in-neon-grid",
@@ -91,28 +109,34 @@ window.__EFFECTS_MANIFEST__ = {
       "folder": "quick-zoom"
     },
     {
-      "id": "rectangle-in",
-      "title": "Rectangle In",
-      "desc": "Rectangle In",
-      "folder": "rectangle-in"
-    },
-    {
-      "id": "rectangle-out",
-      "title": "Rectangle Out",
-      "desc": "Rectangle Out",
-      "folder": "rectangle-out"
-    },
-    {
       "id": "radial-in",
       "title": "Radial In",
-      "desc": "Radial In",
+      "desc": "Pure CSS hover effect for Radial In.",
       "folder": "radial-in"
     },
     {
       "id": "radial-out",
       "title": "Radial Out",
-      "desc": "Radial Out",
+      "desc": "Pure CSS hover effect for Radial Out.",
       "folder": "radial-out"
+    },
+    {
+      "id": "rectangle-in",
+      "title": "Rectangle In",
+      "desc": "Pure CSS hover effect for Rectangle In.",
+      "folder": "rectangle-in"
+    },
+    {
+      "id": "rectangle-out",
+      "title": "Rectangle Out",
+      "desc": "Pure CSS hover effect for Rectangle Out.",
+      "folder": "rectangle-out"
+    },
+    {
+      "id": "refraction-lens",
+      "title": "Refraction Lens",
+      "desc": "Refraction Lens",
+      "folder": "refraction-lens"
     },
     {
       "id": "rotate-3d",
@@ -174,30 +198,5 @@ window.__EFFECTS_MANIFEST__ = {
       "desc": "Pure CSS hover effect for Zoom Rotate.",
       "folder": "zoom-rotate"
     }
-  ],
-  {
-    "id": "glass-mosaic",
-    "title": "Glass Mosaic",
-    "desc": "Frosted glass grid overlay that dims on hover.",
-    "folder": "glass-mosaic"
-  },
-  {
-    "id": "color-splash",
-    "title": "Color Splash",
-    "desc": "Expanding colored splash that follows the cursor.",
-    "folder": "color-splash"
-  },
-  {
-    "id": "refraction-lens",
-    "title": "Refraction Lens",
-    "desc": "Magnifying‑lens effect that subtly enlarges the image on hover.",
-    "folder": "refraction-lens"
-  },
-  {
-    "id": "ink-drop",
-    "title": "Ink Drop",
-    "desc": "Circular ink splash expansion on hover.",
-    "folder": "ink-drop"
-  }
-}
-;
+  ]
+};
