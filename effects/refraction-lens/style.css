@@ -1,0 +1,20 @@
+/* Refraction Lens Effect */
+
+.hover-card.refraction-lens {
+  position: relative;
+  overflow: hidden;
+}
+
+.hover-card.refraction-lens::after {
+  content: "";
+  position: absolute;
+  border-radius: 50%;
+  width: 120px; height: 120px;
+  background: linear-gradient(rgba(255,255,255,0.8), transparent);
+  transform: translate(-50%, -50%) scale(1);
+  pointer-events: none;
+  transition: transform .3s;
+}
+.hover-card.refraction-lens:hover::after {
+  transform: translate(-50%, -50%) scale(1.5);
+}
