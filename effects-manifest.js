@@ -174,5 +174,30 @@ window.__EFFECTS_MANIFEST__ = {
       "desc": "Pure CSS hover effect for Zoom Rotate.",
       "folder": "zoom-rotate"
     }
-  ]
-};
+  ],
+  {
+    "id": "glass-mosaic",
+    "title": "Glass Mosaic",
+    "desc": "Frosted glass grid overlay that dims on hover.",
+    "folder": "glass-mosaic"
+  },
+  {
+    "id": "color-splash",
+    "title": "Color Splash",
+    "desc": "Expanding colored splash that follows the cursor.",
+    "folder": "color-splash"
+  },
+  {
+    "id": "refraction-lens",
+    "title": "Refraction Lens",
+    "desc": "Magnifying‑lens effect that subtly enlarges the image on hover.",
+    "folder": "refraction-lens"
+  },
+  {
+    "id": "ink-drop",
+    "title": "Ink Drop",
+    "desc": "Circular ink splash expansion on hover.",
+    "folder": "ink-drop"
+  }
+}
+;
