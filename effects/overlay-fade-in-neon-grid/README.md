@@ -29,7 +29,7 @@ Neon grid overlay fades in over image on hover.
 **Browser Support**
 | Feature | Support |
 |---------|---------|
-| `background` | Check caniuse.com |
+| `background` | All modern browsers |
 | `pseudo-element` | All modern browsers |
 | `transition` | Chrome 36+, FF 16+, Safari 9+, Edge 12+ |
 | `opacity` | All modern browsers |

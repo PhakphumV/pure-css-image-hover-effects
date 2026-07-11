@@ -29,9 +29,9 @@ RGB channels separate like light through a prism on hover with spectral bands.
 **Browser Support**
 | Feature | Support |
 |---------|---------|
-| `mix-blend-mode` | Check caniuse.com |
+| `mix-blend-mode` | Chrome 41+, FF 32+, Safari 8+ |
 | `filter` | Chrome 53+, FF 35+, Safari 9+ |
 | `transform` | Chrome 36+, FF 16+, Safari 9+, Edge 12+ |
 | `clip-path` | Chrome 28+, FF 28+, Safari 9+ |
-| `animation` | Check caniuse.com |
+| `animation` | Chrome 43+, FF 16+, Safari 9+ |
 

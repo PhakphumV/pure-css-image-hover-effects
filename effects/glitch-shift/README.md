@@ -29,9 +29,9 @@ Stepped RGB channel glitch flicker with clip-path slice animation on hover.
 **Browser Support**
 | Feature | Support |
 |---------|---------|
-| `animation` | Check caniuse.com |
+| `animation` | Chrome 43+, FF 16+, Safari 9+ |
 | `clip-path` | Chrome 28+, FF 28+, Safari 9+ |
-| `mix-blend-mode` | Check caniuse.com |
+| `mix-blend-mode` | Chrome 41+, FF 32+, Safari 8+ |
 | `transform` | Chrome 36+, FF 16+, Safari 9+, Edge 12+ |
-| `keyframes` | Check caniuse.com |
+| `keyframes` | Chrome 43+, FF 16+, Safari 9+ |
 

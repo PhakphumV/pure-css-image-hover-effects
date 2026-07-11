@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+
 """
 Script to standardize all effect pages in pure-css-image-hover-effects.
 Fixes:
@@ -11,6 +12,7 @@ Fixes:
 import os
 import re
 import json
+import hashlib
 from pathlib import Path
 
 BASE_DIR = Path("/home/phakphumv/.hermes/profiles/freelance/home/pure-css-image-hover-effects")
@@ -320,7 +322,7 @@ def format_css_for_html(css_content):
     """Format CSS content for HTML code block display"""
     if not css_content:
         return ""
-    # Ensure consistent formatting - keep as-is but escape for HTML
+    # Ensure consistent formatting - escape for HTML
     return css_content.replace("&", "&").replace("<", "<").replace(">", ">")
 
 def generate_html_page(effect_name, meta):
@@ -334,8 +336,11 @@ def generate_html_page(effect_name, meta):
     
     css_formatted = format_css_for_html(css_content)
     
+    # Generate HTML code snippet for display
+    html_snippet = f'<div class="{effect_name}">\n  <img src="your-image.jpg" alt="Description">\n</div>'
+    html_formatted = format_css_for_html(html_snippet)
+    
     # Random image number for variety
-    import hashlib
     img_num = int(hashlib.md5(effect_name.encode()).hexdigest(), 16) % 50 + 1
     
     html = f'''<!DOCTYPE html>
@@ -343,13 +348,13 @@ def generate_html_page(effect_name, meta):
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>{meta["title"]} — Pure CSS Image Hover Effects</title>
+  <title>{meta["title"]} \u2014 Pure CSS Image Hover Effects</title>
   <link rel="stylesheet" href="../../styles/effect-page.css">
   <link rel="stylesheet" href="./style.css">
 </head>
 <body>
   <header class="page-header">
-    <a href="../../index.html" class="back-link">← Back to Gallery</a>
+    <a href="../../index.html" class="back-link">\u2190 Back to Gallery</a>
     <h1>{meta["title"]}</h1>
     <p class="effect-description">{meta["description"]}</p>
   </header>
@@ -379,9 +384,7 @@ def generate_html_page(effect_name, meta):
     <div class="right-column">
       <section class="panel panel--code">
         <h2>HTML</h2>
-        <pre class="code-block"><code><div class="{effect_name}">
-  <img src="your-image.jpg" alt="Description">
-</div></code></pre>
+        <pre class="code-block"><code>{html_formatted}</code></pre>
       </section>
 
       <section class="panel panel--code">
@@ -392,7 +395,7 @@ def generate_html_page(effect_name, meta):
   </main>
 
   <footer class="page-footer">
-    <p>MIT License — <a href="https://github.com/PhakphumV/pure-css-image-hover-effects" target="_blank" rel="noopener">GitHub</a></p>
+    <p>MIT License \u2014 <a href="https://github.com/PhakphumV/pure-css-image-hover-effects" target="_blank" rel="noopener">GitHub</a></p>
   </footer>
 </body>
 </html>'''
@@ -449,6 +452,13 @@ def get_browser_support(prop):
         "transform-origin": "Chrome 36+, FF 16+, Safari 9+, Edge 12+",
         "opacity": "All modern browsers",
         "overflow": "All modern browsers",
+        "animation": "Chrome 43+, FF 16+, Safari 9+",
+        "mix-blend-mode": "Chrome 41+, FF 32+, Safari 8+",
+        "keyframes": "Chrome 43+, FF 16+, Safari 9+",
+        "conic-gradient": "Chrome 69+, FF 83+, Safari 12.1+",
+        "translateZ": "Chrome 12+, FF 10+, Safari 4+",
+        "will-change": "Chrome 36+, FF 36+, Safari 9.1+",
+        "background": "All modern browsers",
     }
     return supports.get(prop, "Check caniuse.com")
 
@@ -487,14 +497,14 @@ def main():
         if html_content:
             html_path = effect_dir / "index.html"
             html_path.write_text(html_content)
-            print(f"  ✓ Updated {effect_name}/index.html")
+            print(f"  \u2713 Updated {effect_name}/index.html")
         
         # 2. Generate and write README.md
         readme_content = generate_readme(effect_name, meta)
         if readme_content:
             readme_path = effect_dir / "README.md"
             readme_path.write_text(readme_content)
-            print(f"  ✓ Created {effect_name}/README.md")
+            print(f"  \u2713 Created {effect_name}/README.md")
     
     # 3. Update manifest
     update_manifest()

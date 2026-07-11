@@ -29,9 +29,9 @@ Iridescent rainbow shimmer sweeps across image like a hologram card on hover.
 **Browser Support**
 | Feature | Support |
 |---------|---------|
-| `conic-gradient` | Check caniuse.com |
-| `animation` | Check caniuse.com |
+| `conic-gradient` | Chrome 69+, FF 83+, Safari 12.1+ |
+| `animation` | Chrome 43+, FF 16+, Safari 9+ |
 | `backdrop-filter` | Chrome 76+, FF 70+, Safari 9+ |
-| `mix-blend-mode` | Check caniuse.com |
-| `keyframes` | Check caniuse.com |
+| `mix-blend-mode` | Chrome 41+, FF 32+, Safari 8+ |
+| `keyframes` | Chrome 43+, FF 16+, Safari 9+ |
 

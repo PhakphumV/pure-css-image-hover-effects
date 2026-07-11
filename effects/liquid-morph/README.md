@@ -30,8 +30,8 @@ Organic blob shape morphs fluidly over image using animated border-radius on hov
 | Feature | Support |
 |---------|---------|
 | `border-radius` | Chrome 4+, FF 4+, Safari 5+, Edge 12+ |
-| `animation` | Check caniuse.com |
-| `mix-blend-mode` | Check caniuse.com |
-| `keyframes` | Check caniuse.com |
+| `animation` | Chrome 43+, FF 16+, Safari 9+ |
+| `mix-blend-mode` | Chrome 41+, FF 32+, Safari 8+ |
+| `keyframes` | Chrome 43+, FF 16+, Safari 9+ |
 | `clip-path` | Chrome 28+, FF 28+, Safari 9+ |
 

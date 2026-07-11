@@ -31,7 +31,7 @@ Image fractures into horizontal glitch slices with hue-shifted colors on hover.
 |---------|---------|
 | `clip-path` | Chrome 28+, FF 28+, Safari 9+ |
 | `filter` | Chrome 53+, FF 35+, Safari 9+ |
-| `animation` | Check caniuse.com |
-| `mix-blend-mode` | Check caniuse.com |
-| `keyframes` | Check caniuse.com |
+| `animation` | Chrome 43+, FF 16+, Safari 9+ |
+| `mix-blend-mode` | Chrome 41+, FF 32+, Safari 8+ |
+| `keyframes` | Chrome 43+, FF 16+, Safari 9+ |
 

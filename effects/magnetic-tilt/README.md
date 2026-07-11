@@ -31,7 +31,7 @@
 |---------|---------|
 | `perspective` | Chrome 12+, FF 12+, Safari 7+ |
 | `transform-style` | Chrome 12+, FF 12+, Safari 7+ |
-| `translateZ` | Check caniuse.com |
+| `translateZ` | Chrome 12+, FF 10+, Safari 4+ |
 | `transform` | Chrome 36+, FF 16+, Safari 9+, Edge 12+ |
 | `transition` | Chrome 36+, FF 16+, Safari 9+, Edge 12+ |
 

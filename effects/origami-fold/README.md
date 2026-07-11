@@ -33,5 +33,5 @@ Image folds like paper along diagonal and center creases with 3D depth on hover.
 | `perspective` | Chrome 12+, FF 12+, Safari 7+ |
 | `clip-path` | Chrome 28+, FF 28+, Safari 9+ |
 | `transform-origin` | Chrome 36+, FF 16+, Safari 9+, Edge 12+ |
-| `keyframes` | Check caniuse.com |
+| `keyframes` | Chrome 43+, FF 16+, Safari 9+ |
 

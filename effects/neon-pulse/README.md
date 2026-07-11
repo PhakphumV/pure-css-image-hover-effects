@@ -29,8 +29,8 @@ Pulsing neon glow cycles through colors around the image border on hover.
 **Browser Support**
 | Feature | Support |
 |---------|---------|
-| `animation` | Check caniuse.com |
+| `animation` | Chrome 43+, FF 16+, Safari 9+ |
 | `box-shadow` | Chrome 10+, FF 4+, Safari 5.1+, Edge 12+ |
 | `border` | Check caniuse.com |
-| `keyframes` | Check caniuse.com |
+| `keyframes` | Chrome 43+, FF 16+, Safari 9+ |
 

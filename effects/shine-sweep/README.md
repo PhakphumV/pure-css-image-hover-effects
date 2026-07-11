@@ -29,9 +29,9 @@ Diagonal light sweep shines across image on hover like a glossy reflection.
 **Browser Support**
 | Feature | Support |
 |---------|---------|
-| `animation` | Check caniuse.com |
+| `animation` | Chrome 43+, FF 16+, Safari 9+ |
 | `linear-gradient` | Check caniuse.com |
 | `transform` | Chrome 36+, FF 16+, Safari 9+, Edge 12+ |
 | `pseudo-element` | All modern browsers |
-| `mix-blend-mode` | Check caniuse.com |
+| `mix-blend-mode` | Chrome 41+, FF 32+, Safari 8+ |
 

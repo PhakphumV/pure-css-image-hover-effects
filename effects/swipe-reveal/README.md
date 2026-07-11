@@ -30,8 +30,8 @@ Split swipe reveals alternate color layer on hover using clip-path animation.
 | Feature | Support |
 |---------|---------|
 | `clip-path` | Chrome 28+, FF 28+, Safari 9+ |
-| `animation` | Check caniuse.com |
+| `animation` | Chrome 43+, FF 16+, Safari 9+ |
 | `transform` | Chrome 36+, FF 16+, Safari 9+, Edge 12+ |
 | `pseudo-element` | All modern browsers |
-| `keyframes` | Check caniuse.com |
+| `keyframes` | Chrome 43+, FF 16+, Safari 9+ |
 
