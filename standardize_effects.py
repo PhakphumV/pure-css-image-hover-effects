@@ -217,6 +217,48 @@ EFFECTS_META = {
         "css_properties": ["transform", "transition", "cubic-bezier"],
         "credits": "Zoom with rotation effect"
     },
+    "glitch-slice": {
+        "title": "Glitch Slice",
+        "description": "Image fractures into horizontal glitch slices with hue-shifted colors on hover.",
+        "css_properties": ["clip-path", "filter", "animation", "mix-blend-mode", "keyframes"],
+        "credits": "CSS glitch slice effect with hue rotation"
+    },
+    "holographic-shimmer": {
+        "title": "Holographic Shimmer",
+        "description": "Iridescent rainbow shimmer sweeps across image like a hologram card on hover.",
+        "css_properties": ["conic-gradient", "animation", "backdrop-filter", "mix-blend-mode", "keyframes"],
+        "credits": "Holographic iridescent effect"
+    },
+    "origami-fold": {
+        "title": "Origami Fold",
+        "description": "Image folds like paper along diagonal and center creases with 3D depth on hover.",
+        "css_properties": ["transform-style", "perspective", "clip-path", "transform-origin", "keyframes"],
+        "credits": "3D paper origami fold effect"
+    },
+    "magnetic-tilt": {
+        "title": "Magnetic Tilt",
+        "description": "3D tilt toward cursor with multi-layer parallax depth using translateZ.",
+        "css_properties": ["perspective", "transform-style", "translateZ", "transform", "transition"],
+        "credits": "Magnetic 3D tilt with depth parallax"
+    },
+    "prism-split": {
+        "title": "Prism Split",
+        "description": "RGB channels separate like light through a prism on hover with spectral bands.",
+        "css_properties": ["mix-blend-mode", "filter", "transform", "clip-path", "animation"],
+        "credits": "Prism RGB channel separation effect"
+    },
+    "liquid-morph": {
+        "title": "Liquid Morph",
+        "description": "Organic blob shape morphs fluidly over image using animated border-radius on hover.",
+        "css_properties": ["border-radius", "animation", "mix-blend-mode", "keyframes", "clip-path"],
+        "credits": "Organic liquid morphing border-radius"
+    },
+    "depth-layers": {
+        "title": "Depth Layers",
+        "description": "Multi-layer parallax depth with translateZ separates foreground/mid/background on hover.",
+        "css_properties": ["perspective", "transform-style", "translateZ", "transform", "will-change"],
+        "credits": "3D depth layer parallax effect"
+    },
 }
 
 def read_style_css(effect_dir):

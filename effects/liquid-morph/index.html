@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Liquid Morph — Pure CSS Image Hover Effects</title>
+  <link rel="stylesheet" href="../../styles/effect-page.css">
+  <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+  <header class="page-header">
+    <a href="../../index.html" class="back-link">← Back to Gallery</a>
+    <h1>Liquid Morph</h1>
+    <p class="effect-description">Organic blob shape morphs fluidly over image using animated border-radius on hover.</p>
+  </header>
+
+  <main class="effect-layout">
+    <div class="left-column">
+      <section class="panel panel--preview">
+        <h2>Preview</h2>
+        <div class="preview-container">
+          <div class="liquid-morph">
+            <img src="https://picsum.photos/600/400?random=30" alt="Demo image">
+          </div>
+        </div>
+        <p class="preview-hint">Hover over the image to see the effect</p>
+      </section>
+
+      <section class="panel panel--credits">
+        <h2>Credits</h2>
+        <div class="credit-entry">
+          <strong>PhakphumV</strong>
+          <span class="credit-role">Creator</span>
+          <span class="credit-notes">Organic liquid morphing border-radius</span>
+        </div>
+      </section>
+    </div>
+
+    <div class="right-column">
+      <section class="panel panel--code">
+        <h2>HTML</h2>
+        <pre class="code-block"><code><div class="liquid-morph">
+  <img src="your-image.jpg" alt="Description">
+</div></code></pre>
+      </section>
+
+      <section class="panel panel--code">
+        <h2>CSS</h2>
+        <pre class="code-block"><code>/* Liquid Morph Effect - Organic shape morphing with border-radius animation */
+
+.liquid-morph {
+  position: relative;
+  display: inline-block;
+  overflow: hidden;
+  border-radius: 16px;
+}
+
+.liquid-morph img {
+  display: block;
+  width: 100%;
+  height: auto;
+  transition: transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+              filter 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+              border-radius 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+/* Liquid blob that morphs over the image */
+.liquid-morph::before {
+  content: '';
+  position: absolute;
+  inset: -30%;
+  background: inherit;
+  background-size: cover;
+  background-position: center;
+  opacity: 0;
+  pointer-events: none;
+  mix-blend-mode: overlay;
+  transition: opacity 0.4s ease;
+  z-index: 1;
+  border-radius: 
+    60% 40% 30% 70% / 60% 30% 70% 40%;
+  animation: liquid-morph-1 8s ease-in-out infinite;
+  filter: blur(4px) contrast(1.1) saturate(1.2);
+}
+
+/* Second liquid layer for depth */
+.liquid-morph::after {
+  content: '';
+  position: absolute;
+  inset: -25%;
+  background: inherit;
+  background-size: cover;
+  background-position: center;
+  opacity: 0;
+  pointer-events: none;
+  mix-blend-mode: soft-light;
+  transition: opacity 0.4s ease;
+  z-index: 2;
+  border-radius: 
+    40% 60% 70% 30% / 30% 70% 40% 60%;
+  animation: liquid-morph-2 10s ease-in-out infinite reverse;
+  filter: blur(2px) contrast(1.05);
+}
+
+/* Ripple overlay */
+.liquid-morph .ripple {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    ellipse at center,
+    rgba(255,255,255,0.15) 0%,
+    transparent 70%
+  );
+  opacity: 0;
+  pointer-events: none;
+  mix-blend-mode: screen;
+  transition: opacity 0.4s ease;
+  z-index: 3;
+  border-radius: 16px;
+}
+
+/* Edge highlight */
+.liquid-morph .edge {
+  position: absolute;
+  inset: 0;
+  border: 2px solid transparent;
+  border-radius: 16px;
+  pointer-events: none;
+  z-index: 4;
+  opacity: 0;
+  transition: opacity 0.4s ease, border-color 0.4s ease;
+}
+
+.liquid-morph .edge::before {
+  content: '';
+  position: absolute;
+  inset: -2px;
+  border-radius: 16px;
+  background: linear-gradient(
+    135deg,
+    rgba(255,255,255,0.4),
+    rgba(255,255,255,0.1),
+    transparent,
+    rgba(0,0,0,0.1)
+  );
+  -webkit-mask: 
+    linear-gradient(#fff 0 0) content-box, 
+    linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+/* Hover state */
+.liquid-morph:hover::before,
+.liquid-morph:hover::after {
+  opacity: 0.6;
+}
+
+.liquid-morph:hover .ripple {
+  opacity: 1;
+  animation: ripple-pulse 2s ease-out infinite;
+}
+
+.liquid-morph:hover .edge {
+  opacity: 1;
+}
+
+.liquid-morph:hover .edge::before {
+  opacity: 1;
+}
+
+.liquid-morph:hover img {
+  transform: scale(1.03);
+  filter: brightness(1.05) contrast(1.03);
+  border-radius: 
+    55% 45% 35% 65% / 55% 35% 65% 45%;
+}
+
+/* Morphing animations */
+@keyframes liquid-morph-1 {
+  0%, 100% {
+    border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+    transform: rotate(0deg) scale(1);
+  }
+  25% {
+    border-radius: 50% 50% 50% 50% / 70% 30% 60% 40%;
+    transform: rotate(2deg) scale(1.02);
+  }
+  50% {
+    border-radius: 40% 60% 70% 30% / 50% 50% 50% 50%;
+    transform: rotate(-1deg) scale(1.01);
+  }
+  75% {
+    border-radius: 70% 30% 40% 60% / 30% 70% 40% 60%;
+    transform: rotate(1deg) scale(1.02);
+  }
+}
+
+@keyframes liquid-morph-2 {
+  0%, 100% {
+    border-radius: 40% 60% 70% 30% / 30% 70% 40% 60%;
+    transform: rotate(0deg) scale(1);
+  }
+  25% {
+    border-radius: 30% 70% 60% 40% / 60% 40% 70% 30%;
+    transform: rotate(-2deg) scale(1.015);
+  }
+  50% {
+    border-radius: 70% 30% 40% 60% / 40% 60% 30% 70%;
+    transform: rotate(1deg) scale(1.01);
+  }
+  75% {
+    border-radius: 60% 40% 30% 70% / 70% 30% 60% 40%;
+    transform: rotate(-1deg) scale(1.015);
+  }
+}
+
+@keyframes ripple-pulse {
+  0%   { transform: scale(1); opacity: 0.3; }
+  50%  { transform: scale(1.1); opacity: 0.1; }
+  100% { transform: scale(1); opacity: 0.3; }
+}
+
+/* Interactive hover morph - different path */
+.liquid-morph:hover::before {
+  animation: liquid-morph-hover-1 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+}
+
+.liquid-morph:hover::after {
+  animation: liquid-morph-hover-2 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+}
+
+@keyframes liquid-morph-hover-1 {
+  0% {
+    border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+    transform: rotate(0deg) scale(1);
+  }
+  50% {
+    border-radius: 50% 50% 50% 50% / 50% 50% 50% 50%;
+    transform: rotate(0deg) scale(1.15);
+  }
+  100% {
+    border-radius: 55% 45% 35% 65% / 55% 35% 65% 45%;
+    transform: rotate(0deg) scale(1.05);
+  }
+}
+
+@keyframes liquid-morph-hover-2 {
+  0% {
+    border-radius: 40% 60% 70% 30% / 30% 70% 40% 60%;
+    transform: rotate(0deg) scale(1);
+  }
+  50% {
+    border-radius: 50% 50% 50% 50% / 50% 50% 50% 50%;
+    transform: rotate(0deg) scale(1.1);
+  }
+  100% {
+    border-radius: 45% 55% 65% 35% / 45% 55% 65% 35%;
+    transform: rotate(0deg) scale(1.05);
+  }
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .liquid-morph::before,
+  .liquid-morph::after,
+  .liquid-morph img,
+  .liquid-morph .ripple,
+  .liquid-morph .edge {
+    animation: none;
+    transition: opacity 0.4s ease, border-radius 0.8s ease;
+  }
+  .liquid-morph:hover::before {
+    border-radius: 55% 45% 35% 65% / 55% 35% 65% 45%;
+    transform: scale(1.05);
+  }
+  .liquid-morph:hover::after {
+    border-radius: 45% 55% 65% 35% / 45% 55% 65% 35%;
+    transform: scale(1.05);
+  }
+  .liquid-morph:hover img {
+    border-radius: 55% 45% 35% 65% / 55% 35% 65% 45%;
+  }
+}</code></pre>
+      </section>
+    </div>
+  </main>
+
+  <footer class="page-footer">
+    <p>MIT License — <a href="https://github.com/PhakphumV/pure-css-image-hover-effects" target="_blank" rel="noopener">GitHub</a></p>
+  </footer>
+</body>
+</html>
