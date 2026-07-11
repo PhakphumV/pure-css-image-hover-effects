@@ -9,8 +9,8 @@
 
   // Configuration
   const IMAGES_PER_EFFECT = 10;
-  const IMAGE_WIDTH = 400;
-  const IMAGE_HEIGHT = 300;
+  const IMAGE_WIDTH = 600;
+  const IMAGE_HEIGHT = 400;
   const DEFAULT_IMAGE_INDEX = 0;
 
   let effects = [];
