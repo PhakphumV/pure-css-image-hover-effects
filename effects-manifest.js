@@ -139,6 +139,12 @@ window.__EFFECTS_MANIFEST__ = {
       "folder": "magnetic-tilt"
     },
     {
+      "id": "neon-pulse",
+      "title": "Neon Pulse",
+      "desc": "Neon Pulse",
+      "folder": "neon-pulse"
+    },
+    {
       "id": "origami-fold",
       "title": "Origami Fold",
       "desc": "Origami Fold",
@@ -233,6 +239,12 @@ window.__EFFECTS_MANIFEST__ = {
       "title": "Swipe Reveal",
       "desc": "Swipe Reveal",
       "folder": "swipe-reveal"
+    },
+    {
+      "id": "tilt-shadow",
+      "title": "Tilt Shadow",
+      "desc": "Tilt Shadow",
+      "folder": "tilt-shadow"
     },
     {
       "id": "vertical-zoom-n-pan",

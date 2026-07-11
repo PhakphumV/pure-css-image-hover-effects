@@ -295,6 +295,18 @@ EFFECTS_META = {
         "css_properties": ["perspective", "transform-style", "translateZ", "transform", "transition"],
         "credits": "3D parallax tilt with depth layers"
     },
+    "neon-pulse": {
+        "title": "Neon Pulse",
+        "description": "Pulsing neon glow cycles through colors around the image border on hover.",
+        "css_properties": ["animation", "box-shadow", "border", "keyframes"],
+        "credits": "Pulsing neon border glow effect"
+    },
+    "tilt-shadow": {
+        "title": "Tilt Shadow",
+        "description": "Perspective tilt with directional drop shadow creating 3D depth on hover.",
+        "css_properties": ["perspective", "transform", "box-shadow", "transform-style", "transition"],
+        "credits": "3D tilt with directional shadow effect"
+    },
 }
 
 def read_style_css(effect_dir):

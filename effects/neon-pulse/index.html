@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Neon Pulse — Pure CSS Image Hover Effects</title>
+  <link rel="stylesheet" href="../../styles/effect-page.css">
+  <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+  <header class="page-header">
+    <a href="../../index.html" class="back-link">← Back to Gallery</a>
+    <h1>Neon Pulse</h1>
+    <p class="effect-description">Pulsing neon glow cycles through colors around the image border on hover.</p>
+  </header>
+
+  <main class="effect-layout">
+    <div class="left-column">
+      <section class="panel panel--preview">
+        <h2>Preview</h2>
+        <div class="preview-container">
+          <div class="neon-pulse">
+            <img src="https://picsum.photos/600/400?random=19" alt="Demo image">
+          </div>
+        </div>
+        <p class="preview-hint">Hover over the image to see the effect</p>
+      </section>
+
+      <section class="panel panel--credits">
+        <h2>Credits</h2>
+        <div class="credit-entry">
+          <strong>PhakphumV</strong>
+          <span class="credit-role">Creator</span>
+          <span class="credit-notes">Pulsing neon border glow effect</span>
+        </div>
+      </section>
+    </div>
+
+    <div class="right-column">
+      <section class="panel panel--code">
+        <h2>HTML</h2>
+        <pre class="code-block"><code><div class="neon-pulse">
+  <img src="your-image.jpg" alt="Description">
+</div></code></pre>
+      </section>
+
+      <section class="panel panel--code">
+        <h2>CSS</h2>
+        <pre class="code-block"><code>/* Neon Pulse Effect - Pulsing neon glow cycles color around border */
+
+.neon-pulse {
+  display: inline-block;
+  border-radius: 8px;
+  border: 1px solid var(--color-border, #e5e5e5);
+  transition: border-color 0.3s ease-out;
+}
+
+.neon-pulse img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 7px;
+}
+
+.neon-pulse:hover {
+  border-color: transparent;
+  animation: neon-pulse-glow 1.6s ease-in-out infinite;
+}
+
+@keyframes neon-pulse-glow {
+  0%, 100% { box-shadow: 0 0 8px 2px #2563eb, 0 0 20px 6px rgba(37,99,235,0.5); }
+  50%      { box-shadow: 0 0 14px 4px #d946ef, 0 0 30px 10px rgba(217,70,239,0.6); }
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .neon-pulse:hover {
+    animation: none;
+    box-shadow: 0 0 8px 2px #2563eb, 0 0 20px 6px rgba(37,99,235,0.5);
+    border-color: #2563eb;
+  }
+}</code></pre>
+      </section>
+    </div>
+  </main>
+
+  <footer class="page-footer">
+    <p>MIT License — <a href="https://github.com/PhakphumV/pure-css-image-hover-effects" target="_blank" rel="noopener">GitHub</a></p>
+  </footer>
+</body>
+</html>
