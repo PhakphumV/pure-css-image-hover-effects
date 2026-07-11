@@ -1,14 +1,35 @@
-# Vertical Zoom-n-pan
+# Vertical Zoom & Pan
 
-A CSS hover effect that scales the image upward while shifting it slightly downward, creating a subtle zoom-and-pan motion.
+Image zooms and pans vertically on hover.
 
-## Inspiration
+**Key CSS**
+```css
+.vertical-zoom-n-pan {
+  overflow: hidden;
+  display: inline-block;
+  border-radius: 12px;
+  max-width: 100%;
+}
 
-This variation is adapted from the vertical zoom-n-pan example in the W3Bits CSS image hover zoom collection, with credit to Rahul at https://github.com/rahuldotdev/.
+.vertical-zoom-n-pan img {
+  display: block;
+  width: 100%;
+  height: auto;
+  transform-origin: center 0;
+  transition: transform 0.55s ease-in-out;
+  will-change: transform;
+  transform: scale(1.4);
+}
 
-## Browser Support
+.vertical-zoom-n-pan:hover img {
+  transform: scale(1.5) translateY(-30%);
+}
+```
 
+**Browser Support**
 | Feature | Support |
 |---------|---------|
-| CSS `transform` | Chrome 36+, Firefox 16+, Safari 9+, Edge 12+ |
-| CSS `transition` | Chrome 36+, Firefox 16+, Safari 9+, Edge 12+ |
+| `transform` | Chrome 36+, FF 16+, Safari 9+, Edge 12+ |
+| `transform-origin` | Chrome 36+, FF 16+, Safari 9+, Edge 12+ |
+| `transition` | Chrome 36+, FF 16+, Safari 9+, Edge 12+ |
+

@@ -11,7 +11,7 @@
   <header class="page-header">
     <a href="../../index.html" class="back-link">← Back to Gallery</a>
     <h1>Quick Zoom</h1>
-    <p class="effect-description">Subtle zoom effect on hover.</p>
+    <p class="effect-description">Fast zoom-in effect on hover with short transition.</p>
   </header>
 
   <main class="effect-layout">
@@ -20,7 +20,7 @@
         <h2>Preview</h2>
         <div class="preview-container">
           <div class="quick-zoom">
-            <img src="https://picsum.photos/600/400?random=1" alt="Demo image">
+            <img src="https://picsum.photos/600/400?random=16" alt="Demo image">
           </div>
         </div>
         <p class="preview-hint">Hover over the image to see the effect</p>
@@ -29,9 +29,9 @@
       <section class="panel panel--credits">
         <h2>Credits</h2>
         <div class="credit-entry">
-          <strong>rahuldotdev</strong>
+          <strong>PhakphumV</strong>
           <span class="credit-role">Creator</span>
-          <span class="credit-notes">https://github.com/rahuldotdev</span>
+          <span class="credit-notes">Quick zoom effect</span>
         </div>
       </section>
     </div>
@@ -39,31 +39,31 @@
     <div class="right-column">
       <section class="panel panel--code">
         <h2>HTML</h2>
-        <pre class="code-block"><code>&lt;div class="quick-zoom"&gt;
-  &lt;img src="your-image.jpg" alt="Description"&gt;
-&lt;/div&gt;</code></pre>
+        <pre class="code-block"><code><div class="quick-zoom">
+  <img src="your-image.jpg" alt="Description">
+</div></code></pre>
       </section>
 
       <section class="panel panel--code">
         <h2>CSS</h2>
-        <!-- TODO: To dynamically load effect-specific styles to the page -->
         <pre class="code-block"><code>.quick-zoom {
   overflow: hidden;
   display: inline-block;
   border-radius: 8px;
 }
 .quick-zoom img {
-  transition: transform .45s ease;
+  transform-origin: 0 0;
+  transition: transform 0.25s, visibility 0.25s ease-in;
 }
 .quick-zoom:hover img {
-  transform: scale(1.18);
+  transform: scale(2);
 }</code></pre>
       </section>
     </div>
   </main>
 
   <footer class="page-footer">
-    <p>MIT License — <a href="https://github.com/PhakphumV/pure-css-image-hover-effects">GitHub</a></p>
+    <p>MIT License — <a href="https://github.com/PhakphumV/pure-css-image-hover-effects" target="_blank" rel="noopener">GitHub</a></p>
   </footer>
 </body>
 </html>

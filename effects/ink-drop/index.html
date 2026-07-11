@@ -1,38 +1,78 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Ink Drop — Pure CSS Image Hover Effects</title>
-  <link rel="stylesheet" href="../../styles/effect-page.css" />
-  <link rel="stylesheet" href="./style.css" />
+  <link rel="stylesheet" href="../../styles/effect-page.css">
+  <link rel="stylesheet" href="./style.css">
 </head>
 <body>
   <header class="page-header">
     <a href="../../index.html" class="back-link">← Back to Gallery</a>
     <h1>Ink Drop</h1>
-    <p class="effect-description">Circular “ink” splash that expands when hovered.</p>
+    <p class="effect-description">Circular "ink" splash expands from center on hover.</p>
   </header>
+
   <main class="effect-layout">
-    <section class="panel panel--preview">
-      <div class="preview-container">
-        <div class="ink-drop">
-          <img src="https://picsum.photos/600/400?random=3" alt="Demo image" />
+    <div class="left-column">
+      <section class="panel panel--preview">
+        <h2>Preview</h2>
+        <div class="preview-container">
+          <div class="ink-drop">
+            <img src="https://picsum.photos/600/400?random=15" alt="Demo image">
+          </div>
         </div>
-      </div>
-      <p class="preview-hint">Hover over the image to see the effect</p>
-    </section>
+        <p class="preview-hint">Hover over the image to see the effect</p>
+      </section>
 
-    <section class="panel panel--code">
-      <h2>HTML</h2>
-      <pre class="code-block"><code><div class="ink-drop"><img src="your-image.jpg" alt="Description" /></div></code></pre>
-    </section>
+      <section class="panel panel--credits">
+        <h2>Credits</h2>
+        <div class="credit-entry">
+          <strong>PhakphumV</strong>
+          <span class="credit-role">Creator</span>
+          <span class="credit-notes">Circular ink splash effect</span>
+        </div>
+      </section>
+    </div>
 
-    <section class="panel panel--code">
-      <h2>CSS</h2>
-      <pre class="code-block"><code>.ink-drop{position:relative;overflow:hidden}.ink-drop::after{content:"";position:absolute;inset:50%;width:0;height:0;border-radius:50%;background:rgba(0,0,0,.1);transform:translate(-50%,-50%);transition:width .3s,height .3s}.ink-drop:hover::after{width:200%;height:200%}</code></pre>
-    </section>
+    <div class="right-column">
+      <section class="panel panel--code">
+        <h2>HTML</h2>
+        <pre class="code-block"><code><div class="ink-drop">
+  <img src="your-image.jpg" alt="Description">
+</div></code></pre>
+      </section>
+
+      <section class="panel panel--code">
+        <h2>CSS</h2>
+        <pre class="code-block"><code>/* Ink Drop Effect */
+
+.ink-drop {
+  position: relative;
+  overflow: hidden;
+}
+
+.ink-drop::after {
+  content: "";
+  position: absolute;
+  inset: 50%;
+  width: 0;
+  height: 0;
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.1);
+  transform: translate(-50%, -50%);
+  transition: width 0.3s, height 0.3s;
+}
+
+.ink-drop:hover::after {
+  width: 200%;
+  height: 200%;
+}</code></pre>
+      </section>
+    </div>
   </main>
+
   <footer class="page-footer">
     <p>MIT License — <a href="https://github.com/PhakphumV/pure-css-image-hover-effects" target="_blank" rel="noopener">GitHub</a></p>
   </footer>

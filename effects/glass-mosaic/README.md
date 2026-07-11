@@ -1,20 +1,36 @@
 # Glass Mosaic
 
-A frosted‑glass grid overlay that dims when hovered.
+Frosted-glass overlay with backdrop-filter that dims on hover.
 
 **Key CSS**
-```
-.hover-card.glass-mosaic {
+```css
+/* Glass Mosaic Effect */
+
+.glass-mosaic {
   position: relative;
   overflow: hidden;
+  --gap: 4px;
+  --blur: 4px;
 }
-.hover-card.glass-mosaic::after {
+
+.glass-mosaic::after {
   content: "";
   position: absolute;
   inset: 0;
-  backdrop-filter: blur(4px) saturate(150%);
+  backdrop-filter: blur(var(--blur)) saturate(150%);
   opacity: 0.6;
-  transition: opacity .3s;
+  pointer-events: none;
+  transition: opacity 0.3s;
 }
-.hover-card.glass-mosaic:hover::after { opacity: .2; }
+
+.glass-mosaic:hover::after {
 ```
+
+**Browser Support**
+| Feature | Support |
+|---------|---------|
+| `backdrop-filter` | Chrome 76+, FF 70+, Safari 9+ |
+| `pseudo-element` | All modern browsers |
+| `transition` | Chrome 36+, FF 16+, Safari 9+, Edge 12+ |
+| `css-variables` | Chrome 49+, FF 31+, Safari 9.1+, Edge 15+ |
+

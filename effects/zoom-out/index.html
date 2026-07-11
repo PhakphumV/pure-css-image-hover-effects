@@ -11,7 +11,7 @@
   <header class="page-header">
     <a href="../../index.html" class="back-link">← Back to Gallery</a>
     <h1>Zoom Out</h1>
-    <p class="effect-description">Subtle zoom out effect on hover.</p>
+    <p class="effect-description">Zoomed-in image pulls back to normal on hover.</p>
   </header>
 
   <main class="effect-layout">
@@ -20,7 +20,7 @@
         <h2>Preview</h2>
         <div class="preview-container">
           <div class="zoom-out">
-            <img src="https://picsum.photos/600/400?random=1" alt="Demo image">
+            <img src="https://picsum.photos/600/400?random=50" alt="Demo image">
           </div>
         </div>
         <p class="preview-hint">Hover over the image to see the effect</p>
@@ -31,7 +31,7 @@
         <div class="credit-entry">
           <strong>PhakphumV</strong>
           <span class="credit-role">Creator</span>
-          <span class="credit-notes">Initial implementation</span>
+          <span class="credit-notes">Reverse zoom effect</span>
         </div>
       </section>
     </div>
@@ -39,14 +39,13 @@
     <div class="right-column">
       <section class="panel panel--code">
         <h2>HTML</h2>
-        <pre class="code-block"><code>&lt;div class="zoom-out"&gt;
-  &lt;img src="your-image.jpg" alt="Description"&gt;
-&lt;/div&gt;</code></pre>
+        <pre class="code-block"><code><div class="zoom-out">
+  <img src="your-image.jpg" alt="Description">
+</div></code></pre>
       </section>
 
       <section class="panel panel--code">
         <h2>CSS</h2>
-        <!-- TODO: To dynamically load effect-specific styles to the page -->
         <pre class="code-block"><code>.zoom-out {
   overflow: hidden;
   display: inline-block;
@@ -64,7 +63,7 @@
   </main>
 
   <footer class="page-footer">
-    <p>MIT License — <a href="https://github.com/PhakphumV/pure-css-image-hover-effects">GitHub</a></p>
+    <p>MIT License — <a href="https://github.com/PhakphumV/pure-css-image-hover-effects" target="_blank" rel="noopener">GitHub</a></p>
   </footer>
 </body>
 </html>

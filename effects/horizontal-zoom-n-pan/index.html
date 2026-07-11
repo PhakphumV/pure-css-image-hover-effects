@@ -3,15 +3,15 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Horizontal Zoom-n-pan — Pure CSS Image Hover Effects</title>
+  <title>Horizontal Zoom & Pan — Pure CSS Image Hover Effects</title>
   <link rel="stylesheet" href="../../styles/effect-page.css">
   <link rel="stylesheet" href="./style.css">
 </head>
 <body>
   <header class="page-header">
     <a href="../../index.html" class="back-link">← Back to Gallery</a>
-    <h1>Horizontal Zoom-n-pan</h1>
-    <p class="effect-description">A smooth zoom-and-pan effect that pushes the image gently to the side while scaling up.</p>
+    <h1>Horizontal Zoom & Pan</h1>
+    <p class="effect-description">Image zooms and pans horizontally on hover.</p>
   </header>
 
   <main class="effect-layout">
@@ -20,7 +20,7 @@
         <h2>Preview</h2>
         <div class="preview-container">
           <div class="horizontal-zoom-n-pan">
-            <img src="https://picsum.photos/900/600?random=77" alt="Demo image">
+            <img src="https://picsum.photos/600/400?random=3" alt="Demo image">
           </div>
         </div>
         <p class="preview-hint">Hover over the image to see the effect</p>
@@ -29,9 +29,9 @@
       <section class="panel panel--credits">
         <h2>Credits</h2>
         <div class="credit-entry">
-          <strong>Rahul</strong>
-          <span class="credit-role">Inspired by</span>
-          <span class="credit-notes">Adapted from the W3Bits horizontal zoom-n-pan concept and credited to <a href="https://github.com/rahuldotdev/" target="_blank" rel="noopener">rahuldotdev</a>.</span>
+          <strong>PhakphumV</strong>
+          <span class="credit-role">Creator</span>
+          <span class="credit-notes">Horizontal pan-zoom effect</span>
         </div>
       </section>
     </div>
@@ -39,9 +39,9 @@
     <div class="right-column">
       <section class="panel panel--code">
         <h2>HTML</h2>
-        <pre class="code-block"><code>&lt;div class="horizontal-zoom-n-pan"&gt;
-  &lt;img src="your-image.jpg" alt="Description"&gt;
-&lt;/div&gt;</code></pre>
+        <pre class="code-block"><code><div class="horizontal-zoom-n-pan">
+  <img src="your-image.jpg" alt="Description">
+</div></code></pre>
       </section>
 
       <section class="panel panel--code">
@@ -50,24 +50,29 @@
   overflow: hidden;
   display: inline-block;
   border-radius: 12px;
+  max-width: 100%;
 }
 
 .horizontal-zoom-n-pan img {
   display: block;
   width: 100%;
   height: auto;
-  transition: transform 0.55s ease;
+  transform-origin: 0 center;
+  transition: transform 0.55s ease-in-out;
+  will-change: transform;
+  transform: scale(1.4);
 }
 
 .horizontal-zoom-n-pan:hover img {
-  transform: scale(1.18) translateX(6%);
-}</code></pre>
+  transform: scale(1.5) translateX(-30%);
+}
+</code></pre>
       </section>
     </div>
   </main>
 
   <footer class="page-footer">
-    <p>MIT License — <a href="https://github.com/PhakphumV/pure-css-image-hover-effects">GitHub</a></p>
+    <p>MIT License — <a href="https://github.com/PhakphumV/pure-css-image-hover-effects" target="_blank" rel="noopener">GitHub</a></p>
   </footer>
 </body>
 </html>

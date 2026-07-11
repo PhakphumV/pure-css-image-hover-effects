@@ -11,7 +11,7 @@
   <header class="page-header">
     <a href="../../index.html" class="back-link">← Back to Gallery</a>
     <h1>Slide Reveal</h1>
-    <p class="effect-description">Image slides to the left while scaling up on hover.</p>
+    <p class="effect-description">Image slides to reveal content on hover.</p>
   </header>
 
   <main class="effect-layout">
@@ -20,7 +20,7 @@
         <h2>Preview</h2>
         <div class="preview-container">
           <div class="slide-reveal">
-            <img src="https://picsum.photos/600/400?random=1" alt="Demo image">
+            <img src="https://picsum.photos/600/400?random=15" alt="Demo image">
           </div>
         </div>
         <p class="preview-hint">Hover over the image to see the effect</p>
@@ -31,7 +31,7 @@
         <div class="credit-entry">
           <strong>PhakphumV</strong>
           <span class="credit-role">Creator</span>
-          <span class="credit-notes">Initial implementation</span>
+          <span class="credit-notes">Slide reveal effect</span>
         </div>
       </section>
     </div>
@@ -39,33 +39,34 @@
     <div class="right-column">
       <section class="panel panel--code">
         <h2>HTML</h2>
-        <pre class="code-block"><code>&lt;div class="slide-reveal"&gt;
-  &lt;img src="your-image.jpg" alt="Description"&gt;
-&lt;/div&gt;</code></pre>
+        <pre class="code-block"><code><div class="slide-reveal">
+  <img src="your-image.jpg" alt="Description">
+</div></code></pre>
       </section>
 
       <section class="panel panel--code">
         <h2>CSS</h2>
-        <pre class="code-block"><code>.slide-reveal {
+        <pre class="code-block"><code>/* placeholder */
+.slide-reveal {
   overflow: hidden;
   display: inline-block;
   border-radius: 8px;
 }
 .slide-reveal img {
   display: block;
-  width: 100%;
-  height: auto;
-  transition: transform 0.4s ease-out;
+  width: 0;
+  height: 100%;
+  transition: width 0.4s ease-out;
 }
 .slide-reveal:hover img {
-  transform: translateX(-15%) scale(1.15);
+  width: 100%;
 }</code></pre>
       </section>
     </div>
   </main>
 
   <footer class="page-footer">
-    <p>MIT License — <a href="https://github.com/PhakphumV/pure-css-image-hover-effects">GitHub</a></p>
+    <p>MIT License — <a href="https://github.com/PhakphumV/pure-css-image-hover-effects" target="_blank" rel="noopener">GitHub</a></p>
   </footer>
 </body>
 </html>

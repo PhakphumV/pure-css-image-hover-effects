@@ -12,9 +12,9 @@
   width: 0;
   height: 0;
   border-radius: 50%;
-  background: rgba(0,0,0,.1);
+  background: rgba(0, 0, 0, 0.1);
   transform: translate(-50%, -50%);
-  transition: width .3s, height .3s;
+  transition: width 0.3s, height 0.3s;
 }
 
 .ink-drop:hover::after {

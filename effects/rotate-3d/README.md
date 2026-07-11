@@ -1,41 +1,32 @@
+# 3D Rotate
 
-# Rotate 3D
+Perspective-based 3D rotation with scale on hover.
 
-Hovering applies a 3D rotation with perspective, creating a subtle depth effect.
-
-## Demo
-
-Open the [dedicated page](index.html).
-
-## CSS Code
-
-````css
+**Key CSS**
+```css
 .rotate-3d {
   overflow: hidden;
   display: inline-block;
-  border: 1px solid #e5e5e5;
   border-radius: 8px;
-  transition: box-shadow 0.2s ease;
   perspective: 1000px;
 }
-.rotate-3d__img {
+.rotate-3d img {
   display: block;
   width: 100%;
   height: auto;
   transition: transform 0.5s ease-out;
   transform-style: preserve-3d;
 }
-.rotate-3d:hover .rotate-3d__img {
-  transform: rotateY(15deg) rotateX(-5deg) scale(1.1);
+.rotate-3d:hover img {
+  transform: rotateY(20deg) rotateX(-20deg) scale(1.3);
 }
-````
+```
 
-## Browser Support
+**Browser Support**
+| Feature | Support |
+|---------|---------|
+| `transform` | Chrome 36+, FF 16+, Safari 9+, Edge 12+ |
+| `perspective` | Chrome 12+, FF 12+, Safari 7+ |
+| `transform-style` | Chrome 12+, FF 12+, Safari 7+ |
+| `transition` | Chrome 36+, FF 16+, Safari 9+, Edge 12+ |
 
-| Feature | Chrome | Firefox | Safari | Edge |
-|---------|--------|---------|--------|------|
-| CSS `perspective` | 12+ | 12+ | 7+ | 12+ |
-| CSS `transform-style` | 12+ | 12+ | 7+ | 12+ |
-| CSS `transform` | 12+ | 12+ | 7+ | 12+ |
-
-Check the effect on the dedicated page.

@@ -1,17 +1,36 @@
 # Ink Drop
 
-A circular “ink” splash that expands when hovered.
+Circular "ink" splash expands from center on hover.
 
 **Key CSS**
-```
-.hover-card.ink-drop::after {
+```css
+/* Ink Drop Effect */
+
+.ink-drop {
+  position: relative;
+  overflow: hidden;
+}
+
+.ink-drop::after {
   content: "";
   position: absolute;
   inset: 50%;
-  width: 0; height: 0;
+  width: 0;
+  height: 0;
   border-radius: 50%;
-  background: rgba(0,0,0,.1);
-  transition: width .3s, height .3s;
+  background: rgba(0, 0, 0, 0.1);
+  transform: translate(-50%, -50%);
+  transition: width 0.3s, height 0.3s;
 }
-.hover-card.ink-drop:hover::after { width: 200%; height: 200%; }
+
+.ink-drop:hover::after {
 ```
+
+**Browser Support**
+| Feature | Support |
+|---------|---------|
+| `pseudo-element` | All modern browsers |
+| `border-radius` | Chrome 4+, FF 4+, Safari 5+, Edge 12+ |
+| `transform` | Chrome 36+, FF 16+, Safari 9+, Edge 12+ |
+| `transition` | Chrome 36+, FF 16+, Safari 9+, Edge 12+ |
+

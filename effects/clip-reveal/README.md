@@ -1,39 +1,30 @@
-
 # Clip Reveal
 
-A clipping mask gradually unveils the image from the center.
+Image reveals through animated clip-path on hover.
 
-## Demo
-
-Open the [dedicated page](index.html).
-
-## CSS Code
-
-````css
+**Key CSS**
+```css
 .clip-reveal {
   overflow: hidden;
   display: inline-block;
-  border: 1px solid #e5e5e5;
   border-radius: 8px;
-  transition: box-shadow 0.2s ease;
 }
-.clip-reveal__img {
+.clip-reveal img {
   display: block;
   width: 100%;
   height: auto;
-  clip-path: inset(0 50% 0 50%); /* center only visible */
+  clip-path: inset(0 50% 0 50%);
   transition: clip-path 0.5s ease-out, transform 0.5s ease-out;
 }
-.clip-reveal:hover .clip-reveal__img {
-  clip-path: inset(0 0 0 0); /* all visible */
+.clip-reveal:hover img {
+  clip-path: inset(0 0 0 0);
   transform: scale(1.1);
 }
-````
+```
 
-## Browser Support
+**Browser Support**
+| Feature | Support |
+|---------|---------|
+| `clip-path` | Chrome 28+, FF 28+, Safari 9+ |
+| `transition` | Chrome 36+, FF 16+, Safari 9+, Edge 12+ |
 
-| Feature | Chrome | Firefox | Safari | Edge |
-|---------|--------|---------|--------|------|
-| CSS `clip-path` | 28+ | 28+ | 9+ | 28+ |
-
-Check the effect on the dedicated page.

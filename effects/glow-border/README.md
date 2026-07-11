@@ -1,38 +1,28 @@
-
 # Glow Border
 
-Hovering creates a glowing border around the image.
+Glowing border animation appears around image on hover.
 
-## Demo
-
-Open the [dedicated page](index.html).
-
-## CSS Code
-
-````css
+**Key CSS**
+```css
 .glow-border {
-  overflow: hidden;
   display: inline-block;
   border: 1px solid #e5e5e5;
   border-radius: 8px;
-  transition: box-shadow 0.2s ease;
+  transition: box-shadow 0.3s ease-in-out;
 }
-.glow-border__img {
+.glow-border img {
   display: block;
-  width: 100%;
-  height: auto;
-  transition: box-shadow 0.4s ease-out;
+  border-radius: 8px;
 }
-.glow-border:hover .glow-border__img {
-  box-shadow: 0 0 20px 4px var(--color-primary, #2563eb);
+.glow-border:hover {
+  box-shadow: 0 0 20px 4px #2563eb;
 }
-````
+```
 
-## Browser Support
+**Browser Support**
+| Feature | Support |
+|---------|---------|
+| `box-shadow` | Chrome 10+, FF 4+, Safari 5.1+, Edge 12+ |
+| `transition` | Chrome 36+, FF 16+, Safari 9+, Edge 12+ |
+| `pseudo-element` | All modern browsers |
 
-| Feature | Chrome | Firefox | Safari | Edge |
-|---------|--------|---------|--------|------|
-| CSS `box-shadow` | 4+ | 4+ | 4+ | 12+ |
-| CSS `transition` | 4+ | 4+ | 4+ | 12+ |
-
-View on the dedicated page for the effect.
