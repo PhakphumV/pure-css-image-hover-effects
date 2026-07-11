@@ -259,6 +259,42 @@ EFFECTS_META = {
         "css_properties": ["perspective", "transform-style", "translateZ", "transform", "will-change"],
         "credits": "3D depth layer parallax effect"
     },
+    "corner-frame": {
+        "title": "Corner Frame",
+        "description": "Animated corner brackets draw in from edges to frame the image on hover.",
+        "css_properties": ["transform", "transition", "pseudo-element", "clip-path"],
+        "credits": "Animated corner bracket frame effect"
+    },
+    "glitch-shift": {
+        "title": "Glitch Shift",
+        "description": "Stepped RGB channel glitch flicker with clip-path slice animation on hover.",
+        "css_properties": ["animation", "clip-path", "mix-blend-mode", "transform", "keyframes"],
+        "credits": "Stepped RGB glitch shift effect"
+    },
+    "shine-sweep": {
+        "title": "Shine Sweep",
+        "description": "Diagonal light sweep shines across image on hover like a glossy reflection.",
+        "css_properties": ["animation", "linear-gradient", "transform", "pseudo-element", "mix-blend-mode"],
+        "credits": "Diagonal shine sweep effect"
+    },
+    "swipe-reveal": {
+        "title": "Swipe Reveal",
+        "description": "Split swipe reveals alternate color layer on hover using clip-path animation.",
+        "css_properties": ["clip-path", "animation", "transform", "pseudo-element", "keyframes"],
+        "credits": "Split swipe reveal effect"
+    },
+    "magnetic-glow": {
+        "title": "Magnetic Glow",
+        "description": "Glowing ring follows cursor with magnetic attraction on hover (JS-enhanced).",
+        "css_properties": ["transform", "transition", "box-shadow", "pseudo-element"],
+        "credits": "Cursor-following magnetic glow"
+    },
+    "parallax-tilt": {
+        "title": "Parallax Tilt",
+        "description": "Multi-layer 3D parallax tilt toward cursor with depth separation (JS-enhanced).",
+        "css_properties": ["perspective", "transform-style", "translateZ", "transform", "transition"],
+        "credits": "3D parallax tilt with depth layers"
+    },
 }
 
 def read_style_css(effect_dir):

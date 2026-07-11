@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Swipe Reveal — Pure CSS Image Hover Effects</title>
+  <link rel="stylesheet" href="../../styles/effect-page.css">
+  <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+  <header class="page-header">
+    <a href="../../index.html" class="back-link">← Back to Gallery</a>
+    <h1>Swipe Reveal</h1>
+    <p class="effect-description">Split swipe reveals alternate color layer on hover using clip-path animation.</p>
+  </header>
+
+  <main class="effect-layout">
+    <div class="left-column">
+      <section class="panel panel--preview">
+        <h2>Preview</h2>
+        <div class="preview-container">
+          <div class="swipe-reveal">
+            <img src="https://picsum.photos/600/400?random=46" alt="Demo image">
+          </div>
+        </div>
+        <p class="preview-hint">Hover over the image to see the effect</p>
+      </section>
+
+      <section class="panel panel--credits">
+        <h2>Credits</h2>
+        <div class="credit-entry">
+          <strong>PhakphumV</strong>
+          <span class="credit-role">Creator</span>
+          <span class="credit-notes">Split swipe reveal effect</span>
+        </div>
+      </section>
+    </div>
+
+    <div class="right-column">
+      <section class="panel panel--code">
+        <h2>HTML</h2>
+        <pre class="code-block"><code><div class="swipe-reveal">
+  <img src="your-image.jpg" alt="Description">
+</div></code></pre>
+      </section>
+
+      <section class="panel panel--code">
+        <h2>CSS</h2>
+        <pre class="code-block"><code>/* Swipe Reveal Effect - Split swipe reveals alternate color layer */
+
+.swipe-reveal {
+  position: relative;
+  display: inline-block;
+  overflow: hidden;
+  border-radius: 8px;
+}
+
+.swipe-reveal img {
+  display: block;
+  width: 100%;
+  height: auto;
+  transition: transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+/* Reveal layer - slides in from left */
+.swipe-reveal::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  clip-path: inset(0 100% 0 0);
+  transition: clip-path 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  z-index: 1;
+}
+
+/* Overlay text/content on reveal layer */
+.swipe-reveal::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: inherit;
+  background-size: cover;
+  background-position: center;
+  clip-path: inset(0 0 0 100%);
+  opacity: 0;
+  transition: clip-path 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+              opacity 0.3s ease 0.2s;
+  z-index: 2;
+}
+
+/* Hover - swipe reveals */
+.swipe-reveal:hover::before {
+  clip-path: inset(0 0 0 0);
+}
+
+.swipe-reveal:hover::after {
+  clip-path: inset(0 0 0 0);
+  opacity: 1;
+}
+
+.swipe-reveal:hover img {
+  transform: scale(1.02);
+  filter: brightness(1.05);
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .swipe-reveal img,
+  .swipe-reveal::before,
+  .swipe-reveal::after {
+    transition: none;
+  }
+  .swipe-reveal:hover::before,
+  .swipe-reveal:hover::after {
+    clip-path: inset(0 0 0 0);
+  }
+  .swipe-reveal:hover::after {
+    opacity: 1;
+  }
+  .swipe-reveal:hover img {
+    transform: scale(1.02);
+  }
+}</code></pre>
+      </section>
+    </div>
+  </main>
+
+  <footer class="page-footer">
+    <p>MIT License — <a href="https://github.com/PhakphumV/pure-css-image-hover-effects" target="_blank" rel="noopener">GitHub</a></p>
+  </footer>
+</body>
+</html>

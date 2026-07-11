@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Parallax Tilt — Pure CSS Image Hover Effects</title>
+  <link rel="stylesheet" href="../../styles/effect-page.css">
+  <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+  <header class="page-header">
+    <a href="../../index.html" class="back-link">← Back to Gallery</a>
+    <h1>Parallax Tilt</h1>
+    <p class="effect-description">Multi-layer 3D parallax tilt toward cursor with depth separation (JS-enhanced).</p>
+  </header>
+
+  <main class="effect-layout">
+    <div class="left-column">
+      <section class="panel panel--preview">
+        <h2>Preview</h2>
+        <div class="preview-container">
+          <div class="parallax-tilt">
+            <img src="https://picsum.photos/600/400?random=45" alt="Demo image">
+          </div>
+        </div>
+        <p class="preview-hint">Hover over the image to see the effect</p>
+      </section>
+
+      <section class="panel panel--credits">
+        <h2>Credits</h2>
+        <div class="credit-entry">
+          <strong>PhakphumV</strong>
+          <span class="credit-role">Creator</span>
+          <span class="credit-notes">3D parallax tilt with depth layers</span>
+        </div>
+      </section>
+    </div>
+
+    <div class="right-column">
+      <section class="panel panel--code">
+        <h2>HTML</h2>
+        <pre class="code-block"><code><div class="parallax-tilt">
+  <img src="your-image.jpg" alt="Description">
+</div></code></pre>
+      </section>
+
+      <section class="panel panel--code">
+        <h2>CSS</h2>
+        <pre class="code-block"><code>/* Parallax Tilt Effect - Multi-layer 3D parallax tilt toward cursor with depth separation */
+
+.parallax-tilt {
+  position: relative;
+  display: inline-block;
+  overflow: hidden;
+  border-radius: 12px;
+  perspective: 1000px;
+  transform-style: preserve-3d;
+}
+
+.parallax-tilt img {
+  display: block;
+  width: 100%;
+  height: auto;
+  transform-style: preserve-3d;
+  transition: transform 0.1s ease-out, filter 0.3s ease-out;
+  will-change: transform;
+}
+
+/* Depth layers using pseudo-elements */
+.parallax-tilt::before,
+.parallax-tilt::after {
+  content: '';
+  position: absolute;
+  inset: -15%;
+  background: inherit;
+  background-size: cover;
+  background-position: center;
+  transform-style: preserve-3d;
+  pointer-events: none;
+  border-radius: 12px;
+  opacity: 0;
+  transition: opacity 0.2s ease-out, transform 0.1s ease-out;
+}
+
+/* Layer 1: Background blur (furthest back) */
+.parallax-tilt::before {
+  z-index: -2;
+  filter: brightness(0.6) blur(12px);
+  transform: translateZ(-60px) scale(1.2);
+}
+
+/* Layer 2: Mid-ground texture */
+.parallax-tilt::after {
+  z-index: -1;
+  filter: brightness(0.85) blur(4px);
+  transform: translateZ(-30px) scale(1.1);
+}
+
+/* Glare/reflection overlay */
+.parallax-tilt .glare {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    135deg,
+    rgba(255,255,255,0) 0%,
+    rgba(255,255,255,0.12) 45%,
+    rgba(255,255,255,0.08) 50%,
+    rgba(255,255,255,0.12) 55%,
+    rgba(255,255,255,0) 100%
+  );
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease-out;
+  mix-blend-mode: overlay;
+  border-radius: 12px;
+  z-index: 2;
+}
+
+/* Hover state */
+.parallax-tilt:hover::before,
+.parallax-tilt:hover::after,
+.parallax-tilt:hover .glare {
+  opacity: 1;
+}
+
+.parallax-tilt:hover img {
+  filter: brightness(1.08) contrast(1.05) saturate(1.1);
+}
+
+/* Active tilt state (when JS adds .tilting class) */
+.parallax-tilt.tilting img,
+.parallax-tilt.tilting::before,
+.parallax-tilt.tilting::after {
+  transition: transform 0.05s ease-out;
+}
+
+/* CSS-only fallback: subtle tilt on hover without cursor tracking */
+.parallax-tilt:hover img {
+  transform: perspective(1000px) rotateX(2deg) rotateY(-2deg) scale(1.02);
+}
+
+.parallax-tilt:hover::before {
+  transform: translateZ(-60px) scale(1.2) perspective(1000px) rotateX(1.5deg) rotateY(-1.5deg);
+}
+
+.parallax-tilt:hover::after {
+  transform: translateZ(-30px) scale(1.1) perspective(1000px) rotateX(1deg) rotateY(-1deg);
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .parallax-tilt img,
+  .parallax-tilt::before,
+  .parallax-tilt::after,
+  .parallax-tilt .glare {
+    transition: opacity 0.3s ease;
+  }
+  .parallax-tilt:hover img {
+    transform: scale(1.02);
+  }
+  .parallax-tilt:hover::before {
+    transform: translateZ(-60px) scale(1.2);
+  }
+  .parallax-tilt:hover::after {
+    transform: translateZ(-30px) scale(1.1);
+  }
+}</code></pre>
+      </section>
+    </div>
+  </main>
+
+  <footer class="page-footer">
+    <p>MIT License — <a href="https://github.com/PhakphumV/pure-css-image-hover-effects" target="_blank" rel="noopener">GitHub</a></p>
+  </footer>
+</body>
+</html>

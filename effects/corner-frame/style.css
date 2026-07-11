@@ -1,0 +1,68 @@
+/* Corner Frame Effect - Camera-style corner brackets snap into place */
+
+.corner-frame {
+  position: relative;
+  display: inline-block;
+  border-radius: 8px;
+  overflow: visible;
+  padding: 10px;
+}
+
+.corner-frame img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 6px;
+  transition: transform 0.35s ease-out;
+}
+
+.corner-frame::before,
+.corner-frame::after {
+  content: '';
+  position: absolute;
+  width: 22px;
+  height: 22px;
+  border-color: var(--color-primary, #2563eb);
+  border-style: solid;
+  border-width: 0;
+  opacity: 0;
+  transition: opacity 0.3s ease-out, transform 0.3s ease-out;
+}
+
+.corner-frame::before {
+  top: 0; left: 0;
+  border-top-width: 3px;
+  border-left-width: 3px;
+  transform: translate(8px, 8px);
+}
+
+.corner-frame::after {
+  bottom: 0; right: 0;
+  border-bottom-width: 3px;
+  border-right-width: 3px;
+  transform: translate(-8px, -8px);
+}
+
+.corner-frame:hover::before,
+.corner-frame:hover::after {
+  opacity: 1;
+  transform: translate(0, 0);
+}
+
+.corner-frame:hover img {
+  transform: scale(1.03);
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .corner-frame::before,
+  .corner-frame::after {
+    transition: opacity 0.2s ease;
+    transform: translate(0, 0);
+    opacity: 0.5;
+  }
+  .corner-frame:hover::before,
+  .corner-frame:hover::after {
+    opacity: 1;
+  }
+}

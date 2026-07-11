@@ -1,0 +1,107 @@
+/* Glitch Shift Effect - Stepped RGB-channel glitch flicker */
+
+.glitch-shift {
+  overflow: hidden;
+  display: inline-block;
+  border-radius: 8px;
+  position: relative;
+}
+
+.glitch-shift img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.glitch-shift::before,
+.glitch-shift::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: inherit;
+  background-size: cover;
+  background-position: center;
+  opacity: 0;
+  mix-blend-mode: screen;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.glitch-shift:hover::before {
+  opacity: 0.6;
+  filter: hue-rotate(-120deg) contrast(1.5);
+  animation: glitch-shift-r 0.4s steps(2, end) infinite;
+}
+
+.glitch-shift:hover::after {
+  opacity: 0.6;
+  filter: hue-rotate(120deg) contrast(1.5);
+  animation: glitch-shift-b 0.4s steps(2, end) infinite;
+}
+
+.glitch-shift:hover img {
+  animation: glitch-shift-base 0.4s steps(2, end) infinite;
+}
+
+@keyframes glitch-shift-base {
+  0%   { clip-path: inset(0 0 60% 0); transform: translate(0, 0); }
+  50%  { clip-path: inset(40% 0 20% 0); transform: translate(-2px, 1px); }
+  100% { clip-path: inset(10% 0 50% 0); transform: translate(2px, -1px); }
+}
+
+@keyframes glitch-shift-r {
+  0%   { transform: translate(3px, 0); }
+  100% { transform: translate(-3px, 2px); }
+}
+
+@keyframes glitch-shift-b {
+  0%   { transform: translate(-3px, 0); }
+  100% { transform: translate(3px, -2px); }
+}
+
+/* Scanlines overlay */
+.glitch-shift .scanlines {
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 2px,
+    rgba(0,0,0,0.1) 2px,
+    rgba(0,0,0,0.1) 4px
+  );
+  opacity: 0;
+  pointer-events: none;
+  z-index: 2;
+  animation: scanline-move 0.1s linear infinite;
+  transition: opacity 0.2s ease;
+}
+
+.glitch-shift:hover .scanlines {
+  opacity: 1;
+}
+
+@keyframes scanline-move {
+  0% { background-position: 0 0; }
+  100% { background-position: 0 4px; }
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .glitch-shift:hover::before,
+  .glitch-shift:hover::after,
+  .glitch-shift:hover img {
+    animation: none;
+    transform: translate(0, 0);
+    clip-path: inset(0 0 0 0);
+  }
+  .glitch-shift:hover::before {
+    transform: translate(1px, 0);
+  }
+  .glitch-shift:hover::after {
+    transform: translate(-1px, 0);
+  }
+  .glitch-shift .scanlines {
+    animation: none;
+  }
+}

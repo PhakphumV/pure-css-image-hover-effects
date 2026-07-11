@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Corner Frame — Pure CSS Image Hover Effects</title>
+  <link rel="stylesheet" href="../../styles/effect-page.css">
+  <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+  <header class="page-header">
+    <a href="../../index.html" class="back-link">← Back to Gallery</a>
+    <h1>Corner Frame</h1>
+    <p class="effect-description">Animated corner brackets draw in from edges to frame the image on hover.</p>
+  </header>
+
+  <main class="effect-layout">
+    <div class="left-column">
+      <section class="panel panel--preview">
+        <h2>Preview</h2>
+        <div class="preview-container">
+          <div class="corner-frame">
+            <img src="https://picsum.photos/600/400?random=46" alt="Demo image">
+          </div>
+        </div>
+        <p class="preview-hint">Hover over the image to see the effect</p>
+      </section>
+
+      <section class="panel panel--credits">
+        <h2>Credits</h2>
+        <div class="credit-entry">
+          <strong>PhakphumV</strong>
+          <span class="credit-role">Creator</span>
+          <span class="credit-notes">Animated corner bracket frame effect</span>
+        </div>
+      </section>
+    </div>
+
+    <div class="right-column">
+      <section class="panel panel--code">
+        <h2>HTML</h2>
+        <pre class="code-block"><code><div class="corner-frame">
+  <img src="your-image.jpg" alt="Description">
+</div></code></pre>
+      </section>
+
+      <section class="panel panel--code">
+        <h2>CSS</h2>
+        <pre class="code-block"><code>/* Corner Frame Effect - Camera-style corner brackets snap into place */
+
+.corner-frame {
+  position: relative;
+  display: inline-block;
+  border-radius: 8px;
+  overflow: visible;
+  padding: 10px;
+}
+
+.corner-frame img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 6px;
+  transition: transform 0.35s ease-out;
+}
+
+.corner-frame::before,
+.corner-frame::after {
+  content: '';
+  position: absolute;
+  width: 22px;
+  height: 22px;
+  border-color: var(--color-primary, #2563eb);
+  border-style: solid;
+  border-width: 0;
+  opacity: 0;
+  transition: opacity 0.3s ease-out, transform 0.3s ease-out;
+}
+
+.corner-frame::before {
+  top: 0; left: 0;
+  border-top-width: 3px;
+  border-left-width: 3px;
+  transform: translate(8px, 8px);
+}
+
+.corner-frame::after {
+  bottom: 0; right: 0;
+  border-bottom-width: 3px;
+  border-right-width: 3px;
+  transform: translate(-8px, -8px);
+}
+
+.corner-frame:hover::before,
+.corner-frame:hover::after {
+  opacity: 1;
+  transform: translate(0, 0);
+}
+
+.corner-frame:hover img {
+  transform: scale(1.03);
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .corner-frame::before,
+  .corner-frame::after {
+    transition: opacity 0.2s ease;
+    transform: translate(0, 0);
+    opacity: 0.5;
+  }
+  .corner-frame:hover::before,
+  .corner-frame:hover::after {
+    opacity: 1;
+  }
+}</code></pre>
+      </section>
+    </div>
+  </main>
+
+  <footer class="page-footer">
+    <p>MIT License — <a href="https://github.com/PhakphumV/pure-css-image-hover-effects" target="_blank" rel="noopener">GitHub</a></p>
+  </footer>
+</body>
+</html>

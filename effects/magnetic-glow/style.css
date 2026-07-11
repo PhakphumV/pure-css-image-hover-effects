@@ -1,0 +1,87 @@
+/* Magnetic Glow Effect - Glowing ring follows cursor with magnetic attraction */
+
+.magnetic-glow {
+  position: relative;
+  display: inline-block;
+  overflow: hidden;
+  border-radius: 12px;
+}
+
+.magnetic-glow img {
+  display: block;
+  width: 100%;
+  height: auto;
+  transition: transform 0.3s ease-out, filter 0.3s ease-out;
+}
+
+/* Magnetic glow ring */
+.magnetic-glow::before {
+  content: '';
+  position: absolute;
+  inset: -8px;
+  border-radius: 16px;
+  box-shadow: 
+    0 0 20px 4px rgba(37, 99, 235, 0),
+    0 0 40px 8px rgba(37, 99, 235, 0),
+    inset 0 0 20px 4px rgba(37, 99, 235, 0);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease-out, box-shadow 0.15s ease-out;
+  z-index: 1;
+}
+
+/* Inner glow highlight */
+.magnetic-glow::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 12px;
+  background: radial-gradient(
+    ellipse at center,
+    rgba(255,255,255,0.15) 0%,
+    transparent 70%
+  );
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease-out;
+  z-index: 2;
+  mix-blend-mode: screen;
+}
+
+/* Hover state */
+.magnetic-glow:hover::before {
+  opacity: 1;
+  box-shadow: 
+    0 0 30px 8px rgba(37, 99, 235, 0.6),
+    0 0 60px 16px rgba(37, 99, 235, 0.3),
+    inset 0 0 30px 8px rgba(37, 99, 235, 0.2);
+}
+
+.magnetic-glow:hover::after {
+  opacity: 1;
+}
+
+.magnetic-glow:hover img {
+  transform: scale(1.02);
+  filter: brightness(1.05) contrast(1.03);
+}
+
+/* Active magnetic state (when JS adds .magnetic-active) */
+.magnetic-glow.magnetic-active::before {
+  transition: box-shadow 0.05s ease-out;
+}
+
+/* CSS-only fallback: static glow on hover */
+@media (prefers-reduced-motion: reduce) {
+  .magnetic-glow::before,
+  .magnetic-glow::after,
+  .magnetic-glow img {
+    transition: opacity 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  .magnetic-glow:hover::before {
+    box-shadow: 
+      0 0 30px 8px rgba(37, 99, 235, 0.6),
+      0 0 60px 16px rgba(37, 99, 235, 0.3),
+      inset 0 0 30px 8px rgba(37, 99, 235, 0.2);
+  }
+}

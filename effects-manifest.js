@@ -43,6 +43,12 @@ window.__EFFECTS_MANIFEST__ = {
       "folder": "color-splash"
     },
     {
+      "id": "corner-frame",
+      "title": "Corner Frame",
+      "desc": "Corner Frame",
+      "folder": "corner-frame"
+    },
+    {
       "id": "depth-layers",
       "title": "Depth Layers",
       "desc": "Depth Layers",
@@ -77,6 +83,12 @@ window.__EFFECTS_MANIFEST__ = {
       "title": "Glass Mosaic",
       "desc": "Glass Mosaic",
       "folder": "glass-mosaic"
+    },
+    {
+      "id": "glitch-shift",
+      "title": "Glitch Shift",
+      "desc": "Glitch Shift",
+      "folder": "glitch-shift"
     },
     {
       "id": "glitch-slice",
@@ -115,6 +127,12 @@ window.__EFFECTS_MANIFEST__ = {
       "folder": "liquid-morph"
     },
     {
+      "id": "magnetic-glow",
+      "title": "Magnetic Glow",
+      "desc": "Magnetic Glow",
+      "folder": "magnetic-glow"
+    },
+    {
       "id": "magnetic-tilt",
       "title": "Magnetic Tilt",
       "desc": "Magnetic Tilt",
@@ -131,6 +149,12 @@ window.__EFFECTS_MANIFEST__ = {
       "title": "Overlay Fade In Neon Grid",
       "desc": "Overlay Fade In Neon Grid",
       "folder": "overlay-fade-in-neon-grid"
+    },
+    {
+      "id": "parallax-tilt",
+      "title": "Parallax Tilt",
+      "desc": "Parallax Tilt",
+      "folder": "parallax-tilt"
     },
     {
       "id": "point-zoom",
@@ -187,6 +211,12 @@ window.__EFFECTS_MANIFEST__ = {
       "folder": "rotate-3d"
     },
     {
+      "id": "shine-sweep",
+      "title": "Shine Sweep",
+      "desc": "Shine Sweep",
+      "folder": "shine-sweep"
+    },
+    {
       "id": "slide-reveal",
       "title": "Slide Reveal",
       "desc": "Slide Reveal",
@@ -197,6 +227,12 @@ window.__EFFECTS_MANIFEST__ = {
       "title": "Slide Reveal Right",
       "desc": "Slide Reveal Right",
       "folder": "slide-reveal-right"
+    },
+    {
+      "id": "swipe-reveal",
+      "title": "Swipe Reveal",
+      "desc": "Swipe Reveal",
+      "folder": "swipe-reveal"
     },
     {
       "id": "vertical-zoom-n-pan",

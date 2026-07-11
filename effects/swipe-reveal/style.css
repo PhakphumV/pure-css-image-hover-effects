@@ -1,0 +1,75 @@
+/* Swipe Reveal Effect - Split swipe reveals alternate color layer */
+
+.swipe-reveal {
+  position: relative;
+  display: inline-block;
+  overflow: hidden;
+  border-radius: 8px;
+}
+
+.swipe-reveal img {
+  display: block;
+  width: 100%;
+  height: auto;
+  transition: transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+/* Reveal layer - slides in from left */
+.swipe-reveal::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  clip-path: inset(0 100% 0 0);
+  transition: clip-path 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  z-index: 1;
+}
+
+/* Overlay text/content on reveal layer */
+.swipe-reveal::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: inherit;
+  background-size: cover;
+  background-position: center;
+  clip-path: inset(0 0 0 100%);
+  opacity: 0;
+  transition: clip-path 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+              opacity 0.3s ease 0.2s;
+  z-index: 2;
+}
+
+/* Hover - swipe reveals */
+.swipe-reveal:hover::before {
+  clip-path: inset(0 0 0 0);
+}
+
+.swipe-reveal:hover::after {
+  clip-path: inset(0 0 0 0);
+  opacity: 1;
+}
+
+.swipe-reveal:hover img {
+  transform: scale(1.02);
+  filter: brightness(1.05);
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .swipe-reveal img,
+  .swipe-reveal::before,
+  .swipe-reveal::after {
+    transition: none;
+  }
+  .swipe-reveal:hover::before,
+  .swipe-reveal:hover::after {
+    clip-path: inset(0 0 0 0);
+  }
+  .swipe-reveal:hover::after {
+    opacity: 1;
+  }
+  .swipe-reveal:hover img {
+    transform: scale(1.02);
+  }
+}

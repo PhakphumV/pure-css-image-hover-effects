@@ -1,0 +1,60 @@
+/* Shine Sweep Effect - Diagonal light sweep like glossy reflection */
+
+.shine-sweep {
+  position: relative;
+  display: inline-block;
+  overflow: hidden;
+  border-radius: 8px;
+}
+
+.shine-sweep img {
+  display: block;
+  width: 100%;
+  height: auto;
+  transition: transform 0.4s ease-out, filter 0.4s ease-out;
+}
+
+/* Shine gradient sweep */
+.shine-sweep::before {
+  content: '';
+  position: absolute;
+  inset: -50%;
+  background: linear-gradient(
+    110deg,
+    transparent 0%,
+    rgba(255,255,255,0) 40%,
+    rgba(255,255,255,0.4) 50%,
+    rgba(255,255,255,0.6) 52%,
+    rgba(255,255,255,0.4) 54%,
+    rgba(255,255,255,0) 60%,
+    transparent 100%
+  );
+  opacity: 0;
+  pointer-events: none;
+  transform: translateX(-150%) rotate(-20deg);
+  transition: opacity 0.2s ease, transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  z-index: 1;
+  border-radius: 8px;
+}
+
+.shine-sweep:hover::before {
+  opacity: 1;
+  transform: translateX(150%) rotate(-20deg);
+}
+
+.shine-sweep:hover img {
+  transform: scale(1.02);
+  filter: brightness(1.05) contrast(1.02);
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .shine-sweep::before {
+    transition: none;
+    transform: translateX(0) rotate(-20deg);
+    opacity: 0.3;
+  }
+  .shine-sweep:hover::before {
+    transform: translateX(0) rotate(-20deg);
+  }
+}
