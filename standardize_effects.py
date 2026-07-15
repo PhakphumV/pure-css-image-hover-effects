@@ -338,7 +338,8 @@ def generate_html_page(effect_name, meta):
     
     # Generate HTML code snippet for display
     html_snippet = f'<div class="{effect_name}">\n  <img src="your-image.jpg" alt="Description">\n</div>'
-    html_formatted = format_css_for_html(html_snippet)
+    # Properly escape HTML for code block display
+    html_formatted = html_snippet.replace("&", "&").replace("<", "<").replace(">", ">")
     
     # Random image number for variety
     img_num = int(hashlib.md5(effect_name.encode()).hexdigest(), 16) % 50 + 1
@@ -400,6 +401,20 @@ def generate_html_page(effect_name, meta):
 </body>
 </html>'''
     return html
+
+def read_style_css(effect_dir):
+    """Read and return the content of style.css"""
+    css_path = effect_dir / "style.css"
+    if css_path.exists():
+        return css_path.read_text()
+    return None
+
+def format_css_for_html(css_content):
+    """Format CSS content for HTML code block display"""
+    if not css_content:
+        return ""
+    # Ensure consistent formatting - escape for HTML
+    return css_content.replace("&", "&").replace("<", "<").replace(">", ">")
 
 def generate_readme(effect_name, meta):
     """Generate README.md for an effect"""
@@ -497,14 +512,14 @@ def main():
         if html_content:
             html_path = effect_dir / "index.html"
             html_path.write_text(html_content)
-            print(f"  \u2713 Updated {effect_name}/index.html")
+            print(f"  ✓ Updated {effect_name}/index.html")
         
         # 2. Generate and write README.md
         readme_content = generate_readme(effect_name, meta)
         if readme_content:
             readme_path = effect_dir / "README.md"
             readme_path.write_text(readme_content)
-            print(f"  \u2713 Created {effect_name}/README.md")
+            print(f"  ✓ Created {effect_name}/README.md")
     
     # 3. Update manifest
     update_manifest()

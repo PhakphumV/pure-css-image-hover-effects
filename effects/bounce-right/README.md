@@ -14,15 +14,12 @@ Image slides from left to right on hover with bounce effect.
   display: block;
   width: 100%;
   height: auto;
-}
-.bounce-right::before {
-  content: '';
-  position: absolute;
-  top: 0; left: -100%;
-  width: 100%; height: 100%;
-  background: white;
+  position: relative;
+  left: 0;
   transition: left 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
-  z-index: 1;
+}
+.bounce-right:hover img {
+  left: 100%;
 }
 ```
 

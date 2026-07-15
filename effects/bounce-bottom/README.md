@@ -14,15 +14,12 @@ Image slides from top to bottom on hover with bounce effect.
   display: block;
   width: 100%;
   height: auto;
-}
-.bounce-bottom::before {
-  content: '';
-  position: absolute;
-  top: 100%; left: 0;
-  width: 100%; height: 100%;
-  background: white;
+  position: relative;
+  top: 0;
   transition: top 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
-  z-index: 1;
+}
+.bounce-bottom:hover img {
+  top: 100%;
 }
 ```
 
