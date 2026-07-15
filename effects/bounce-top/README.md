@@ -26,7 +26,7 @@ Image slides from bottom to top on hover with bounce effect.
 **Browser Support**
 | Feature | Support |
 |---------|---------|
-| `transform` | Chrome 36+, FF 16+, Safari 9+, Edge 12+ |
+| `top` | Check caniuse.com |
 | `transition` | Chrome 36+, FF 16+, Safari 9+, Edge 12+ |
 | `cubic-bezier` | Chrome 4+, FF 4+, Safari 3.1+, Edge 12+ |
 

@@ -43,6 +43,18 @@ window.__EFFECTS_MANIFEST__ = {
     "folder": "color-splash"
   },
   {
+    "id": "contrast-punch",
+    "title": "Contrast Punch",
+    "desc": "Contrast increases sharply on hover for a punchy look.",
+    "folder": "contrast-punch"
+  },
+  {
+    "id": "contrast-soften",
+    "title": "Contrast Soften",
+    "desc": "Contrast softens/flattens on hover for a muted look.",
+    "folder": "contrast-soften"
+  },
+  {
     "id": "corner-frame",
     "title": "Corner Frame",
     "desc": "Animated corner brackets draw in from edges to frame the image on hover.",
@@ -119,6 +131,12 @@ window.__EFFECTS_MANIFEST__ = {
     "title": "Ink Drop",
     "desc": "Circular \"ink\" splash expands from center on hover.",
     "folder": "ink-drop"
+  },
+  {
+    "id": "invert-flash",
+    "title": "Invert Flash",
+    "desc": "A quick full color-invert flash on hover.",
+    "folder": "invert-flash"
   },
   {
     "id": "liquid-morph",
@@ -215,6 +233,24 @@ window.__EFFECTS_MANIFEST__ = {
     "title": "3D Rotate",
     "desc": "Perspective-based 3D rotation with scale on hover.",
     "folder": "rotate-3d"
+  },
+  {
+    "id": "sepia-in",
+    "title": "Sepia In",
+    "desc": "Image starts sepia-toned, turns to full color on hover.",
+    "folder": "sepia-in"
+  },
+  {
+    "id": "shadow-drop",
+    "title": "Shadow Drop",
+    "desc": "A shadow is present by default and settles flat on hover.",
+    "folder": "shadow-drop"
+  },
+  {
+    "id": "shadow-lift",
+    "title": "Shadow Lift",
+    "desc": "A soft shadow appears beneath the image on hover, creating lift.",
+    "folder": "shadow-lift"
   },
   {
     "id": "shine-sweep",

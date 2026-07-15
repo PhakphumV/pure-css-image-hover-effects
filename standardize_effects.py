@@ -30,25 +30,25 @@ EFFECTS_META = {
     "bounce-top": {
         "title": "Bounce Top",
         "description": "Image slides from bottom to top on hover with bounce effect.",
-        "css_properties": ["transform", "transition", "cubic-bezier"],
+        "css_properties": ["top", "transition", "cubic-bezier"],
         "credits": "Bounce reveal effect"
     },
     "bounce-bottom": {
         "title": "Bounce Bottom",
         "description": "Image slides from top to bottom on hover with bounce effect.",
-        "css_properties": ["transform", "transition", "cubic-bezier"],
+        "css_properties": ["top", "transition", "cubic-bezier"],
         "credits": "Bounce reveal effect"
     },
     "bounce-left": {
         "title": "Bounce Left",
         "description": "Image slides from right to left on hover with bounce effect.",
-        "css_properties": ["transform", "transition", "cubic-bezier"],
+        "css_properties": ["left", "transition", "cubic-bezier"],
         "credits": "Bounce reveal effect"
     },
     "bounce-right": {
         "title": "Bounce Right",
         "description": "Image slides from left to right on hover with bounce effect.",
-        "css_properties": ["transform", "transition", "cubic-bezier"],
+        "css_properties": ["left", "transition", "cubic-bezier"],
         "credits": "Bounce reveal effect"
     },
     "clip-reveal": {
@@ -308,6 +308,42 @@ EFFECTS_META = {
         "description": "Perspective tilt with directional drop shadow creating 3D depth on hover.",
         "css_properties": ["perspective", "transform", "box-shadow", "transform-style", "transition"],
         "credits": "3D tilt with directional shadow effect"
+    },
+    "sepia-in": {
+        "title": "Sepia In",
+        "description": "Image starts sepia-toned, turns to full color on hover.",
+        "css_properties": ["filter", "transition"],
+        "credits": "Sepia to color filter transition"
+    },
+    "invert-flash": {
+        "title": "Invert Flash",
+        "description": "A quick full color-invert flash on hover.",
+        "css_properties": ["filter", "animation", "keyframes"],
+        "credits": "Quick color invert flash effect"
+    },
+    "contrast-punch": {
+        "title": "Contrast Punch",
+        "description": "Contrast increases sharply on hover for a punchy look.",
+        "css_properties": ["filter", "transition"],
+        "credits": "High contrast punch effect"
+    },
+    "contrast-soften": {
+        "title": "Contrast Soften",
+        "description": "Contrast softens/flattens on hover for a muted look.",
+        "css_properties": ["filter", "transition"],
+        "credits": "Soft contrast flattening effect"
+    },
+    "shadow-lift": {
+        "title": "Shadow Lift",
+        "description": "A soft shadow appears beneath the image on hover, creating lift.",
+        "css_properties": ["box-shadow", "transform", "transition"],
+        "credits": "Soft shadow lift effect"
+    },
+    "shadow-drop": {
+        "title": "Shadow Drop",
+        "description": "A shadow is present by default and settles flat on hover.",
+        "css_properties": ["box-shadow", "transform", "transition"],
+        "credits": "Shadow settling effect"
     },
 }
 
