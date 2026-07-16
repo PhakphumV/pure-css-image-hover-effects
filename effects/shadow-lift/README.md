@@ -5,14 +5,8 @@ A soft shadow appears beneath the image on hover, creating lift.
 **Key CSS**
 ```css
 .shadow-lift {
-  overflow: hidden;
-  display: inline-block;
-  border-radius: 8px;
 }
 .shadow-lift img {
-  display: block;
-  width: 100%;
-  height: auto;
   box-shadow: none;
   transition: box-shadow 0.4s ease;
 }

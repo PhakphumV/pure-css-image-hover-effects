@@ -1,15 +1,10 @@
-.invert-flash {
-  overflow: hidden;
-  display: inline-block;
-  border-radius: 8px;
-}
+/* Invert Flash Effect */
+
 .invert-flash img {
-  display: block;
-  width: 100%;
-  height: auto;
   filter: invert(0);
   transition: filter 0.1s ease;
 }
+
 .invert-flash:hover img {
   animation: invert-flash 0.15s ease;
 }

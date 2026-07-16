@@ -4,18 +4,13 @@ A quick full color-invert flash on hover.
 
 **Key CSS**
 ```css
-.invert-flash {
-  overflow: hidden;
-  display: inline-block;
-  border-radius: 8px;
-}
+/* Invert Flash Effect */
+
 .invert-flash img {
-  display: block;
-  width: 100%;
-  height: auto;
   filter: invert(0);
   transition: filter 0.1s ease;
 }
+
 .invert-flash:hover img {
   animation: invert-flash 0.15s ease;
 }
@@ -24,6 +19,7 @@ A quick full color-invert flash on hover.
   0%   { filter: invert(0); }
   50%  { filter: invert(1); }
   100% { filter: invert(0); }
+}
 ```
 
 **Browser Support**

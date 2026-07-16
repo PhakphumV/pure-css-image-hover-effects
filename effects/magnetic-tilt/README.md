@@ -7,23 +7,23 @@
 /* Magnetic Tilt Effect - 3D tilt toward cursor with depth parallax layers */
 
 .magnetic-tilt {
-  position: relative;
-  display: inline-block;
-  overflow: hidden;
-  border-radius: 12px;
   perspective: 1000px;
   transform-style: preserve-3d;
 }
 
 .magnetic-tilt img {
-  display: block;
-  width: 100%;
-  height: auto;
   transform-style: preserve-3d;
   transition: transform 0.1s ease-out, filter 0.3s ease-out;
   will-change: transform;
 }
 
+/* Depth layers using pseudo-elements */
+.magnetic-tilt::before,
+.magnetic-tilt::after {
+  content: '';
+  position: absolute;
+  inset: -15%;
+  background: inherit;
 ```
 
 **Browser Support**

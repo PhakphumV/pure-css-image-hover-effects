@@ -5,8 +5,6 @@ Neon grid overlay fades in over image on hover.
 **Key CSS**
 ```css
 .overlay-fade-in-neon-grid {
-    position: relative;
-    border-radius: 8px;
 }
 
 .overlay-fade-in-neon-grid::after {
@@ -24,6 +22,8 @@ Neon grid overlay fades in over image on hover.
 }
 
 .overlay-fade-in-neon-grid img {}
+
+.overlay-fade-in-neon-grid:hover img {}
 ```
 
 **Browser Support**

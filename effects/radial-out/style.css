@@ -1,13 +1,6 @@
 .radial-out {
-  overflow: hidden;
-  display: inline-block;
-  border-radius: 8px;
-  position: relative;
 }
 .radial-out img {
-  display: block;
-  width: 100%;
-  height: auto;
 }
 .radial-out::before {
   content: '';

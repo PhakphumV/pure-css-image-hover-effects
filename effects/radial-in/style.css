@@ -1,13 +1,6 @@
 .radial-in {
-  overflow: hidden;
-  display: inline-block;
-  border-radius: 8px;
-  position: relative;
 }
 .radial-in img {
-  display: block;
-  width: 100%;
-  height: auto;
 }
 .radial-in::before {
   content: '';

@@ -2,18 +2,14 @@
 
 .liquid-morph {
   position: relative;
-  display: inline-block;
-  overflow: hidden;
-  border-radius: 16px;
+  overflow: visible; /* Allow pseudo-elements to extend */
 }
 
 .liquid-morph img {
-  display: block;
-  width: 100%;
-  height: auto;
-  transition: transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94),
-              filter 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94),
-              border-radius 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  transition: 
+    transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+    filter 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+    border-radius 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 
 /* Liquid blob that morphs over the image */
@@ -68,7 +64,6 @@
   mix-blend-mode: screen;
   transition: opacity 0.4s ease;
   z-index: 3;
-  border-radius: 16px;
 }
 
 /* Edge highlight */
@@ -76,7 +71,6 @@
   position: absolute;
   inset: 0;
   border: 2px solid transparent;
-  border-radius: 16px;
   pointer-events: none;
   z-index: 4;
   opacity: 0;
@@ -87,7 +81,7 @@
   content: '';
   position: absolute;
   inset: -2px;
-  border-radius: 16px;
+  border-radius: inherit;
   background: linear-gradient(
     135deg,
     rgba(255,255,255,0.4),

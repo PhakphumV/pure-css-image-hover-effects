@@ -5,9 +5,6 @@ Image zooms and brightens from dimmed state on hover.
 **Key CSS**
 ```css
 .zoom-brightness {
-  overflow: hidden;
-  display: inline-block;
-  border-radius: 8px;
 }
 .zoom-brightness img {
   transition: transform 2s, filter 1.5s ease-in-out;

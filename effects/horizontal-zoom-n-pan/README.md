@@ -4,17 +4,13 @@ Image zooms and pans horizontally on hover.
 
 **Key CSS**
 ```css
+/* Horizontal Zoom & Pan Effect */
+
 .horizontal-zoom-n-pan {
-  overflow: hidden;
-  display: inline-block;
-  border-radius: 12px;
-  max-width: 100%;
+  overflow: hidden; /* Required for the pan effect to clip */
 }
 
 .horizontal-zoom-n-pan img {
-  display: block;
-  width: 100%;
-  height: auto;
   transform-origin: 0 center;
   transition: transform 0.55s ease-in-out;
   will-change: transform;

@@ -4,19 +4,17 @@ Image flips horizontally on hover using CSS 3D transform.
 
 **Key CSS**
 ```css
+/* Flip Horizontal Effect */
+
 .flip-horizontal {
-  overflow: hidden;
-  display: inline-block;
-  border-radius: 8px;
   perspective: 1000px;
 }
+
 .flip-horizontal img {
-  display: block;
-  width: 100%;
-  height: auto;
   transition: transform 0.6s ease;
   transform-style: preserve-3d;
 }
+
 .flip-horizontal:hover img {
   transform: scaleX(-1);
 }

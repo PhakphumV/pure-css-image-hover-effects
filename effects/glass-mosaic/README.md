@@ -6,24 +6,19 @@ Frosted-glass overlay with backdrop-filter that dims on hover.
 ```css
 /* Glass Mosaic Effect */
 
-.glass-mosaic {
-  position: relative;
-  overflow: hidden;
-  --gap: 4px;
-  --blur: 4px;
-}
-
 .glass-mosaic::after {
   content: "";
   position: absolute;
   inset: 0;
-  backdrop-filter: blur(var(--blur)) saturate(150%);
+  backdrop-filter: blur(4px) saturate(150%);
   opacity: 0.6;
   pointer-events: none;
   transition: opacity 0.3s;
 }
 
 .glass-mosaic:hover::after {
+  opacity: 0.2;
+}
 ```
 
 **Browser Support**

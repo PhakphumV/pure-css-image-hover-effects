@@ -1,6 +1,4 @@
 .overlay-fade-in-neon-grid {
-    position: relative;
-    border-radius: 8px;
 }
 
 .overlay-fade-in-neon-grid::after {

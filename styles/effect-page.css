@@ -1,87 +1,12 @@
 /**
- * Effect Page Styles – matches the design system used on the gallery index page.
- * Re‑uses the same CSS variables and component styles defined in gallery.css
- * but scoped only to a single effect page.
+ * Effect Page Styles - Pure CSS Image Hover Effects
+ * Effect-page-specific styles only (two-column layout, preview panel, code panels)
+ * Base styles are in base.css - load THAT FIRST
  */
 
 /* ============================================================
-   CSS Custom Properties
+   Layout – single effect page
    ============================================================ */
-:root {
-  --color-bg: #fafafa;
-  --color-text: #1a1a1a;
-  --color-text-muted: #666;
-  --color-primary: #2563eb;
-  --color-primary-hover: #1d4ed8;
-  --color-border: #e5e5e5;
-  --color-card-bg: #fff;
-  --color-code-bg: #f4f4f4;
-  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
-  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1);
-  --radius: 8px;
-  --transition: 0.2s ease;
-  --max-width: 1200px;
-  --gap: 1.5rem;
-}
-
-/* ====================================================
-   Reset & Base – copied from gallery.css
-   ==================================================== */
-*, *::before, *::after { box-sizing: border-box; }
-html { font-size: 16px; -webkit-font-smoothing: antialiased; }
-body {
-  margin: 0;
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-  background: var(--color-bg);
-  color: var(--color-text);
-  line-height: 1.6;
-  min-height: 100vh;
-}
-
-a { color: var(--color-primary); text-decoration: none; }
-a:hover { color: var(--color-primary-hover); text-decoration: underline; }
-
-code { font-family: ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, monospace; font-size: .9em; background: var(--color-code-bg); padding: .15em .4em; border-radius: 4px; }
-
-/* ============================================================
-   Layout
-   ============================================================ */
-header {
-  padding: 3rem 1.5rem 2rem;
-  text-align: center;
-  border-bottom: 1px solid var(--color-border);
-  background: var(--color-card-bg);
-}
-
-header h1 {
-  margin: 0 0 0.5rem;
-  font-size: clamp(1.75rem, 4vw, 2.5rem);
-  font-weight: 700;
-  line-height: 1.2;
-}
-
-.subtitle {
-  margin: 0.5rem auto 0;
-  max-width: 700px;
-  color: var(--color-text-muted);
-  font-size: 1rem;
-}
-
-main { flex: 1; padding: 2rem 1.5rem; }
-
-footer {
-  padding: 2rem 1.5rem;
-  text-align: center;
-  color: var(--color-text-muted);
-  font-size: 0.875rem;
-  border-top: 1px solid var(--color-border);
-  background: var(--color-card-bg);
-}
-
-/* ====================================================
-   Layout – single page editing area
-   ==================================================== */
-
 .effect-layout {
   display: flex;
   gap: 2rem;
@@ -95,37 +20,19 @@ footer {
 
 @media (max-width: 768px) {
   .effect-layout { flex-direction: column; gap: 1.5rem; }
+  .left-column, .right-column { max-width: 100%; }
 }
 
-/* ====================================================
-   Panel base – identical to .card in gallery page
-   ==================================================== */
-
-.panel {
-  background: var(--color-card-bg);
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius);
-  padding: 1.25rem;
-  box-shadow: var(--shadow-sm);
-  margin: 0;
-  margin-bottom: 1.5rem;
-}
-
-.panel h2 {
-  margin: 0 0 .75rem;
-  font-size: 1.1rem;
-  font-weight: 600;
-  color: var(--color-text);
-}
-
-/* ====================================================
+/* ============================================================
    Panel – preview, code, credits
-   ==================================================== */
+   ============================================================ */
+
 .panel--preview .preview-container {
   position: relative;
   overflow: hidden;
   background: #f0f0f0;
   aspect-ratio: 6 / 4;
+  border-radius: var(--radius);
 }
 
 .panel--preview img {
@@ -134,21 +41,50 @@ footer {
   object-fit: cover;
 }
 
+/* NO HOVER TRANSFORM HERE - effects define their own hover behavior in their style.css */
+
 .preview-hint { margin-top: .75rem; font-size: .85rem; color: var(--color-text-muted); text-align: center; }
 
-.panel--code pre { margin: 0; }
-.code-block { background: var(--color-code-bg); padding: 1rem; overflow-x: auto; border-radius: 6px; }
-.code-block code { display: block; white-space: pre; font-size: .85rem; }
+/* Credits panel uses shared styles from base.css */
 
-.panel--credits .credit-entry { display: flex; flex-direction: column; gap: .25rem; }
-.cred__name, .cred__role, .cred__notes { font-size: .85rem; }
-.cred__name { font-weight: 600; }
-.cred__role { color: var(--color-primary); }
-.cred__notes { color: var(--color-text-muted); }
+/* ============================================================
+   Page header (effect page specific)
+   ============================================================ */
+.page-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+}
 
-/* ====================================================
-   Icons etc – optional
-   ==================================================== */
+.back-link {
+  align-self: flex-start;
+  margin-bottom: 0.5rem;
+  font-size: 0.9rem;
+  color: var(--color-text-muted);
+}
 
-/* Hide default heading margin on the page */
-body > .page-header { margin: 0; }
+.back-link:hover {
+  color: var(--color-primary);
+}
+
+.effect-description {
+  max-width: 700px;
+  color: var(--color-text-muted);
+  font-size: 1rem;
+  text-align: center;
+  margin: 0;
+}
+
+/* ============================================================
+   Page footer
+   ============================================================ */
+.page-footer {
+  padding: 2rem 1.5rem;
+  text-align: center;
+  color: var(--color-text-muted);
+  font-size: 0.875rem;
+  border-top: 1px solid var(--color-border);
+  background: var(--color-card-bg);
+  margin-top: 2rem;
+}

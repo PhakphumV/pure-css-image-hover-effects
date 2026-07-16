@@ -7,16 +7,9 @@ Split swipe reveals alternate color layer on hover using clip-path animation.
 /* Swipe Reveal Effect - Split swipe reveals alternate color layer */
 
 .swipe-reveal {
-  position: relative;
-  display: inline-block;
-  overflow: hidden;
-  border-radius: 8px;
 }
 
 .swipe-reveal img {
-  display: block;
-  width: 100%;
-  height: auto;
   transition: transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 
@@ -24,6 +17,13 @@ Split swipe reveals alternate color layer on hover using clip-path animation.
 .swipe-reveal::before {
   content: '';
   position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  clip-path: inset(0 100% 0 0);
+  transition: clip-path 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  z-index: 1;
+}
+
 ```
 
 **Browser Support**

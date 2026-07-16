@@ -7,16 +7,9 @@ RGB channels separate like light through a prism on hover with spectral bands.
 /* Prism Split Effect - RGB channel separation like light through a prism */
 
 .prism-split {
-  position: relative;
-  display: inline-block;
-  overflow: hidden;
-  border-radius: 8px;
 }
 
 .prism-split img {
-  display: block;
-  width: 100%;
-  height: auto;
   transition: transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94),
               filter 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
@@ -24,6 +17,13 @@ RGB channels separate like light through a prism on hover with spectral bands.
 /* Three RGB channels as layered elements */
 .prism-split::before,
 .prism-split::after,
+.prism-split .channel {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: inherit;
+  background-size: cover;
+  background-position: center;
 ```
 
 **Browser Support**

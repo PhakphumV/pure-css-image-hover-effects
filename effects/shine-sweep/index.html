@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Shine Sweep — Pure CSS Image Hover Effects</title>
+  <link rel="stylesheet" href="../../styles/base.css">
   <link rel="stylesheet" href="../../styles/effect-page.css">
   <link rel="stylesheet" href="./style.css">
 </head>
@@ -20,7 +21,7 @@
         <h2>Preview</h2>
         <div class="preview-container">
           <div class="shine-sweep">
-            <img src="https://picsum.photos/600/400?random=19" alt="Demo image">
+            <img src="https://picsum.photos/600/400?random=46" alt="Demo image">
           </div>
         </div>
         <p class="preview-hint">Hover over the image to see the effect</p>
@@ -30,8 +31,8 @@
         <h2>Credits</h2>
         <div class="credit-entry">
           <strong>PhakphumV</strong>
-          <span class="credit-role">Creator</span>
-          <span class="credit-notes">Diagonal shine sweep effect</span>
+          <span class="cred__role">Creator</strong>
+          <span class="cred__notes">Shine sweep effect</span>
         </div>
       </section>
     </div>
@@ -39,73 +40,12 @@
     <div class="right-column">
       <section class="panel panel--code">
         <h2>HTML</h2>
-        <pre class="code-block"><code><div class="shine-sweep">
-  <img src="your-image.jpg" alt="Description">
-</div></code></pre>
+        <pre class="code-block"><code></code></pre>
       </section>
 
       <section class="panel panel--code">
         <h2>CSS</h2>
-        <pre class="code-block"><code>/* Shine Sweep Effect - Diagonal light sweep like glossy reflection */
-
-.shine-sweep {
-  position: relative;
-  display: inline-block;
-  overflow: hidden;
-  border-radius: 8px;
-}
-
-.shine-sweep img {
-  display: block;
-  width: 100%;
-  height: auto;
-  transition: transform 0.4s ease-out, filter 0.4s ease-out;
-}
-
-/* Shine gradient sweep */
-.shine-sweep::before {
-  content: '';
-  position: absolute;
-  inset: -50%;
-  background: linear-gradient(
-    110deg,
-    transparent 0%,
-    rgba(255,255,255,0) 40%,
-    rgba(255,255,255,0.4) 50%,
-    rgba(255,255,255,0.6) 52%,
-    rgba(255,255,255,0.4) 54%,
-    rgba(255,255,255,0) 60%,
-    transparent 100%
-  );
-  opacity: 0;
-  pointer-events: none;
-  transform: translateX(-150%) rotate(-20deg);
-  transition: opacity 0.2s ease, transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-  z-index: 1;
-  border-radius: 8px;
-}
-
-.shine-sweep:hover::before {
-  opacity: 1;
-  transform: translateX(150%) rotate(-20deg);
-}
-
-.shine-sweep:hover img {
-  transform: scale(1.02);
-  filter: brightness(1.05) contrast(1.02);
-}
-
-/* Reduced motion */
-@media (prefers-reduced-motion: reduce) {
-  .shine-sweep::before {
-    transition: none;
-    transform: translateX(0) rotate(-20deg);
-    opacity: 0.3;
-  }
-  .shine-sweep:hover::before {
-    transform: translateX(0) rotate(-20deg);
-  }
-}</code></pre>
+        <pre class="code-block"><code></code></pre>
       </section>
     </div>
   </main>
@@ -113,5 +53,7 @@
   <footer class="page-footer">
     <p>MIT License — <a href="https://github.com/PhakphumV/pure-css-image-hover-effects" target="_blank" rel="noopener">GitHub</a></p>
   </footer>
+
+  <script src="../../scripts/effect-page.js"></script>
 </body>
 </html>

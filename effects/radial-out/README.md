@@ -5,15 +5,8 @@ Circular mask expands outward revealing image on hover.
 **Key CSS**
 ```css
 .radial-out {
-  overflow: hidden;
-  display: inline-block;
-  border-radius: 8px;
-  position: relative;
 }
 .radial-out img {
-  display: block;
-  width: 100%;
-  height: auto;
 }
 .radial-out::before {
   content: '';
@@ -24,6 +17,13 @@ Circular mask expands outward revealing image on hover.
   border-radius: 50%;
   transform: translate(-50%, -50%) scale(0);
   transform-origin: center;
+  transition: transform 0.6s ease;
+  pointer-events: none;
+  z-index: 1;
+}
+.radial-out:hover::before {
+  transform: translate(-50%, -50%) scale(1.5);
+}
 ```
 
 **Browser Support**

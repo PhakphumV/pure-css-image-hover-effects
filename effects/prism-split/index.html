@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Prism Split — Pure CSS Image Hover Effects</title>
+  <link rel="stylesheet" href="../../styles/base.css">
   <link rel="stylesheet" href="../../styles/effect-page.css">
   <link rel="stylesheet" href="./style.css">
 </head>
@@ -20,7 +21,7 @@
         <h2>Preview</h2>
         <div class="preview-container">
           <div class="prism-split">
-            <img src="https://picsum.photos/600/400?random=25" alt="Demo image">
+            <img src="https://picsum.photos/600/400?random=36" alt="Demo image">
           </div>
         </div>
         <p class="preview-hint">Hover over the image to see the effect</p>
@@ -30,8 +31,8 @@
         <h2>Credits</h2>
         <div class="credit-entry">
           <strong>PhakphumV</strong>
-          <span class="credit-role">Creator</span>
-          <span class="credit-notes">Prism RGB channel separation effect</span>
+          <span class="cred__role">Creator</strong>
+          <span class="cred__notes">Prism split effect</span>
         </div>
       </section>
     </div>
@@ -39,211 +40,12 @@
     <div class="right-column">
       <section class="panel panel--code">
         <h2>HTML</h2>
-        <pre class="code-block"><code><div class="prism-split">
-  <img src="your-image.jpg" alt="Description">
-</div></code></pre>
+        <pre class="code-block"><code></code></pre>
       </section>
 
       <section class="panel panel--code">
         <h2>CSS</h2>
-        <pre class="code-block"><code>/* Prism Split Effect - RGB channel separation like light through a prism */
-
-.prism-split {
-  position: relative;
-  display: inline-block;
-  overflow: hidden;
-  border-radius: 8px;
-}
-
-.prism-split img {
-  display: block;
-  width: 100%;
-  height: auto;
-  transition: transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94),
-              filter 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-}
-
-/* Three RGB channels as layered elements */
-.prism-split::before,
-.prism-split::after,
-.prism-split .channel {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: inherit;
-  background-size: cover;
-  background-position: center;
-  opacity: 0;
-  pointer-events: none;
-  mix-blend-mode: screen;
-  transform-style: preserve-3d;
-  transition: opacity 0.3s ease, transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-  z-index: 1;
-  border-radius: 8px;
-}
-
-/* Red channel */
-.prism-split::before {
-  filter: 
-    brightness(0) saturate(100%) /* isolate red */
-    hue-rotate(0deg) 
-    contrast(2);
-  clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
-}
-
-/* Green channel */
-.prism-split::after {
-  filter: 
-    brightness(0) saturate(100%)
-    hue-rotate(120deg)
-    contrast(2);
-  clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
-}
-
-/* Blue channel */
-.prism-split .channel {
-  filter: 
-    brightness(0) saturate(100%)
-    hue-rotate(240deg)
-    contrast(2);
-  clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
-}
-
-/* Prism beam overlay - the light entering the prism */
-.prism-split .beam {
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(
-    90deg,
-    transparent 0%,
-    rgba(255,0,0,0.3) 15%,
-    rgba(255,255,0,0.3) 30%,
-    rgba(0,255,0,0.3) 45%,
-    rgba(0,255,255,0.3) 60%,
-    rgba(0,0,255,0.3) 75%,
-    rgba(255,0,255,0.3) 90%,
-    transparent 100%
-  );
-  opacity: 0;
-  pointer-events: none;
-  mix-blend-mode: screen;
-  transition: opacity 0.4s ease;
-  z-index: 4;
-  border-radius: 8px;
-}
-
-/* Spectrum bands */
-.prism-split .spectrum {
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  z-index: 3;
-  opacity: 0;
-  transition: opacity 0.4s ease;
-}
-
-.prism-split .spectrum::before,
-.prism-split .spectrum::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: inherit;
-  background-size: cover;
-  background-position: center;
-  mix-blend-mode: screen;
-}
-
-/* Hover - channels separate like prism */
-.prism-split:hover::before {
-  opacity: 1;
-  transform: translateX(-25px) translateY(-8px) rotate(-3deg) scale(1.05);
-}
-
-.prism-split:hover::after {
-  opacity: 1;
-  transform: translateX(8px) translateY(12px) rotate(2deg) scale(1.05);
-}
-
-.prism-split:hover .channel {
-  opacity: 1;
-  transform: translateX(25px) translateY(-4px) rotate(1deg) scale(1.05);
-}
-
-.prism-split:hover .beam,
-.prism-split:hover .spectrum {
-  opacity: 0.6;
-}
-
-.prism-split:hover img {
-  transform: scale(1.02);
-  filter: brightness(0.95) contrast(1.1);
-}
-
-/* Animation for the spectrum */
-.prism-split:hover .spectrum::before {
-  animation: spectrum-shift 3s ease-in-out infinite;
-  filter: hue-rotate(0deg) contrast(1.5);
-}
-
-.prism-split:hover .spectrum::after {
-  animation: spectrum-shift 3s ease-in-out infinite reverse;
-  filter: hue-rotate(180deg) contrast(1.5);
-}
-
-@keyframes spectrum-shift {
-  0%, 100% {
-    clip-path: inset(0 0 0 0);
-    transform: translateX(0);
-  }
-  50% {
-    clip-path: inset(40% 0 40% 0);
-    transform: translateX(10px);
-  }
-}
-
-/* Refraction highlight */
-.prism-split .refraction {
-  position: absolute;
-  inset: 0;
-  background: radial-gradient(
-    ellipse at 30% 30%,
-    rgba(255,255,255,0.3) 0%,
-    transparent 40%
-  );
-  opacity: 0;
-  pointer-events: none;
-  mix-blend-mode: screen;
-  transition: opacity 0.4s ease;
-  z-index: 5;
-  border-radius: 8px;
-}
-
-.prism-split:hover .refraction {
-  opacity: 1;
-}
-
-/* Reduced motion */
-@media (prefers-reduced-motion: reduce) {
-  .prism-split img,
-  .prism-split::before,
-  .prism-split::after,
-  .prism-split .channel {
-    transition: none;
-  }
-  .prism-split:hover::before {
-    transform: translateX(-15px) translateY(-5px);
-  }
-  .prism-split:hover::after {
-    transform: translateX(5px) translateY(8px);
-  }
-  .prism-split:hover .channel {
-    transform: translateX(15px) translateY(-2px);
-  }
-  .prism-split .spectrum::before,
-  .prism-split .spectrum::after {
-    animation: none;
-  }
-}</code></pre>
+        <pre class="code-block"><code></code></pre>
       </section>
     </div>
   </main>
@@ -251,5 +53,7 @@
   <footer class="page-footer">
     <p>MIT License — <a href="https://github.com/PhakphumV/pure-css-image-hover-effects" target="_blank" rel="noopener">GitHub</a></p>
   </footer>
+
+  <script src="../../scripts/effect-page.js"></script>
 </body>
 </html>

@@ -6,17 +6,9 @@ Image slides right to reveal content on hover.
 ```css
 /* placeholder */
 .slide-reveal-right {
-  overflow: hidden;
-  display: inline-block;
-  border-radius: 8px;
-  position: relative;
 }
 .slide-reveal-right img {
-  position: absolute;
-  display: block;
   right: 0;
-  width: 0;
-  height: 100%;
   transition: width 0.4s ease-out;
 }
 .slide-reveal-right:hover img {

@@ -1,10 +1,5 @@
 /* Ink Drop Effect */
 
-.ink-drop {
-  position: relative;
-  overflow: hidden;
-}
-
 .ink-drop::after {
   content: "";
   position: absolute;

@@ -4,19 +4,17 @@ Perspective-based 3D rotation with scale on hover.
 
 **Key CSS**
 ```css
+/* Rotate 3D Effect */
+
 .rotate-3d {
-  overflow: hidden;
-  display: inline-block;
-  border-radius: 8px;
   perspective: 1000px;
 }
+
 .rotate-3d img {
-  display: block;
-  width: 100%;
-  height: auto;
   transition: transform 0.5s ease-out;
   transform-style: preserve-3d;
 }
+
 .rotate-3d:hover img {
   transform: rotateY(20deg) rotateX(-20deg) scale(1.3);
 }

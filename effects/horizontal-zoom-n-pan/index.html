@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Horizontal Zoom & Pan — Pure CSS Image Hover Effects</title>
+  <link rel="stylesheet" href="../../styles/base.css">
   <link rel="stylesheet" href="../../styles/effect-page.css">
   <link rel="stylesheet" href="./style.css">
 </head>
@@ -20,7 +21,7 @@
         <h2>Preview</h2>
         <div class="preview-container">
           <div class="horizontal-zoom-n-pan">
-            <img src="https://picsum.photos/600/400?random=3" alt="Demo image">
+            <img src="https://picsum.photos/600/400?random=25" alt="Demo image">
           </div>
         </div>
         <p class="preview-hint">Hover over the image to see the effect</p>
@@ -30,8 +31,8 @@
         <h2>Credits</h2>
         <div class="credit-entry">
           <strong>PhakphumV</strong>
-          <span class="credit-role">Creator</span>
-          <span class="credit-notes">Horizontal pan-zoom effect</span>
+          <span class="cred__role">Creator</strong>
+          <span class="cred__notes">Horizontal zoom pan</span>
         </div>
       </section>
     </div>
@@ -39,34 +40,12 @@
     <div class="right-column">
       <section class="panel panel--code">
         <h2>HTML</h2>
-        <pre class="code-block"><code><div class="horizontal-zoom-n-pan">
-  <img src="your-image.jpg" alt="Description">
-</div></code></pre>
+        <pre class="code-block"><code></code></pre>
       </section>
 
       <section class="panel panel--code">
         <h2>CSS</h2>
-        <pre class="code-block"><code>.horizontal-zoom-n-pan {
-  overflow: hidden;
-  display: inline-block;
-  border-radius: 12px;
-  max-width: 100%;
-}
-
-.horizontal-zoom-n-pan img {
-  display: block;
-  width: 100%;
-  height: auto;
-  transform-origin: 0 center;
-  transition: transform 0.55s ease-in-out;
-  will-change: transform;
-  transform: scale(1.4);
-}
-
-.horizontal-zoom-n-pan:hover img {
-  transform: scale(1.5) translateX(-30%);
-}
-</code></pre>
+        <pre class="code-block"><code></code></pre>
       </section>
     </div>
   </main>
@@ -74,5 +53,7 @@
   <footer class="page-footer">
     <p>MIT License — <a href="https://github.com/PhakphumV/pure-css-image-hover-effects" target="_blank" rel="noopener">GitHub</a></p>
   </footer>
+
+  <script src="../../scripts/effect-page.js"></script>
 </body>
 </html>

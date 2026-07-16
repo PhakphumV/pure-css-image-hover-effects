@@ -1,15 +1,10 @@
-.blur-sharpen {
-  overflow: hidden;
-  display: inline-block;
-  border-radius: 8px;
-}
+/* Blur to Sharp Effect */
+
 .blur-sharpen img {
-  display: block;
-  width: 100%;
-  height: auto;
   filter: blur(4px) grayscale(0.5);
   transition: filter 0.4s ease-out, transform 0.4s ease-out;
 }
+
 .blur-sharpen:hover img {
   filter: blur(0) grayscale(0);
   transform: scale(1.05);

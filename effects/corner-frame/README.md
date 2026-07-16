@@ -8,22 +8,22 @@ Animated corner brackets draw in from edges to frame the image on hover.
 
 .corner-frame {
   position: relative;
-  display: inline-block;
-  border-radius: 8px;
   overflow: visible;
   padding: 10px;
 }
 
 .corner-frame img {
-  display: block;
-  width: 100%;
-  height: auto;
-  border-radius: 6px;
   transition: transform 0.35s ease-out;
 }
 
 .corner-frame::before,
 .corner-frame::after {
+  content: '';
+  position: absolute;
+  width: 22px;
+  height: 22px;
+  border-color: var(--color-primary, #2563eb);
+  border-style: solid;
 ```
 
 **Browser Support**

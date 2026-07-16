@@ -1,13 +1,6 @@
 .rectangle-out {
-  overflow: hidden;
-  display: inline-block;
-  border-radius: 8px;
-  position: relative;
 }
 .rectangle-out img {
-  display: block;
-  width: 100%;
-  height: auto;
 }
 .rectangle-out::before {
   content: '';

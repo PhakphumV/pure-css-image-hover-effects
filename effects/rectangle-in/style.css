@@ -1,13 +1,6 @@
 .rectangle-in {
-  overflow: hidden;
-  display: inline-block;
-  border-radius: 8px;
-  position: relative;
 }
 .rectangle-in img {
-  display: block;
-  width: 100%;
-  height: auto;
 }
 .rectangle-in::before {
   content: '';

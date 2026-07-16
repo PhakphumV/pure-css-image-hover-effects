@@ -5,15 +5,8 @@ Image reveals from center outward using circular mask on hover.
 **Key CSS**
 ```css
 .radial-in {
-  overflow: hidden;
-  display: inline-block;
-  border-radius: 8px;
-  position: relative;
 }
 .radial-in img {
-  display: block;
-  width: 100%;
-  height: auto;
 }
 .radial-in::before {
   content: '';
@@ -24,6 +17,13 @@ Image reveals from center outward using circular mask on hover.
   border-radius: 50%;
   transform: translate(-50%, -50%) scale(1.5);
   transform-origin: center;
+  transition: transform 0.6s ease;
+  pointer-events: none;
+  z-index: 1;
+}
+.radial-in:hover::before {
+  transform: translate(-50%, -50%) scale(0);
+}
 ```
 
 **Browser Support**

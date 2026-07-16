@@ -8,22 +8,22 @@ Image fractures into horizontal glitch slices with hue-shifted colors on hover.
 
 .glitch-slice {
   position: relative;
-  display: inline-block;
-  overflow: hidden;
-  border-radius: 8px;
+  overflow: visible; /* Allow slices to show */
 }
 
+/* Base image transition */
 .glitch-slice img {
-  display: block;
-  width: 100%;
-  height: auto;
   transition: transform 0.3s ease-out, filter 0.3s ease-out;
 }
 
-/* Generate glitch slices using clip-path on pseudo-elements */
-/* We'll use multiple layers with different clip-paths */
+/* Generate glitch slices using clip-path on pseudo-elements and child elements */
 .glitch-slice::before,
 .glitch-slice::after,
+.glitch-slice .slice-1,
+.glitch-slice .slice-2,
+.glitch-slice .slice-3,
+.glitch-slice .slice-4,
+.glitch-slice .slice-5 {
 ```
 
 **Browser Support**

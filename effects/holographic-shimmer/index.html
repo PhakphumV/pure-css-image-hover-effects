@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Holographic Shimmer — Pure CSS Image Hover Effects</title>
+  <link rel="stylesheet" href="../../styles/base.css">
   <link rel="stylesheet" href="../../styles/effect-page.css">
   <link rel="stylesheet" href="./style.css">
 </head>
@@ -20,7 +21,7 @@
         <h2>Preview</h2>
         <div class="preview-container">
           <div class="holographic-shimmer">
-            <img src="https://picsum.photos/600/400?random=11" alt="Demo image">
+            <img src="https://picsum.photos/600/400?random=24" alt="Demo image">
           </div>
         </div>
         <p class="preview-hint">Hover over the image to see the effect</p>
@@ -30,8 +31,8 @@
         <h2>Credits</h2>
         <div class="credit-entry">
           <strong>PhakphumV</strong>
-          <span class="credit-role">Creator</span>
-          <span class="credit-notes">Holographic iridescent effect</span>
+          <span class="cred__role">Creator</strong>
+          <span class="cred__notes">Holographic effect</span>
         </div>
       </section>
     </div>
@@ -39,172 +40,12 @@
     <div class="right-column">
       <section class="panel panel--code">
         <h2>HTML</h2>
-        <pre class="code-block"><code><div class="holographic-shimmer">
-  <img src="your-image.jpg" alt="Description">
-</div></code></pre>
+        <pre class="code-block"><code></code></pre>
       </section>
 
       <section class="panel panel--code">
         <h2>CSS</h2>
-        <pre class="code-block"><code>/* Holographic Shimmer Effect - Iridescent rainbow sweep */
-
-.holographic-shimmer {
-  position: relative;
-  display: inline-block;
-  overflow: hidden;
-  border-radius: 12px;
-}
-
-.holographic-shimmer img {
-  display: block;
-  width: 100%;
-  height: auto;
-  transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94),
-              filter 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-}
-
-/* Base holographic film layer */
-.holographic-shimmer::before {
-  content: '';
-  position: absolute;
-  inset: -20%;
-  background: 
-    conic-gradient(
-      from 0deg,
-      #ff0080, #ff8c00, #ffd700, #00ff80, #00ffff, #0080ff, #8000ff, #ff0080
-    );
-  opacity: 0;
-  pointer-events: none;
-  mix-blend-mode: screen;
-  animation: shimmer-rotate 8s linear infinite;
-  transition: opacity 0.4s ease;
-  z-index: 1;
-  border-radius: 16px;
-}
-
-/* Noise texture overlay */
-.holographic-shimmer::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
-  background-size: 200px;
-  opacity: 0;
-  pointer-events: none;
-  mix-blend-mode: overlay;
-  transition: opacity 0.4s ease;
-  z-index: 2;
-  border-radius: 12px;
-}
-
-/* Rainbow sweep gradient that moves across */
-.holographic-shimmer .sweep {
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(
-    110deg,
-    transparent 0%,
-    rgba(255, 0, 128, 0.15) 20%,
-    rgba(255, 255, 0, 0.25) 35%,
-    rgba(0, 255, 255, 0.3) 50%,
-    rgba(0, 128, 255, 0.25) 65%,
-    rgba(128, 0, 255, 0.15) 80%,
-    transparent 100%
-  );
-  background-size: 200% 100%;
-  background-position: -100% 0;
-  opacity: 0;
-  pointer-events: none;
-  mix-blend-mode: screen;
-  transition: opacity 0.3s ease;
-  z-index: 3;
-  border-radius: 12px;
-}
-
-/* Prism edge highlights */
-.holographic-shimmer .edges {
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  z-index: 4;
-  border-radius: 12px;
-}
-
-.holographic-shimmer .edges::before,
-.holographic-shimmer .edges::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  border: 2px solid transparent;
-  border-radius: 12px;
-  opacity: 0;
-  transition: opacity 0.4s ease, border-color 0.4s ease;
-}
-
-.holographic-shimmer .edges::before {
-  border-image: linear-gradient(45deg, #ff0080, #00ffff, #ffff00, #ff0080) 1;
-  animation: edge-flow 3s linear infinite;
-}
-
-.holographic-shimmer .edges::after {
-  border-image: linear-gradient(-45deg, #00ff80, #8000ff, #ff8c00, #00ff80) 1;
-  animation: edge-flow 3s linear infinite reverse;
-}
-
-/* Hover state - activate all layers */
-.holographic-shimmer:hover::before {
-  opacity: 0.35;
-}
-
-.holographic-shimmer:hover::after {
-  opacity: 0.15;
-}
-
-.holographic-shimmer:hover .sweep {
-  opacity: 1;
-  animation: sweep-across 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
-}
-
-.holographic-shimmer:hover .edges::before,
-.holographic-shimmer:hover .edges::after {
-  opacity: 1;
-}
-
-.holographic-shimmer:hover img {
-  transform: scale(1.02);
-  filter: brightness(1.05) saturate(1.1);
-}
-
-/* Animations */
-@keyframes shimmer-rotate {
-  0%   { transform: rotate(0deg) scale(1.4); }
-  100% { transform: rotate(360deg) scale(1.4); }
-}
-
-@keyframes sweep-across {
-  0%   { background-position: -100% 0; opacity: 0; }
-  20%  { opacity: 1; }
-  100% { background-position: 200% 0; opacity: 0; }
-}
-
-@keyframes edge-flow {
-  0%   { border-image-slice: 1; transform: rotate(0deg); }
-  100% { border-image-slice: 1; transform: rotate(360deg); }
-}
-
-/* Reduced motion */
-@media (prefers-reduced-motion: reduce) {
-  .holographic-shimmer::before,
-  .holographic-shimmer .edges::before,
-  .holographic-shimmer .edges::after {
-    animation: none;
-  }
-  .holographic-shimmer:hover .sweep {
-    animation: none;
-    background-position: 100% 0;
-    opacity: 0.5;
-  }
-}</code></pre>
+        <pre class="code-block"><code></code></pre>
       </section>
     </div>
   </main>
@@ -212,5 +53,7 @@
   <footer class="page-footer">
     <p>MIT License — <a href="https://github.com/PhakphumV/pure-css-image-hover-effects" target="_blank" rel="noopener">GitHub</a></p>
   </footer>
+
+  <script src="../../scripts/effect-page.js"></script>
 </body>
 </html>

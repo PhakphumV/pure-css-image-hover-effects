@@ -7,16 +7,9 @@ Diagonal light sweep shines across image on hover like a glossy reflection.
 /* Shine Sweep Effect - Diagonal light sweep like glossy reflection */
 
 .shine-sweep {
-  position: relative;
-  display: inline-block;
-  overflow: hidden;
-  border-radius: 8px;
 }
 
 .shine-sweep img {
-  display: block;
-  width: 100%;
-  height: auto;
   transition: transform 0.4s ease-out, filter 0.4s ease-out;
 }
 
@@ -24,6 +17,13 @@ Diagonal light sweep shines across image on hover like a glossy reflection.
 .shine-sweep::before {
   content: '';
   position: absolute;
+  inset: -50%;
+  background: linear-gradient(
+    110deg,
+    transparent 0%,
+    rgba(255,255,255,0) 40%,
+    rgba(255,255,255,0.4) 50%,
+    rgba(255,255,255,0.6) 52%,
 ```
 
 **Browser Support**

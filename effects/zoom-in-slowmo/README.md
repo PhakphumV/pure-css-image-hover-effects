@@ -5,9 +5,6 @@ Dramatic slow-motion zoom with brightness shift on hover.
 **Key CSS**
 ```css
 .zoom-in-slowmo {
-  overflow: hidden;
-  display: inline-block;
-  border-radius: 8px;
 }
 .zoom-in-slowmo img {
   transform-origin: 50% 65%;

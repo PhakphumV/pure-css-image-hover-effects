@@ -7,16 +7,8 @@ Stepped RGB channel glitch flicker with clip-path slice animation on hover.
 /* Glitch Shift Effect - Stepped RGB-channel glitch flicker */
 
 .glitch-shift {
-  overflow: hidden;
-  display: inline-block;
-  border-radius: 8px;
   position: relative;
-}
-
-.glitch-shift img {
-  display: block;
-  width: 100%;
-  height: auto;
+  overflow: visible; /* Allow pseudo-elements to be visible */
 }
 
 .glitch-shift::before,
@@ -24,6 +16,14 @@ Stepped RGB channel glitch flicker with clip-path slice animation on hover.
   content: '';
   position: absolute;
   inset: 0;
+  background-image: inherit;
+  background-size: cover;
+  background-position: center;
+  opacity: 0;
+  mix-blend-mode: screen;
+  pointer-events: none;
+  z-index: 1;
+}
 ```
 
 **Browser Support**

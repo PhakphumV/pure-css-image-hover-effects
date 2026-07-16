@@ -1,16 +1,9 @@
 /* Magnetic Glow Effect - Glowing ring follows cursor with magnetic attraction */
 
 .magnetic-glow {
-  position: relative;
-  display: inline-block;
-  overflow: hidden;
-  border-radius: 12px;
 }
 
 .magnetic-glow img {
-  display: block;
-  width: 100%;
-  height: auto;
   transition: transform 0.3s ease-out, filter 0.3s ease-out;
 }
 

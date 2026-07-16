@@ -7,8 +7,6 @@ Magnifying lens effect with gradient overlay that scales on hover.
 /* Refraction Lens Effect */
 
 .refraction-lens {
-  position: relative;
-  overflow: hidden;
 }
 
 .refraction-lens::after {
@@ -24,6 +22,7 @@ Magnifying lens effect with gradient overlay that scales on hover.
 
 .refraction-lens:hover::after {
   transform: translate(-50%, -50%) scale(1.5);
+}
 ```
 
 **Browser Support**

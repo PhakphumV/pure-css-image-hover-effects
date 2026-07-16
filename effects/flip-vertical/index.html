@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Flip Vertical — Pure CSS Image Hover Effects</title>
+  <link rel="stylesheet" href="../../styles/base.css">
   <link rel="stylesheet" href="../../styles/effect-page.css">
   <link rel="stylesheet" href="./style.css">
 </head>
@@ -20,7 +21,7 @@
         <h2>Preview</h2>
         <div class="preview-container">
           <div class="flip-vertical">
-            <img src="https://picsum.photos/600/400?random=21" alt="Demo image">
+            <img src="https://picsum.photos/600/400?random=20" alt="Demo image">
           </div>
         </div>
         <p class="preview-hint">Hover over the image to see the effect</p>
@@ -30,8 +31,8 @@
         <h2>Credits</h2>
         <div class="credit-entry">
           <strong>PhakphumV</strong>
-          <span class="credit-role">Creator</span>
-          <span class="credit-notes">3D flip effect implementation</span>
+          <span class="cred__role">Creator</strong>
+          <span class="cred__notes">Vertical flip effect</span>
         </div>
       </section>
     </div>
@@ -39,29 +40,12 @@
     <div class="right-column">
       <section class="panel panel--code">
         <h2>HTML</h2>
-        <pre class="code-block"><code><div class="flip-vertical">
-  <img src="your-image.jpg" alt="Description">
-</div></code></pre>
+        <pre class="code-block"><code></code></pre>
       </section>
 
       <section class="panel panel--code">
         <h2>CSS</h2>
-        <pre class="code-block"><code>.flip-vertical {
-  overflow: hidden;
-  display: inline-block;
-  border-radius: 8px;
-  perspective: 1000px;
-}
-.flip-vertical img {
-  display: block;
-  width: 100%;
-  height: auto;
-  transition: transform 0.6s ease;
-  transform-style: preserve-3d;
-}
-.flip-vertical:hover img {
-  transform: scaleY(-1);
-}</code></pre>
+        <pre class="code-block"><code></code></pre>
       </section>
     </div>
   </main>
@@ -69,5 +53,7 @@
   <footer class="page-footer">
     <p>MIT License — <a href="https://github.com/PhakphumV/pure-css-image-hover-effects" target="_blank" rel="noopener">GitHub</a></p>
   </footer>
+
+  <script src="../../scripts/effect-page.js"></script>
 </body>
 </html>

@@ -7,23 +7,23 @@ Image folds like paper along diagonal and center creases with 3D depth on hover.
 /* Origami Fold Effect - Paper folding 3D transforms */
 
 .origami-fold {
-  position: relative;
-  display: inline-block;
-  overflow: hidden;
-  border-radius: 12px;
   perspective: 1200px;
   transform-style: preserve-3d;
 }
 
 .origami-fold img {
-  display: block;
-  width: 100%;
-  height: auto;
   transform-style: preserve-3d;
   transition: transform 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94),
               filter 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94);
   will-change: transform;
 }
+
+/* Four triangular fold panels */
+.origami-fold::before,
+.origami-fold::after,
+.origami-fold .fold-tl,
+.origami-fold .fold-tr,
+.origami-fold .fold-bl,
 ```
 
 **Browser Support**

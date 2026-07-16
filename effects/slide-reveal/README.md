@@ -4,18 +4,15 @@ Image slides to reveal content on hover.
 
 **Key CSS**
 ```css
-/* placeholder */
-.slide-reveal {
-  overflow: hidden;
-  display: inline-block;
-  border-radius: 8px;
-}
+/* Slide Reveal Effect */
+
 .slide-reveal img {
   display: block;
   width: 0;
   height: 100%;
   transition: width 0.4s ease-out;
 }
+
 .slide-reveal:hover img {
   width: 100%;
 }

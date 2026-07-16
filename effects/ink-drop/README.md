@@ -6,11 +6,6 @@ Circular "ink" splash expands from center on hover.
 ```css
 /* Ink Drop Effect */
 
-.ink-drop {
-  position: relative;
-  overflow: hidden;
-}
-
 .ink-drop::after {
   content: "";
   position: absolute;
@@ -24,6 +19,9 @@ Circular "ink" splash expands from center on hover.
 }
 
 .ink-drop:hover::after {
+  width: 200%;
+  height: 200%;
+}
 ```
 
 **Browser Support**

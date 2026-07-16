@@ -2,17 +2,11 @@
 
 .corner-frame {
   position: relative;
-  display: inline-block;
-  border-radius: 8px;
   overflow: visible;
   padding: 10px;
 }
 
 .corner-frame img {
-  display: block;
-  width: 100%;
-  height: auto;
-  border-radius: 6px;
   transition: transform 0.35s ease-out;
 }
 

@@ -5,9 +5,6 @@ Fast zoom-in effect on hover with short transition.
 **Key CSS**
 ```css
 .quick-zoom {
-  overflow: hidden;
-  display: inline-block;
-  border-radius: 8px;
 }
 .quick-zoom img {
   transform-origin: 0 0;

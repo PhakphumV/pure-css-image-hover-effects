@@ -1,15 +1,10 @@
-.contrast-punch {
-  overflow: hidden;
-  display: inline-block;
-  border-radius: 8px;
-}
+/* Contrast Punch Effect */
+
 .contrast-punch img {
-  display: block;
-  width: 100%;
-  height: auto;
   filter: contrast(1);
   transition: filter 0.3s ease;
 }
+
 .contrast-punch:hover img {
   filter: contrast(1.5);
 }

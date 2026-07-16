@@ -5,15 +5,8 @@ Rectangular mask reveals image from center on hover.
 **Key CSS**
 ```css
 .rectangle-in {
-  overflow: hidden;
-  display: inline-block;
-  border-radius: 8px;
-  position: relative;
 }
 .rectangle-in img {
-  display: block;
-  width: 100%;
-  height: auto;
 }
 .rectangle-in::before {
   content: '';
@@ -24,6 +17,11 @@ Rectangular mask reveals image from center on hover.
   transform-origin: center;
   transition: transform 0.6s ease;
   pointer-events: none;
+  z-index: 1;
+}
+.rectangle-in:hover::before {
+  transform: scale(0);
+}
 ```
 
 **Browser Support**

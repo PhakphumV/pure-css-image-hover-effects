@@ -4,14 +4,12 @@ Simple smooth zoom-in on hover.
 
 **Key CSS**
 ```css
-.zoom-in {
-  overflow: hidden;
-  display: inline-block;
-  border-radius: 8px;
-}
+/* Zoom In Effect */
+
 .zoom-in img {
-  transition: transform .45s ease;
+  transition: transform 0.45s ease;
 }
+
 .zoom-in:hover img {
   transform: scale(1.18);
 }

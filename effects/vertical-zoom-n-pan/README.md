@@ -5,16 +5,10 @@ Image zooms and pans vertically on hover.
 **Key CSS**
 ```css
 .vertical-zoom-n-pan {
-  overflow: hidden;
-  display: inline-block;
-  border-radius: 12px;
   max-width: 100%;
 }
 
 .vertical-zoom-n-pan img {
-  display: block;
-  width: 100%;
-  height: auto;
   transform-origin: center 0;
   transition: transform 0.55s ease-in-out;
   will-change: transform;

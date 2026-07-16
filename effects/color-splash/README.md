@@ -8,7 +8,7 @@ Circular color splash expands from center on hover.
 
 .color-splash {
   position: relative;
-  overflow: hidden;
+  overflow: visible;
 }
 
 .color-splash::after {

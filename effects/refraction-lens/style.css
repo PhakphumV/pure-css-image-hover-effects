@@ -1,8 +1,6 @@
 /* Refraction Lens Effect */
 
 .refraction-lens {
-  position: relative;
-  overflow: hidden;
 }
 
 .refraction-lens::after {

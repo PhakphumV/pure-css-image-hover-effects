@@ -5,9 +5,6 @@ Zoomed-in image pulls back to normal on hover.
 **Key CSS**
 ```css
 .zoom-out {
-  overflow: hidden;
-  display: inline-block;
-  border-radius: 8px;
 }
 .zoom-out img {
   transition: transform .45s ease;

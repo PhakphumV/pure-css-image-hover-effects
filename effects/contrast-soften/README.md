@@ -4,18 +4,13 @@ Contrast softens/flattens on hover for a muted look.
 
 **Key CSS**
 ```css
-.contrast-soften {
-  overflow: hidden;
-  display: inline-block;
-  border-radius: 8px;
-}
+/* Contrast Soften Effect */
+
 .contrast-soften img {
-  display: block;
-  width: 100%;
-  height: auto;
   filter: contrast(1);
   transition: filter 0.3s ease;
 }
+
 .contrast-soften:hover img {
   filter: contrast(0.6);
 }

@@ -5,14 +5,8 @@ A shadow is present by default and settles flat on hover.
 **Key CSS**
 ```css
 .shadow-drop {
-  overflow: hidden;
-  display: inline-block;
-  border-radius: 8px;
 }
 .shadow-drop img {
-  display: block;
-  width: 100%;
-  height: auto;
   box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.4);
   transition: box-shadow 0.4s ease;
 }

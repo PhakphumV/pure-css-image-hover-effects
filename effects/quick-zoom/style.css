@@ -1,7 +1,4 @@
 .quick-zoom {
-  overflow: hidden;
-  display: inline-block;
-  border-radius: 8px;
 }
 .quick-zoom img {
   transform-origin: 0 0;

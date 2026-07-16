@@ -5,15 +5,8 @@ Rectangular mask expands outward on hover.
 **Key CSS**
 ```css
 .rectangle-out {
-  overflow: hidden;
-  display: inline-block;
-  border-radius: 8px;
-  position: relative;
 }
 .rectangle-out img {
-  display: block;
-  width: 100%;
-  height: auto;
 }
 .rectangle-out::before {
   content: '';
@@ -24,6 +17,11 @@ Rectangular mask expands outward on hover.
   transform-origin: center;
   transition: transform 0.6s ease;
   pointer-events: none;
+  z-index: 1;
+}
+.rectangle-out:hover::before {
+  transform: scale(1.5);
+}
 ```
 
 **Browser Support**

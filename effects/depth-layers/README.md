@@ -7,23 +7,23 @@ Multi-layer parallax depth with translateZ separates foreground/mid/background o
 /* Depth Layers Effect - Multi-layer parallax depth with translateZ */
 
 .depth-layers {
-  position: relative;
-  display: inline-block;
-  overflow: hidden;
-  border-radius: 12px;
   perspective: 1000px;
   transform-style: preserve-3d;
 }
 
 .depth-layers img {
-  display: block;
-  width: 100%;
-  height: auto;
   transform-style: preserve-3d;
   transition: transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94),
               filter 0.3s ease-out;
   will-change: transform;
 }
+
+/* Layer 1: Foreground elements (closest to viewer) */
+.depth-layers::before {
+  content: '';
+  position: absolute;
+  inset: -10%;
+  background: inherit;
 ```
 
 **Browser Support**

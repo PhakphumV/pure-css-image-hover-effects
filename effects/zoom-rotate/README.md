@@ -4,17 +4,12 @@ Image zooms and slightly rotates on hover.
 
 **Key CSS**
 ```css
-.zoom-rotate {
-  overflow: hidden;
-  display: inline-block;
-  border-radius: 8px;
-}
+/* Zoom Rotate Effect */
+
 .zoom-rotate img {
-  display: block;
-  width: 100%;
-  height: auto;
   transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
 }
+
 .zoom-rotate:hover img {
   transform: scale(1.2) rotate(3deg);
 }

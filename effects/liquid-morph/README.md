@@ -8,22 +8,22 @@ Organic blob shape morphs fluidly over image using animated border-radius on hov
 
 .liquid-morph {
   position: relative;
-  display: inline-block;
-  overflow: hidden;
-  border-radius: 16px;
+  overflow: visible; /* Allow pseudo-elements to extend */
 }
 
 .liquid-morph img {
-  display: block;
-  width: 100%;
-  height: auto;
-  transition: transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94),
-              filter 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94),
-              border-radius 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  transition: 
+    transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+    filter 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+    border-radius 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 
 /* Liquid blob that morphs over the image */
 .liquid-morph::before {
+  content: '';
+  position: absolute;
+  inset: -30%;
+  background: inherit;
 ```
 
 **Browser Support**

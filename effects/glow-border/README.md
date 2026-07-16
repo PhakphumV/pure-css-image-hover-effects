@@ -4,16 +4,17 @@ Glowing border animation appears around image on hover.
 
 **Key CSS**
 ```css
+/* Glow Border Effect */
+
 .glow-border {
-  display: inline-block;
-  border: 1px solid #e5e5e5;
-  border-radius: 8px;
+  overflow: visible; /* Allow box-shadow to extend beyond container */
   transition: box-shadow 0.3s ease-in-out;
 }
+
 .glow-border img {
-  display: block;
-  border-radius: 8px;
+  /* Image styling handled by base.css */
 }
+
 .glow-border:hover {
   box-shadow: 0 0 20px 4px #2563eb;
 }

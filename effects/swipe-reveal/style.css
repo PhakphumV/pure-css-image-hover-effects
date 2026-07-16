@@ -1,16 +1,9 @@
 /* Swipe Reveal Effect - Split swipe reveals alternate color layer */
 
 .swipe-reveal {
-  position: relative;
-  display: inline-block;
-  overflow: hidden;
-  border-radius: 8px;
 }
 
 .swipe-reveal img {
-  display: block;
-  width: 100%;
-  height: auto;
   transition: transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 

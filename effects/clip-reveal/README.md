@@ -4,18 +4,13 @@ Image reveals through animated clip-path on hover.
 
 **Key CSS**
 ```css
-.clip-reveal {
-  overflow: hidden;
-  display: inline-block;
-  border-radius: 8px;
-}
+/* Clip Reveal Effect */
+
 .clip-reveal img {
-  display: block;
-  width: 100%;
-  height: auto;
   clip-path: inset(0 50% 0 50%);
   transition: clip-path 0.5s ease-out, transform 0.5s ease-out;
 }
+
 .clip-reveal:hover img {
   clip-path: inset(0 0 0 0);
   transform: scale(1.1);

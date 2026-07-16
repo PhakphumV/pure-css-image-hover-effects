@@ -1,0 +1,208 @@
+/**
+ * Base Styles - Pure CSS Image Hover Effects
+ * Shared styles between gallery index page and effect detail pages
+ * Load FIRST, then page-specific styles (gallery.css or effect-page.css)
+ */
+
+/* ============================================================
+   CSS Custom Properties
+   ============================================================ */
+:root {
+  --color-bg: #fafafa;
+  --color-text: #1a1a1a;
+  --color-text-muted: #666;
+  --color-primary: #2563eb;
+  --color-primary-hover: #1d4ed8;
+  --color-border: #e5e5e5;
+  --color-card-bg: #fff;
+  --color-code-bg: #f4f4f4;
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1);
+  --radius: 8px;
+  --transition: 0.2s ease;
+  --max-width: 1200px;
+  --gap: 1.5rem;
+}
+
+/* ============================================================
+   Reset & Base
+   ============================================================ */
+*, *::before, *::after { box-sizing: border-box; }
+
+html { font-size: 16px; -webkit-font-smoothing: antialiased; }
+
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  background: var(--color-bg);
+  color: var(--color-text);
+  line-height: 1.6;
+  min-height: 100vh;
+}
+
+img { max-width: 100%; height: auto; display: block; }
+
+a { color: var(--color-primary); text-decoration: none; }
+a:hover { color: var(--color-primary-hover); text-decoration: underline; }
+
+code {
+  font-family: ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, monospace;
+  font-size: 0.9em;
+  background: var(--color-code-bg);
+  padding: 0.15em 0.4em;
+  border-radius: 4px;
+}
+
+/* ============================================================
+   Layout - Shared Header & Footer
+   ============================================================ */
+header {
+  padding: 3rem 1.5rem 2rem;
+  text-align: center;
+  border-bottom: 1px solid var(--color-border);
+  background: var(--color-card-bg);
+}
+
+header h1 {
+  margin: 0 0 0.5rem;
+  font-size: clamp(1.75rem, 4vw, 2.5rem);
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.subtitle {
+  margin: 0.5rem auto 0;
+  max-width: 700px;
+  color: var(--color-text-muted);
+  font-size: 1rem;
+}
+
+main { flex: 1; padding: 2rem 1.5rem; }
+
+footer {
+  padding: 2rem 1.5rem;
+  text-align: center;
+  color: var(--color-text-muted);
+  font-size: 0.875rem;
+  border-top: 1px solid var(--color-border);
+  background: var(--color-card-bg);
+}
+
+/* ============================================================
+   Shared Panel/Card Base Styles
+   ============================================================ */
+.panel, .card {
+  background: var(--color-card-bg);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-sm);
+}
+
+.panel {
+  padding: 1.25rem;
+  margin: 0;
+  margin-bottom: 1.5rem;
+}
+
+.card {
+  cursor: pointer;
+  text-decoration: none;
+  color: inherit;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.card:focus-visible {
+  outline: 3px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+.panel h2 {
+  margin: 0 0 .75rem;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--color-text);
+}
+
+/* Code blocks - shared */
+.code-block {
+  background: var(--color-code-bg);
+  padding: 1rem;
+  overflow-x: auto;
+  border-radius: 6px;
+}
+
+.code-block code {
+  display: block;
+  white-space: pre;
+  font-size: 0.85rem;
+  background: none;
+  padding: 0;
+}
+
+/* Credits panel - shared */
+.credit-entry { display: flex; flex-direction: column; gap: .25rem; }
+.cred__name, .cred__role, .cred__notes { font-size: .85rem; }
+.cred__name { font-weight: 600; }
+.cred__role { color: var(--color-primary); }
+.cred__notes { color: var(--color-text-muted); }
+
+/* Preview hint - shared */
+.preview-hint { margin-top: .75rem; font-size: .85rem; color: var(--color-text-muted); text-align: center; }
+
+/* Back link on effect pages */
+.back-link {
+  display: inline-block;
+  margin-bottom: 1rem;
+  font-size: 0.9rem;
+  color: var(--color-text-muted);
+}
+.back-link:hover {
+  color: var(--color-primary);
+}
+
+/* ============================================================
+   Shared Layout - Preview Container Normalization
+   ============================================================ */
+
+/* Gallery card media (gallery page) */
+.card__media {
+  position: relative;
+  aspect-ratio: 6 / 4;
+  background: #f0f0f0;
+  line-height: 0;
+  border-radius: var(--radius) var(--radius) 0 0;
+  flex-shrink: 0;
+  overflow: hidden;
+}
+
+.card__media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Single effect page preview */
+.preview-container {
+  position: relative;
+  overflow: hidden;
+  background: #f0f0f0;
+  aspect-ratio: 6 / 4;
+  border-radius: var(--radius);
+}
+
+.preview-container img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* NO HOVER TRANSFORM HERE - effects define their own hover behavior in their style.css */
+
+/* ============================================================
+   Responsive
+   ============================================================ */
+@media (max-width: 480px) {
+  header { padding: 2rem 1rem 1.5rem; }
+}

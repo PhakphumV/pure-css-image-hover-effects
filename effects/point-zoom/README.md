@@ -5,9 +5,6 @@ Image zooms toward cursor position on hover.
 **Key CSS**
 ```css
 .point-zoom {
-  overflow: hidden;
-  display: inline-block;
-  border-radius: 8px;
 }
 .point-zoom img {
   transform-origin: 65% 75%;

@@ -1,16 +1,9 @@
 /* Shine Sweep Effect - Diagonal light sweep like glossy reflection */
 
 .shine-sweep {
-  position: relative;
-  display: inline-block;
-  overflow: hidden;
-  border-radius: 8px;
 }
 
 .shine-sweep img {
-  display: block;
-  width: 100%;
-  height: auto;
   transition: transform 0.4s ease-out, filter 0.4s ease-out;
 }
 

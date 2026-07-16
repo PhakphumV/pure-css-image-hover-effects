@@ -8,22 +8,22 @@ Iridescent rainbow shimmer sweeps across image like a hologram card on hover.
 
 .holographic-shimmer {
   position: relative;
-  display: inline-block;
-  overflow: hidden;
-  border-radius: 12px;
-}
-
-.holographic-shimmer img {
-  display: block;
-  width: 100%;
-  height: auto;
-  transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94),
-              filter 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  overflow: visible; /* Allow pseudo-elements to extend */
 }
 
 /* Base holographic film layer */
 .holographic-shimmer::before {
   content: '';
+  position: absolute;
+  inset: -20%;
+  background: 
+    conic-gradient(
+      from 0deg,
+      #ff0080, #ff8c00, #ffd700, #00ff80, #00ffff, #0080ff, #8000ff, #ff0080
+    );
+  opacity: 0;
+  pointer-events: none;
+  mix-blend-mode: screen;
 ```
 
 **Browser Support**

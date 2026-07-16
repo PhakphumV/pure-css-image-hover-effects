@@ -4,20 +4,14 @@ Image slides from left to right on hover with bounce effect.
 
 **Key CSS**
 ```css
-.bounce-right {
-  overflow: hidden;
-  display: inline-block;
-  border-radius: 8px;
-  position: relative;
-}
+/* Bounce Right Effect */
+
 .bounce-right img {
-  display: block;
-  width: 100%;
-  height: auto;
   position: relative;
   left: 0;
   transition: left 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
 }
+
 .bounce-right:hover img {
   left: 100%;
 }
