@@ -271,7 +271,8 @@ EFFECTS_META = {
         "title": "Glitch Shift",
         "description": "Stepped RGB channel glitch flicker with clip-path slice animation on hover.",
         "css_properties": ["animation", "clip-path", "mix-blend-mode", "transform", "keyframes"],
-        "credits": "Stepped RGB glitch shift effect"
+        "credits": "Stepped RGB glitch shift effect",
+        "preview_elements": '<div class="scanlines"></div>'
     },
     "shine-sweep": {
         "title": "Shine Sweep",
@@ -380,6 +381,9 @@ def generate_html_page(effect_name, meta):
     # Random image number for variety
     img_num = int(hashlib.md5(effect_name.encode()).hexdigest(), 16) % 50 + 1
     
+    # Additional preview elements (e.g., scanlines for glitch-shift)
+    preview_elements = meta.get("preview_elements", "")
+    
     html = f'''<!DOCTYPE html>
 <html lang="en">
 <head>
@@ -403,6 +407,7 @@ def generate_html_page(effect_name, meta):
         <div class="preview-container">
           <div class="{effect_name}">
             <img src="https://picsum.photos/600/400?random={img_num}" alt="Demo image">
+            {preview_elements}
           </div>
         </div>
         <p class="preview-hint">Hover over the image to see the effect</p>
