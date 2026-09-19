@@ -1,0 +1,44 @@
+/* Pan & Move-category hover effects.
+   One class on .hover-effect.<slug>, scoped via the
+   unique slug class so multiple categories can coexist.
+
+   Pattern for every effect in this category:
+     - Enlarge the image so it always covers the wrapper, with the
+       extra image extending past the wrapper on the opposite side
+       of the pan direction.
+     - Clip the wrapper with overflow: hidden so the extra image is
+       not visible at rest, only revealed as the image translates.
+     - translate() on :hover / :focus-visible moves the image so
+       different parts of the picture come into view.
+
+   Transition timing rules:
+   - 300ms minimum (perceptually smooth)
+   - 2000ms maximum (dramatic, contemplative)
+   - Tune per effect: dramatic pan -> longer; subtle slide -> shorter.
+
+   prefers-reduced-motion: reduce is honoured per effect: every
+   block below has a paired @media rule that drops the transition
+   and the transform so the image stays put. */
+
+/* ---- pan-left ---- */
+/* Image enlarged on the right, then slides left so the right edge
+   of the picture slides into view. */
+.hover-effect.pan-left{
+  overflow: hidden;
+}
+.hover-effect.pan-left img{
+  width: calc(100% + 30px);
+  transition: transform 0.45s ease;
+}
+.hover-effect.pan-left:hover img, .hover-effect.pan-left:focus-visible img{
+  transform: translateX(-30px);
+}
+@media (prefers-reduced-motion: reduce) {
+  .hover-effect.pan-left img{
+    transition: none;
+  }
+  .hover-effect.pan-left:hover img,
+  .hover-effect.pan-left:focus-visible img{
+    transform: none;
+  }
+}
