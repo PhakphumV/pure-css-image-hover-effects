@@ -1,23 +1,12 @@
 {
   "id": "magnetic-tilt",
   "slug": "magnetic-tilt",
-  "title": "Magnetic Tilt",
+  "title": "3D Tilt",
   "category": "3d",
-  "description": "3d hover effect on the image.",
-  "tags": [
-    "3d",
-    "filter",
-    "transform",
-    "transition"
-  ],
-  "complexity": "advanced",
-  "css_features": [
-    "filter",
-    "perspective",
-    "pseudo-element",
-    "transform",
-    "transition"
-  ],
+  "description": "Hover applies a perspective tilt with a corner glare (no cursor tracking).",
+  "tags": ["perspective", "rotate", "glare"],
+  "complexity": "simple",
+  "css_features": ["transform", "perspective", "filter", "pseudo-element"],
   "js_required": false,
   "extra_markup": false,
   "reduced_motion": "disabled"

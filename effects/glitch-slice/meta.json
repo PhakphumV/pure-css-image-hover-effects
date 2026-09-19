@@ -3,24 +3,10 @@
   "slug": "glitch-slice",
   "title": "Glitch Slice",
   "category": "reveal",
-  "description": "Reveal hover effect on the image.",
-  "tags": [
-    "animation",
-    "clip-path",
-    "filter",
-    "reveal",
-    "transform",
-    "transition"
-  ],
+  "description": "Hover slices the image into stepped horizontal bands with RGB tint.",
+  "tags": ["clip-path", "animation", "blend-mode"],
   "complexity": "advanced",
-  "css_features": [
-    "animation",
-    "clip-path",
-    "filter",
-    "pseudo-element",
-    "transform",
-    "transition"
-  ],
+  "css_features": ["clip-path", "filter", "animation", "blend-mode", "pseudo-element"],
   "js_required": false,
   "extra_markup": false,
   "reduced_motion": "disabled"

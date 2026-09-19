@@ -3,23 +3,10 @@
   "slug": "depth-layers",
   "title": "Depth Layers",
   "category": "3d",
-  "description": "3d hover effect on the image.",
-  "tags": [
-    "3d",
-    "animation",
-    "filter",
-    "transform",
-    "transition"
-  ],
-  "complexity": "advanced",
-  "css_features": [
-    "animation",
-    "filter",
-    "perspective",
-    "pseudo-element",
-    "transform",
-    "transition"
-  ],
+  "description": "Hover lifts the image forward with layered shadow depth.",
+  "tags": ["perspective", "shadow", "depth"],
+  "complexity": "simple",
+  "css_features": ["transform", "perspective", "box-shadow", "pseudo-element"],
   "js_required": false,
   "extra_markup": false,
   "reduced_motion": "disabled"

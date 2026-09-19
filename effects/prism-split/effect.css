@@ -1,183 +1,30 @@
-/* Prism Split Effect - RGB channel separation like light through a prism */
-
-.hover-effect.prism-split{
+.hover-effect.prism-split > img {
+  transition: filter 0.4s ease, transform 0.4s ease;
 }
 
-.hover-effect.prism-split img{
-  transition: transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94),
-              filter 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+.hover-effect.prism-split:hover > img,
+.hover-effect.prism-split:focus-visible > img {
+  filter: hue-rotate(30deg) saturate(1.8) brightness(1.1);
+  transform: scale(1.03);
 }
 
-/* Three RGB channels as layered elements */
-.hover-effect.prism-split::before, .hover-effect.prism-split::after, .hover-effect.prism-split .channel{
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: inherit;
-  background-size: cover;
-  background-position: center;
-  opacity: 0;
-  pointer-events: none;
-  mix-blend-mode: screen;
-  transform-style: preserve-3d;
-  transition: opacity 0.3s ease, transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-  z-index: 1;
-  border-radius: 8px;
-}
-
-/* Red channel */
-.hover-effect.prism-split::before{
-  filter: 
-    brightness(0) saturate(100%) /* isolate red */
-    hue-rotate(0deg) 
-    contrast(2);
-  clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
-}
-
-/* Green channel */
-.hover-effect.prism-split::after{
-  filter: 
-    brightness(0) saturate(100%)
-    hue-rotate(120deg)
-    contrast(2);
-  clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
-}
-
-/* Blue channel */
-.hover-effect.prism-split .channel{
-  filter: 
-    brightness(0) saturate(100%)
-    hue-rotate(240deg)
-    contrast(2);
-  clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
-}
-
-/* Prism beam overlay - the light entering the prism */
-.hover-effect.prism-split .beam{
+.hover-effect.prism-split::before {
+  content: "";
   position: absolute;
   inset: 0;
   background: linear-gradient(
     90deg,
-    transparent 0%,
-    rgba(255,0,0,0.3) 15%,
-    rgba(255,255,0,0.3) 30%,
-    rgba(0,255,0,0.3) 45%,
-    rgba(0,255,255,0.3) 60%,
-    rgba(0,0,255,0.3) 75%,
-    rgba(255,0,255,0.3) 90%,
-    transparent 100%
+    rgba(255, 0, 0, 0.15) 0%,
+    rgba(0, 255, 0, 0.15) 50%,
+    rgba(0, 0, 255, 0.15) 100%
   );
-  opacity: 0;
-  pointer-events: none;
   mix-blend-mode: screen;
-  transition: opacity 0.4s ease;
-  z-index: 4;
-  border-radius: 8px;
-}
-
-/* Spectrum bands */
-.hover-effect.prism-split .spectrum{
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  z-index: 3;
   opacity: 0;
   transition: opacity 0.4s ease;
-}
-
-.hover-effect.prism-split .spectrum::before, .hover-effect.prism-split .spectrum::after{
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: inherit;
-  background-size: cover;
-  background-position: center;
-  mix-blend-mode: screen;
-}
-
-/* Hover - channels separate like prism */
-.hover-effect.prism-split:hover::before, .hover-effect.prism-split:focus-visible::before{
-  opacity: 1;
-  transform: translateX(-25px) translateY(-8px) rotate(-3deg) scale(1.05);
-}
-
-.hover-effect.prism-split:hover::after, .hover-effect.prism-split:focus-visible::after{
-  opacity: 1;
-  transform: translateX(8px) translateY(12px) rotate(2deg) scale(1.05);
-}
-
-.hover-effect.prism-split:hover .channel, .hover-effect.prism-split:focus-visible .channel{
-  opacity: 1;
-  transform: translateX(25px) translateY(-4px) rotate(1deg) scale(1.05);
-}
-
-.hover-effect.prism-split:hover .beam, .hover-effect.prism-split:hover .spectrum, .hover-effect.prism-split:focus-visible .beam, .hover-effect.prism-split:focus-visible .spectrum{
-  opacity: 0.6;
-}
-
-.hover-effect.prism-split:hover img, .hover-effect.prism-split:focus-visible img{
-  transform: scale(1.02);
-  filter: brightness(0.95) contrast(1.1);
-}
-
-/* Animation for the spectrum */
-.hover-effect.prism-split:hover .spectrum::before, .hover-effect.prism-split:focus-visible .spectrum::before{
-  animation: spectrum-shift 3s ease-in-out infinite;
-  filter: hue-rotate(0deg) contrast(1.5);
-}
-
-.hover-effect.prism-split:hover .spectrum::after, .hover-effect.prism-split:focus-visible .spectrum::after{
-  animation: spectrum-shift 3s ease-in-out infinite reverse;
-  filter: hue-rotate(180deg) contrast(1.5);
-}
-
-@keyframes spectrum-shift {
-  0%, 100% {
-    clip-path: inset(0 0 0 0);
-    transform: translateX(0);
-  }
-  50% {
-    clip-path: inset(40% 0 40% 0);
-    transform: translateX(10px);
-  }
-}
-
-/* Refraction highlight */
-.hover-effect.prism-split .refraction{
-  position: absolute;
-  inset: 0;
-  background: radial-gradient(
-    ellipse at 30% 30%,
-    rgba(255,255,255,0.3) 0%,
-    transparent 40%
-  );
-  opacity: 0;
   pointer-events: none;
-  mix-blend-mode: screen;
-  transition: opacity 0.4s ease;
-  z-index: 5;
-  border-radius: 8px;
 }
 
-.hover-effect.prism-split:hover .refraction, .hover-effect.prism-split:focus-visible .refraction{
+.hover-effect.prism-split:hover::before,
+.hover-effect.prism-split:focus-visible::before {
   opacity: 1;
-}
-
-/* Reduced motion */
-@media (prefers-reduced-motion: reduce) {
-  .hover-effect.prism-split img, .hover-effect.prism-split::before, .hover-effect.prism-split::after, .hover-effect.prism-split .channel{
-    transition: none;
-  }
-  .hover-effect.prism-split:hover::before, .hover-effect.prism-split:focus-visible::before{
-    transform: translateX(-15px) translateY(-5px);
-  }
-  .hover-effect.prism-split:hover::after, .hover-effect.prism-split:focus-visible::after{
-    transform: translateX(5px) translateY(8px);
-  }
-  .hover-effect.prism-split:hover .channel, .hover-effect.prism-split:focus-visible .channel{
-    transform: translateX(15px) translateY(-2px);
-  }
-  .hover-effect.prism-split .spectrum::before, .hover-effect.prism-split .spectrum::after{
-    animation: none;
-  }
 }

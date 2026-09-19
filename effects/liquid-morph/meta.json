@@ -2,24 +2,12 @@
   "id": "liquid-morph",
   "slug": "liquid-morph",
   "title": "Liquid Morph",
-  "category": "light",
-  "description": "Light hover effect on the image.",
-  "tags": [
-    "animation",
-    "filter",
-    "light",
-    "transform",
-    "transition"
-  ],
+  "category": "distortion",
+  "description": "Hover morphs the wrapper border-radius in a liquid loop with a glossy highlight.",
+  "tags": ["border-radius", "animation", "morph"],
   "complexity": "advanced",
-  "css_features": [
-    "animation",
-    "filter",
-    "pseudo-element",
-    "transform",
-    "transition"
-  ],
+  "css_features": ["animation", "transform", "filter", "pseudo-element"],
   "js_required": false,
   "extra_markup": false,
-  "reduced_motion": "instant"
+  "reduced_motion": "disabled"
 }
