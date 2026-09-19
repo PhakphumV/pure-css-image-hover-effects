@@ -42,3 +42,27 @@
     transform: none;
   }
 }
+
+/* ---- pan-right ---- */
+/* Image enlarged on the left, then slides right so the left edge
+   of the picture slides into view. */
+.hover-effect.pan-right{
+  overflow: hidden;
+}
+.hover-effect.pan-right img{
+  width: calc(100% + 30px);
+  margin-left: -30px;
+  transition: transform 0.45s ease;
+}
+.hover-effect.pan-right:hover img, .hover-effect.pan-right:focus-visible img{
+  transform: translateX(30px);
+}
+@media (prefers-reduced-motion: reduce) {
+  .hover-effect.pan-right img{
+    transition: none;
+  }
+  .hover-effect.pan-right:hover img,
+  .hover-effect.pan-right:focus-visible img{
+    transform: none;
+  }
+}
