@@ -39,3 +39,22 @@
     opacity: 1;
   }
 }
+/* ---- fade-out ---- */
+/* Image starts fully opaque; on hover/focus it fades out to
+   fully transparent. */
+.hover-effect.fade-out img{
+  transition: opacity 0.45s ease;
+}
+.hover-effect.fade-out:hover img,
+.hover-effect.fade-out:focus-visible img{
+  opacity: 0;
+}
+@media (prefers-reduced-motion: reduce) {
+  .hover-effect.fade-out img{
+    transition: none;
+  }
+  .hover-effect.fade-out:hover img,
+  .hover-effect.fade-out:focus-visible img{
+    opacity: 0;
+  }
+}
