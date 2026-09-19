@@ -1,0 +1,13 @@
+{
+  "id": "<slug>",
+  "slug": "<slug>",
+  "title": "<Title>",
+  "category": "<one of: zoom, pan, rotate, 3d, filter, reveal, fade, shadow, light, border, distortion, overlay, composite>",
+  "description": "<one sentence, <=120 chars>",
+  "tags": ["<tag1>", "<tag2>"],
+  "complexity": "simple",
+  "css_features": ["transform", "transition"],
+  "js_required": false,
+  "extra_markup": false,
+  "reduced_motion": "disabled"
+}

@@ -1,0 +1,20 @@
+/*
+ * Template: <effect-class>
+ *
+ * Copy this file into effects/<your-slug>/ and rename the class.
+ * The contract requires:
+ *   - selector targets the wrapper div (CONTRACT.md §2)
+ *   - no JS (CONTRACT.md §1)
+ *   - respects prefers-reduced-motion (handled by styles/base.css)
+ */
+
+.hover-effect.<effect-class> > img {
+  transition: transform 0.4s ease, filter 0.4s ease;
+  will-change: transform, filter;
+}
+
+.hover-effect.<effect-class>:hover > img,
+.hover-effect.<effect-class>:focus-visible > img {
+  /* TODO: define the hover state */
+  transform: scale(1.05);
+}
