@@ -1,7 +1,14 @@
 /**
  * Base Styles - Pure CSS Image Hover Effects
- * Shared styles between gallery index page and effect detail pages
- * Load FIRST, then page-specific styles (gallery.css or effect-page.css)
+ *
+ * Shared stylesheet for every page and every effect. Loaded FIRST by
+ * every HTML file in the repo. Owned by the library, not by any
+ * individual effect (CONTRACT.md §6).
+ *
+ * Implements CONTRACT.md clauses:
+ *   §3 — desktop-only via @media (hover: hover)
+ *   §4 — reduced-motion suppression
+ *   §5 — :focus-visible mirrors :hover
  */
 
 /* ============================================================
@@ -52,6 +59,55 @@ code {
   padding: 0.15em 0.4em;
   border-radius: 4px;
 }
+
+/* ============================================================
+   Effect container — the contract wrapper
+   (CONTRACT.md §2: class on <div>, one <img> child)
+   ============================================================ */
+.hover-effect {
+  position: relative;
+  overflow: hidden;
+  display: inline-block;
+  line-height: 0;
+}
+
+.hover-effect > img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+/* ============================================================
+   Reduced-motion — CONTRACT.md §4
+   Disable every transition and transform when the user opts out.
+   Individual effects MUST NOT override this.
+   ============================================================ */
+@media (prefers-reduced-motion: reduce) {
+  .hover-effect,
+  .hover-effect > img,
+  .hover-effect:hover > img,
+  .hover-effect:focus-visible > img {
+    transition: none !important;
+    animation: none !important;
+    transform: none !important;
+  }
+}
+
+/* ============================================================
+   Keyboard accessibility — CONTRACT.md §5
+   Mirror the :hover state on :focus-visible so keyboard users
+   get the same affordance.
+   ============================================================ */
+.hover-effect:focus-visible {
+  outline: 3px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+/* Each individual effect's effect.css should define:
+     .hover-effect.<effect-class> > img { transition: ... }
+     .hover-effect.<effect-class>:hover > img,
+     .hover-effect.<effect-class>:focus-visible > img { ... }
+*/
 
 /* ============================================================
    Layout - Shared Header & Footer
@@ -197,8 +253,6 @@ footer {
   height: 100%;
   object-fit: cover;
 }
-
-/* NO HOVER TRANSFORM HERE - effects define their own hover behavior in their style.css */
 
 /* ============================================================
    Responsive
