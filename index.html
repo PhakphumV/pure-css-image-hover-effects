@@ -1,843 +1,4216 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Pure CSS image hover effects</title>
-  <meta name="description" content="A curated library of 54 pure-CSS image hover effects. Copy-paste ready. No JavaScript.">
-  <link rel="stylesheet" href="styles/base.css">
-  <link rel="stylesheet" href="styles/catalog.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Pure CSS Image Hover Effects</title>
+<meta name="description" content="54 pure CSS image hover effects. One class on a div containing an img. No JavaScript. Works on every modern desktop browser.">
+<style>
+
+:root {
+  --bg: #fafaf9;
+  --surface: #ffffff;
+  --ink: #1a1a1a;
+  --ink-soft: #4a4a4a;
+  --line: #e7e5e4;
+  --line-soft: #f0eeec;
+  --accent: #0f7a5e;
+  --accent-soft: #ecfdf5;
+  --code-bg: #1f1f1f;
+  --code-ink: #f5f5f4;
+  --code-comment: #a3a3a3;
+  --max: 1280px;
+  --radius: 10px;
+  --radius-sm: 6px;
+}
+
+* { box-sizing: border-box; }
+
+html, body { margin: 0; padding: 0; }
+
+body {
+  background: var(--bg);
+  color: var(--ink);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  font-size: 16px;
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+a { color: var(--accent); text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+.container {
+  max-width: var(--max);
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+/* ---- Hero ---- */
+.hero {
+  padding: 4.5rem 0 2.5rem;
+  border-bottom: 1px solid var(--line);
+}
+
+.hero h1 {
+  margin: 0 0 0.5rem;
+  font-size: clamp(2rem, 4vw, 2.75rem);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1.05;
+}
+
+.hero .lede {
+  margin: 0;
+  font-size: 1.0625rem;
+  color: var(--ink-soft);
+  max-width: 60ch;
+}
+
+.hero .stats {
+  display: flex;
+  gap: 1.5rem;
+  margin-top: 1.5rem;
+  font-size: 0.875rem;
+  color: var(--ink-soft);
+}
+
+.hero .stats strong { color: var(--ink); font-weight: 600; }
+
+/* ---- Nav ---- */
+.nav {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background: rgba(250, 250, 249, 0.92);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border-bottom: 1px solid var(--line);
+}
+
+.nav-inner {
+  display: flex;
+  gap: 0.25rem;
+  overflow-x: auto;
+  padding: 0.75rem 0;
+  scrollbar-width: thin;
+}
+
+.nav-inner a {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.4rem 0.75rem;
+  border-radius: 999px;
+  font-size: 0.8125rem;
+  color: var(--ink-soft);
+  white-space: nowrap;
+  transition: background 0.15s, color 0.15s;
+}
+
+.nav-inner a:hover {
+  background: var(--line-soft);
+  color: var(--ink);
+  text-decoration: none;
+}
+
+.nav-inner .badge {
+  display: inline-block;
+  background: var(--line-soft);
+  color: var(--ink-soft);
+  font-size: 0.6875rem;
+  padding: 0.05rem 0.4rem;
+  border-radius: 999px;
+  font-variant-numeric: tabular-nums;
+}
+
+.nav-inner a:hover .badge { background: #fff; }
+
+/* ---- Category sections ---- */
+.category {
+  padding: 3rem 0 2rem;
+  border-bottom: 1px solid var(--line);
+}
+
+.category:last-of-type { border-bottom: 0; }
+
+.category-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  margin-bottom: 1.5rem;
+}
+
+.category-head h2 {
+  margin: 0;
+  font-size: 1.5rem;
+  font-weight: 600;
+  letter-spacing: -0.015em;
+}
+
+.category-head .count {
+  font-size: 0.8125rem;
+  color: var(--ink-soft);
+  font-variant-numeric: tabular-nums;
+}
+
+/* ---- Grid ---- */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1.25rem;
+}
+
+/* ---- Card ---- */
+.card {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  overflow: hidden;
+  transition: border-color 0.15s, box-shadow 0.15s;
+}
+
+.card:hover { border-color: #d4d4d4; }
+
+.card[open] {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 1px var(--accent), 0 8px 24px -12px rgba(15, 122, 94, 0.25);
+}
+
+.card > summary {
+  display: block;
+  cursor: pointer;
+  list-style: none;
+  padding: 0.875rem;
+}
+
+.card > summary::-webkit-details-marker { display: none; }
+.card > summary::marker { display: none; content: ""; }
+
+.demo {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+  border-radius: var(--radius-sm);
+  background: var(--line-soft);
+  position: relative;
+}
+
+.card-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  margin-top: 0.75rem;
+  gap: 0.5rem;
+}
+
+.card-head h3 {
+  margin: 0;
+  font-size: 0.9375rem;
+  font-weight: 500;
+}
+
+.complexity {
+  font-size: 0.6875rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--ink-soft);
+  background: var(--line-soft);
+  padding: 0.15rem 0.5rem;
+  border-radius: 999px;
+}
+
+/* ---- Code area ---- */
+.card .code {
+  padding: 0 0.875rem 0.875rem;
+  border-top: 1px solid var(--line);
+  margin-top: 0.25rem;
+  padding-top: 0.875rem;
+}
+
+.hint {
+  margin: 0 0 0.75rem;
+  font-size: 0.8125rem;
+  color: var(--ink-soft);
+}
+
+.block { margin-bottom: 0.75rem; }
+.block:last-child { margin-bottom: 0; }
+
+.block-head {
+  font-size: 0.6875rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--ink-soft);
+  margin-bottom: 0.4rem;
+  font-weight: 600;
+}
+
+.block pre {
+  margin: 0;
+  background: var(--code-bg);
+  color: var(--code-ink);
+  padding: 0.75rem 0.875rem;
+  border-radius: var(--radius-sm);
+  overflow-x: auto;
+  font-family: ui-monospace, "SF Mono", Menlo, Monaco, "Cascadia Code", "Roboto Mono", monospace;
+  font-size: 0.8125rem;
+  line-height: 1.6;
+}
+
+.block pre code { font-family: inherit; }
+
+/* ---- Hover effect sizing (scoped to gallery so it doesn't bleed) ---- */
+.gallery .hover-effect {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  overflow: hidden;
+}
+
+.gallery .hover-effect > img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* ---- Footer ---- */
+.footer {
+  padding: 3rem 0 4rem;
+  border-top: 1px solid var(--line);
+  margin-top: 2rem;
+  color: var(--ink-soft);
+  font-size: 0.875rem;
+}
+
+/* ---- Reduced motion ---- */
+@media (prefers-reduced-motion: reduce) {
+  .card, .nav-inner a { transition: none; }
+}
+
+/* ---- Responsive ---- */
+@media (max-width: 640px) {
+  .hero { padding: 3rem 0 1.5rem; }
+  .grid { grid-template-columns: 1fr; }
+  .nav-inner { padding: 0.5rem 0; }
+}
+
+/* ---- Touch device guard (no hover on touch screens) ---- */
+@media (hover: none) {
+  .gallery .hover-effect:hover > img,
+  .gallery .hover-effect:focus-visible > img,
+  .gallery .hover-effect:hover::before,
+  .gallery .hover-effect:hover::after,
+  .gallery .hover-effect:focus-visible::before,
+  .gallery .hover-effect:focus-visible::after {
+    transform: none !important;
+    filter: none !important;
+    clip-path: none !important;
+    opacity: 1 !important;
+    transition: none !important;
+    animation: none !important;
+  }
+}
+
+/* ---- parallax-tilt ---- */
+.hover-effect.parallax-tilt {
+  perspective: 800px;
+}
+
+.hover-effect.parallax-tilt > img {
+  transition: transform 0.4s ease;
+}
+
+.hover-effect.parallax-tilt:hover > img,
+.hover-effect.parallax-tilt:focus-visible > img {
+  transform: rotateX(6deg) rotateY(6deg) scale(1.04);
+}
+
+.hover-effect.parallax-tilt::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 70% 30%, rgba(255, 255, 255, 0.3), transparent 55%);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  pointer-events: none;
+  border-radius: inherit;
+}
+
+.hover-effect.parallax-tilt:hover::before,
+.hover-effect.parallax-tilt:focus-visible::before {
+  opacity: 1;
+}
+
+/* ---- rotate-3d ---- */
+/* Rotate 3D Effect */
+
+.hover-effect.rotate-3d{
+  perspective: 1000px;
+}
+
+.hover-effect.rotate-3d img{
+  transition: transform 0.5s ease-out;
+  transform-style: preserve-3d;
+}
+
+.hover-effect.rotate-3d:hover img, .hover-effect.rotate-3d:focus-visible img{
+  transform: rotateY(20deg) rotateX(-20deg) scale(1.3);
+}
+
+/* ---- magnetic-tilt ---- */
+.hover-effect.magnetic-tilt {
+  perspective: 800px;
+}
+
+.hover-effect.magnetic-tilt > img {
+  transition: transform 0.4s ease, filter 0.4s ease;
+}
+
+.hover-effect.magnetic-tilt:hover > img,
+.hover-effect.magnetic-tilt:focus-visible > img {
+  transform: rotateX(8deg) rotateY(-8deg) scale(1.05);
+  filter: brightness(1.05);
+}
+
+.hover-effect.magnetic-tilt::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.4), transparent 55%);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  pointer-events: none;
+  border-radius: inherit;
+}
+
+.hover-effect.magnetic-tilt:hover::before,
+.hover-effect.magnetic-tilt:focus-visible::before {
+  opacity: 1;
+}
+
+/* ---- depth-layers ---- */
+.hover-effect.depth-layers {
+  perspective: 1000px;
+}
+
+.hover-effect.depth-layers > img {
+  transition: transform 0.5s ease, filter 0.5s ease, box-shadow 0.5s ease;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.hover-effect.depth-layers:hover > img,
+.hover-effect.depth-layers:focus-visible > img {
+  transform: translateZ(40px) scale(1.05);
+  filter: brightness(1.05) contrast(1.05);
+  box-shadow: 0 24px 48px rgba(0, 0, 0, 0.28);
+}
+
+.hover-effect.depth-layers::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at 50% 50%, transparent 55%, rgba(0, 0, 0, 0.18) 100%);
+  opacity: 0;
+  transition: opacity 0.5s ease;
+  pointer-events: none;
+  border-radius: inherit;
+}
+
+.hover-effect.depth-layers:hover::before,
+.hover-effect.depth-layers:focus-visible::before {
+  opacity: 1;
+}
+
+/* ---- flip-horizontal ---- */
+/* Flip Horizontal Effect */
+
+.hover-effect.flip-horizontal{
+  perspective: 1000px;
+}
+
+.hover-effect.flip-horizontal img{
+  transition: transform 0.6s ease;
+  transform-style: preserve-3d;
+}
+
+.hover-effect.flip-horizontal:hover img, .hover-effect.flip-horizontal:focus-visible img{
+  transform: scaleX(-1);
+}
+
+/* ---- flip-vertical ---- */
+/* Flip Vertical Effect */
+
+.hover-effect.flip-vertical{
+  perspective: 1000px;
+}
+
+.hover-effect.flip-vertical img{
+  transition: transform 0.6s ease;
+  transform-style: preserve-3d;
+}
+
+.hover-effect.flip-vertical:hover img, .hover-effect.flip-vertical:focus-visible img{
+  transform: scaleY(-1);
+}
+
+/* ---- tilt-shadow ---- */
+/* Tilt Shadow Effect - Perspective tilt with directional drop shadow */
+
+.hover-effect.tilt-shadow{
+  perspective: 800px;
+  transition: box-shadow 0.35s ease-out;
+}
+
+.hover-effect.tilt-shadow img{
+  transition: transform 0.35s ease-out;
+  transform-style: preserve-3d;
+}
+
+.hover-effect.tilt-shadow:hover, .hover-effect.tilt-shadow:focus-visible{
+  box-shadow: -18px 24px 28px -12px rgba(0,0,0,0.35);
+}
+
+.hover-effect.tilt-shadow:hover img, .hover-effect.tilt-shadow:focus-visible img{
+  transform: rotateX(8deg) rotateY(-12deg) translateZ(10px) scale(1.03);
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .hover-effect.tilt-shadow:hover img, .hover-effect.tilt-shadow:focus-visible img{
+    transform: scale(1.02);
+  }
+  .hover-effect.tilt-shadow:hover, .hover-effect.tilt-shadow:focus-visible{
+    box-shadow: 0 12px 24px rgba(0,0,0,0.2);
+  }
+}
+
+/* ---- horizontal-zoom-n-pan ---- */
+/* Horizontal Zoom & Pan Effect */
+
+.hover-effect.horizontal-zoom-n-pan{
+  overflow: hidden; /* Required for the pan effect to clip */
+}
+
+.hover-effect.horizontal-zoom-n-pan img{
+  transform-origin: 0 center;
+  transition: transform 0.55s ease-in-out;
+  will-change: transform;
+  transform: scale(1.4);
+}
+
+.hover-effect.horizontal-zoom-n-pan:hover img, .hover-effect.horizontal-zoom-n-pan:focus-visible img{
+  transform: scale(1.5) translateX(-30%);
+}
+
+/* ---- vertical-zoom-n-pan ---- */
+.hover-effect.vertical-zoom-n-pan{
+  max-width: 100%;
+}
+
+.hover-effect.vertical-zoom-n-pan img{
+  transform-origin: center 0;
+  transition: transform 0.55s ease-in-out;
+  will-change: transform;
+  transform: scale(1.4);
+}
+
+.hover-effect.vertical-zoom-n-pan:hover img, .hover-effect.vertical-zoom-n-pan:focus-visible img{
+  transform: scale(1.5) translateY(-30%);
+}
+
+/* ---- zoom-rotate ---- */
+/* Zoom Rotate Effect */
+
+.hover-effect.zoom-rotate img{
+  transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.hover-effect.zoom-rotate:hover img, .hover-effect.zoom-rotate:focus-visible img{
+  transform: scale(1.2) rotate(3deg);
+}
+
+/* ---- liquid-morph ---- */
+.hover-effect.liquid-morph {
+  transition: border-radius 0.5s ease;
+}
+
+.hover-effect.liquid-morph > img {
+  transition: transform 0.5s ease, filter 0.5s ease;
+}
+
+.hover-effect.liquid-morph:hover,
+.hover-effect.liquid-morph:focus-visible {
+  border-radius: 40% 60% 70% 30% / 40% 50% 60% 50%;
+  animation: liquid-morph-anim 3s ease-in-out infinite;
+}
+
+.hover-effect.liquid-morph:hover > img,
+.hover-effect.liquid-morph:focus-visible > img {
+  transform: scale(1.08);
+  filter: saturate(1.2);
+}
+
+@keyframes liquid-morph-anim {
+  0%, 100% { border-radius: 40% 60% 70% 30% / 40% 50% 60% 50%; }
+  50%      { border-radius: 60% 40% 30% 70% / 60% 50% 40% 50%; }
+}
+
+.hover-effect.liquid-morph::before {
+  content: "";
+  position: absolute;
+  inset: -8%;
+  background: radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.25), transparent 60%);
+  border-radius: inherit;
+  opacity: 0;
+  transition: opacity 0.5s ease;
+  pointer-events: none;
+}
+
+.hover-effect.liquid-morph:hover::before,
+.hover-effect.liquid-morph:focus-visible::before {
+  opacity: 1;
+}
+
+/* ---- corner-frame ---- */
+/* Corner Frame Effect - Camera-style corner brackets snap into place */
+
+.hover-effect.corner-frame{
+  position: relative;
+  overflow: visible;
+  padding: 10px;
+}
+
+.hover-effect.corner-frame img{
+  transition: transform 0.35s ease-out;
+}
+
+.hover-effect.corner-frame::before, .hover-effect.corner-frame::after{
+  content: '';
+  position: absolute;
+  width: 22px;
+  height: 22px;
+  border-color: var(--color-primary, #2563eb);
+  border-style: solid;
+  border-width: 0;
+  opacity: 0;
+  transition: opacity 0.3s ease-out, transform 0.3s ease-out;
+}
+
+.hover-effect.corner-frame::before{
+  top: 0; left: 0;
+  border-top-width: 3px;
+  border-left-width: 3px;
+  transform: translate(8px, 8px);
+}
+
+.hover-effect.corner-frame::after{
+  bottom: 0; right: 0;
+  border-bottom-width: 3px;
+  border-right-width: 3px;
+  transform: translate(-8px, -8px);
+}
+
+.hover-effect.corner-frame:hover::before, .hover-effect.corner-frame:hover::after, .hover-effect.corner-frame:focus-visible::before, .hover-effect.corner-frame:focus-visible::after{
+  opacity: 1;
+  transform: translate(0, 0);
+}
+
+.hover-effect.corner-frame:hover img, .hover-effect.corner-frame:focus-visible img{
+  transform: scale(1.03);
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .hover-effect.corner-frame::before, .hover-effect.corner-frame::after{
+    transition: opacity 0.2s ease;
+    transform: translate(0, 0);
+    opacity: 0.5;
+  }
+  .hover-effect.corner-frame:hover::before, .hover-effect.corner-frame:hover::after, .hover-effect.corner-frame:focus-visible::before, .hover-effect.corner-frame:focus-visible::after{
+    opacity: 1;
+  }
+}
+
+/* ---- blur-sharpen ---- */
+/* Blur to Sharp Effect */
+
+.hover-effect.blur-sharpen img{
+  filter: blur(4px) grayscale(0.5);
+  transition: filter 0.4s ease-out, transform 0.4s ease-out;
+}
+
+.hover-effect.blur-sharpen:hover img, .hover-effect.blur-sharpen:focus-visible img{
+  filter: blur(0) grayscale(0);
+  transform: scale(1.05);
+}
+
+/* ---- contrast-punch ---- */
+/* Contrast Punch Effect */
+
+.hover-effect.contrast-punch img{
+  filter: contrast(1);
+  transition: filter 0.3s ease;
+}
+
+.hover-effect.contrast-punch:hover img, .hover-effect.contrast-punch:focus-visible img{
+  filter: contrast(1.5);
+}
+
+/* ---- contrast-soften ---- */
+/* Contrast Soften Effect */
+
+.hover-effect.contrast-soften img{
+  filter: contrast(1);
+  transition: filter 0.3s ease;
+}
+
+.hover-effect.contrast-soften:hover img, .hover-effect.contrast-soften:focus-visible img{
+  filter: contrast(0.6);
+}
+
+/* ---- duotone ---- */
+/* Duotone Effect */
+
+.hover-effect.duotone img{
+  filter: grayscale(1) contrast(1.2) sepia(1) hue-rotate(180deg) saturate(5);
+  transition: filter 0.4s ease-out, transform 0.4s ease-out;
+}
+
+.hover-effect.duotone:hover img, .hover-effect.duotone:focus-visible img{
+  filter: grayscale(0) contrast(1) sepia(0) hue-rotate(0) saturate(1);
+  transform: scale(1.05);
+}
+
+/* ---- fade-colorize ---- */
+/* Fade Colorize Effect */
+
+.hover-effect.fade-colorize img{
+  filter: grayscale(1);
+  transition: filter 0.4s ease-out, transform 0.4s ease-out;
+}
+
+.hover-effect.fade-colorize:hover img, .hover-effect.fade-colorize:focus-visible img{
+  filter: grayscale(0);
+  transform: scale(1.05);
+}
+
+/* ---- invert-flash ---- */
+/* Invert Flash Effect */
+
+.hover-effect.invert-flash img{
+  filter: invert(0);
+  transition: filter 0.1s ease;
+}
+
+.hover-effect.invert-flash:hover img, .hover-effect.invert-flash:focus-visible img{
+  animation: invert-flash 0.15s ease;
+}
+
+@keyframes invert-flash {
+  0%   { filter: invert(0); }
+  50%  { filter: invert(1); }
+  100% { filter: invert(0); }
+}
+
+/* ---- sepia-in ---- */
+.hover-effect.sepia-in{
+}
+.hover-effect.sepia-in img{
+  filter: sepia(1);
+  transition: filter 0.5s ease;
+}
+.hover-effect.sepia-in:hover img, .hover-effect.sepia-in:focus-visible img{
+  filter: sepia(0);
+}
+
+/* ---- holographic-shimmer ---- */
+.hover-effect.holographic-shimmer > img {
+  transition: filter 0.4s ease, transform 0.4s ease;
+}
+
+.hover-effect.holographic-shimmer:hover > img,
+.hover-effect.holographic-shimmer:focus-visible > img {
+  filter: hue-rotate(45deg) saturate(1.5) brightness(1.05);
+  transform: scale(1.03);
+}
+
+.hover-effect.holographic-shimmer::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    105deg,
+    transparent 30%,
+    rgba(255, 255, 255, 0.3) 48%,
+    rgba(255, 255, 255, 0.5) 50%,
+    rgba(255, 255, 255, 0.3) 52%,
+    transparent 70%
+  );
+  transform: translateX(-100%);
+  transition: transform 0.6s ease;
+  pointer-events: none;
+}
+
+.hover-effect.holographic-shimmer:hover::before,
+.hover-effect.holographic-shimmer:focus-visible::before {
+  transform: translateX(100%);
+}
+
+/* ---- magnetic-glow ---- */
+/* Magnetic Glow Effect - Glowing ring follows cursor with magnetic attraction */
+
+.hover-effect.magnetic-glow{
+}
+
+.hover-effect.magnetic-glow img{
+  transition: transform 0.3s ease-out, filter 0.3s ease-out;
+}
+
+/* Magnetic glow ring */
+.hover-effect.magnetic-glow::before{
+  content: '';
+  position: absolute;
+  inset: -8px;
+  border-radius: 16px;
+  box-shadow: 
+    0 0 20px 4px rgba(37, 99, 235, 0),
+    0 0 40px 8px rgba(37, 99, 235, 0),
+    inset 0 0 20px 4px rgba(37, 99, 235, 0);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease-out, box-shadow 0.15s ease-out;
+  z-index: 1;
+}
+
+/* Inner glow highlight */
+.hover-effect.magnetic-glow::after{
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 12px;
+  background: radial-gradient(
+    ellipse at center,
+    rgba(255,255,255,0.15) 0%,
+    transparent 70%
+  );
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease-out;
+  z-index: 2;
+  mix-blend-mode: screen;
+}
+
+/* Hover state */
+.hover-effect.magnetic-glow:hover::before, .hover-effect.magnetic-glow:focus-visible::before{
+  opacity: 1;
+  box-shadow: 
+    0 0 30px 8px rgba(37, 99, 235, 0.6),
+    0 0 60px 16px rgba(37, 99, 235, 0.3),
+    inset 0 0 30px 8px rgba(37, 99, 235, 0.2);
+}
+
+.hover-effect.magnetic-glow:hover::after, .hover-effect.magnetic-glow:focus-visible::after{
+  opacity: 1;
+}
+
+.hover-effect.magnetic-glow:hover img, .hover-effect.magnetic-glow:focus-visible img{
+  transform: scale(1.02);
+  filter: brightness(1.05) contrast(1.03);
+}
+
+/* Active magnetic state (when JS adds .magnetic-active) */
+.hover-effect.magnetic-glow.magnetic-active::before{
+  transition: box-shadow 0.05s ease-out;
+}
+
+/* CSS-only fallback: static glow on hover */
+@media (prefers-reduced-motion: reduce) {
+  .hover-effect.magnetic-glow::before, .hover-effect.magnetic-glow::after, .hover-effect.magnetic-glow img{
+    transition: opacity 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  .hover-effect.magnetic-glow:hover::before, .hover-effect.magnetic-glow:focus-visible::before{
+    box-shadow: 
+      0 0 30px 8px rgba(37, 99, 235, 0.6),
+      0 0 60px 16px rgba(37, 99, 235, 0.3),
+      inset 0 0 30px 8px rgba(37, 99, 235, 0.2);
+  }
+}
+
+/* ---- shine-sweep ---- */
+/* Shine Sweep Effect - Diagonal light sweep like glossy reflection */
+
+.hover-effect.shine-sweep{
+}
+
+.hover-effect.shine-sweep img{
+  transition: transform 0.4s ease-out, filter 0.4s ease-out;
+}
+
+/* Shine gradient sweep */
+.hover-effect.shine-sweep::before{
+  content: '';
+  position: absolute;
+  inset: -50%;
+  background: linear-gradient(
+    110deg,
+    transparent 0%,
+    rgba(255,255,255,0) 40%,
+    rgba(255,255,255,0.4) 50%,
+    rgba(255,255,255,0.6) 52%,
+    rgba(255,255,255,0.4) 54%,
+    rgba(255,255,255,0) 60%,
+    transparent 100%
+  );
+  opacity: 0;
+  pointer-events: none;
+  transform: translateX(-150%) rotate(-20deg);
+  transition: opacity 0.2s ease, transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  z-index: 1;
+  border-radius: 8px;
+}
+
+.hover-effect.shine-sweep:hover::before, .hover-effect.shine-sweep:focus-visible::before{
+  opacity: 1;
+  transform: translateX(150%) rotate(-20deg);
+}
+
+.hover-effect.shine-sweep:hover img, .hover-effect.shine-sweep:focus-visible img{
+  transform: scale(1.02);
+  filter: brightness(1.05) contrast(1.02);
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .hover-effect.shine-sweep::before{
+    transition: none;
+    transform: translateX(0) rotate(-20deg);
+    opacity: 0.3;
+  }
+  .hover-effect.shine-sweep:hover::before, .hover-effect.shine-sweep:focus-visible::before{
+    transform: translateX(0) rotate(-20deg);
+  }
+}
+
+/* ---- zoom-brightness ---- */
+.hover-effect.zoom-brightness{
+}
+.hover-effect.zoom-brightness img{
+  transition: transform 2s, filter 1.5s ease-in-out;
+  transform-origin: center center;
+  filter: brightness(50%);
+}
+.hover-effect.zoom-brightness:hover img, .hover-effect.zoom-brightness:focus-visible img{
+  filter: brightness(100%);
+  transform: scale(1.3);
+}
+
+/* ---- zoom-in-slowmo ---- */
+.hover-effect.zoom-in-slowmo{
+}
+.hover-effect.zoom-in-slowmo img{
+  transform-origin: 50% 65%;
+  transition: transform 5s, filter 3s ease-in-out;
+  filter: brightness(150%);
+}
+.hover-effect.zoom-in-slowmo:hover img, .hover-effect.zoom-in-slowmo:focus-visible img{
+  filter: brightness(100%);
+  transform: scale(3);
+}
+
+/* ---- color-splash ---- */
+/* Color Splash Effect */
+
+.hover-effect.color-splash{
+  position: relative;
+  overflow: visible;
+}
+
+.hover-effect.color-splash::after{
+  content: "";
+  position: absolute;
+  inset: 50%;
+  width: 0;
+  height: 0;
+  border-radius: 50%;
+  background: rgba(255,127,80,0.8);
+  transform: translate(-50%, -50%);
+  transition: width .3s, height .3s;
+}
+
+.hover-effect.color-splash:hover::after, .hover-effect.color-splash:focus-visible::after{
+  width: 300%;
+  height: 300%;
+}
+
+/* ---- glass-mosaic ---- */
+/* Glass Mosaic Effect */
+
+.hover-effect.glass-mosaic::after{
+  content: "";
+  position: absolute;
+  inset: 0;
+  backdrop-filter: blur(4px) saturate(150%);
+  opacity: 0.6;
+  pointer-events: none;
+  transition: opacity 0.3s;
+}
+
+.hover-effect.glass-mosaic:hover::after, .hover-effect.glass-mosaic:focus-visible::after{
+  opacity: 0.2;
+}
+
+/* ---- ink-drop ---- */
+/* Ink Drop Effect */
+
+.hover-effect.ink-drop::after{
+  content: "";
+  position: absolute;
+  inset: 50%;
+  width: 0;
+  height: 0;
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.1);
+  transform: translate(-50%, -50%);
+  transition: width 0.3s, height 0.3s;
+}
+
+.hover-effect.ink-drop:hover::after, .hover-effect.ink-drop:focus-visible::after{
+  width: 200%;
+  height: 200%;
+}
+
+/* ---- overlay-fade-in-neon-grid ---- */
+.hover-effect.overlay-fade-in-neon-grid{
+}
+
+.hover-effect.overlay-fade-in-neon-grid::after{
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    transition: opacity .5s ease, background-size .5s ease;
+    background-size: 10px 10px;
+    background-position: center center;
+    background-image: linear-gradient(rgba(0, 255, 255, .5) 1px, transparent 1px), linear-gradient(90deg, rgba(0, 255, 255, .5) 1px, transparent 1px);
+    opacity: 0;
+}
+
+.hover-effect.overlay-fade-in-neon-grid img{}
+
+.hover-effect.overlay-fade-in-neon-grid:hover img, .hover-effect.overlay-fade-in-neon-grid:focus-visible img{}
+
+.hover-effect.overlay-fade-in-neon-grid:hover::after, .hover-effect.overlay-fade-in-neon-grid:focus-visible::after{
+    opacity: 1;
+    background-size: 40px 40px;
+}
+
+/* ---- radial-in ---- */
+.hover-effect.radial-in{
+}
+.hover-effect.radial-in img{
+}
+.hover-effect.radial-in::before{
+  content: '';
+  position: absolute;
+  top: 50%; left: 50%;
+  width: 100%; height: 100%;
+  background: white;
+  border-radius: 50%;
+  transform: translate(-50%, -50%) scale(1.5);
+  transform-origin: center;
+  transition: transform 0.6s ease;
+  pointer-events: none;
+  z-index: 1;
+}
+.hover-effect.radial-in:hover::before, .hover-effect.radial-in:focus-visible::before{
+  transform: translate(-50%, -50%) scale(0);
+}
+
+/* ---- radial-out ---- */
+.hover-effect.radial-out{
+}
+.hover-effect.radial-out img{
+}
+.hover-effect.radial-out::before{
+  content: '';
+  position: absolute;
+  top: 50%; left: 50%;
+  width: 100%; height: 100%;
+  background: white;
+  border-radius: 50%;
+  transform: translate(-50%, -50%) scale(0);
+  transform-origin: center;
+  transition: transform 0.6s ease;
+  pointer-events: none;
+  z-index: 1;
+}
+.hover-effect.radial-out:hover::before, .hover-effect.radial-out:focus-visible::before{
+  transform: translate(-50%, -50%) scale(1.5);
+}
+
+/* ---- rectangle-in ---- */
+.hover-effect.rectangle-in{
+}
+.hover-effect.rectangle-in img{
+}
+.hover-effect.rectangle-in::before{
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: white;
+  transform: scale(1.5);
+  transform-origin: center;
+  transition: transform 0.6s ease;
+  pointer-events: none;
+  z-index: 1;
+}
+.hover-effect.rectangle-in:hover::before, .hover-effect.rectangle-in:focus-visible::before{
+  transform: scale(0);
+}
+
+/* ---- rectangle-out ---- */
+.hover-effect.rectangle-out{
+}
+.hover-effect.rectangle-out img{
+}
+.hover-effect.rectangle-out::before{
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: white;
+  transform: scale(0);
+  transform-origin: center;
+  transition: transform 0.6s ease;
+  pointer-events: none;
+  z-index: 1;
+}
+.hover-effect.rectangle-out:hover::before, .hover-effect.rectangle-out:focus-visible::before{
+  transform: scale(1.5);
+}
+
+/* ---- refraction-lens ---- */
+/* Refraction Lens Effect */
+
+.hover-effect.refraction-lens{
+}
+
+.hover-effect.refraction-lens::after{
+  content: "";
+  position: absolute;
+  border-radius: 50%;
+  width: 120px; height: 120px;
+  background: linear-gradient(rgba(255,255,255,0.8), transparent);
+  transform: translate(-50%, -50%) scale(1);
+  pointer-events: none;
+  transition: transform .3s;
+}
+
+.hover-effect.refraction-lens:hover::after, .hover-effect.refraction-lens:focus-visible::after{
+  transform: translate(-50%, -50%) scale(1.5);
+}
+
+/* ---- vignette ---- */
+/* Vignette Effect */
+
+.hover-effect.vignette{
+  position: relative;
+}
+
+.hover-effect.vignette img{
+  transition: transform 0.4s ease-out;
+}
+
+.hover-effect.vignette::after{
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at center, transparent 50%, rgba(0,0,0,0.6) 100%);
+  opacity: 0;
+  transition: opacity 0.4s ease-out;
+  pointer-events: none;
+  border-radius: var(--radius);
+}
+
+.hover-effect.vignette:hover::after, .hover-effect.vignette:focus-visible::after{
+  opacity: 1;
+}
+
+.hover-effect.vignette:hover img, .hover-effect.vignette:focus-visible img{
+  transform: scale(1.1);
+}
+
+/* ---- bounce-bottom ---- */
+/* Bounce Bottom Effect */
+
+.hover-effect.bounce-bottom img{
+  position: relative;
+  top: 0;
+  transition: top 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+.hover-effect.bounce-bottom:hover img, .hover-effect.bounce-bottom:focus-visible img{
+  top: 100%;
+}
+
+/* ---- bounce-left ---- */
+/* Bounce Left Effect */
+
+.hover-effect.bounce-left img{
+  position: relative;
+  left: 0;
+  transition: left 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+.hover-effect.bounce-left:hover img, .hover-effect.bounce-left:focus-visible img{
+  left: -100%;
+}
+
+/* ---- bounce-right ---- */
+/* Bounce Right Effect */
+
+.hover-effect.bounce-right img{
+  position: relative;
+  left: 0;
+  transition: left 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+.hover-effect.bounce-right:hover img, .hover-effect.bounce-right:focus-visible img{
+  left: 100%;
+}
+
+/* ---- bounce-top ---- */
+/* Bounce Top Effect */
+
+.hover-effect.bounce-top img{
+  position: relative;
+  top: 0;
+  transition: top 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+.hover-effect.bounce-top:hover img, .hover-effect.bounce-top:focus-visible img{
+  top: -100%;
+}
+
+/* ---- slide-reveal-right ---- */
+/* placeholder */
+.hover-effect.slide-reveal-right{
+}
+.hover-effect.slide-reveal-right img{
+  right: 0;
+  transition: width 0.4s ease-out;
+}
+.hover-effect.slide-reveal-right:hover img, .hover-effect.slide-reveal-right:focus-visible img{
+  width: 100%;
+}
+
+/* ---- clip-reveal ---- */
+/* Clip Reveal Effect */
+
+.hover-effect.clip-reveal img{
+  clip-path: inset(0 50% 0 50%);
+  transition: clip-path 0.5s ease-out, transform 0.5s ease-out;
+}
+
+.hover-effect.clip-reveal:hover img, .hover-effect.clip-reveal:focus-visible img{
+  clip-path: inset(0 0 0 0);
+  transform: scale(1.1);
+}
+
+/* ---- glitch-shift ---- */
+.hover-effect.glitch-shift > img {
+  transition: filter 0.15s steps(2, end);
+  position: relative;
+}
+
+.hover-effect.glitch-shift:hover > img,
+.hover-effect.glitch-shift:focus-visible > img {
+  animation: glitch-shift-anim 0.4s steps(2, end) infinite;
+  filter: hue-rotate(-15deg) contrast(1.2);
+}
+
+@keyframes glitch-shift-anim {
+  0%   { clip-path: inset(10% 0 60% 0); transform: translate(0, 0); }
+  33%  { clip-path: inset(50% 0 10% 0); transform: translate(-3px, 1px); }
+  66%  { clip-path: inset(20% 0 40% 0); transform: translate(2px, -1px); }
+  100% { clip-path: inset(10% 0 60% 0); transform: translate(0, 0); }
+}
+
+.hover-effect.glitch-shift::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 2px,
+    rgba(0, 0, 0, 0.08) 2px,
+    rgba(0, 0, 0, 0.08) 4px
+  );
+  opacity: 0;
+  transition: opacity 0.2s ease;
+  pointer-events: none;
+}
+
+.hover-effect.glitch-shift:hover::after,
+.hover-effect.glitch-shift:focus-visible::after {
+  opacity: 1;
+}
+
+/* ---- glitch-slice ---- */
+.hover-effect.glitch-slice > img {
+  transition: filter 0.15s steps(3, end);
+}
+
+.hover-effect.glitch-slice:hover > img,
+.hover-effect.glitch-slice:focus-visible > img {
+  animation: glitch-slice-anim 0.5s steps(4, end) infinite;
+  filter: hue-rotate(20deg) contrast(1.15);
+}
+
+@keyframes glitch-slice-anim {
+  0%   { clip-path: inset(20% 0 60% 0); transform: translate(0, 0); }
+  25%  { clip-path: inset(60% 0 10% 0); transform: translate(-4px, 0); }
+  50%  { clip-path: inset(10% 0 40% 0); transform: translate(4px, 0); }
+  75%  { clip-path: inset(40% 0 30% 0); transform: translate(-2px, 0); }
+  100% { clip-path: inset(20% 0 60% 0); transform: translate(0, 0); }
+}
+
+.hover-effect.glitch-slice::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    90deg,
+    rgba(255, 0, 0, 0.12),
+    rgba(0, 255, 0, 0.12),
+    rgba(0, 0, 255, 0.12)
+  );
+  mix-blend-mode: screen;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+  pointer-events: none;
+}
+
+.hover-effect.glitch-slice:hover::before,
+.hover-effect.glitch-slice:focus-visible::before {
+  opacity: 1;
+}
+
+/* ---- origami-fold ---- */
+.hover-effect.origami-fold > img {
+  transition: clip-path 0.5s ease, transform 0.5s ease, filter 0.5s ease;
+}
+
+.hover-effect.origami-fold:hover > img,
+.hover-effect.origami-fold:focus-visible > img {
+  clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+  transform: scale(0.95);
+  filter: contrast(1.1) brightness(1.05);
+}
+
+.hover-effect.origami-fold::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    135deg,
+    transparent 40%,
+    rgba(0, 0, 0, 0.12) 50%,
+    transparent 60%
+  );
+  opacity: 0;
+  transition: opacity 0.5s ease;
+  pointer-events: none;
+}
+
+.hover-effect.origami-fold:hover::before,
+.hover-effect.origami-fold:focus-visible::before {
+  opacity: 1;
+}
+
+.hover-effect.origami-fold::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    45deg,
+    transparent 48%,
+    rgba(0, 0, 0, 0.08) 50%,
+    transparent 52%
+  );
+  opacity: 0;
+  transition: opacity 0.5s ease;
+  pointer-events: none;
+}
+
+.hover-effect.origami-fold:hover::after,
+.hover-effect.origami-fold:focus-visible::after {
+  opacity: 1;
+}
+
+/* ---- prism-split ---- */
+.hover-effect.prism-split > img {
+  transition: filter 0.4s ease, transform 0.4s ease;
+}
+
+.hover-effect.prism-split:hover > img,
+.hover-effect.prism-split:focus-visible > img {
+  filter: hue-rotate(30deg) saturate(1.8) brightness(1.1);
+  transform: scale(1.03);
+}
+
+.hover-effect.prism-split::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    90deg,
+    rgba(255, 0, 0, 0.15) 0%,
+    rgba(0, 255, 0, 0.15) 50%,
+    rgba(0, 0, 255, 0.15) 100%
+  );
+  mix-blend-mode: screen;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  pointer-events: none;
+}
+
+.hover-effect.prism-split:hover::before,
+.hover-effect.prism-split:focus-visible::before {
+  opacity: 1;
+}
+
+/* ---- swipe-reveal ---- */
+/* Swipe Reveal Effect - Split swipe reveals alternate color layer */
+
+.hover-effect.swipe-reveal{
+}
+
+.hover-effect.swipe-reveal img{
+  transition: transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+/* Reveal layer - slides in from left */
+.hover-effect.swipe-reveal::before{
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  clip-path: inset(0 100% 0 0);
+  transition: clip-path 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  z-index: 1;
+}
+
+/* Overlay text/content on reveal layer */
+.hover-effect.swipe-reveal::after{
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: inherit;
+  background-size: cover;
+  background-position: center;
+  clip-path: inset(0 0 0 100%);
+  opacity: 0;
+  transition: clip-path 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+              opacity 0.3s ease 0.2s;
+  z-index: 2;
+}
+
+/* Hover - swipe reveals */
+.hover-effect.swipe-reveal:hover::before, .hover-effect.swipe-reveal:focus-visible::before{
+  clip-path: inset(0 0 0 0);
+}
+
+.hover-effect.swipe-reveal:hover::after, .hover-effect.swipe-reveal:focus-visible::after{
+  clip-path: inset(0 0 0 0);
+  opacity: 1;
+}
+
+.hover-effect.swipe-reveal:hover img, .hover-effect.swipe-reveal:focus-visible img{
+  transform: scale(1.02);
+  filter: brightness(1.05);
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .hover-effect.swipe-reveal img, .hover-effect.swipe-reveal::before, .hover-effect.swipe-reveal::after{
+    transition: none;
+  }
+  .hover-effect.swipe-reveal:hover::before, .hover-effect.swipe-reveal:hover::after, .hover-effect.swipe-reveal:focus-visible::before, .hover-effect.swipe-reveal:focus-visible::after{
+    clip-path: inset(0 0 0 0);
+  }
+  .hover-effect.swipe-reveal:hover::after, .hover-effect.swipe-reveal:focus-visible::after{
+    opacity: 1;
+  }
+  .hover-effect.swipe-reveal:hover img, .hover-effect.swipe-reveal:focus-visible img{
+    transform: scale(1.02);
+  }
+}
+
+/* ---- glow-border ---- */
+/* Glow Border Effect */
+
+.hover-effect.glow-border{
+  overflow: visible; /* Allow box-shadow to extend beyond container */
+  transition: box-shadow 0.3s ease-in-out;
+}
+
+.hover-effect.glow-border img{
+  /* Image styling handled by base.css */
+}
+
+.hover-effect.glow-border:hover, .hover-effect.glow-border:focus-visible{
+  box-shadow: 0 0 20px 4px #2563eb;
+}
+
+/* ---- neon-pulse ---- */
+/* Neon Pulse Effect - Pulsing neon glow cycles color around border */
+
+.hover-effect.neon-pulse{
+  border: 1px solid var(--color-border, #e5e5e5);
+  transition: border-color 0.3s ease-out;
+}
+
+.hover-effect.neon-pulse img{
+}
+
+.hover-effect.neon-pulse:hover, .hover-effect.neon-pulse:focus-visible{
+  border-color: transparent;
+  animation: neon-pulse-glow 1.6s ease-in-out infinite;
+}
+
+@keyframes neon-pulse-glow {
+  0%, 100% { box-shadow: 0 0 8px 2px #2563eb, 0 0 20px 6px rgba(37,99,235,0.5); }
+  50%      { box-shadow: 0 0 14px 4px #d946ef, 0 0 30px 10px rgba(217,70,239,0.6); }
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .hover-effect.neon-pulse:hover, .hover-effect.neon-pulse:focus-visible{
+    animation: none;
+    box-shadow: 0 0 8px 2px #2563eb, 0 0 20px 6px rgba(37,99,235,0.5);
+    border-color: #2563eb;
+  }
+}
+
+/* ---- shadow-drop ---- */
+.hover-effect.shadow-drop{
+}
+.hover-effect.shadow-drop img{
+  box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.4);
+  transition: box-shadow 0.4s ease;
+}
+.hover-effect.shadow-drop:hover img, .hover-effect.shadow-drop:focus-visible img{
+  box-shadow: none;
+}
+
+/* ---- shadow-lift ---- */
+.hover-effect.shadow-lift{
+}
+.hover-effect.shadow-lift img{
+  box-shadow: none;
+  transition: box-shadow 0.4s ease;
+}
+.hover-effect.shadow-lift:hover img, .hover-effect.shadow-lift:focus-visible img{
+  box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.4);
+}
+
+/* ---- point-zoom ---- */
+.hover-effect.point-zoom{
+}
+.hover-effect.point-zoom img{
+  transform-origin: 65% 75%;
+  transition: transform 1s, filter 0.5s ease-out;
+}
+.hover-effect.point-zoom:hover img, .hover-effect.point-zoom:focus-visible img{
+  transform: scale(5);
+}
+
+/* ---- quick-zoom ---- */
+.hover-effect.quick-zoom{
+}
+.hover-effect.quick-zoom img{
+  transform-origin: 0 0;
+  transition: transform 0.25s, visibility 0.25s ease-in;
+}
+.hover-effect.quick-zoom:hover img, .hover-effect.quick-zoom:focus-visible img{
+  transform: scale(2);
+}
+
+/* ---- slide-reveal ---- */
+/* Slide Reveal Effect */
+
+.hover-effect.slide-reveal img{
+  display: block;
+  width: 0;
+  height: 100%;
+  transition: width 0.4s ease-out;
+}
+
+.hover-effect.slide-reveal:hover img, .hover-effect.slide-reveal:focus-visible img{
+  width: 100%;
+}
+
+/* ---- zoom-in ---- */
+/* Zoom In Effect */
+
+.hover-effect.zoom-in img{
+  transition: transform 0.45s ease;
+}
+
+.hover-effect.zoom-in:hover img, .hover-effect.zoom-in:focus-visible img{
+  transform: scale(1.18);
+}
+
+/* ---- zoom-out ---- */
+.hover-effect.zoom-out{
+}
+.hover-effect.zoom-out img{
+  transition: transform .45s ease;
+  transform: scale(1.2);
+}
+.hover-effect.zoom-out:hover img, .hover-effect.zoom-out:focus-visible img{
+  transform: scale(1);
+}
+
+</style>
 </head>
 <body>
+<div class="container">
   <header class="hero">
-    <h1 class="hero__title">Pure CSS image hover effects</h1>
-    <p class="hero__sub">54 effects. One class on a div. No JavaScript.</p>
-    <p class="hero__meta">
-      <a href="CONTRACT.md">Contract</a>
-      <span aria-hidden="true">/</span>
-      <a href="META_SCHEMA.md">Schema</a>
-      <span aria-hidden="true">/</span>
-      <a href="BROWSER_SUPPORT.md">Browser support</a>
-      <span aria-hidden="true">/</span>
-      <a href="ACCESSIBILITY.md">Accessibility</a>
-    </p>
+    <h1>Pure CSS Image Hover Effects</h1>
+    <p class="lede">A library of 54 image hover effects built with one CSS class on a <code><div></code> containing an <code><img></code>. No JavaScript. No build step. Works on every modern desktop browser.</p>
+    <div class="stats">
+      <span><strong>54</strong> effects</span>
+      <span><strong>11</strong> categories</span>
+      <span><strong>0</strong> lines of JavaScript</span>
+    </div>
   </header>
-
-    <section class="featured" aria-label="Featured effects">
-      <div class="featured__grid">
-    <a class="card card--featured" href="effects/zoom-in/index.html" data-category="zoom">
-      <div class="card__media card__media--featured">
-        <div class="hover-effect zoom-in" aria-hidden="true">
-          <img src="https://picsum.photos/seed/zoom-in/900/600" alt="" loading="lazy">
-        </div>
-      </div>
-      <div class="card__body">
-        <span class="card__badge">zoom</span>
-        <h3 class="card__title">Zoom In</h3>
-        <p class="card__desc">Zoom hover effect on the image.</p>
-        <div class="card__tags"><span class="card__tag">transform</span> <span class="card__tag">transition</span> <span class="card__tag">zoom</span></div>
-      </div>
-    </a>
-    <a class="card card--featured" href="effects/shine-sweep/index.html" data-category="light">
-      <div class="card__media card__media--featured">
-        <div class="hover-effect shine-sweep" aria-hidden="true">
-          <img src="https://picsum.photos/seed/shine-sweep/900/600" alt="" loading="lazy">
-        </div>
-      </div>
-      <div class="card__body">
-        <span class="card__badge">light</span>
-        <h3 class="card__title">Shine Sweep</h3>
-        <p class="card__desc">Light hover effect on the image.</p>
-        <div class="card__tags"><span class="card__tag">filter</span> <span class="card__tag">light</span> <span class="card__tag">transform</span> <span class="card__tag">transition</span></div>
-      </div>
-    </a>
-    <a class="card card--featured" href="effects/glitch-shift/index.html" data-category="reveal">
-      <div class="card__media card__media--featured">
-        <div class="hover-effect glitch-shift" aria-hidden="true">
-          <img src="https://picsum.photos/seed/glitch-shift/900/600" alt="" loading="lazy">
-        </div>
-      </div>
-      <div class="card__body">
-        <span class="card__badge">reveal</span>
-        <h3 class="card__title">Glitch Shift</h3>
-        <p class="card__desc">Reveal hover effect on the image.</p>
-        <div class="card__tags"><span class="card__tag">animation</span> <span class="card__tag">clip-path</span> <span class="card__tag">filter</span> <span class="card__tag">reveal</span></div>
-      </div>
-    </a>
-      </div>
-    </section>
-
-  <nav class="filter" aria-label="Filter by category">
-      <label class="filter__pill"><input type="radio" name="cat" value="all" checked><span>All <small>(54)</small></span></label>
-      <label class="filter__pill"><input type="radio" name="cat" value="zoom"><span>Zoom <small>(5)</small></span></label>
-      <label class="filter__pill"><input type="radio" name="cat" value="pan"><span>Pan <small>(5)</small></span></label>
-      <label class="filter__pill"><input type="radio" name="cat" value="3d"><span>3d <small>(8)</small></span></label>
-      <label class="filter__pill"><input type="radio" name="cat" value="filter"><span>Filter <small>(7)</small></span></label>
-      <label class="filter__pill"><input type="radio" name="cat" value="reveal"><span>Reveal <small>(5)</small></span></label>
-      <label class="filter__pill"><input type="radio" name="cat" value="fade"><span>Fade <small>(1)</small></span></label>
-      <label class="filter__pill"><input type="radio" name="cat" value="shadow"><span>Shadow <small>(4)</small></span></label>
-      <label class="filter__pill"><input type="radio" name="cat" value="light"><span>Light <small>(6)</small></span></label>
-      <label class="filter__pill"><input type="radio" name="cat" value="overlay"><span>Overlay <small>(10)</small></span></label>
-      <label class="filter__pill"><input type="radio" name="cat" value="composite"><span>Composite <small>(3)</small></span></label>
-  </nav>
-
-  <main>
-    <section class="section" id="cat-zoom">
-      <header class="section__header">
-        <h2 class="section__title">Zoom</h2>
-        <p class="section__count">4 effects</p>
+</div>
+<nav class="nav">
+  <div class="container">
+    <div class="nav-inner">
+        <a href="#cat-3d">3D <span class="badge">7</span></a>
+        <a href="#cat-composite">Composite <span class="badge">3</span></a>
+        <a href="#cat-distortion">Distortion <span class="badge">1</span></a>
+        <a href="#cat-fade">Fade <span class="badge">1</span></a>
+        <a href="#cat-filter">Filter <span class="badge">7</span></a>
+        <a href="#cat-light">Light <span class="badge">5</span></a>
+        <a href="#cat-overlay">Overlay <span class="badge">10</span></a>
+        <a href="#cat-pan">Pan <span class="badge">5</span></a>
+        <a href="#cat-reveal">Reveal <span class="badge">6</span></a>
+        <a href="#cat-shadow">Shadow <span class="badge">4</span></a>
+        <a href="#cat-zoom">Zoom <span class="badge">5</span></a>
+    </div>
+  </div>
+</nav>
+<main class="gallery">
+<div class="container">
+    <section id="cat-3d" class="category">
+      <header class="category-head">
+        <h2>3D</h2>
+        <span class="count">7 effects</span>
       </header>
       <div class="grid">
-    <a class="card" href="effects/point-zoom/index.html" data-category="zoom">
-      <div class="card__media">
-        <div class="hover-effect point-zoom" aria-hidden="true">
-          <img src="https://picsum.photos/seed/point-zoom/600/400" alt="" loading="lazy">
-        </div>
-      </div>
-      <div class="card__body">
-        <span class="card__badge">zoom</span>
-        <h3 class="card__title">Point Zoom</h3>
-        <p class="card__desc">Zoom hover effect on the image.</p>
-        <div class="card__tags"><span class="card__tag">transform</span> <span class="card__tag">transition</span> <span class="card__tag">zoom</span></div>
-      </div>
-    </a>
-    <a class="card" href="effects/quick-zoom/index.html" data-category="zoom">
-      <div class="card__media">
-        <div class="hover-effect quick-zoom" aria-hidden="true">
-          <img src="https://picsum.photos/seed/quick-zoom/600/400" alt="" loading="lazy">
-        </div>
-      </div>
-      <div class="card__body">
-        <span class="card__badge">zoom</span>
-        <h3 class="card__title">Quick Zoom</h3>
-        <p class="card__desc">Zoom hover effect on the image.</p>
-        <div class="card__tags"><span class="card__tag">transform</span> <span class="card__tag">transition</span> <span class="card__tag">zoom</span></div>
-      </div>
-    </a>
-    <a class="card" href="effects/slide-reveal/index.html" data-category="zoom">
-      <div class="card__media">
-        <div class="hover-effect slide-reveal" aria-hidden="true">
-          <img src="https://picsum.photos/seed/slide-reveal/600/400" alt="" loading="lazy">
-        </div>
-      </div>
-      <div class="card__body">
-        <span class="card__badge">zoom</span>
-        <h3 class="card__title">Slide Reveal</h3>
-        <p class="card__desc">Zoom hover effect on the image.</p>
-        <div class="card__tags"><span class="card__tag">transition</span> <span class="card__tag">zoom</span></div>
-      </div>
-    </a>
-    <a class="card" href="effects/zoom-out/index.html" data-category="zoom">
-      <div class="card__media">
-        <div class="hover-effect zoom-out" aria-hidden="true">
-          <img src="https://picsum.photos/seed/zoom-out/600/400" alt="" loading="lazy">
-        </div>
-      </div>
-      <div class="card__body">
-        <span class="card__badge">zoom</span>
-        <h3 class="card__title">Zoom Out</h3>
-        <p class="card__desc">Zoom hover effect on the image.</p>
-        <div class="card__tags"><span class="card__tag">transform</span> <span class="card__tag">transition</span> <span class="card__tag">zoom</span></div>
-      </div>
-    </a>
+        <details class="card" id="card-parallax-tilt">
+          <summary>
+            <div class="demo">
+              <div class="hover-effect parallax-tilt">
+                <img src="https://picsum.photos/seed/parallax-tilt/600/450" alt="3D Parallax Tilt demo" loading="lazy">
+              </div>
+            </div>
+            <div class="card-head">
+              <h3>3D Parallax Tilt</h3>
+              <span class="complexity">simple</span>
+            </div>
+          </summary>
+          <div class="code">
+            <p class="hint">Hover the demo above, then copy the code below.</p>
+            <div class="block">
+              <div class="block-head">HTML</div>
+              <pre><code><div class="hover-effect parallax-tilt">
+  <img src="image.jpg" alt="description">
+</div></code></pre>
+            </div>
+            <div class="block">
+              <div class="block-head">CSS</div>
+              <pre><code>.hover-effect.parallax-tilt {
+  perspective: 800px;
+}
+
+.hover-effect.parallax-tilt > img {
+  transition: transform 0.4s ease;
+}
+
+.hover-effect.parallax-tilt:hover > img,
+.hover-effect.parallax-tilt:focus-visible > img {
+  transform: rotateX(6deg) rotateY(6deg) scale(1.04);
+}
+
+.hover-effect.parallax-tilt::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 70% 30%, rgba(255, 255, 255, 0.3), transparent 55%);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  pointer-events: none;
+  border-radius: inherit;
+}
+
+.hover-effect.parallax-tilt:hover::before,
+.hover-effect.parallax-tilt:focus-visible::before {
+  opacity: 1;
+}</code></pre>
+            </div>
+          </div>
+        </details>
+        <details class="card" id="card-rotate-3d">
+          <summary>
+            <div class="demo">
+              <div class="hover-effect rotate-3d">
+                <img src="https://picsum.photos/seed/rotate-3d/600/450" alt="3D Rotate demo" loading="lazy">
+              </div>
+            </div>
+            <div class="card-head">
+              <h3>3D Rotate</h3>
+              <span class="complexity">simple</span>
+            </div>
+          </summary>
+          <div class="code">
+            <p class="hint">Hover the demo above, then copy the code below.</p>
+            <div class="block">
+              <div class="block-head">HTML</div>
+              <pre><code><div class="hover-effect rotate-3d">
+  <img src="image.jpg" alt="description">
+</div></code></pre>
+            </div>
+            <div class="block">
+              <div class="block-head">CSS</div>
+              <pre><code>/* Rotate 3D Effect */
+
+.hover-effect.rotate-3d{
+  perspective: 1000px;
+}
+
+.hover-effect.rotate-3d img{
+  transition: transform 0.5s ease-out;
+  transform-style: preserve-3d;
+}
+
+.hover-effect.rotate-3d:hover img, .hover-effect.rotate-3d:focus-visible img{
+  transform: rotateY(20deg) rotateX(-20deg) scale(1.3);
+}</code></pre>
+            </div>
+          </div>
+        </details>
+        <details class="card" id="card-magnetic-tilt">
+          <summary>
+            <div class="demo">
+              <div class="hover-effect magnetic-tilt">
+                <img src="https://picsum.photos/seed/magnetic-tilt/600/450" alt="3D Tilt demo" loading="lazy">
+              </div>
+            </div>
+            <div class="card-head">
+              <h3>3D Tilt</h3>
+              <span class="complexity">simple</span>
+            </div>
+          </summary>
+          <div class="code">
+            <p class="hint">Hover the demo above, then copy the code below.</p>
+            <div class="block">
+              <div class="block-head">HTML</div>
+              <pre><code><div class="hover-effect magnetic-tilt">
+  <img src="image.jpg" alt="description">
+</div></code></pre>
+            </div>
+            <div class="block">
+              <div class="block-head">CSS</div>
+              <pre><code>.hover-effect.magnetic-tilt {
+  perspective: 800px;
+}
+
+.hover-effect.magnetic-tilt > img {
+  transition: transform 0.4s ease, filter 0.4s ease;
+}
+
+.hover-effect.magnetic-tilt:hover > img,
+.hover-effect.magnetic-tilt:focus-visible > img {
+  transform: rotateX(8deg) rotateY(-8deg) scale(1.05);
+  filter: brightness(1.05);
+}
+
+.hover-effect.magnetic-tilt::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.4), transparent 55%);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  pointer-events: none;
+  border-radius: inherit;
+}
+
+.hover-effect.magnetic-tilt:hover::before,
+.hover-effect.magnetic-tilt:focus-visible::before {
+  opacity: 1;
+}</code></pre>
+            </div>
+          </div>
+        </details>
+        <details class="card" id="card-depth-layers">
+          <summary>
+            <div class="demo">
+              <div class="hover-effect depth-layers">
+                <img src="https://picsum.photos/seed/depth-layers/600/450" alt="Depth Layers demo" loading="lazy">
+              </div>
+            </div>
+            <div class="card-head">
+              <h3>Depth Layers</h3>
+              <span class="complexity">simple</span>
+            </div>
+          </summary>
+          <div class="code">
+            <p class="hint">Hover the demo above, then copy the code below.</p>
+            <div class="block">
+              <div class="block-head">HTML</div>
+              <pre><code><div class="hover-effect depth-layers">
+  <img src="image.jpg" alt="description">
+</div></code></pre>
+            </div>
+            <div class="block">
+              <div class="block-head">CSS</div>
+              <pre><code>.hover-effect.depth-layers {
+  perspective: 1000px;
+}
+
+.hover-effect.depth-layers > img {
+  transition: transform 0.5s ease, filter 0.5s ease, box-shadow 0.5s ease;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.hover-effect.depth-layers:hover > img,
+.hover-effect.depth-layers:focus-visible > img {
+  transform: translateZ(40px) scale(1.05);
+  filter: brightness(1.05) contrast(1.05);
+  box-shadow: 0 24px 48px rgba(0, 0, 0, 0.28);
+}
+
+.hover-effect.depth-layers::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at 50% 50%, transparent 55%, rgba(0, 0, 0, 0.18) 100%);
+  opacity: 0;
+  transition: opacity 0.5s ease;
+  pointer-events: none;
+  border-radius: inherit;
+}
+
+.hover-effect.depth-layers:hover::before,
+.hover-effect.depth-layers:focus-visible::before {
+  opacity: 1;
+}</code></pre>
+            </div>
+          </div>
+        </details>
+        <details class="card" id="card-flip-horizontal">
+          <summary>
+            <div class="demo">
+              <div class="hover-effect flip-horizontal">
+                <img src="https://picsum.photos/seed/flip-horizontal/600/450" alt="Flip Horizontal demo" loading="lazy">
+              </div>
+            </div>
+            <div class="card-head">
+              <h3>Flip Horizontal</h3>
+              <span class="complexity">simple</span>
+            </div>
+          </summary>
+          <div class="code">
+            <p class="hint">Hover the demo above, then copy the code below.</p>
+            <div class="block">
+              <div class="block-head">HTML</div>
+              <pre><code><div class="hover-effect flip-horizontal">
+  <img src="image.jpg" alt="description">
+</div></code></pre>
+            </div>
+            <div class="block">
+              <div class="block-head">CSS</div>
+              <pre><code>/* Flip Horizontal Effect */
+
+.hover-effect.flip-horizontal{
+  perspective: 1000px;
+}
+
+.hover-effect.flip-horizontal img{
+  transition: transform 0.6s ease;
+  transform-style: preserve-3d;
+}
+
+.hover-effect.flip-horizontal:hover img, .hover-effect.flip-horizontal:focus-visible img{
+  transform: scaleX(-1);
+}</code></pre>
+            </div>
+          </div>
+        </details>
+        <details class="card" id="card-flip-vertical">
+          <summary>
+            <div class="demo">
+              <div class="hover-effect flip-vertical">
+                <img src="https://picsum.photos/seed/flip-vertical/600/450" alt="Flip Vertical demo" loading="lazy">
+              </div>
+            </div>
+            <div class="card-head">
+              <h3>Flip Vertical</h3>
+              <span class="complexity">simple</span>
+            </div>
+          </summary>
+          <div class="code">
+            <p class="hint">Hover the demo above, then copy the code below.</p>
+            <div class="block">
+              <div class="block-head">HTML</div>
+              <pre><code><div class="hover-effect flip-vertical">
+  <img src="image.jpg" alt="description">
+</div></code></pre>
+            </div>
+            <div class="block">
+              <div class="block-head">CSS</div>
+              <pre><code>/* Flip Vertical Effect */
+
+.hover-effect.flip-vertical{
+  perspective: 1000px;
+}
+
+.hover-effect.flip-vertical img{
+  transition: transform 0.6s ease;
+  transform-style: preserve-3d;
+}
+
+.hover-effect.flip-vertical:hover img, .hover-effect.flip-vertical:focus-visible img{
+  transform: scaleY(-1);
+}</code></pre>
+            </div>
+          </div>
+        </details>
+        <details class="card" id="card-tilt-shadow">
+          <summary>
+            <div class="demo">
+              <div class="hover-effect tilt-shadow">
+                <img src="https://picsum.photos/seed/tilt-shadow/600/450" alt="Tilt Shadow demo" loading="lazy">
+              </div>
+            </div>
+            <div class="card-head">
+              <h3>Tilt Shadow</h3>
+              <span class="complexity">advanced</span>
+            </div>
+          </summary>
+          <div class="code">
+            <p class="hint">Hover the demo above, then copy the code below.</p>
+            <div class="block">
+              <div class="block-head">HTML</div>
+              <pre><code><div class="hover-effect tilt-shadow">
+  <img src="image.jpg" alt="description">
+</div></code></pre>
+            </div>
+            <div class="block">
+              <div class="block-head">CSS</div>
+              <pre><code>/* Tilt Shadow Effect - Perspective tilt with directional drop shadow */
+
+.hover-effect.tilt-shadow{
+  perspective: 800px;
+  transition: box-shadow 0.35s ease-out;
+}
+
+.hover-effect.tilt-shadow img{
+  transition: transform 0.35s ease-out;
+  transform-style: preserve-3d;
+}
+
+.hover-effect.tilt-shadow:hover, .hover-effect.tilt-shadow:focus-visible{
+  box-shadow: -18px 24px 28px -12px rgba(0,0,0,0.35);
+}
+
+.hover-effect.tilt-shadow:hover img, .hover-effect.tilt-shadow:focus-visible img{
+  transform: rotateX(8deg) rotateY(-12deg) translateZ(10px) scale(1.03);
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .hover-effect.tilt-shadow:hover img, .hover-effect.tilt-shadow:focus-visible img{
+    transform: scale(1.02);
+  }
+  .hover-effect.tilt-shadow:hover, .hover-effect.tilt-shadow:focus-visible{
+    box-shadow: 0 12px 24px rgba(0,0,0,0.2);
+  }
+}</code></pre>
+            </div>
+          </div>
+        </details>
       </div>
     </section>
-
-    <section class="section" id="cat-pan">
-      <header class="section__header">
-        <h2 class="section__title">Pan</h2>
-        <p class="section__count">5 effects</p>
+    <section id="cat-composite" class="category">
+      <header class="category-head">
+        <h2>Composite</h2>
+        <span class="count">3 effects</span>
       </header>
       <div class="grid">
-    <a class="card" href="effects/bounce-bottom/index.html" data-category="pan">
-      <div class="card__media">
-        <div class="hover-effect bounce-bottom" aria-hidden="true">
-          <img src="https://picsum.photos/seed/bounce-bottom/600/400" alt="" loading="lazy">
-        </div>
-      </div>
-      <div class="card__body">
-        <span class="card__badge">pan</span>
-        <h3 class="card__title">Bounce Bottom</h3>
-        <p class="card__desc">Pan hover effect on the image.</p>
-        <div class="card__tags"><span class="card__tag">pan</span> <span class="card__tag">transition</span></div>
-      </div>
-    </a>
-    <a class="card" href="effects/bounce-left/index.html" data-category="pan">
-      <div class="card__media">
-        <div class="hover-effect bounce-left" aria-hidden="true">
-          <img src="https://picsum.photos/seed/bounce-left/600/400" alt="" loading="lazy">
-        </div>
-      </div>
-      <div class="card__body">
-        <span class="card__badge">pan</span>
-        <h3 class="card__title">Bounce Left</h3>
-        <p class="card__desc">Pan hover effect on the image.</p>
-        <div class="card__tags"><span class="card__tag">pan</span> <span class="card__tag">transition</span></div>
-      </div>
-    </a>
-    <a class="card" href="effects/bounce-right/index.html" data-category="pan">
-      <div class="card__media">
-        <div class="hover-effect bounce-right" aria-hidden="true">
-          <img src="https://picsum.photos/seed/bounce-right/600/400" alt="" loading="lazy">
-        </div>
-      </div>
-      <div class="card__body">
-        <span class="card__badge">pan</span>
-        <h3 class="card__title">Bounce Right</h3>
-        <p class="card__desc">Pan hover effect on the image.</p>
-        <div class="card__tags"><span class="card__tag">pan</span> <span class="card__tag">transition</span></div>
-      </div>
-    </a>
-    <a class="card" href="effects/bounce-top/index.html" data-category="pan">
-      <div class="card__media">
-        <div class="hover-effect bounce-top" aria-hidden="true">
-          <img src="https://picsum.photos/seed/bounce-top/600/400" alt="" loading="lazy">
-        </div>
-      </div>
-      <div class="card__body">
-        <span class="card__badge">pan</span>
-        <h3 class="card__title">Bounce Top</h3>
-        <p class="card__desc">Pan hover effect on the image.</p>
-        <div class="card__tags"><span class="card__tag">pan</span> <span class="card__tag">transition</span></div>
-      </div>
-    </a>
-    <a class="card" href="effects/slide-reveal-right/index.html" data-category="pan">
-      <div class="card__media">
-        <div class="hover-effect slide-reveal-right" aria-hidden="true">
-          <img src="https://picsum.photos/seed/slide-reveal-right/600/400" alt="" loading="lazy">
-        </div>
-      </div>
-      <div class="card__body">
-        <span class="card__badge">pan</span>
-        <h3 class="card__title">Slide Reveal Right</h3>
-        <p class="card__desc">Pan hover effect on the image.</p>
-        <div class="card__tags"><span class="card__tag">pan</span> <span class="card__tag">transition</span></div>
-      </div>
-    </a>
+        <details class="card" id="card-horizontal-zoom-n-pan">
+          <summary>
+            <div class="demo">
+              <div class="hover-effect horizontal-zoom-n-pan">
+                <img src="https://picsum.photos/seed/horizontal-zoom-n-pan/600/450" alt="Horizontal Zoom & Pan demo" loading="lazy">
+              </div>
+            </div>
+            <div class="card-head">
+              <h3>Horizontal Zoom & Pan</h3>
+              <span class="complexity">simple</span>
+            </div>
+          </summary>
+          <div class="code">
+            <p class="hint">Hover the demo above, then copy the code below.</p>
+            <div class="block">
+              <div class="block-head">HTML</div>
+              <pre><code><div class="hover-effect horizontal-zoom-n-pan">
+  <img src="image.jpg" alt="description">
+</div></code></pre>
+            </div>
+            <div class="block">
+              <div class="block-head">CSS</div>
+              <pre><code>/* Horizontal Zoom & Pan Effect */
+
+.hover-effect.horizontal-zoom-n-pan{
+  overflow: hidden; /* Required for the pan effect to clip */
+}
+
+.hover-effect.horizontal-zoom-n-pan img{
+  transform-origin: 0 center;
+  transition: transform 0.55s ease-in-out;
+  will-change: transform;
+  transform: scale(1.4);
+}
+
+.hover-effect.horizontal-zoom-n-pan:hover img, .hover-effect.horizontal-zoom-n-pan:focus-visible img{
+  transform: scale(1.5) translateX(-30%);
+}</code></pre>
+            </div>
+          </div>
+        </details>
+        <details class="card" id="card-vertical-zoom-n-pan">
+          <summary>
+            <div class="demo">
+              <div class="hover-effect vertical-zoom-n-pan">
+                <img src="https://picsum.photos/seed/vertical-zoom-n-pan/600/450" alt="Vertical Zoom & Pan demo" loading="lazy">
+              </div>
+            </div>
+            <div class="card-head">
+              <h3>Vertical Zoom & Pan</h3>
+              <span class="complexity">simple</span>
+            </div>
+          </summary>
+          <div class="code">
+            <p class="hint">Hover the demo above, then copy the code below.</p>
+            <div class="block">
+              <div class="block-head">HTML</div>
+              <pre><code><div class="hover-effect vertical-zoom-n-pan">
+  <img src="image.jpg" alt="description">
+</div></code></pre>
+            </div>
+            <div class="block">
+              <div class="block-head">CSS</div>
+              <pre><code>.hover-effect.vertical-zoom-n-pan{
+  max-width: 100%;
+}
+
+.hover-effect.vertical-zoom-n-pan img{
+  transform-origin: center 0;
+  transition: transform 0.55s ease-in-out;
+  will-change: transform;
+  transform: scale(1.4);
+}
+
+.hover-effect.vertical-zoom-n-pan:hover img, .hover-effect.vertical-zoom-n-pan:focus-visible img{
+  transform: scale(1.5) translateY(-30%);
+}</code></pre>
+            </div>
+          </div>
+        </details>
+        <details class="card" id="card-zoom-rotate">
+          <summary>
+            <div class="demo">
+              <div class="hover-effect zoom-rotate">
+                <img src="https://picsum.photos/seed/zoom-rotate/600/450" alt="Zoom Rotate demo" loading="lazy">
+              </div>
+            </div>
+            <div class="card-head">
+              <h3>Zoom Rotate</h3>
+              <span class="complexity">simple</span>
+            </div>
+          </summary>
+          <div class="code">
+            <p class="hint">Hover the demo above, then copy the code below.</p>
+            <div class="block">
+              <div class="block-head">HTML</div>
+              <pre><code><div class="hover-effect zoom-rotate">
+  <img src="image.jpg" alt="description">
+</div></code></pre>
+            </div>
+            <div class="block">
+              <div class="block-head">CSS</div>
+              <pre><code>/* Zoom Rotate Effect */
+
+.hover-effect.zoom-rotate img{
+  transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.hover-effect.zoom-rotate:hover img, .hover-effect.zoom-rotate:focus-visible img{
+  transform: scale(1.2) rotate(3deg);
+}</code></pre>
+            </div>
+          </div>
+        </details>
       </div>
     </section>
-
-    <section class="section" id="cat-3d">
-      <header class="section__header">
-        <h2 class="section__title">3d</h2>
-        <p class="section__count">8 effects</p>
+    <section id="cat-distortion" class="category">
+      <header class="category-head">
+        <h2>Distortion</h2>
+        <span class="count">1 effect</span>
       </header>
       <div class="grid">
-    <a class="card" href="effects/rotate-3d/index.html" data-category="3d">
-      <div class="card__media">
-        <div class="hover-effect rotate-3d" aria-hidden="true">
-          <img src="https://picsum.photos/seed/rotate-3d/600/400" alt="" loading="lazy">
-        </div>
-      </div>
-      <div class="card__body">
-        <span class="card__badge">3d</span>
-        <h3 class="card__title">3D Rotate</h3>
-        <p class="card__desc">3d hover effect on the image.</p>
-        <div class="card__tags"><span class="card__tag">3d</span> <span class="card__tag">transform</span> <span class="card__tag">transition</span></div>
-      </div>
-    </a>
-    <a class="card" href="effects/depth-layers/index.html" data-category="3d">
-      <div class="card__media">
-        <div class="hover-effect depth-layers" aria-hidden="true">
-          <img src="https://picsum.photos/seed/depth-layers/600/400" alt="" loading="lazy">
-        </div>
-      </div>
-      <div class="card__body">
-        <span class="card__badge">3d</span>
-        <h3 class="card__title">Depth Layers</h3>
-        <p class="card__desc">3d hover effect on the image.</p>
-        <div class="card__tags"><span class="card__tag">3d</span> <span class="card__tag">animation</span> <span class="card__tag">filter</span> <span class="card__tag">transform</span></div>
-      </div>
-    </a>
-    <a class="card" href="effects/flip-horizontal/index.html" data-category="3d">
-      <div class="card__media">
-        <div class="hover-effect flip-horizontal" aria-hidden="true">
-          <img src="https://picsum.photos/seed/flip-horizontal/600/400" alt="" loading="lazy">
-        </div>
-      </div>
-      <div class="card__body">
-        <span class="card__badge">3d</span>
-        <h3 class="card__title">Flip Horizontal</h3>
-        <p class="card__desc">3d hover effect on the image.</p>
-        <div class="card__tags"><span class="card__tag">3d</span> <span class="card__tag">transform</span> <span class="card__tag">transition</span></div>
-      </div>
-    </a>
-    <a class="card" href="effects/flip-vertical/index.html" data-category="3d">
-      <div class="card__media">
-        <div class="hover-effect flip-vertical" aria-hidden="true">
-          <img src="https://picsum.photos/seed/flip-vertical/600/400" alt="" loading="lazy">
-        </div>
-      </div>
-      <div class="card__body">
-        <span class="card__badge">3d</span>
-        <h3 class="card__title">Flip Vertical</h3>
-        <p class="card__desc">3d hover effect on the image.</p>
-        <div class="card__tags"><span class="card__tag">3d</span> <span class="card__tag">transform</span> <span class="card__tag">transition</span></div>
-      </div>
-    </a>
-    <a class="card" href="effects/magnetic-tilt/index.html" data-category="3d">
-      <div class="card__media">
-        <div class="hover-effect magnetic-tilt" aria-hidden="true">
-          <img src="https://picsum.photos/seed/magnetic-tilt/600/400" alt="" loading="lazy">
-        </div>
-      </div>
-      <div class="card__body">
-        <span class="card__badge">3d</span>
-        <h3 class="card__title">Magnetic Tilt</h3>
-        <p class="card__desc">3d hover effect on the image.</p>
-        <div class="card__tags"><span class="card__tag">3d</span> <span class="card__tag">filter</span> <span class="card__tag">transform</span> <span class="card__tag">transition</span></div>
-      </div>
-    </a>
-    <a class="card" href="effects/origami-fold/index.html" data-category="3d">
-      <div class="card__media">
-        <div class="hover-effect origami-fold" aria-hidden="true">
-          <img src="https://picsum.photos/seed/origami-fold/600/400" alt="" loading="lazy">
-        </div>
-      </div>
-      <div class="card__body">
-        <span class="card__badge">3d</span>
-        <h3 class="card__title">Origami Fold</h3>
-        <p class="card__desc">3d hover effect on the image.</p>
-        <div class="card__tags"><span class="card__tag">3d</span> <span class="card__tag">clip-path</span> <span class="card__tag">filter</span> <span class="card__tag">transform</span></div>
-      </div>
-    </a>
-    <a class="card" href="effects/parallax-tilt/index.html" data-category="3d">
-      <div class="card__media">
-        <div class="hover-effect parallax-tilt" aria-hidden="true">
-          <img src="https://picsum.photos/seed/parallax-tilt/600/400" alt="" loading="lazy">
-        </div>
-      </div>
-      <div class="card__body">
-        <span class="card__badge">3d</span>
-        <h3 class="card__title">Parallax Tilt</h3>
-        <p class="card__desc">3d hover effect on the image.</p>
-        <div class="card__tags"><span class="card__tag">3d</span> <span class="card__tag">filter</span> <span class="card__tag">transform</span> <span class="card__tag">transition</span></div>
-      </div>
-    </a>
-    <a class="card" href="effects/tilt-shadow/index.html" data-category="3d">
-      <div class="card__media">
-        <div class="hover-effect tilt-shadow" aria-hidden="true">
-          <img src="https://picsum.photos/seed/tilt-shadow/600/400" alt="" loading="lazy">
-        </div>
-      </div>
-      <div class="card__body">
-        <span class="card__badge">3d</span>
-        <h3 class="card__title">Tilt Shadow</h3>
-        <p class="card__desc">3d hover effect on the image.</p>
-        <div class="card__tags"><span class="card__tag">3d</span> <span class="card__tag">transform</span> <span class="card__tag">transition</span></div>
-      </div>
-    </a>
+        <details class="card" id="card-liquid-morph">
+          <summary>
+            <div class="demo">
+              <div class="hover-effect liquid-morph">
+                <img src="https://picsum.photos/seed/liquid-morph/600/450" alt="Liquid Morph demo" loading="lazy">
+              </div>
+            </div>
+            <div class="card-head">
+              <h3>Liquid Morph</h3>
+              <span class="complexity">advanced</span>
+            </div>
+          </summary>
+          <div class="code">
+            <p class="hint">Hover the demo above, then copy the code below.</p>
+            <div class="block">
+              <div class="block-head">HTML</div>
+              <pre><code><div class="hover-effect liquid-morph">
+  <img src="image.jpg" alt="description">
+</div></code></pre>
+            </div>
+            <div class="block">
+              <div class="block-head">CSS</div>
+              <pre><code>.hover-effect.liquid-morph {
+  transition: border-radius 0.5s ease;
+}
+
+.hover-effect.liquid-morph > img {
+  transition: transform 0.5s ease, filter 0.5s ease;
+}
+
+.hover-effect.liquid-morph:hover,
+.hover-effect.liquid-morph:focus-visible {
+  border-radius: 40% 60% 70% 30% / 40% 50% 60% 50%;
+  animation: liquid-morph-anim 3s ease-in-out infinite;
+}
+
+.hover-effect.liquid-morph:hover > img,
+.hover-effect.liquid-morph:focus-visible > img {
+  transform: scale(1.08);
+  filter: saturate(1.2);
+}
+
+@keyframes liquid-morph-anim {
+  0%, 100% { border-radius: 40% 60% 70% 30% / 40% 50% 60% 50%; }
+  50%      { border-radius: 60% 40% 30% 70% / 60% 50% 40% 50%; }
+}
+
+.hover-effect.liquid-morph::before {
+  content: "";
+  position: absolute;
+  inset: -8%;
+  background: radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.25), transparent 60%);
+  border-radius: inherit;
+  opacity: 0;
+  transition: opacity 0.5s ease;
+  pointer-events: none;
+}
+
+.hover-effect.liquid-morph:hover::before,
+.hover-effect.liquid-morph:focus-visible::before {
+  opacity: 1;
+}</code></pre>
+            </div>
+          </div>
+        </details>
       </div>
     </section>
-
-    <section class="section" id="cat-filter">
-      <header class="section__header">
-        <h2 class="section__title">Filter</h2>
-        <p class="section__count">7 effects</p>
+    <section id="cat-fade" class="category">
+      <header class="category-head">
+        <h2>Fade</h2>
+        <span class="count">1 effect</span>
       </header>
       <div class="grid">
-    <a class="card" href="effects/blur-sharpen/index.html" data-category="filter">
-      <div class="card__media">
-        <div class="hover-effect blur-sharpen" aria-hidden="true">
-          <img src="https://picsum.photos/seed/blur-sharpen/600/400" alt="" loading="lazy">
-        </div>
-      </div>
-      <div class="card__body">
-        <span class="card__badge">filter</span>
-        <h3 class="card__title">Blur to Sharp</h3>
-        <p class="card__desc">Filter hover effect on the image.</p>
-        <div class="card__tags"><span class="card__tag">filter</span> <span class="card__tag">transform</span> <span class="card__tag">transition</span></div>
-      </div>
-    </a>
-    <a class="card" href="effects/contrast-punch/index.html" data-category="filter">
-      <div class="card__media">
-        <div class="hover-effect contrast-punch" aria-hidden="true">
-          <img src="https://picsum.photos/seed/contrast-punch/600/400" alt="" loading="lazy">
-        </div>
-      </div>
-      <div class="card__body">
-        <span class="card__badge">filter</span>
-        <h3 class="card__title">Contrast Punch</h3>
-        <p class="card__desc">Filter hover effect on the image.</p>
-        <div class="card__tags"><span class="card__tag">filter</span> <span class="card__tag">transition</span></div>
-      </div>
-    </a>
-    <a class="card" href="effects/contrast-soften/index.html" data-category="filter">
-      <div class="card__media">
-        <div class="hover-effect contrast-soften" aria-hidden="true">
-          <img src="https://picsum.photos/seed/contrast-soften/600/400" alt="" loading="lazy">
-        </div>
-      </div>
-      <div class="card__body">
-        <span class="card__badge">filter</span>
-        <h3 class="card__title">Contrast Soften</h3>
-        <p class="card__desc">Filter hover effect on the image.</p>
-        <div class="card__tags"><span class="card__tag">filter</span> <span class="card__tag">transition</span></div>
-      </div>
-    </a>
-    <a class="card" href="effects/duotone/index.html" data-category="filter">
-      <div class="card__media">
-        <div class="hover-effect duotone" aria-hidden="true">
-          <img src="https://picsum.photos/seed/duotone/600/400" alt="" loading="lazy">
-        </div>
-      </div>
-      <div class="card__body">
-        <span class="card__badge">filter</span>
-        <h3 class="card__title">Duotone Shift</h3>
-        <p class="card__desc">Filter hover effect on the image.</p>
-        <div class="card__tags"><span class="card__tag">filter</span> <span class="card__tag">transform</span> <span class="card__tag">transition</span></div>
-      </div>
-    </a>
-    <a class="card" href="effects/fade-colorize/index.html" data-category="filter">
-      <div class="card__media">
-        <div class="hover-effect fade-colorize" aria-hidden="true">
-          <img src="https://picsum.photos/seed/fade-colorize/600/400" alt="" loading="lazy">
-        </div>
-      </div>
-      <div class="card__body">
-        <span class="card__badge">filter</span>
-        <h3 class="card__title">Fade to Color</h3>
-        <p class="card__desc">Filter hover effect on the image.</p>
-        <div class="card__tags"><span class="card__tag">filter</span> <span class="card__tag">transform</span> <span class="card__tag">transition</span></div>
-      </div>
-    </a>
-    <a class="card" href="effects/invert-flash/index.html" data-category="filter">
-      <div class="card__media">
-        <div class="hover-effect invert-flash" aria-hidden="true">
-          <img src="https://picsum.photos/seed/invert-flash/600/400" alt="" loading="lazy">
-        </div>
-      </div>
-      <div class="card__body">
-        <span class="card__badge">filter</span>
-        <h3 class="card__title">Invert Flash</h3>
-        <p class="card__desc">Filter hover effect on the image.</p>
-        <div class="card__tags"><span class="card__tag">animation</span> <span class="card__tag">filter</span> <span class="card__tag">transition</span></div>
-      </div>
-    </a>
-    <a class="card" href="effects/sepia-in/index.html" data-category="filter">
-      <div class="card__media">
-        <div class="hover-effect sepia-in" aria-hidden="true">
-          <img src="https://picsum.photos/seed/sepia-in/600/400" alt="" loading="lazy">
-        </div>
-      </div>
-      <div class="card__body">
-        <span class="card__badge">filter</span>
-        <h3 class="card__title">Sepia In</h3>
-        <p class="card__desc">Filter hover effect on the image.</p>
-        <div class="card__tags"><span class="card__tag">filter</span> <span class="card__tag">transition</span></div>
-      </div>
-    </a>
+        <details class="card" id="card-corner-frame">
+          <summary>
+            <div class="demo">
+              <div class="hover-effect corner-frame">
+                <img src="https://picsum.photos/seed/corner-frame/600/450" alt="Corner Frame demo" loading="lazy">
+              </div>
+            </div>
+            <div class="card-head">
+              <h3>Corner Frame</h3>
+              <span class="complexity">advanced</span>
+            </div>
+          </summary>
+          <div class="code">
+            <p class="hint">Hover the demo above, then copy the code below.</p>
+            <div class="block">
+              <div class="block-head">HTML</div>
+              <pre><code><div class="hover-effect corner-frame">
+  <img src="image.jpg" alt="description">
+</div></code></pre>
+            </div>
+            <div class="block">
+              <div class="block-head">CSS</div>
+              <pre><code>/* Corner Frame Effect - Camera-style corner brackets snap into place */
+
+.hover-effect.corner-frame{
+  position: relative;
+  overflow: visible;
+  padding: 10px;
+}
+
+.hover-effect.corner-frame img{
+  transition: transform 0.35s ease-out;
+}
+
+.hover-effect.corner-frame::before, .hover-effect.corner-frame::after{
+  content: '';
+  position: absolute;
+  width: 22px;
+  height: 22px;
+  border-color: var(--color-primary, #2563eb);
+  border-style: solid;
+  border-width: 0;
+  opacity: 0;
+  transition: opacity 0.3s ease-out, transform 0.3s ease-out;
+}
+
+.hover-effect.corner-frame::before{
+  top: 0; left: 0;
+  border-top-width: 3px;
+  border-left-width: 3px;
+  transform: translate(8px, 8px);
+}
+
+.hover-effect.corner-frame::after{
+  bottom: 0; right: 0;
+  border-bottom-width: 3px;
+  border-right-width: 3px;
+  transform: translate(-8px, -8px);
+}
+
+.hover-effect.corner-frame:hover::before, .hover-effect.corner-frame:hover::after, .hover-effect.corner-frame:focus-visible::before, .hover-effect.corner-frame:focus-visible::after{
+  opacity: 1;
+  transform: translate(0, 0);
+}
+
+.hover-effect.corner-frame:hover img, .hover-effect.corner-frame:focus-visible img{
+  transform: scale(1.03);
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .hover-effect.corner-frame::before, .hover-effect.corner-frame::after{
+    transition: opacity 0.2s ease;
+    transform: translate(0, 0);
+    opacity: 0.5;
+  }
+  .hover-effect.corner-frame:hover::before, .hover-effect.corner-frame:hover::after, .hover-effect.corner-frame:focus-visible::before, .hover-effect.corner-frame:focus-visible::after{
+    opacity: 1;
+  }
+}</code></pre>
+            </div>
+          </div>
+        </details>
       </div>
     </section>
-
-    <section class="section" id="cat-reveal">
-      <header class="section__header">
-        <h2 class="section__title">Reveal</h2>
-        <p class="section__count">4 effects</p>
+    <section id="cat-filter" class="category">
+      <header class="category-head">
+        <h2>Filter</h2>
+        <span class="count">7 effects</span>
       </header>
       <div class="grid">
-    <a class="card" href="effects/clip-reveal/index.html" data-category="reveal">
-      <div class="card__media">
-        <div class="hover-effect clip-reveal" aria-hidden="true">
-          <img src="https://picsum.photos/seed/clip-reveal/600/400" alt="" loading="lazy">
-        </div>
-      </div>
-      <div class="card__body">
-        <span class="card__badge">reveal</span>
-        <h3 class="card__title">Clip Reveal</h3>
-        <p class="card__desc">Reveal hover effect on the image.</p>
-        <div class="card__tags"><span class="card__tag">clip-path</span> <span class="card__tag">reveal</span> <span class="card__tag">transform</span> <span class="card__tag">transition</span></div>
-      </div>
-    </a>
-    <a class="card" href="effects/glitch-slice/index.html" data-category="reveal">
-      <div class="card__media">
-        <div class="hover-effect glitch-slice" aria-hidden="true">
-          <img src="https://picsum.photos/seed/glitch-slice/600/400" alt="" loading="lazy">
-        </div>
-      </div>
-      <div class="card__body">
-        <span class="card__badge">reveal</span>
-        <h3 class="card__title">Glitch Slice</h3>
-        <p class="card__desc">Reveal hover effect on the image.</p>
-        <div class="card__tags"><span class="card__tag">animation</span> <span class="card__tag">clip-path</span> <span class="card__tag">filter</span> <span class="card__tag">reveal</span></div>
-      </div>
-    </a>
-    <a class="card" href="effects/prism-split/index.html" data-category="reveal">
-      <div class="card__media">
-        <div class="hover-effect prism-split" aria-hidden="true">
-          <img src="https://picsum.photos/seed/prism-split/600/400" alt="" loading="lazy">
-        </div>
-      </div>
-      <div class="card__body">
-        <span class="card__badge">reveal</span>
-        <h3 class="card__title">Prism Split</h3>
-        <p class="card__desc">Reveal hover effect on the image.</p>
-        <div class="card__tags"><span class="card__tag">animation</span> <span class="card__tag">clip-path</span> <span class="card__tag">filter</span> <span class="card__tag">reveal</span></div>
-      </div>
-    </a>
-    <a class="card" href="effects/swipe-reveal/index.html" data-category="reveal">
-      <div class="card__media">
-        <div class="hover-effect swipe-reveal" aria-hidden="true">
-          <img src="https://picsum.photos/seed/swipe-reveal/600/400" alt="" loading="lazy">
-        </div>
-      </div>
-      <div class="card__body">
-        <span class="card__badge">reveal</span>
-        <h3 class="card__title">Swipe Reveal</h3>
-        <p class="card__desc">Reveal hover effect on the image.</p>
-        <div class="card__tags"><span class="card__tag">clip-path</span> <span class="card__tag">filter</span> <span class="card__tag">reveal</span> <span class="card__tag">transform</span></div>
-      </div>
-    </a>
+        <details class="card" id="card-blur-sharpen">
+          <summary>
+            <div class="demo">
+              <div class="hover-effect blur-sharpen">
+                <img src="https://picsum.photos/seed/blur-sharpen/600/450" alt="Blur to Sharp demo" loading="lazy">
+              </div>
+            </div>
+            <div class="card-head">
+              <h3>Blur to Sharp</h3>
+              <span class="complexity">simple</span>
+            </div>
+          </summary>
+          <div class="code">
+            <p class="hint">Hover the demo above, then copy the code below.</p>
+            <div class="block">
+              <div class="block-head">HTML</div>
+              <pre><code><div class="hover-effect blur-sharpen">
+  <img src="image.jpg" alt="description">
+</div></code></pre>
+            </div>
+            <div class="block">
+              <div class="block-head">CSS</div>
+              <pre><code>/* Blur to Sharp Effect */
+
+.hover-effect.blur-sharpen img{
+  filter: blur(4px) grayscale(0.5);
+  transition: filter 0.4s ease-out, transform 0.4s ease-out;
+}
+
+.hover-effect.blur-sharpen:hover img, .hover-effect.blur-sharpen:focus-visible img{
+  filter: blur(0) grayscale(0);
+  transform: scale(1.05);
+}</code></pre>
+            </div>
+          </div>
+        </details>
+        <details class="card" id="card-contrast-punch">
+          <summary>
+            <div class="demo">
+              <div class="hover-effect contrast-punch">
+                <img src="https://picsum.photos/seed/contrast-punch/600/450" alt="Contrast Punch demo" loading="lazy">
+              </div>
+            </div>
+            <div class="card-head">
+              <h3>Contrast Punch</h3>
+              <span class="complexity">simple</span>
+            </div>
+          </summary>
+          <div class="code">
+            <p class="hint">Hover the demo above, then copy the code below.</p>
+            <div class="block">
+              <div class="block-head">HTML</div>
+              <pre><code><div class="hover-effect contrast-punch">
+  <img src="image.jpg" alt="description">
+</div></code></pre>
+            </div>
+            <div class="block">
+              <div class="block-head">CSS</div>
+              <pre><code>/* Contrast Punch Effect */
+
+.hover-effect.contrast-punch img{
+  filter: contrast(1);
+  transition: filter 0.3s ease;
+}
+
+.hover-effect.contrast-punch:hover img, .hover-effect.contrast-punch:focus-visible img{
+  filter: contrast(1.5);
+}</code></pre>
+            </div>
+          </div>
+        </details>
+        <details class="card" id="card-contrast-soften">
+          <summary>
+            <div class="demo">
+              <div class="hover-effect contrast-soften">
+                <img src="https://picsum.photos/seed/contrast-soften/600/450" alt="Contrast Soften demo" loading="lazy">
+              </div>
+            </div>
+            <div class="card-head">
+              <h3>Contrast Soften</h3>
+              <span class="complexity">simple</span>
+            </div>
+          </summary>
+          <div class="code">
+            <p class="hint">Hover the demo above, then copy the code below.</p>
+            <div class="block">
+              <div class="block-head">HTML</div>
+              <pre><code><div class="hover-effect contrast-soften">
+  <img src="image.jpg" alt="description">
+</div></code></pre>
+            </div>
+            <div class="block">
+              <div class="block-head">CSS</div>
+              <pre><code>/* Contrast Soften Effect */
+
+.hover-effect.contrast-soften img{
+  filter: contrast(1);
+  transition: filter 0.3s ease;
+}
+
+.hover-effect.contrast-soften:hover img, .hover-effect.contrast-soften:focus-visible img{
+  filter: contrast(0.6);
+}</code></pre>
+            </div>
+          </div>
+        </details>
+        <details class="card" id="card-duotone">
+          <summary>
+            <div class="demo">
+              <div class="hover-effect duotone">
+                <img src="https://picsum.photos/seed/duotone/600/450" alt="Duotone Shift demo" loading="lazy">
+              </div>
+            </div>
+            <div class="card-head">
+              <h3>Duotone Shift</h3>
+              <span class="complexity">simple</span>
+            </div>
+          </summary>
+          <div class="code">
+            <p class="hint">Hover the demo above, then copy the code below.</p>
+            <div class="block">
+              <div class="block-head">HTML</div>
+              <pre><code><div class="hover-effect duotone">
+  <img src="image.jpg" alt="description">
+</div></code></pre>
+            </div>
+            <div class="block">
+              <div class="block-head">CSS</div>
+              <pre><code>/* Duotone Effect */
+
+.hover-effect.duotone img{
+  filter: grayscale(1) contrast(1.2) sepia(1) hue-rotate(180deg) saturate(5);
+  transition: filter 0.4s ease-out, transform 0.4s ease-out;
+}
+
+.hover-effect.duotone:hover img, .hover-effect.duotone:focus-visible img{
+  filter: grayscale(0) contrast(1) sepia(0) hue-rotate(0) saturate(1);
+  transform: scale(1.05);
+}</code></pre>
+            </div>
+          </div>
+        </details>
+        <details class="card" id="card-fade-colorize">
+          <summary>
+            <div class="demo">
+              <div class="hover-effect fade-colorize">
+                <img src="https://picsum.photos/seed/fade-colorize/600/450" alt="Fade to Color demo" loading="lazy">
+              </div>
+            </div>
+            <div class="card-head">
+              <h3>Fade to Color</h3>
+              <span class="complexity">simple</span>
+            </div>
+          </summary>
+          <div class="code">
+            <p class="hint">Hover the demo above, then copy the code below.</p>
+            <div class="block">
+              <div class="block-head">HTML</div>
+              <pre><code><div class="hover-effect fade-colorize">
+  <img src="image.jpg" alt="description">
+</div></code></pre>
+            </div>
+            <div class="block">
+              <div class="block-head">CSS</div>
+              <pre><code>/* Fade Colorize Effect */
+
+.hover-effect.fade-colorize img{
+  filter: grayscale(1);
+  transition: filter 0.4s ease-out, transform 0.4s ease-out;
+}
+
+.hover-effect.fade-colorize:hover img, .hover-effect.fade-colorize:focus-visible img{
+  filter: grayscale(0);
+  transform: scale(1.05);
+}</code></pre>
+            </div>
+          </div>
+        </details>
+        <details class="card" id="card-invert-flash">
+          <summary>
+            <div class="demo">
+              <div class="hover-effect invert-flash">
+                <img src="https://picsum.photos/seed/invert-flash/600/450" alt="Invert Flash demo" loading="lazy">
+              </div>
+            </div>
+            <div class="card-head">
+              <h3>Invert Flash</h3>
+              <span class="complexity">advanced</span>
+            </div>
+          </summary>
+          <div class="code">
+            <p class="hint">Hover the demo above, then copy the code below.</p>
+            <div class="block">
+              <div class="block-head">HTML</div>
+              <pre><code><div class="hover-effect invert-flash">
+  <img src="image.jpg" alt="description">
+</div></code></pre>
+            </div>
+            <div class="block">
+              <div class="block-head">CSS</div>
+              <pre><code>/* Invert Flash Effect */
+
+.hover-effect.invert-flash img{
+  filter: invert(0);
+  transition: filter 0.1s ease;
+}
+
+.hover-effect.invert-flash:hover img, .hover-effect.invert-flash:focus-visible img{
+  animation: invert-flash 0.15s ease;
+}
+
+@keyframes invert-flash {
+  0%   { filter: invert(0); }
+  50%  { filter: invert(1); }
+  100% { filter: invert(0); }
+}</code></pre>
+            </div>
+          </div>
+        </details>
+        <details class="card" id="card-sepia-in">
+          <summary>
+            <div class="demo">
+              <div class="hover-effect sepia-in">
+                <img src="https://picsum.photos/seed/sepia-in/600/450" alt="Sepia In demo" loading="lazy">
+              </div>
+            </div>
+            <div class="card-head">
+              <h3>Sepia In</h3>
+              <span class="complexity">simple</span>
+            </div>
+          </summary>
+          <div class="code">
+            <p class="hint">Hover the demo above, then copy the code below.</p>
+            <div class="block">
+              <div class="block-head">HTML</div>
+              <pre><code><div class="hover-effect sepia-in">
+  <img src="image.jpg" alt="description">
+</div></code></pre>
+            </div>
+            <div class="block">
+              <div class="block-head">CSS</div>
+              <pre><code>.hover-effect.sepia-in{
+}
+.hover-effect.sepia-in img{
+  filter: sepia(1);
+  transition: filter 0.5s ease;
+}
+.hover-effect.sepia-in:hover img, .hover-effect.sepia-in:focus-visible img{
+  filter: sepia(0);
+}</code></pre>
+            </div>
+          </div>
+        </details>
       </div>
     </section>
-
-    <section class="section" id="cat-fade">
-      <header class="section__header">
-        <h2 class="section__title">Fade</h2>
-        <p class="section__count">1 effect</p>
+    <section id="cat-light" class="category">
+      <header class="category-head">
+        <h2>Light</h2>
+        <span class="count">5 effects</span>
       </header>
       <div class="grid">
-    <a class="card" href="effects/corner-frame/index.html" data-category="fade">
-      <div class="card__media">
-        <div class="hover-effect corner-frame" aria-hidden="true">
-          <img src="https://picsum.photos/seed/corner-frame/600/400" alt="" loading="lazy">
-        </div>
-      </div>
-      <div class="card__body">
-        <span class="card__badge">fade</span>
-        <h3 class="card__title">Corner Frame</h3>
-        <p class="card__desc">Fade hover effect on the image.</p>
-        <div class="card__tags"><span class="card__tag">fade</span> <span class="card__tag">transform</span> <span class="card__tag">transition</span></div>
-      </div>
-    </a>
+        <details class="card" id="card-holographic-shimmer">
+          <summary>
+            <div class="demo">
+              <div class="hover-effect holographic-shimmer">
+                <img src="https://picsum.photos/seed/holographic-shimmer/600/450" alt="Holographic Shimmer demo" loading="lazy">
+              </div>
+            </div>
+            <div class="card-head">
+              <h3>Holographic Shimmer</h3>
+              <span class="complexity">simple</span>
+            </div>
+          </summary>
+          <div class="code">
+            <p class="hint">Hover the demo above, then copy the code below.</p>
+            <div class="block">
+              <div class="block-head">HTML</div>
+              <pre><code><div class="hover-effect holographic-shimmer">
+  <img src="image.jpg" alt="description">
+</div></code></pre>
+            </div>
+            <div class="block">
+              <div class="block-head">CSS</div>
+              <pre><code>.hover-effect.holographic-shimmer > img {
+  transition: filter 0.4s ease, transform 0.4s ease;
+}
+
+.hover-effect.holographic-shimmer:hover > img,
+.hover-effect.holographic-shimmer:focus-visible > img {
+  filter: hue-rotate(45deg) saturate(1.5) brightness(1.05);
+  transform: scale(1.03);
+}
+
+.hover-effect.holographic-shimmer::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    105deg,
+    transparent 30%,
+    rgba(255, 255, 255, 0.3) 48%,
+    rgba(255, 255, 255, 0.5) 50%,
+    rgba(255, 255, 255, 0.3) 52%,
+    transparent 70%
+  );
+  transform: translateX(-100%);
+  transition: transform 0.6s ease;
+  pointer-events: none;
+}
+
+.hover-effect.holographic-shimmer:hover::before,
+.hover-effect.holographic-shimmer:focus-visible::before {
+  transform: translateX(100%);
+}</code></pre>
+            </div>
+          </div>
+        </details>
+        <details class="card" id="card-magnetic-glow">
+          <summary>
+            <div class="demo">
+              <div class="hover-effect magnetic-glow">
+                <img src="https://picsum.photos/seed/magnetic-glow/600/450" alt="Magnetic Glow demo" loading="lazy">
+              </div>
+            </div>
+            <div class="card-head">
+              <h3>Magnetic Glow</h3>
+              <span class="complexity">advanced</span>
+            </div>
+          </summary>
+          <div class="code">
+            <p class="hint">Hover the demo above, then copy the code below.</p>
+            <div class="block">
+              <div class="block-head">HTML</div>
+              <pre><code><div class="hover-effect magnetic-glow">
+  <img src="image.jpg" alt="description">
+</div></code></pre>
+            </div>
+            <div class="block">
+              <div class="block-head">CSS</div>
+              <pre><code>/* Magnetic Glow Effect - Glowing ring follows cursor with magnetic attraction */
+
+.hover-effect.magnetic-glow{
+}
+
+.hover-effect.magnetic-glow img{
+  transition: transform 0.3s ease-out, filter 0.3s ease-out;
+}
+
+/* Magnetic glow ring */
+.hover-effect.magnetic-glow::before{
+  content: '';
+  position: absolute;
+  inset: -8px;
+  border-radius: 16px;
+  box-shadow: 
+    0 0 20px 4px rgba(37, 99, 235, 0),
+    0 0 40px 8px rgba(37, 99, 235, 0),
+    inset 0 0 20px 4px rgba(37, 99, 235, 0);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease-out, box-shadow 0.15s ease-out;
+  z-index: 1;
+}
+
+/* Inner glow highlight */
+.hover-effect.magnetic-glow::after{
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 12px;
+  background: radial-gradient(
+    ellipse at center,
+    rgba(255,255,255,0.15) 0%,
+    transparent 70%
+  );
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease-out;
+  z-index: 2;
+  mix-blend-mode: screen;
+}
+
+/* Hover state */
+.hover-effect.magnetic-glow:hover::before, .hover-effect.magnetic-glow:focus-visible::before{
+  opacity: 1;
+  box-shadow: 
+    0 0 30px 8px rgba(37, 99, 235, 0.6),
+    0 0 60px 16px rgba(37, 99, 235, 0.3),
+    inset 0 0 30px 8px rgba(37, 99, 235, 0.2);
+}
+
+.hover-effect.magnetic-glow:hover::after, .hover-effect.magnetic-glow:focus-visible::after{
+  opacity: 1;
+}
+
+.hover-effect.magnetic-glow:hover img, .hover-effect.magnetic-glow:focus-visible img{
+  transform: scale(1.02);
+  filter: brightness(1.05) contrast(1.03);
+}
+
+/* Active magnetic state (when JS adds .magnetic-active) */
+.hover-effect.magnetic-glow.magnetic-active::before{
+  transition: box-shadow 0.05s ease-out;
+}
+
+/* CSS-only fallback: static glow on hover */
+@media (prefers-reduced-motion: reduce) {
+  .hover-effect.magnetic-glow::before, .hover-effect.magnetic-glow::after, .hover-effect.magnetic-glow img{
+    transition: opacity 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  .hover-effect.magnetic-glow:hover::before, .hover-effect.magnetic-glow:focus-visible::before{
+    box-shadow: 
+      0 0 30px 8px rgba(37, 99, 235, 0.6),
+      0 0 60px 16px rgba(37, 99, 235, 0.3),
+      inset 0 0 30px 8px rgba(37, 99, 235, 0.2);
+  }
+}</code></pre>
+            </div>
+          </div>
+        </details>
+        <details class="card" id="card-shine-sweep">
+          <summary>
+            <div class="demo">
+              <div class="hover-effect shine-sweep">
+                <img src="https://picsum.photos/seed/shine-sweep/600/450" alt="Shine Sweep demo" loading="lazy">
+              </div>
+            </div>
+            <div class="card-head">
+              <h3>Shine Sweep</h3>
+              <span class="complexity">advanced</span>
+            </div>
+          </summary>
+          <div class="code">
+            <p class="hint">Hover the demo above, then copy the code below.</p>
+            <div class="block">
+              <div class="block-head">HTML</div>
+              <pre><code><div class="hover-effect shine-sweep">
+  <img src="image.jpg" alt="description">
+</div></code></pre>
+            </div>
+            <div class="block">
+              <div class="block-head">CSS</div>
+              <pre><code>/* Shine Sweep Effect - Diagonal light sweep like glossy reflection */
+
+.hover-effect.shine-sweep{
+}
+
+.hover-effect.shine-sweep img{
+  transition: transform 0.4s ease-out, filter 0.4s ease-out;
+}
+
+/* Shine gradient sweep */
+.hover-effect.shine-sweep::before{
+  content: '';
+  position: absolute;
+  inset: -50%;
+  background: linear-gradient(
+    110deg,
+    transparent 0%,
+    rgba(255,255,255,0) 40%,
+    rgba(255,255,255,0.4) 50%,
+    rgba(255,255,255,0.6) 52%,
+    rgba(255,255,255,0.4) 54%,
+    rgba(255,255,255,0) 60%,
+    transparent 100%
+  );
+  opacity: 0;
+  pointer-events: none;
+  transform: translateX(-150%) rotate(-20deg);
+  transition: opacity 0.2s ease, transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  z-index: 1;
+  border-radius: 8px;
+}
+
+.hover-effect.shine-sweep:hover::before, .hover-effect.shine-sweep:focus-visible::before{
+  opacity: 1;
+  transform: translateX(150%) rotate(-20deg);
+}
+
+.hover-effect.shine-sweep:hover img, .hover-effect.shine-sweep:focus-visible img{
+  transform: scale(1.02);
+  filter: brightness(1.05) contrast(1.02);
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .hover-effect.shine-sweep::before{
+    transition: none;
+    transform: translateX(0) rotate(-20deg);
+    opacity: 0.3;
+  }
+  .hover-effect.shine-sweep:hover::before, .hover-effect.shine-sweep:focus-visible::before{
+    transform: translateX(0) rotate(-20deg);
+  }
+}</code></pre>
+            </div>
+          </div>
+        </details>
+        <details class="card" id="card-zoom-brightness">
+          <summary>
+            <div class="demo">
+              <div class="hover-effect zoom-brightness">
+                <img src="https://picsum.photos/seed/zoom-brightness/600/450" alt="Zoom Brightness demo" loading="lazy">
+              </div>
+            </div>
+            <div class="card-head">
+              <h3>Zoom Brightness</h3>
+              <span class="complexity">simple</span>
+            </div>
+          </summary>
+          <div class="code">
+            <p class="hint">Hover the demo above, then copy the code below.</p>
+            <div class="block">
+              <div class="block-head">HTML</div>
+              <pre><code><div class="hover-effect zoom-brightness">
+  <img src="image.jpg" alt="description">
+</div></code></pre>
+            </div>
+            <div class="block">
+              <div class="block-head">CSS</div>
+              <pre><code>.hover-effect.zoom-brightness{
+}
+.hover-effect.zoom-brightness img{
+  transition: transform 2s, filter 1.5s ease-in-out;
+  transform-origin: center center;
+  filter: brightness(50%);
+}
+.hover-effect.zoom-brightness:hover img, .hover-effect.zoom-brightness:focus-visible img{
+  filter: brightness(100%);
+  transform: scale(1.3);
+}</code></pre>
+            </div>
+          </div>
+        </details>
+        <details class="card" id="card-zoom-in-slowmo">
+          <summary>
+            <div class="demo">
+              <div class="hover-effect zoom-in-slowmo">
+                <img src="https://picsum.photos/seed/zoom-in-slowmo/600/450" alt="Zoom In Slowmo demo" loading="lazy">
+              </div>
+            </div>
+            <div class="card-head">
+              <h3>Zoom In Slowmo</h3>
+              <span class="complexity">simple</span>
+            </div>
+          </summary>
+          <div class="code">
+            <p class="hint">Hover the demo above, then copy the code below.</p>
+            <div class="block">
+              <div class="block-head">HTML</div>
+              <pre><code><div class="hover-effect zoom-in-slowmo">
+  <img src="image.jpg" alt="description">
+</div></code></pre>
+            </div>
+            <div class="block">
+              <div class="block-head">CSS</div>
+              <pre><code>.hover-effect.zoom-in-slowmo{
+}
+.hover-effect.zoom-in-slowmo img{
+  transform-origin: 50% 65%;
+  transition: transform 5s, filter 3s ease-in-out;
+  filter: brightness(150%);
+}
+.hover-effect.zoom-in-slowmo:hover img, .hover-effect.zoom-in-slowmo:focus-visible img{
+  filter: brightness(100%);
+  transform: scale(3);
+}</code></pre>
+            </div>
+          </div>
+        </details>
       </div>
     </section>
-
-    <section class="section" id="cat-shadow">
-      <header class="section__header">
-        <h2 class="section__title">Shadow</h2>
-        <p class="section__count">4 effects</p>
+    <section id="cat-overlay" class="category">
+      <header class="category-head">
+        <h2>Overlay</h2>
+        <span class="count">10 effects</span>
       </header>
       <div class="grid">
-    <a class="card" href="effects/glow-border/index.html" data-category="shadow">
-      <div class="card__media">
-        <div class="hover-effect glow-border" aria-hidden="true">
-          <img src="https://picsum.photos/seed/glow-border/600/400" alt="" loading="lazy">
-        </div>
-      </div>
-      <div class="card__body">
-        <span class="card__badge">shadow</span>
-        <h3 class="card__title">Glow Border</h3>
-        <p class="card__desc">Shadow hover effect on the image.</p>
-        <div class="card__tags"><span class="card__tag">shadow</span> <span class="card__tag">transition</span></div>
-      </div>
-    </a>
-    <a class="card" href="effects/neon-pulse/index.html" data-category="shadow">
-      <div class="card__media">
-        <div class="hover-effect neon-pulse" aria-hidden="true">
-          <img src="https://picsum.photos/seed/neon-pulse/600/400" alt="" loading="lazy">
-        </div>
-      </div>
-      <div class="card__body">
-        <span class="card__badge">shadow</span>
-        <h3 class="card__title">Neon Pulse</h3>
-        <p class="card__desc">Shadow hover effect on the image.</p>
-        <div class="card__tags"><span class="card__tag">animation</span> <span class="card__tag">shadow</span> <span class="card__tag">transition</span></div>
-      </div>
-    </a>
-    <a class="card" href="effects/shadow-drop/index.html" data-category="shadow">
-      <div class="card__media">
-        <div class="hover-effect shadow-drop" aria-hidden="true">
-          <img src="https://picsum.photos/seed/shadow-drop/600/400" alt="" loading="lazy">
-        </div>
-      </div>
-      <div class="card__body">
-        <span class="card__badge">shadow</span>
-        <h3 class="card__title">Shadow Drop</h3>
-        <p class="card__desc">Shadow hover effect on the image.</p>
-        <div class="card__tags"><span class="card__tag">shadow</span> <span class="card__tag">transition</span></div>
-      </div>
-    </a>
-    <a class="card" href="effects/shadow-lift/index.html" data-category="shadow">
-      <div class="card__media">
-        <div class="hover-effect shadow-lift" aria-hidden="true">
-          <img src="https://picsum.photos/seed/shadow-lift/600/400" alt="" loading="lazy">
-        </div>
-      </div>
-      <div class="card__body">
-        <span class="card__badge">shadow</span>
-        <h3 class="card__title">Shadow Lift</h3>
-        <p class="card__desc">Shadow hover effect on the image.</p>
-        <div class="card__tags"><span class="card__tag">shadow</span> <span class="card__tag">transition</span></div>
-      </div>
-    </a>
+        <details class="card" id="card-color-splash">
+          <summary>
+            <div class="demo">
+              <div class="hover-effect color-splash">
+                <img src="https://picsum.photos/seed/color-splash/600/450" alt="Color Splash demo" loading="lazy">
+              </div>
+            </div>
+            <div class="card-head">
+              <h3>Color Splash</h3>
+              <span class="complexity">advanced</span>
+            </div>
+          </summary>
+          <div class="code">
+            <p class="hint">Hover the demo above, then copy the code below.</p>
+            <div class="block">
+              <div class="block-head">HTML</div>
+              <pre><code><div class="hover-effect color-splash">
+  <img src="image.jpg" alt="description">
+</div></code></pre>
+            </div>
+            <div class="block">
+              <div class="block-head">CSS</div>
+              <pre><code>/* Color Splash Effect */
+
+.hover-effect.color-splash{
+  position: relative;
+  overflow: visible;
+}
+
+.hover-effect.color-splash::after{
+  content: "";
+  position: absolute;
+  inset: 50%;
+  width: 0;
+  height: 0;
+  border-radius: 50%;
+  background: rgba(255,127,80,0.8);
+  transform: translate(-50%, -50%);
+  transition: width .3s, height .3s;
+}
+
+.hover-effect.color-splash:hover::after, .hover-effect.color-splash:focus-visible::after{
+  width: 300%;
+  height: 300%;
+}</code></pre>
+            </div>
+          </div>
+        </details>
+        <details class="card" id="card-glass-mosaic">
+          <summary>
+            <div class="demo">
+              <div class="hover-effect glass-mosaic">
+                <img src="https://picsum.photos/seed/glass-mosaic/600/450" alt="Glass Mosaic demo" loading="lazy">
+              </div>
+            </div>
+            <div class="card-head">
+              <h3>Glass Mosaic</h3>
+              <span class="complexity">advanced</span>
+            </div>
+          </summary>
+          <div class="code">
+            <p class="hint">Hover the demo above, then copy the code below.</p>
+            <div class="block">
+              <div class="block-head">HTML</div>
+              <pre><code><div class="hover-effect glass-mosaic">
+  <img src="image.jpg" alt="description">
+</div></code></pre>
+            </div>
+            <div class="block">
+              <div class="block-head">CSS</div>
+              <pre><code>/* Glass Mosaic Effect */
+
+.hover-effect.glass-mosaic::after{
+  content: "";
+  position: absolute;
+  inset: 0;
+  backdrop-filter: blur(4px) saturate(150%);
+  opacity: 0.6;
+  pointer-events: none;
+  transition: opacity 0.3s;
+}
+
+.hover-effect.glass-mosaic:hover::after, .hover-effect.glass-mosaic:focus-visible::after{
+  opacity: 0.2;
+}</code></pre>
+            </div>
+          </div>
+        </details>
+        <details class="card" id="card-ink-drop">
+          <summary>
+            <div class="demo">
+              <div class="hover-effect ink-drop">
+                <img src="https://picsum.photos/seed/ink-drop/600/450" alt="Ink Drop demo" loading="lazy">
+              </div>
+            </div>
+            <div class="card-head">
+              <h3>Ink Drop</h3>
+              <span class="complexity">advanced</span>
+            </div>
+          </summary>
+          <div class="code">
+            <p class="hint">Hover the demo above, then copy the code below.</p>
+            <div class="block">
+              <div class="block-head">HTML</div>
+              <pre><code><div class="hover-effect ink-drop">
+  <img src="image.jpg" alt="description">
+</div></code></pre>
+            </div>
+            <div class="block">
+              <div class="block-head">CSS</div>
+              <pre><code>/* Ink Drop Effect */
+
+.hover-effect.ink-drop::after{
+  content: "";
+  position: absolute;
+  inset: 50%;
+  width: 0;
+  height: 0;
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.1);
+  transform: translate(-50%, -50%);
+  transition: width 0.3s, height 0.3s;
+}
+
+.hover-effect.ink-drop:hover::after, .hover-effect.ink-drop:focus-visible::after{
+  width: 200%;
+  height: 200%;
+}</code></pre>
+            </div>
+          </div>
+        </details>
+        <details class="card" id="card-overlay-fade-in-neon-grid">
+          <summary>
+            <div class="demo">
+              <div class="hover-effect overlay-fade-in-neon-grid">
+                <img src="https://picsum.photos/seed/overlay-fade-in-neon-grid/600/450" alt="Overlay Fade In Neon Grid demo" loading="lazy">
+              </div>
+            </div>
+            <div class="card-head">
+              <h3>Overlay Fade In Neon Grid</h3>
+              <span class="complexity">advanced</span>
+            </div>
+          </summary>
+          <div class="code">
+            <p class="hint">Hover the demo above, then copy the code below.</p>
+            <div class="block">
+              <div class="block-head">HTML</div>
+              <pre><code><div class="hover-effect overlay-fade-in-neon-grid">
+  <img src="image.jpg" alt="description">
+</div></code></pre>
+            </div>
+            <div class="block">
+              <div class="block-head">CSS</div>
+              <pre><code>.hover-effect.overlay-fade-in-neon-grid{
+}
+
+.hover-effect.overlay-fade-in-neon-grid::after{
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    transition: opacity .5s ease, background-size .5s ease;
+    background-size: 10px 10px;
+    background-position: center center;
+    background-image: linear-gradient(rgba(0, 255, 255, .5) 1px, transparent 1px), linear-gradient(90deg, rgba(0, 255, 255, .5) 1px, transparent 1px);
+    opacity: 0;
+}
+
+.hover-effect.overlay-fade-in-neon-grid img{}
+
+.hover-effect.overlay-fade-in-neon-grid:hover img, .hover-effect.overlay-fade-in-neon-grid:focus-visible img{}
+
+.hover-effect.overlay-fade-in-neon-grid:hover::after, .hover-effect.overlay-fade-in-neon-grid:focus-visible::after{
+    opacity: 1;
+    background-size: 40px 40px;
+}</code></pre>
+            </div>
+          </div>
+        </details>
+        <details class="card" id="card-radial-in">
+          <summary>
+            <div class="demo">
+              <div class="hover-effect radial-in">
+                <img src="https://picsum.photos/seed/radial-in/600/450" alt="Radial In demo" loading="lazy">
+              </div>
+            </div>
+            <div class="card-head">
+              <h3>Radial In</h3>
+              <span class="complexity">advanced</span>
+            </div>
+          </summary>
+          <div class="code">
+            <p class="hint">Hover the demo above, then copy the code below.</p>
+            <div class="block">
+              <div class="block-head">HTML</div>
+              <pre><code><div class="hover-effect radial-in">
+  <img src="image.jpg" alt="description">
+</div></code></pre>
+            </div>
+            <div class="block">
+              <div class="block-head">CSS</div>
+              <pre><code>.hover-effect.radial-in{
+}
+.hover-effect.radial-in img{
+}
+.hover-effect.radial-in::before{
+  content: '';
+  position: absolute;
+  top: 50%; left: 50%;
+  width: 100%; height: 100%;
+  background: white;
+  border-radius: 50%;
+  transform: translate(-50%, -50%) scale(1.5);
+  transform-origin: center;
+  transition: transform 0.6s ease;
+  pointer-events: none;
+  z-index: 1;
+}
+.hover-effect.radial-in:hover::before, .hover-effect.radial-in:focus-visible::before{
+  transform: translate(-50%, -50%) scale(0);
+}</code></pre>
+            </div>
+          </div>
+        </details>
+        <details class="card" id="card-radial-out">
+          <summary>
+            <div class="demo">
+              <div class="hover-effect radial-out">
+                <img src="https://picsum.photos/seed/radial-out/600/450" alt="Radial Out demo" loading="lazy">
+              </div>
+            </div>
+            <div class="card-head">
+              <h3>Radial Out</h3>
+              <span class="complexity">advanced</span>
+            </div>
+          </summary>
+          <div class="code">
+            <p class="hint">Hover the demo above, then copy the code below.</p>
+            <div class="block">
+              <div class="block-head">HTML</div>
+              <pre><code><div class="hover-effect radial-out">
+  <img src="image.jpg" alt="description">
+</div></code></pre>
+            </div>
+            <div class="block">
+              <div class="block-head">CSS</div>
+              <pre><code>.hover-effect.radial-out{
+}
+.hover-effect.radial-out img{
+}
+.hover-effect.radial-out::before{
+  content: '';
+  position: absolute;
+  top: 50%; left: 50%;
+  width: 100%; height: 100%;
+  background: white;
+  border-radius: 50%;
+  transform: translate(-50%, -50%) scale(0);
+  transform-origin: center;
+  transition: transform 0.6s ease;
+  pointer-events: none;
+  z-index: 1;
+}
+.hover-effect.radial-out:hover::before, .hover-effect.radial-out:focus-visible::before{
+  transform: translate(-50%, -50%) scale(1.5);
+}</code></pre>
+            </div>
+          </div>
+        </details>
+        <details class="card" id="card-rectangle-in">
+          <summary>
+            <div class="demo">
+              <div class="hover-effect rectangle-in">
+                <img src="https://picsum.photos/seed/rectangle-in/600/450" alt="Rectangle In demo" loading="lazy">
+              </div>
+            </div>
+            <div class="card-head">
+              <h3>Rectangle In</h3>
+              <span class="complexity">advanced</span>
+            </div>
+          </summary>
+          <div class="code">
+            <p class="hint">Hover the demo above, then copy the code below.</p>
+            <div class="block">
+              <div class="block-head">HTML</div>
+              <pre><code><div class="hover-effect rectangle-in">
+  <img src="image.jpg" alt="description">
+</div></code></pre>
+            </div>
+            <div class="block">
+              <div class="block-head">CSS</div>
+              <pre><code>.hover-effect.rectangle-in{
+}
+.hover-effect.rectangle-in img{
+}
+.hover-effect.rectangle-in::before{
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: white;
+  transform: scale(1.5);
+  transform-origin: center;
+  transition: transform 0.6s ease;
+  pointer-events: none;
+  z-index: 1;
+}
+.hover-effect.rectangle-in:hover::before, .hover-effect.rectangle-in:focus-visible::before{
+  transform: scale(0);
+}</code></pre>
+            </div>
+          </div>
+        </details>
+        <details class="card" id="card-rectangle-out">
+          <summary>
+            <div class="demo">
+              <div class="hover-effect rectangle-out">
+                <img src="https://picsum.photos/seed/rectangle-out/600/450" alt="Rectangle Out demo" loading="lazy">
+              </div>
+            </div>
+            <div class="card-head">
+              <h3>Rectangle Out</h3>
+              <span class="complexity">advanced</span>
+            </div>
+          </summary>
+          <div class="code">
+            <p class="hint">Hover the demo above, then copy the code below.</p>
+            <div class="block">
+              <div class="block-head">HTML</div>
+              <pre><code><div class="hover-effect rectangle-out">
+  <img src="image.jpg" alt="description">
+</div></code></pre>
+            </div>
+            <div class="block">
+              <div class="block-head">CSS</div>
+              <pre><code>.hover-effect.rectangle-out{
+}
+.hover-effect.rectangle-out img{
+}
+.hover-effect.rectangle-out::before{
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: white;
+  transform: scale(0);
+  transform-origin: center;
+  transition: transform 0.6s ease;
+  pointer-events: none;
+  z-index: 1;
+}
+.hover-effect.rectangle-out:hover::before, .hover-effect.rectangle-out:focus-visible::before{
+  transform: scale(1.5);
+}</code></pre>
+            </div>
+          </div>
+        </details>
+        <details class="card" id="card-refraction-lens">
+          <summary>
+            <div class="demo">
+              <div class="hover-effect refraction-lens">
+                <img src="https://picsum.photos/seed/refraction-lens/600/450" alt="Refraction Lens demo" loading="lazy">
+              </div>
+            </div>
+            <div class="card-head">
+              <h3>Refraction Lens</h3>
+              <span class="complexity">advanced</span>
+            </div>
+          </summary>
+          <div class="code">
+            <p class="hint">Hover the demo above, then copy the code below.</p>
+            <div class="block">
+              <div class="block-head">HTML</div>
+              <pre><code><div class="hover-effect refraction-lens">
+  <img src="image.jpg" alt="description">
+</div></code></pre>
+            </div>
+            <div class="block">
+              <div class="block-head">CSS</div>
+              <pre><code>/* Refraction Lens Effect */
+
+.hover-effect.refraction-lens{
+}
+
+.hover-effect.refraction-lens::after{
+  content: "";
+  position: absolute;
+  border-radius: 50%;
+  width: 120px; height: 120px;
+  background: linear-gradient(rgba(255,255,255,0.8), transparent);
+  transform: translate(-50%, -50%) scale(1);
+  pointer-events: none;
+  transition: transform .3s;
+}
+
+.hover-effect.refraction-lens:hover::after, .hover-effect.refraction-lens:focus-visible::after{
+  transform: translate(-50%, -50%) scale(1.5);
+}</code></pre>
+            </div>
+          </div>
+        </details>
+        <details class="card" id="card-vignette">
+          <summary>
+            <div class="demo">
+              <div class="hover-effect vignette">
+                <img src="https://picsum.photos/seed/vignette/600/450" alt="Vignette demo" loading="lazy">
+              </div>
+            </div>
+            <div class="card-head">
+              <h3>Vignette</h3>
+              <span class="complexity">advanced</span>
+            </div>
+          </summary>
+          <div class="code">
+            <p class="hint">Hover the demo above, then copy the code below.</p>
+            <div class="block">
+              <div class="block-head">HTML</div>
+              <pre><code><div class="hover-effect vignette">
+  <img src="image.jpg" alt="description">
+</div></code></pre>
+            </div>
+            <div class="block">
+              <div class="block-head">CSS</div>
+              <pre><code>/* Vignette Effect */
+
+.hover-effect.vignette{
+  position: relative;
+}
+
+.hover-effect.vignette img{
+  transition: transform 0.4s ease-out;
+}
+
+.hover-effect.vignette::after{
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at center, transparent 50%, rgba(0,0,0,0.6) 100%);
+  opacity: 0;
+  transition: opacity 0.4s ease-out;
+  pointer-events: none;
+  border-radius: var(--radius);
+}
+
+.hover-effect.vignette:hover::after, .hover-effect.vignette:focus-visible::after{
+  opacity: 1;
+}
+
+.hover-effect.vignette:hover img, .hover-effect.vignette:focus-visible img{
+  transform: scale(1.1);
+}</code></pre>
+            </div>
+          </div>
+        </details>
       </div>
     </section>
-
-    <section class="section" id="cat-light">
-      <header class="section__header">
-        <h2 class="section__title">Light</h2>
-        <p class="section__count">5 effects</p>
+    <section id="cat-pan" class="category">
+      <header class="category-head">
+        <h2>Pan</h2>
+        <span class="count">5 effects</span>
       </header>
       <div class="grid">
-    <a class="card" href="effects/holographic-shimmer/index.html" data-category="light">
-      <div class="card__media">
-        <div class="hover-effect holographic-shimmer" aria-hidden="true">
-          <img src="https://picsum.photos/seed/holographic-shimmer/600/400" alt="" loading="lazy">
-        </div>
-      </div>
-      <div class="card__body">
-        <span class="card__badge">light</span>
-        <h3 class="card__title">Holographic Shimmer</h3>
-        <p class="card__desc">Light hover effect on the image.</p>
-        <div class="card__tags"><span class="card__tag">animation</span> <span class="card__tag">filter</span> <span class="card__tag">light</span> <span class="card__tag">transform</span></div>
-      </div>
-    </a>
-    <a class="card" href="effects/liquid-morph/index.html" data-category="light">
-      <div class="card__media">
-        <div class="hover-effect liquid-morph" aria-hidden="true">
-          <img src="https://picsum.photos/seed/liquid-morph/600/400" alt="" loading="lazy">
-        </div>
-      </div>
-      <div class="card__body">
-        <span class="card__badge">light</span>
-        <h3 class="card__title">Liquid Morph</h3>
-        <p class="card__desc">Light hover effect on the image.</p>
-        <div class="card__tags"><span class="card__tag">animation</span> <span class="card__tag">filter</span> <span class="card__tag">light</span> <span class="card__tag">transform</span></div>
-      </div>
-    </a>
-    <a class="card" href="effects/magnetic-glow/index.html" data-category="light">
-      <div class="card__media">
-        <div class="hover-effect magnetic-glow" aria-hidden="true">
-          <img src="https://picsum.photos/seed/magnetic-glow/600/400" alt="" loading="lazy">
-        </div>
-      </div>
-      <div class="card__body">
-        <span class="card__badge">light</span>
-        <h3 class="card__title">Magnetic Glow</h3>
-        <p class="card__desc">Light hover effect on the image.</p>
-        <div class="card__tags"><span class="card__tag">filter</span> <span class="card__tag">light</span> <span class="card__tag">transform</span> <span class="card__tag">transition</span></div>
-      </div>
-    </a>
-    <a class="card" href="effects/zoom-brightness/index.html" data-category="light">
-      <div class="card__media">
-        <div class="hover-effect zoom-brightness" aria-hidden="true">
-          <img src="https://picsum.photos/seed/zoom-brightness/600/400" alt="" loading="lazy">
-        </div>
-      </div>
-      <div class="card__body">
-        <span class="card__badge">light</span>
-        <h3 class="card__title">Zoom Brightness</h3>
-        <p class="card__desc">Light hover effect on the image.</p>
-        <div class="card__tags"><span class="card__tag">filter</span> <span class="card__tag">light</span> <span class="card__tag">transform</span> <span class="card__tag">transition</span></div>
-      </div>
-    </a>
-    <a class="card" href="effects/zoom-in-slowmo/index.html" data-category="light">
-      <div class="card__media">
-        <div class="hover-effect zoom-in-slowmo" aria-hidden="true">
-          <img src="https://picsum.photos/seed/zoom-in-slowmo/600/400" alt="" loading="lazy">
-        </div>
-      </div>
-      <div class="card__body">
-        <span class="card__badge">light</span>
-        <h3 class="card__title">Zoom In Slowmo</h3>
-        <p class="card__desc">Light hover effect on the image.</p>
-        <div class="card__tags"><span class="card__tag">filter</span> <span class="card__tag">light</span> <span class="card__tag">transform</span> <span class="card__tag">transition</span></div>
-      </div>
-    </a>
+        <details class="card" id="card-bounce-bottom">
+          <summary>
+            <div class="demo">
+              <div class="hover-effect bounce-bottom">
+                <img src="https://picsum.photos/seed/bounce-bottom/600/450" alt="Bounce Bottom demo" loading="lazy">
+              </div>
+            </div>
+            <div class="card-head">
+              <h3>Bounce Bottom</h3>
+              <span class="complexity">simple</span>
+            </div>
+          </summary>
+          <div class="code">
+            <p class="hint">Hover the demo above, then copy the code below.</p>
+            <div class="block">
+              <div class="block-head">HTML</div>
+              <pre><code><div class="hover-effect bounce-bottom">
+  <img src="image.jpg" alt="description">
+</div></code></pre>
+            </div>
+            <div class="block">
+              <div class="block-head">CSS</div>
+              <pre><code>/* Bounce Bottom Effect */
+
+.hover-effect.bounce-bottom img{
+  position: relative;
+  top: 0;
+  transition: top 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+.hover-effect.bounce-bottom:hover img, .hover-effect.bounce-bottom:focus-visible img{
+  top: 100%;
+}</code></pre>
+            </div>
+          </div>
+        </details>
+        <details class="card" id="card-bounce-left">
+          <summary>
+            <div class="demo">
+              <div class="hover-effect bounce-left">
+                <img src="https://picsum.photos/seed/bounce-left/600/450" alt="Bounce Left demo" loading="lazy">
+              </div>
+            </div>
+            <div class="card-head">
+              <h3>Bounce Left</h3>
+              <span class="complexity">simple</span>
+            </div>
+          </summary>
+          <div class="code">
+            <p class="hint">Hover the demo above, then copy the code below.</p>
+            <div class="block">
+              <div class="block-head">HTML</div>
+              <pre><code><div class="hover-effect bounce-left">
+  <img src="image.jpg" alt="description">
+</div></code></pre>
+            </div>
+            <div class="block">
+              <div class="block-head">CSS</div>
+              <pre><code>/* Bounce Left Effect */
+
+.hover-effect.bounce-left img{
+  position: relative;
+  left: 0;
+  transition: left 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+.hover-effect.bounce-left:hover img, .hover-effect.bounce-left:focus-visible img{
+  left: -100%;
+}</code></pre>
+            </div>
+          </div>
+        </details>
+        <details class="card" id="card-bounce-right">
+          <summary>
+            <div class="demo">
+              <div class="hover-effect bounce-right">
+                <img src="https://picsum.photos/seed/bounce-right/600/450" alt="Bounce Right demo" loading="lazy">
+              </div>
+            </div>
+            <div class="card-head">
+              <h3>Bounce Right</h3>
+              <span class="complexity">simple</span>
+            </div>
+          </summary>
+          <div class="code">
+            <p class="hint">Hover the demo above, then copy the code below.</p>
+            <div class="block">
+              <div class="block-head">HTML</div>
+              <pre><code><div class="hover-effect bounce-right">
+  <img src="image.jpg" alt="description">
+</div></code></pre>
+            </div>
+            <div class="block">
+              <div class="block-head">CSS</div>
+              <pre><code>/* Bounce Right Effect */
+
+.hover-effect.bounce-right img{
+  position: relative;
+  left: 0;
+  transition: left 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+.hover-effect.bounce-right:hover img, .hover-effect.bounce-right:focus-visible img{
+  left: 100%;
+}</code></pre>
+            </div>
+          </div>
+        </details>
+        <details class="card" id="card-bounce-top">
+          <summary>
+            <div class="demo">
+              <div class="hover-effect bounce-top">
+                <img src="https://picsum.photos/seed/bounce-top/600/450" alt="Bounce Top demo" loading="lazy">
+              </div>
+            </div>
+            <div class="card-head">
+              <h3>Bounce Top</h3>
+              <span class="complexity">simple</span>
+            </div>
+          </summary>
+          <div class="code">
+            <p class="hint">Hover the demo above, then copy the code below.</p>
+            <div class="block">
+              <div class="block-head">HTML</div>
+              <pre><code><div class="hover-effect bounce-top">
+  <img src="image.jpg" alt="description">
+</div></code></pre>
+            </div>
+            <div class="block">
+              <div class="block-head">CSS</div>
+              <pre><code>/* Bounce Top Effect */
+
+.hover-effect.bounce-top img{
+  position: relative;
+  top: 0;
+  transition: top 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+.hover-effect.bounce-top:hover img, .hover-effect.bounce-top:focus-visible img{
+  top: -100%;
+}</code></pre>
+            </div>
+          </div>
+        </details>
+        <details class="card" id="card-slide-reveal-right">
+          <summary>
+            <div class="demo">
+              <div class="hover-effect slide-reveal-right">
+                <img src="https://picsum.photos/seed/slide-reveal-right/600/450" alt="Slide Reveal Right demo" loading="lazy">
+              </div>
+            </div>
+            <div class="card-head">
+              <h3>Slide Reveal Right</h3>
+              <span class="complexity">simple</span>
+            </div>
+          </summary>
+          <div class="code">
+            <p class="hint">Hover the demo above, then copy the code below.</p>
+            <div class="block">
+              <div class="block-head">HTML</div>
+              <pre><code><div class="hover-effect slide-reveal-right">
+  <img src="image.jpg" alt="description">
+</div></code></pre>
+            </div>
+            <div class="block">
+              <div class="block-head">CSS</div>
+              <pre><code>/* placeholder */
+.hover-effect.slide-reveal-right{
+}
+.hover-effect.slide-reveal-right img{
+  right: 0;
+  transition: width 0.4s ease-out;
+}
+.hover-effect.slide-reveal-right:hover img, .hover-effect.slide-reveal-right:focus-visible img{
+  width: 100%;
+}</code></pre>
+            </div>
+          </div>
+        </details>
       </div>
     </section>
-
-    <section class="section" id="cat-overlay">
-      <header class="section__header">
-        <h2 class="section__title">Overlay</h2>
-        <p class="section__count">10 effects</p>
+    <section id="cat-reveal" class="category">
+      <header class="category-head">
+        <h2>Reveal</h2>
+        <span class="count">6 effects</span>
       </header>
       <div class="grid">
-    <a class="card" href="effects/color-splash/index.html" data-category="overlay">
-      <div class="card__media">
-        <div class="hover-effect color-splash" aria-hidden="true">
-          <img src="https://picsum.photos/seed/color-splash/600/400" alt="" loading="lazy">
-        </div>
-      </div>
-      <div class="card__body">
-        <span class="card__badge">overlay</span>
-        <h3 class="card__title">Color Splash</h3>
-        <p class="card__desc">Overlay hover effect on the image.</p>
-        <div class="card__tags"><span class="card__tag">overlay</span> <span class="card__tag">transform</span> <span class="card__tag">transition</span></div>
-      </div>
-    </a>
-    <a class="card" href="effects/glass-mosaic/index.html" data-category="overlay">
-      <div class="card__media">
-        <div class="hover-effect glass-mosaic" aria-hidden="true">
-          <img src="https://picsum.photos/seed/glass-mosaic/600/400" alt="" loading="lazy">
-        </div>
-      </div>
-      <div class="card__body">
-        <span class="card__badge">overlay</span>
-        <h3 class="card__title">Glass Mosaic</h3>
-        <p class="card__desc">Overlay hover effect on the image.</p>
-        <div class="card__tags"><span class="card__tag">overlay</span> <span class="card__tag">transition</span></div>
-      </div>
-    </a>
-    <a class="card" href="effects/ink-drop/index.html" data-category="overlay">
-      <div class="card__media">
-        <div class="hover-effect ink-drop" aria-hidden="true">
-          <img src="https://picsum.photos/seed/ink-drop/600/400" alt="" loading="lazy">
-        </div>
-      </div>
-      <div class="card__body">
-        <span class="card__badge">overlay</span>
-        <h3 class="card__title">Ink Drop</h3>
-        <p class="card__desc">Overlay hover effect on the image.</p>
-        <div class="card__tags"><span class="card__tag">overlay</span> <span class="card__tag">transform</span> <span class="card__tag">transition</span></div>
-      </div>
-    </a>
-    <a class="card" href="effects/overlay-fade-in-neon-grid/index.html" data-category="overlay">
-      <div class="card__media">
-        <div class="hover-effect overlay-fade-in-neon-grid" aria-hidden="true">
-          <img src="https://picsum.photos/seed/overlay-fade-in-neon-grid/600/400" alt="" loading="lazy">
-        </div>
-      </div>
-      <div class="card__body">
-        <span class="card__badge">overlay</span>
-        <h3 class="card__title">Overlay Fade In Neon Grid</h3>
-        <p class="card__desc">Overlay hover effect on the image.</p>
-        <div class="card__tags"><span class="card__tag">overlay</span> <span class="card__tag">transition</span></div>
-      </div>
-    </a>
-    <a class="card" href="effects/radial-in/index.html" data-category="overlay">
-      <div class="card__media">
-        <div class="hover-effect radial-in" aria-hidden="true">
-          <img src="https://picsum.photos/seed/radial-in/600/400" alt="" loading="lazy">
-        </div>
-      </div>
-      <div class="card__body">
-        <span class="card__badge">overlay</span>
-        <h3 class="card__title">Radial In</h3>
-        <p class="card__desc">Overlay hover effect on the image.</p>
-        <div class="card__tags"><span class="card__tag">overlay</span> <span class="card__tag">transform</span> <span class="card__tag">transition</span></div>
-      </div>
-    </a>
-    <a class="card" href="effects/radial-out/index.html" data-category="overlay">
-      <div class="card__media">
-        <div class="hover-effect radial-out" aria-hidden="true">
-          <img src="https://picsum.photos/seed/radial-out/600/400" alt="" loading="lazy">
-        </div>
-      </div>
-      <div class="card__body">
-        <span class="card__badge">overlay</span>
-        <h3 class="card__title">Radial Out</h3>
-        <p class="card__desc">Overlay hover effect on the image.</p>
-        <div class="card__tags"><span class="card__tag">overlay</span> <span class="card__tag">transform</span> <span class="card__tag">transition</span></div>
-      </div>
-    </a>
-    <a class="card" href="effects/rectangle-in/index.html" data-category="overlay">
-      <div class="card__media">
-        <div class="hover-effect rectangle-in" aria-hidden="true">
-          <img src="https://picsum.photos/seed/rectangle-in/600/400" alt="" loading="lazy">
-        </div>
-      </div>
-      <div class="card__body">
-        <span class="card__badge">overlay</span>
-        <h3 class="card__title">Rectangle In</h3>
-        <p class="card__desc">Overlay hover effect on the image.</p>
-        <div class="card__tags"><span class="card__tag">overlay</span> <span class="card__tag">transform</span> <span class="card__tag">transition</span></div>
-      </div>
-    </a>
-    <a class="card" href="effects/rectangle-out/index.html" data-category="overlay">
-      <div class="card__media">
-        <div class="hover-effect rectangle-out" aria-hidden="true">
-          <img src="https://picsum.photos/seed/rectangle-out/600/400" alt="" loading="lazy">
-        </div>
-      </div>
-      <div class="card__body">
-        <span class="card__badge">overlay</span>
-        <h3 class="card__title">Rectangle Out</h3>
-        <p class="card__desc">Overlay hover effect on the image.</p>
-        <div class="card__tags"><span class="card__tag">overlay</span> <span class="card__tag">transform</span> <span class="card__tag">transition</span></div>
-      </div>
-    </a>
-    <a class="card" href="effects/refraction-lens/index.html" data-category="overlay">
-      <div class="card__media">
-        <div class="hover-effect refraction-lens" aria-hidden="true">
-          <img src="https://picsum.photos/seed/refraction-lens/600/400" alt="" loading="lazy">
-        </div>
-      </div>
-      <div class="card__body">
-        <span class="card__badge">overlay</span>
-        <h3 class="card__title">Refraction Lens</h3>
-        <p class="card__desc">Overlay hover effect on the image.</p>
-        <div class="card__tags"><span class="card__tag">overlay</span> <span class="card__tag">transform</span> <span class="card__tag">transition</span></div>
-      </div>
-    </a>
-    <a class="card" href="effects/vignette/index.html" data-category="overlay">
-      <div class="card__media">
-        <div class="hover-effect vignette" aria-hidden="true">
-          <img src="https://picsum.photos/seed/vignette/600/400" alt="" loading="lazy">
-        </div>
-      </div>
-      <div class="card__body">
-        <span class="card__badge">overlay</span>
-        <h3 class="card__title">Vignette</h3>
-        <p class="card__desc">Overlay hover effect on the image.</p>
-        <div class="card__tags"><span class="card__tag">overlay</span> <span class="card__tag">transform</span> <span class="card__tag">transition</span></div>
-      </div>
-    </a>
+        <details class="card" id="card-clip-reveal">
+          <summary>
+            <div class="demo">
+              <div class="hover-effect clip-reveal">
+                <img src="https://picsum.photos/seed/clip-reveal/600/450" alt="Clip Reveal demo" loading="lazy">
+              </div>
+            </div>
+            <div class="card-head">
+              <h3>Clip Reveal</h3>
+              <span class="complexity">simple</span>
+            </div>
+          </summary>
+          <div class="code">
+            <p class="hint">Hover the demo above, then copy the code below.</p>
+            <div class="block">
+              <div class="block-head">HTML</div>
+              <pre><code><div class="hover-effect clip-reveal">
+  <img src="image.jpg" alt="description">
+</div></code></pre>
+            </div>
+            <div class="block">
+              <div class="block-head">CSS</div>
+              <pre><code>/* Clip Reveal Effect */
+
+.hover-effect.clip-reveal img{
+  clip-path: inset(0 50% 0 50%);
+  transition: clip-path 0.5s ease-out, transform 0.5s ease-out;
+}
+
+.hover-effect.clip-reveal:hover img, .hover-effect.clip-reveal:focus-visible img{
+  clip-path: inset(0 0 0 0);
+  transform: scale(1.1);
+}</code></pre>
+            </div>
+          </div>
+        </details>
+        <details class="card" id="card-glitch-shift">
+          <summary>
+            <div class="demo">
+              <div class="hover-effect glitch-shift">
+                <img src="https://picsum.photos/seed/glitch-shift/600/450" alt="Glitch Shift demo" loading="lazy">
+              </div>
+            </div>
+            <div class="card-head">
+              <h3>Glitch Shift</h3>
+              <span class="complexity">advanced</span>
+            </div>
+          </summary>
+          <div class="code">
+            <p class="hint">Hover the demo above, then copy the code below.</p>
+            <div class="block">
+              <div class="block-head">HTML</div>
+              <pre><code><div class="hover-effect glitch-shift">
+  <img src="image.jpg" alt="description">
+</div></code></pre>
+            </div>
+            <div class="block">
+              <div class="block-head">CSS</div>
+              <pre><code>.hover-effect.glitch-shift > img {
+  transition: filter 0.15s steps(2, end);
+  position: relative;
+}
+
+.hover-effect.glitch-shift:hover > img,
+.hover-effect.glitch-shift:focus-visible > img {
+  animation: glitch-shift-anim 0.4s steps(2, end) infinite;
+  filter: hue-rotate(-15deg) contrast(1.2);
+}
+
+@keyframes glitch-shift-anim {
+  0%   { clip-path: inset(10% 0 60% 0); transform: translate(0, 0); }
+  33%  { clip-path: inset(50% 0 10% 0); transform: translate(-3px, 1px); }
+  66%  { clip-path: inset(20% 0 40% 0); transform: translate(2px, -1px); }
+  100% { clip-path: inset(10% 0 60% 0); transform: translate(0, 0); }
+}
+
+.hover-effect.glitch-shift::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 2px,
+    rgba(0, 0, 0, 0.08) 2px,
+    rgba(0, 0, 0, 0.08) 4px
+  );
+  opacity: 0;
+  transition: opacity 0.2s ease;
+  pointer-events: none;
+}
+
+.hover-effect.glitch-shift:hover::after,
+.hover-effect.glitch-shift:focus-visible::after {
+  opacity: 1;
+}</code></pre>
+            </div>
+          </div>
+        </details>
+        <details class="card" id="card-glitch-slice">
+          <summary>
+            <div class="demo">
+              <div class="hover-effect glitch-slice">
+                <img src="https://picsum.photos/seed/glitch-slice/600/450" alt="Glitch Slice demo" loading="lazy">
+              </div>
+            </div>
+            <div class="card-head">
+              <h3>Glitch Slice</h3>
+              <span class="complexity">advanced</span>
+            </div>
+          </summary>
+          <div class="code">
+            <p class="hint">Hover the demo above, then copy the code below.</p>
+            <div class="block">
+              <div class="block-head">HTML</div>
+              <pre><code><div class="hover-effect glitch-slice">
+  <img src="image.jpg" alt="description">
+</div></code></pre>
+            </div>
+            <div class="block">
+              <div class="block-head">CSS</div>
+              <pre><code>.hover-effect.glitch-slice > img {
+  transition: filter 0.15s steps(3, end);
+}
+
+.hover-effect.glitch-slice:hover > img,
+.hover-effect.glitch-slice:focus-visible > img {
+  animation: glitch-slice-anim 0.5s steps(4, end) infinite;
+  filter: hue-rotate(20deg) contrast(1.15);
+}
+
+@keyframes glitch-slice-anim {
+  0%   { clip-path: inset(20% 0 60% 0); transform: translate(0, 0); }
+  25%  { clip-path: inset(60% 0 10% 0); transform: translate(-4px, 0); }
+  50%  { clip-path: inset(10% 0 40% 0); transform: translate(4px, 0); }
+  75%  { clip-path: inset(40% 0 30% 0); transform: translate(-2px, 0); }
+  100% { clip-path: inset(20% 0 60% 0); transform: translate(0, 0); }
+}
+
+.hover-effect.glitch-slice::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    90deg,
+    rgba(255, 0, 0, 0.12),
+    rgba(0, 255, 0, 0.12),
+    rgba(0, 0, 255, 0.12)
+  );
+  mix-blend-mode: screen;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+  pointer-events: none;
+}
+
+.hover-effect.glitch-slice:hover::before,
+.hover-effect.glitch-slice:focus-visible::before {
+  opacity: 1;
+}</code></pre>
+            </div>
+          </div>
+        </details>
+        <details class="card" id="card-origami-fold">
+          <summary>
+            <div class="demo">
+              <div class="hover-effect origami-fold">
+                <img src="https://picsum.photos/seed/origami-fold/600/450" alt="Origami Fold demo" loading="lazy">
+              </div>
+            </div>
+            <div class="card-head">
+              <h3>Origami Fold</h3>
+              <span class="complexity">advanced</span>
+            </div>
+          </summary>
+          <div class="code">
+            <p class="hint">Hover the demo above, then copy the code below.</p>
+            <div class="block">
+              <div class="block-head">HTML</div>
+              <pre><code><div class="hover-effect origami-fold">
+  <img src="image.jpg" alt="description">
+</div></code></pre>
+            </div>
+            <div class="block">
+              <div class="block-head">CSS</div>
+              <pre><code>.hover-effect.origami-fold > img {
+  transition: clip-path 0.5s ease, transform 0.5s ease, filter 0.5s ease;
+}
+
+.hover-effect.origami-fold:hover > img,
+.hover-effect.origami-fold:focus-visible > img {
+  clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+  transform: scale(0.95);
+  filter: contrast(1.1) brightness(1.05);
+}
+
+.hover-effect.origami-fold::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    135deg,
+    transparent 40%,
+    rgba(0, 0, 0, 0.12) 50%,
+    transparent 60%
+  );
+  opacity: 0;
+  transition: opacity 0.5s ease;
+  pointer-events: none;
+}
+
+.hover-effect.origami-fold:hover::before,
+.hover-effect.origami-fold:focus-visible::before {
+  opacity: 1;
+}
+
+.hover-effect.origami-fold::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    45deg,
+    transparent 48%,
+    rgba(0, 0, 0, 0.08) 50%,
+    transparent 52%
+  );
+  opacity: 0;
+  transition: opacity 0.5s ease;
+  pointer-events: none;
+}
+
+.hover-effect.origami-fold:hover::after,
+.hover-effect.origami-fold:focus-visible::after {
+  opacity: 1;
+}</code></pre>
+            </div>
+          </div>
+        </details>
+        <details class="card" id="card-prism-split">
+          <summary>
+            <div class="demo">
+              <div class="hover-effect prism-split">
+                <img src="https://picsum.photos/seed/prism-split/600/450" alt="Prism Split demo" loading="lazy">
+              </div>
+            </div>
+            <div class="card-head">
+              <h3>Prism Split</h3>
+              <span class="complexity">advanced</span>
+            </div>
+          </summary>
+          <div class="code">
+            <p class="hint">Hover the demo above, then copy the code below.</p>
+            <div class="block">
+              <div class="block-head">HTML</div>
+              <pre><code><div class="hover-effect prism-split">
+  <img src="image.jpg" alt="description">
+</div></code></pre>
+            </div>
+            <div class="block">
+              <div class="block-head">CSS</div>
+              <pre><code>.hover-effect.prism-split > img {
+  transition: filter 0.4s ease, transform 0.4s ease;
+}
+
+.hover-effect.prism-split:hover > img,
+.hover-effect.prism-split:focus-visible > img {
+  filter: hue-rotate(30deg) saturate(1.8) brightness(1.1);
+  transform: scale(1.03);
+}
+
+.hover-effect.prism-split::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    90deg,
+    rgba(255, 0, 0, 0.15) 0%,
+    rgba(0, 255, 0, 0.15) 50%,
+    rgba(0, 0, 255, 0.15) 100%
+  );
+  mix-blend-mode: screen;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  pointer-events: none;
+}
+
+.hover-effect.prism-split:hover::before,
+.hover-effect.prism-split:focus-visible::before {
+  opacity: 1;
+}</code></pre>
+            </div>
+          </div>
+        </details>
+        <details class="card" id="card-swipe-reveal">
+          <summary>
+            <div class="demo">
+              <div class="hover-effect swipe-reveal">
+                <img src="https://picsum.photos/seed/swipe-reveal/600/450" alt="Swipe Reveal demo" loading="lazy">
+              </div>
+            </div>
+            <div class="card-head">
+              <h3>Swipe Reveal</h3>
+              <span class="complexity">advanced</span>
+            </div>
+          </summary>
+          <div class="code">
+            <p class="hint">Hover the demo above, then copy the code below.</p>
+            <div class="block">
+              <div class="block-head">HTML</div>
+              <pre><code><div class="hover-effect swipe-reveal">
+  <img src="image.jpg" alt="description">
+</div></code></pre>
+            </div>
+            <div class="block">
+              <div class="block-head">CSS</div>
+              <pre><code>/* Swipe Reveal Effect - Split swipe reveals alternate color layer */
+
+.hover-effect.swipe-reveal{
+}
+
+.hover-effect.swipe-reveal img{
+  transition: transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+/* Reveal layer - slides in from left */
+.hover-effect.swipe-reveal::before{
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  clip-path: inset(0 100% 0 0);
+  transition: clip-path 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  z-index: 1;
+}
+
+/* Overlay text/content on reveal layer */
+.hover-effect.swipe-reveal::after{
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: inherit;
+  background-size: cover;
+  background-position: center;
+  clip-path: inset(0 0 0 100%);
+  opacity: 0;
+  transition: clip-path 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+              opacity 0.3s ease 0.2s;
+  z-index: 2;
+}
+
+/* Hover - swipe reveals */
+.hover-effect.swipe-reveal:hover::before, .hover-effect.swipe-reveal:focus-visible::before{
+  clip-path: inset(0 0 0 0);
+}
+
+.hover-effect.swipe-reveal:hover::after, .hover-effect.swipe-reveal:focus-visible::after{
+  clip-path: inset(0 0 0 0);
+  opacity: 1;
+}
+
+.hover-effect.swipe-reveal:hover img, .hover-effect.swipe-reveal:focus-visible img{
+  transform: scale(1.02);
+  filter: brightness(1.05);
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .hover-effect.swipe-reveal img, .hover-effect.swipe-reveal::before, .hover-effect.swipe-reveal::after{
+    transition: none;
+  }
+  .hover-effect.swipe-reveal:hover::before, .hover-effect.swipe-reveal:hover::after, .hover-effect.swipe-reveal:focus-visible::before, .hover-effect.swipe-reveal:focus-visible::after{
+    clip-path: inset(0 0 0 0);
+  }
+  .hover-effect.swipe-reveal:hover::after, .hover-effect.swipe-reveal:focus-visible::after{
+    opacity: 1;
+  }
+  .hover-effect.swipe-reveal:hover img, .hover-effect.swipe-reveal:focus-visible img{
+    transform: scale(1.02);
+  }
+}</code></pre>
+            </div>
+          </div>
+        </details>
       </div>
     </section>
-
-    <section class="section" id="cat-composite">
-      <header class="section__header">
-        <h2 class="section__title">Composite</h2>
-        <p class="section__count">3 effects</p>
+    <section id="cat-shadow" class="category">
+      <header class="category-head">
+        <h2>Shadow</h2>
+        <span class="count">4 effects</span>
       </header>
       <div class="grid">
-    <a class="card" href="effects/horizontal-zoom-n-pan/index.html" data-category="composite">
-      <div class="card__media">
-        <div class="hover-effect horizontal-zoom-n-pan" aria-hidden="true">
-          <img src="https://picsum.photos/seed/horizontal-zoom-n-pan/600/400" alt="" loading="lazy">
-        </div>
-      </div>
-      <div class="card__body">
-        <span class="card__badge">composite</span>
-        <h3 class="card__title">Horizontal Zoom &amp; Pan</h3>
-        <p class="card__desc">Composite hover effect on the image.</p>
-        <div class="card__tags"><span class="card__tag">composite</span> <span class="card__tag">transform</span> <span class="card__tag">transition</span></div>
-      </div>
-    </a>
-    <a class="card" href="effects/vertical-zoom-n-pan/index.html" data-category="composite">
-      <div class="card__media">
-        <div class="hover-effect vertical-zoom-n-pan" aria-hidden="true">
-          <img src="https://picsum.photos/seed/vertical-zoom-n-pan/600/400" alt="" loading="lazy">
-        </div>
-      </div>
-      <div class="card__body">
-        <span class="card__badge">composite</span>
-        <h3 class="card__title">Vertical Zoom &amp; Pan</h3>
-        <p class="card__desc">Composite hover effect on the image.</p>
-        <div class="card__tags"><span class="card__tag">composite</span> <span class="card__tag">transform</span> <span class="card__tag">transition</span></div>
-      </div>
-    </a>
-    <a class="card" href="effects/zoom-rotate/index.html" data-category="composite">
-      <div class="card__media">
-        <div class="hover-effect zoom-rotate" aria-hidden="true">
-          <img src="https://picsum.photos/seed/zoom-rotate/600/400" alt="" loading="lazy">
-        </div>
-      </div>
-      <div class="card__body">
-        <span class="card__badge">composite</span>
-        <h3 class="card__title">Zoom Rotate</h3>
-        <p class="card__desc">Composite hover effect on the image.</p>
-        <div class="card__tags"><span class="card__tag">composite</span> <span class="card__tag">transform</span> <span class="card__tag">transition</span></div>
-      </div>
-    </a>
+        <details class="card" id="card-glow-border">
+          <summary>
+            <div class="demo">
+              <div class="hover-effect glow-border">
+                <img src="https://picsum.photos/seed/glow-border/600/450" alt="Glow Border demo" loading="lazy">
+              </div>
+            </div>
+            <div class="card-head">
+              <h3>Glow Border</h3>
+              <span class="complexity">simple</span>
+            </div>
+          </summary>
+          <div class="code">
+            <p class="hint">Hover the demo above, then copy the code below.</p>
+            <div class="block">
+              <div class="block-head">HTML</div>
+              <pre><code><div class="hover-effect glow-border">
+  <img src="image.jpg" alt="description">
+</div></code></pre>
+            </div>
+            <div class="block">
+              <div class="block-head">CSS</div>
+              <pre><code>/* Glow Border Effect */
+
+.hover-effect.glow-border{
+  overflow: visible; /* Allow box-shadow to extend beyond container */
+  transition: box-shadow 0.3s ease-in-out;
+}
+
+.hover-effect.glow-border img{
+  /* Image styling handled by base.css */
+}
+
+.hover-effect.glow-border:hover, .hover-effect.glow-border:focus-visible{
+  box-shadow: 0 0 20px 4px #2563eb;
+}</code></pre>
+            </div>
+          </div>
+        </details>
+        <details class="card" id="card-neon-pulse">
+          <summary>
+            <div class="demo">
+              <div class="hover-effect neon-pulse">
+                <img src="https://picsum.photos/seed/neon-pulse/600/450" alt="Neon Pulse demo" loading="lazy">
+              </div>
+            </div>
+            <div class="card-head">
+              <h3>Neon Pulse</h3>
+              <span class="complexity">advanced</span>
+            </div>
+          </summary>
+          <div class="code">
+            <p class="hint">Hover the demo above, then copy the code below.</p>
+            <div class="block">
+              <div class="block-head">HTML</div>
+              <pre><code><div class="hover-effect neon-pulse">
+  <img src="image.jpg" alt="description">
+</div></code></pre>
+            </div>
+            <div class="block">
+              <div class="block-head">CSS</div>
+              <pre><code>/* Neon Pulse Effect - Pulsing neon glow cycles color around border */
+
+.hover-effect.neon-pulse{
+  border: 1px solid var(--color-border, #e5e5e5);
+  transition: border-color 0.3s ease-out;
+}
+
+.hover-effect.neon-pulse img{
+}
+
+.hover-effect.neon-pulse:hover, .hover-effect.neon-pulse:focus-visible{
+  border-color: transparent;
+  animation: neon-pulse-glow 1.6s ease-in-out infinite;
+}
+
+@keyframes neon-pulse-glow {
+  0%, 100% { box-shadow: 0 0 8px 2px #2563eb, 0 0 20px 6px rgba(37,99,235,0.5); }
+  50%      { box-shadow: 0 0 14px 4px #d946ef, 0 0 30px 10px rgba(217,70,239,0.6); }
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .hover-effect.neon-pulse:hover, .hover-effect.neon-pulse:focus-visible{
+    animation: none;
+    box-shadow: 0 0 8px 2px #2563eb, 0 0 20px 6px rgba(37,99,235,0.5);
+    border-color: #2563eb;
+  }
+}</code></pre>
+            </div>
+          </div>
+        </details>
+        <details class="card" id="card-shadow-drop">
+          <summary>
+            <div class="demo">
+              <div class="hover-effect shadow-drop">
+                <img src="https://picsum.photos/seed/shadow-drop/600/450" alt="Shadow Drop demo" loading="lazy">
+              </div>
+            </div>
+            <div class="card-head">
+              <h3>Shadow Drop</h3>
+              <span class="complexity">simple</span>
+            </div>
+          </summary>
+          <div class="code">
+            <p class="hint">Hover the demo above, then copy the code below.</p>
+            <div class="block">
+              <div class="block-head">HTML</div>
+              <pre><code><div class="hover-effect shadow-drop">
+  <img src="image.jpg" alt="description">
+</div></code></pre>
+            </div>
+            <div class="block">
+              <div class="block-head">CSS</div>
+              <pre><code>.hover-effect.shadow-drop{
+}
+.hover-effect.shadow-drop img{
+  box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.4);
+  transition: box-shadow 0.4s ease;
+}
+.hover-effect.shadow-drop:hover img, .hover-effect.shadow-drop:focus-visible img{
+  box-shadow: none;
+}</code></pre>
+            </div>
+          </div>
+        </details>
+        <details class="card" id="card-shadow-lift">
+          <summary>
+            <div class="demo">
+              <div class="hover-effect shadow-lift">
+                <img src="https://picsum.photos/seed/shadow-lift/600/450" alt="Shadow Lift demo" loading="lazy">
+              </div>
+            </div>
+            <div class="card-head">
+              <h3>Shadow Lift</h3>
+              <span class="complexity">simple</span>
+            </div>
+          </summary>
+          <div class="code">
+            <p class="hint">Hover the demo above, then copy the code below.</p>
+            <div class="block">
+              <div class="block-head">HTML</div>
+              <pre><code><div class="hover-effect shadow-lift">
+  <img src="image.jpg" alt="description">
+</div></code></pre>
+            </div>
+            <div class="block">
+              <div class="block-head">CSS</div>
+              <pre><code>.hover-effect.shadow-lift{
+}
+.hover-effect.shadow-lift img{
+  box-shadow: none;
+  transition: box-shadow 0.4s ease;
+}
+.hover-effect.shadow-lift:hover img, .hover-effect.shadow-lift:focus-visible img{
+  box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.4);
+}</code></pre>
+            </div>
+          </div>
+        </details>
       </div>
     </section>
-  </main>
+    <section id="cat-zoom" class="category">
+      <header class="category-head">
+        <h2>Zoom</h2>
+        <span class="count">5 effects</span>
+      </header>
+      <div class="grid">
+        <details class="card" id="card-point-zoom">
+          <summary>
+            <div class="demo">
+              <div class="hover-effect point-zoom">
+                <img src="https://picsum.photos/seed/point-zoom/600/450" alt="Point Zoom demo" loading="lazy">
+              </div>
+            </div>
+            <div class="card-head">
+              <h3>Point Zoom</h3>
+              <span class="complexity">simple</span>
+            </div>
+          </summary>
+          <div class="code">
+            <p class="hint">Hover the demo above, then copy the code below.</p>
+            <div class="block">
+              <div class="block-head">HTML</div>
+              <pre><code><div class="hover-effect point-zoom">
+  <img src="image.jpg" alt="description">
+</div></code></pre>
+            </div>
+            <div class="block">
+              <div class="block-head">CSS</div>
+              <pre><code>.hover-effect.point-zoom{
+}
+.hover-effect.point-zoom img{
+  transform-origin: 65% 75%;
+  transition: transform 1s, filter 0.5s ease-out;
+}
+.hover-effect.point-zoom:hover img, .hover-effect.point-zoom:focus-visible img{
+  transform: scale(5);
+}</code></pre>
+            </div>
+          </div>
+        </details>
+        <details class="card" id="card-quick-zoom">
+          <summary>
+            <div class="demo">
+              <div class="hover-effect quick-zoom">
+                <img src="https://picsum.photos/seed/quick-zoom/600/450" alt="Quick Zoom demo" loading="lazy">
+              </div>
+            </div>
+            <div class="card-head">
+              <h3>Quick Zoom</h3>
+              <span class="complexity">simple</span>
+            </div>
+          </summary>
+          <div class="code">
+            <p class="hint">Hover the demo above, then copy the code below.</p>
+            <div class="block">
+              <div class="block-head">HTML</div>
+              <pre><code><div class="hover-effect quick-zoom">
+  <img src="image.jpg" alt="description">
+</div></code></pre>
+            </div>
+            <div class="block">
+              <div class="block-head">CSS</div>
+              <pre><code>.hover-effect.quick-zoom{
+}
+.hover-effect.quick-zoom img{
+  transform-origin: 0 0;
+  transition: transform 0.25s, visibility 0.25s ease-in;
+}
+.hover-effect.quick-zoom:hover img, .hover-effect.quick-zoom:focus-visible img{
+  transform: scale(2);
+}</code></pre>
+            </div>
+          </div>
+        </details>
+        <details class="card" id="card-slide-reveal">
+          <summary>
+            <div class="demo">
+              <div class="hover-effect slide-reveal">
+                <img src="https://picsum.photos/seed/slide-reveal/600/450" alt="Slide Reveal demo" loading="lazy">
+              </div>
+            </div>
+            <div class="card-head">
+              <h3>Slide Reveal</h3>
+              <span class="complexity">simple</span>
+            </div>
+          </summary>
+          <div class="code">
+            <p class="hint">Hover the demo above, then copy the code below.</p>
+            <div class="block">
+              <div class="block-head">HTML</div>
+              <pre><code><div class="hover-effect slide-reveal">
+  <img src="image.jpg" alt="description">
+</div></code></pre>
+            </div>
+            <div class="block">
+              <div class="block-head">CSS</div>
+              <pre><code>/* Slide Reveal Effect */
 
-  <footer class="site-footer">
-    <p>Generated by <code>scripts/build_catalog.py</code>. Source of truth: <code>effects/*/meta.json</code>.</p>
-  </footer>
+.hover-effect.slide-reveal img{
+  display: block;
+  width: 0;
+  height: 100%;
+  transition: width 0.4s ease-out;
+}
+
+.hover-effect.slide-reveal:hover img, .hover-effect.slide-reveal:focus-visible img{
+  width: 100%;
+}</code></pre>
+            </div>
+          </div>
+        </details>
+        <details class="card" id="card-zoom-in">
+          <summary>
+            <div class="demo">
+              <div class="hover-effect zoom-in">
+                <img src="https://picsum.photos/seed/zoom-in/600/450" alt="Zoom In demo" loading="lazy">
+              </div>
+            </div>
+            <div class="card-head">
+              <h3>Zoom In</h3>
+              <span class="complexity">simple</span>
+            </div>
+          </summary>
+          <div class="code">
+            <p class="hint">Hover the demo above, then copy the code below.</p>
+            <div class="block">
+              <div class="block-head">HTML</div>
+              <pre><code><div class="hover-effect zoom-in">
+  <img src="image.jpg" alt="description">
+</div></code></pre>
+            </div>
+            <div class="block">
+              <div class="block-head">CSS</div>
+              <pre><code>/* Zoom In Effect */
+
+.hover-effect.zoom-in img{
+  transition: transform 0.45s ease;
+}
+
+.hover-effect.zoom-in:hover img, .hover-effect.zoom-in:focus-visible img{
+  transform: scale(1.18);
+}</code></pre>
+            </div>
+          </div>
+        </details>
+        <details class="card" id="card-zoom-out">
+          <summary>
+            <div class="demo">
+              <div class="hover-effect zoom-out">
+                <img src="https://picsum.photos/seed/zoom-out/600/450" alt="Zoom Out demo" loading="lazy">
+              </div>
+            </div>
+            <div class="card-head">
+              <h3>Zoom Out</h3>
+              <span class="complexity">simple</span>
+            </div>
+          </summary>
+          <div class="code">
+            <p class="hint">Hover the demo above, then copy the code below.</p>
+            <div class="block">
+              <div class="block-head">HTML</div>
+              <pre><code><div class="hover-effect zoom-out">
+  <img src="image.jpg" alt="description">
+</div></code></pre>
+            </div>
+            <div class="block">
+              <div class="block-head">CSS</div>
+              <pre><code>.hover-effect.zoom-out{
+}
+.hover-effect.zoom-out img{
+  transition: transform .45s ease;
+  transform: scale(1.2);
+}
+.hover-effect.zoom-out:hover img, .hover-effect.zoom-out:focus-visible img{
+  transform: scale(1);
+}</code></pre>
+            </div>
+          </div>
+        </details>
+      </div>
+    </section>
+</div>
+</main>
+<footer class="footer">
+<div class="container">
+  <p>Built for CSS learners. Select any code block and copy with <kbd>Ctrl+C</kbd> (or <kbd>Cmd+C</kbd> on Mac).</p>
+</div>
+</footer>
 </body>
 </html>

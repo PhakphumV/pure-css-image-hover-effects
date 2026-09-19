@@ -1,3 +1,0 @@
-.hover-effect.multiple-images > img { transition: transform 0.3s; }
-.hover-effect.multiple-images:hover > img,
-.hover-effect.multiple-images:focus-visible > img { transform: scale(1.1); }

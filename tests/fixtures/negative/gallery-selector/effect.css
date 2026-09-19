@@ -1,4 +1,0 @@
-.hover-effect.gallery-selector > img { transition: transform 0.3s; }
-.hover-effect.gallery-selector:hover > img,
-.hover-effect.gallery-selector:focus-visible > img { transform: scale(1.1); }
-.hover-effect.gallery-selector .card { padding: 0; }

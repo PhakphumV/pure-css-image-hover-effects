@@ -1,4 +1,0 @@
-.hover-effect.descendant-class > img { transition: transform 0.3s; }
-.hover-effect.descendant-class:hover > img,
-.hover-effect.descendant-class:focus-visible > img { transform: scale(1.1); }
-.hover-effect.descendant-class .child { display: none; }

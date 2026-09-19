@@ -1,5 +1,0 @@
-.hover-effect.extra-child > img { transition: transform 0.3s; }
-.hover-effect.extra-child:hover > img,
-.hover-effect.extra-child:focus-visible > img { transform: scale(1.1); }
-.hover-effect.extra-child .inner-overlay { opacity: 0; }
-.hover-effect.extra-child:hover .inner-overlay { opacity: 1; }

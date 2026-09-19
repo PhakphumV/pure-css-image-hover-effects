@@ -1,2 +1,0 @@
-.hover-effect.no-focus > img { transition: transform 0.3s; }
-.hover-effect.no-focus:hover > img { transform: scale(1.1); }
