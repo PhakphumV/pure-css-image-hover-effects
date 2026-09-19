@@ -2,8 +2,16 @@
    styles/catalog.css
    Catalog page styles for index.html.
    Loaded in addition to styles/base.css.
-   Design read: developer-tooling showcase, editorial, calm.
+
+   Design read (design-taste-frontend): developer-tooling showcase
+   for CSS hover effects, editorial, calm.
    Dials: VARIANCE 5 / MOTION 3 / DENSITY 3.
+
+   Constraints honored:
+   - Zero em-dashes anywhere visible to the user.
+   - One theme (light, neutral, one blue accent).
+   - One shape system (6px cards, 999px pills).
+   - All transitions short (<= 200ms).
    ============================================================ */
 
 :root {
@@ -14,34 +22,26 @@
 
 /* ---------- Hero ---------- */
 .hero {
-  padding: clamp(3rem, 6vw, 5rem) 1.5rem 2.5rem;
+  padding: clamp(4rem, 7vw, 6rem) 1.5rem 3rem;
   text-align: left;
   max-width: var(--catalog-max);
   margin: 0 auto;
   border-bottom: var(--catalog-border);
 }
 
-.hero__eyebrow {
-  margin: 0 0 1rem;
-  font-size: 0.75rem;
-  font-weight: 500;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: var(--color-text-muted);
-}
-
 .hero__title {
   margin: 0 0 0.75rem;
-  font-size: clamp(2rem, 4vw, 3rem);
+  font-size: clamp(2.25rem, 5vw, 3.5rem);
   font-weight: 700;
-  letter-spacing: -0.02em;
-  line-height: 1.1;
+  letter-spacing: -0.025em;
+  line-height: 1.05;
+  max-width: 18ch;
 }
 
 .hero__sub {
-  margin: 0 0 1.5rem;
-  max-width: 38ch;
-  font-size: 1.0625rem;
+  margin: 0 0 1.75rem;
+  max-width: 42ch;
+  font-size: 1.125rem;
   color: var(--color-text-muted);
   line-height: 1.5;
 }
@@ -57,6 +57,29 @@
 
 .hero__meta span[aria-hidden] {
   color: var(--color-border);
+}
+
+/* ---------- Featured row ---------- */
+.featured {
+  max-width: var(--catalog-max);
+  margin: 0 auto;
+  padding: 2.5rem 1.5rem 1rem;
+}
+
+.featured__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+}
+
+@media (max-width: 800px) {
+  .featured__grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.card--featured .card__media--featured {
+  aspect-ratio: 3 / 2;
 }
 
 /* ---------- Filter ---------- */
@@ -118,7 +141,7 @@
 main {
   max-width: var(--catalog-max);
   margin: 0 auto;
-  padding: 2rem 1.5rem 4rem;
+  padding: 1.5rem 1.5rem 4rem;
 }
 
 .section {
@@ -157,6 +180,7 @@ main {
 }
 
 .card {
+  position: relative;
   display: flex;
   flex-direction: column;
   text-decoration: none;
@@ -165,11 +189,13 @@ main {
   border-radius: var(--catalog-radius);
   overflow: hidden;
   background: var(--color-card-bg);
-  transition: border-color 0.15s, transform 0.15s;
+  transition: border-color 0.18s ease, transform 0.18s ease, box-shadow 0.18s ease;
 }
 
 .card:hover {
   border-color: var(--color-text-muted);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.04);
 }
 
 .card:focus-visible {
@@ -191,11 +217,27 @@ main {
 }
 
 .card__body {
-  padding: 0.75rem 1rem 1rem;
+  padding: 0.85rem 1rem 1rem;
   display: flex;
   flex-direction: column;
   gap: 0.4rem;
   flex: 1;
+}
+
+.card__badge {
+  align-self: flex-start;
+  font-size: 0.6875rem;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+  background: var(--color-bg);
+  border: var(--catalog-border);
+  padding: 0.15rem 0.55rem;
+  border-radius: 999px;
+  font-family: ui-monospace, SFMono-Regular, monospace;
+  font-variant: small-caps;
+  margin-bottom: 0.15rem;
 }
 
 .card__title {
@@ -230,12 +272,6 @@ main {
 }
 
 /* ---------- Pure-CSS category filter (no JS) ---------- */
-/* Default: show every card. When a category radio is :checked,
-   hide cards whose data-category does not match. We use the
-   general-sibling combinator (~) to reach all .card elements
-   after the radio group. The radios live inside .filter; cards
-   live inside <main>. The :has() selector on body scopes the
-   filter state to the whole document. */
 body:has(input[name="cat"][value="zoom"]:checked) .card:not([data-category="zoom"]) { display: none; }
 body:has(input[name="cat"][value="pan"]:checked) .card:not([data-category="pan"]) { display: none; }
 body:has(input[name="cat"][value="rotate"]:checked) .card:not([data-category="rotate"]) { display: none; }
@@ -249,9 +285,6 @@ body:has(input[name="cat"][value="border"]:checked) .card:not([data-category="bo
 body:has(input[name="cat"][value="distortion"]:checked) .card:not([data-category="distortion"]) { display: none; }
 body:has(input[name="cat"][value="overlay"]:checked) .card:not([data-category="overlay"]) { display: none; }
 body:has(input[name="cat"][value="composite"]:checked) .card:not([data-category="composite"]) { display: none; }
-
-/* Empty section hiding when all its cards are filtered out */
-body:has(input[name="cat"]:not([value="all"]):checked) .section:has(.card:not([data-category])) { display: none; }
 
 /* ---------- Footer ---------- */
 .site-footer {
@@ -271,5 +304,8 @@ body:has(input[name="cat"]:not([value="all"]):checked) .section:has(.card:not([d
   .filter__pill,
   .card {
     transition: none;
+  }
+  .card:hover {
+    transform: none;
   }
 }

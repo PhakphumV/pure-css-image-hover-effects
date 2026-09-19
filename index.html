@@ -3,14 +3,13 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Pure CSS Image Hover Effects</title>
+  <title>Pure CSS image hover effects</title>
   <meta name="description" content="A curated library of 54 pure-CSS image hover effects. Copy-paste ready. No JavaScript.">
   <link rel="stylesheet" href="styles/base.css">
   <link rel="stylesheet" href="styles/catalog.css">
 </head>
 <body>
   <header class="hero">
-    <p class="hero__eyebrow">v2.0 rebuild</p>
     <h1 class="hero__title">Pure CSS image hover effects</h1>
     <p class="hero__sub">54 effects. One class on a div. No JavaScript.</p>
     <p class="hero__meta">
@@ -19,8 +18,54 @@
       <a href="META_SCHEMA.md">Schema</a>
       <span aria-hidden="true">/</span>
       <a href="BROWSER_SUPPORT.md">Browser support</a>
+      <span aria-hidden="true">/</span>
+      <a href="ACCESSIBILITY.md">Accessibility</a>
     </p>
   </header>
+
+    <section class="featured" aria-label="Featured effects">
+      <div class="featured__grid">
+    <a class="card card--featured" href="effects/zoom-in/index.html" data-category="zoom">
+      <div class="card__media card__media--featured">
+        <div class="hover-effect zoom-in" aria-hidden="true">
+          <img src="https://picsum.photos/seed/zoom-in/900/600" alt="" loading="lazy">
+        </div>
+      </div>
+      <div class="card__body">
+        <span class="card__badge">zoom</span>
+        <h3 class="card__title">Zoom In</h3>
+        <p class="card__desc">Zoom hover effect on the image.</p>
+        <div class="card__tags"><span class="card__tag">transform</span> <span class="card__tag">transition</span> <span class="card__tag">zoom</span></div>
+      </div>
+    </a>
+    <a class="card card--featured" href="effects/shine-sweep/index.html" data-category="light">
+      <div class="card__media card__media--featured">
+        <div class="hover-effect shine-sweep" aria-hidden="true">
+          <img src="https://picsum.photos/seed/shine-sweep/900/600" alt="" loading="lazy">
+        </div>
+      </div>
+      <div class="card__body">
+        <span class="card__badge">light</span>
+        <h3 class="card__title">Shine Sweep</h3>
+        <p class="card__desc">Light hover effect on the image.</p>
+        <div class="card__tags"><span class="card__tag">filter</span> <span class="card__tag">light</span> <span class="card__tag">transform</span> <span class="card__tag">transition</span></div>
+      </div>
+    </a>
+    <a class="card card--featured" href="effects/glitch-shift/index.html" data-category="reveal">
+      <div class="card__media card__media--featured">
+        <div class="hover-effect glitch-shift" aria-hidden="true">
+          <img src="https://picsum.photos/seed/glitch-shift/900/600" alt="" loading="lazy">
+        </div>
+      </div>
+      <div class="card__body">
+        <span class="card__badge">reveal</span>
+        <h3 class="card__title">Glitch Shift</h3>
+        <p class="card__desc">Reveal hover effect on the image.</p>
+        <div class="card__tags"><span class="card__tag">animation</span> <span class="card__tag">clip-path</span> <span class="card__tag">filter</span> <span class="card__tag">reveal</span></div>
+      </div>
+    </a>
+      </div>
+    </section>
 
   <nav class="filter" aria-label="Filter by category">
       <label class="filter__pill"><input type="radio" name="cat" value="all" checked><span>All <small>(54)</small></span></label>
@@ -40,7 +85,7 @@
     <section class="section" id="cat-zoom">
       <header class="section__header">
         <h2 class="section__title">Zoom</h2>
-        <p class="section__count">5 effects</p>
+        <p class="section__count">4 effects</p>
       </header>
       <div class="grid">
     <a class="card" href="effects/point-zoom/index.html" data-category="zoom">
@@ -50,6 +95,7 @@
         </div>
       </div>
       <div class="card__body">
+        <span class="card__badge">zoom</span>
         <h3 class="card__title">Point Zoom</h3>
         <p class="card__desc">Zoom hover effect on the image.</p>
         <div class="card__tags"><span class="card__tag">transform</span> <span class="card__tag">transition</span> <span class="card__tag">zoom</span></div>
@@ -62,6 +108,7 @@
         </div>
       </div>
       <div class="card__body">
+        <span class="card__badge">zoom</span>
         <h3 class="card__title">Quick Zoom</h3>
         <p class="card__desc">Zoom hover effect on the image.</p>
         <div class="card__tags"><span class="card__tag">transform</span> <span class="card__tag">transition</span> <span class="card__tag">zoom</span></div>
@@ -74,21 +121,10 @@
         </div>
       </div>
       <div class="card__body">
+        <span class="card__badge">zoom</span>
         <h3 class="card__title">Slide Reveal</h3>
         <p class="card__desc">Zoom hover effect on the image.</p>
         <div class="card__tags"><span class="card__tag">transition</span> <span class="card__tag">zoom</span></div>
-      </div>
-    </a>
-    <a class="card" href="effects/zoom-in/index.html" data-category="zoom">
-      <div class="card__media">
-        <div class="hover-effect zoom-in" aria-hidden="true">
-          <img src="https://picsum.photos/seed/zoom-in/600/400" alt="" loading="lazy">
-        </div>
-      </div>
-      <div class="card__body">
-        <h3 class="card__title">Zoom In</h3>
-        <p class="card__desc">Zoom hover effect on the image.</p>
-        <div class="card__tags"><span class="card__tag">transform</span> <span class="card__tag">transition</span> <span class="card__tag">zoom</span></div>
       </div>
     </a>
     <a class="card" href="effects/zoom-out/index.html" data-category="zoom">
@@ -98,6 +134,7 @@
         </div>
       </div>
       <div class="card__body">
+        <span class="card__badge">zoom</span>
         <h3 class="card__title">Zoom Out</h3>
         <p class="card__desc">Zoom hover effect on the image.</p>
         <div class="card__tags"><span class="card__tag">transform</span> <span class="card__tag">transition</span> <span class="card__tag">zoom</span></div>
@@ -119,6 +156,7 @@
         </div>
       </div>
       <div class="card__body">
+        <span class="card__badge">pan</span>
         <h3 class="card__title">Bounce Bottom</h3>
         <p class="card__desc">Pan hover effect on the image.</p>
         <div class="card__tags"><span class="card__tag">pan</span> <span class="card__tag">transition</span></div>
@@ -131,6 +169,7 @@
         </div>
       </div>
       <div class="card__body">
+        <span class="card__badge">pan</span>
         <h3 class="card__title">Bounce Left</h3>
         <p class="card__desc">Pan hover effect on the image.</p>
         <div class="card__tags"><span class="card__tag">pan</span> <span class="card__tag">transition</span></div>
@@ -143,6 +182,7 @@
         </div>
       </div>
       <div class="card__body">
+        <span class="card__badge">pan</span>
         <h3 class="card__title">Bounce Right</h3>
         <p class="card__desc">Pan hover effect on the image.</p>
         <div class="card__tags"><span class="card__tag">pan</span> <span class="card__tag">transition</span></div>
@@ -155,6 +195,7 @@
         </div>
       </div>
       <div class="card__body">
+        <span class="card__badge">pan</span>
         <h3 class="card__title">Bounce Top</h3>
         <p class="card__desc">Pan hover effect on the image.</p>
         <div class="card__tags"><span class="card__tag">pan</span> <span class="card__tag">transition</span></div>
@@ -167,6 +208,7 @@
         </div>
       </div>
       <div class="card__body">
+        <span class="card__badge">pan</span>
         <h3 class="card__title">Slide Reveal Right</h3>
         <p class="card__desc">Pan hover effect on the image.</p>
         <div class="card__tags"><span class="card__tag">pan</span> <span class="card__tag">transition</span></div>
@@ -188,6 +230,7 @@
         </div>
       </div>
       <div class="card__body">
+        <span class="card__badge">3d</span>
         <h3 class="card__title">3D Rotate</h3>
         <p class="card__desc">3d hover effect on the image.</p>
         <div class="card__tags"><span class="card__tag">3d</span> <span class="card__tag">transform</span> <span class="card__tag">transition</span></div>
@@ -200,6 +243,7 @@
         </div>
       </div>
       <div class="card__body">
+        <span class="card__badge">3d</span>
         <h3 class="card__title">Depth Layers</h3>
         <p class="card__desc">3d hover effect on the image.</p>
         <div class="card__tags"><span class="card__tag">3d</span> <span class="card__tag">animation</span> <span class="card__tag">filter</span> <span class="card__tag">transform</span></div>
@@ -212,6 +256,7 @@
         </div>
       </div>
       <div class="card__body">
+        <span class="card__badge">3d</span>
         <h3 class="card__title">Flip Horizontal</h3>
         <p class="card__desc">3d hover effect on the image.</p>
         <div class="card__tags"><span class="card__tag">3d</span> <span class="card__tag">transform</span> <span class="card__tag">transition</span></div>
@@ -224,6 +269,7 @@
         </div>
       </div>
       <div class="card__body">
+        <span class="card__badge">3d</span>
         <h3 class="card__title">Flip Vertical</h3>
         <p class="card__desc">3d hover effect on the image.</p>
         <div class="card__tags"><span class="card__tag">3d</span> <span class="card__tag">transform</span> <span class="card__tag">transition</span></div>
@@ -236,6 +282,7 @@
         </div>
       </div>
       <div class="card__body">
+        <span class="card__badge">3d</span>
         <h3 class="card__title">Magnetic Tilt</h3>
         <p class="card__desc">3d hover effect on the image.</p>
         <div class="card__tags"><span class="card__tag">3d</span> <span class="card__tag">filter</span> <span class="card__tag">transform</span> <span class="card__tag">transition</span></div>
@@ -248,6 +295,7 @@
         </div>
       </div>
       <div class="card__body">
+        <span class="card__badge">3d</span>
         <h3 class="card__title">Origami Fold</h3>
         <p class="card__desc">3d hover effect on the image.</p>
         <div class="card__tags"><span class="card__tag">3d</span> <span class="card__tag">clip-path</span> <span class="card__tag">filter</span> <span class="card__tag">transform</span></div>
@@ -260,6 +308,7 @@
         </div>
       </div>
       <div class="card__body">
+        <span class="card__badge">3d</span>
         <h3 class="card__title">Parallax Tilt</h3>
         <p class="card__desc">3d hover effect on the image.</p>
         <div class="card__tags"><span class="card__tag">3d</span> <span class="card__tag">filter</span> <span class="card__tag">transform</span> <span class="card__tag">transition</span></div>
@@ -272,6 +321,7 @@
         </div>
       </div>
       <div class="card__body">
+        <span class="card__badge">3d</span>
         <h3 class="card__title">Tilt Shadow</h3>
         <p class="card__desc">3d hover effect on the image.</p>
         <div class="card__tags"><span class="card__tag">3d</span> <span class="card__tag">transform</span> <span class="card__tag">transition</span></div>
@@ -293,6 +343,7 @@
         </div>
       </div>
       <div class="card__body">
+        <span class="card__badge">filter</span>
         <h3 class="card__title">Blur to Sharp</h3>
         <p class="card__desc">Filter hover effect on the image.</p>
         <div class="card__tags"><span class="card__tag">filter</span> <span class="card__tag">transform</span> <span class="card__tag">transition</span></div>
@@ -305,6 +356,7 @@
         </div>
       </div>
       <div class="card__body">
+        <span class="card__badge">filter</span>
         <h3 class="card__title">Contrast Punch</h3>
         <p class="card__desc">Filter hover effect on the image.</p>
         <div class="card__tags"><span class="card__tag">filter</span> <span class="card__tag">transition</span></div>
@@ -317,6 +369,7 @@
         </div>
       </div>
       <div class="card__body">
+        <span class="card__badge">filter</span>
         <h3 class="card__title">Contrast Soften</h3>
         <p class="card__desc">Filter hover effect on the image.</p>
         <div class="card__tags"><span class="card__tag">filter</span> <span class="card__tag">transition</span></div>
@@ -329,6 +382,7 @@
         </div>
       </div>
       <div class="card__body">
+        <span class="card__badge">filter</span>
         <h3 class="card__title">Duotone Shift</h3>
         <p class="card__desc">Filter hover effect on the image.</p>
         <div class="card__tags"><span class="card__tag">filter</span> <span class="card__tag">transform</span> <span class="card__tag">transition</span></div>
@@ -341,6 +395,7 @@
         </div>
       </div>
       <div class="card__body">
+        <span class="card__badge">filter</span>
         <h3 class="card__title">Fade to Color</h3>
         <p class="card__desc">Filter hover effect on the image.</p>
         <div class="card__tags"><span class="card__tag">filter</span> <span class="card__tag">transform</span> <span class="card__tag">transition</span></div>
@@ -353,6 +408,7 @@
         </div>
       </div>
       <div class="card__body">
+        <span class="card__badge">filter</span>
         <h3 class="card__title">Invert Flash</h3>
         <p class="card__desc">Filter hover effect on the image.</p>
         <div class="card__tags"><span class="card__tag">animation</span> <span class="card__tag">filter</span> <span class="card__tag">transition</span></div>
@@ -365,6 +421,7 @@
         </div>
       </div>
       <div class="card__body">
+        <span class="card__badge">filter</span>
         <h3 class="card__title">Sepia In</h3>
         <p class="card__desc">Filter hover effect on the image.</p>
         <div class="card__tags"><span class="card__tag">filter</span> <span class="card__tag">transition</span></div>
@@ -376,7 +433,7 @@
     <section class="section" id="cat-reveal">
       <header class="section__header">
         <h2 class="section__title">Reveal</h2>
-        <p class="section__count">5 effects</p>
+        <p class="section__count">4 effects</p>
       </header>
       <div class="grid">
     <a class="card" href="effects/clip-reveal/index.html" data-category="reveal">
@@ -386,21 +443,10 @@
         </div>
       </div>
       <div class="card__body">
+        <span class="card__badge">reveal</span>
         <h3 class="card__title">Clip Reveal</h3>
         <p class="card__desc">Reveal hover effect on the image.</p>
         <div class="card__tags"><span class="card__tag">clip-path</span> <span class="card__tag">reveal</span> <span class="card__tag">transform</span> <span class="card__tag">transition</span></div>
-      </div>
-    </a>
-    <a class="card" href="effects/glitch-shift/index.html" data-category="reveal">
-      <div class="card__media">
-        <div class="hover-effect glitch-shift" aria-hidden="true">
-          <img src="https://picsum.photos/seed/glitch-shift/600/400" alt="" loading="lazy">
-        </div>
-      </div>
-      <div class="card__body">
-        <h3 class="card__title">Glitch Shift</h3>
-        <p class="card__desc">Reveal hover effect on the image.</p>
-        <div class="card__tags"><span class="card__tag">animation</span> <span class="card__tag">clip-path</span> <span class="card__tag">filter</span> <span class="card__tag">reveal</span></div>
       </div>
     </a>
     <a class="card" href="effects/glitch-slice/index.html" data-category="reveal">
@@ -410,6 +456,7 @@
         </div>
       </div>
       <div class="card__body">
+        <span class="card__badge">reveal</span>
         <h3 class="card__title">Glitch Slice</h3>
         <p class="card__desc">Reveal hover effect on the image.</p>
         <div class="card__tags"><span class="card__tag">animation</span> <span class="card__tag">clip-path</span> <span class="card__tag">filter</span> <span class="card__tag">reveal</span></div>
@@ -422,6 +469,7 @@
         </div>
       </div>
       <div class="card__body">
+        <span class="card__badge">reveal</span>
         <h3 class="card__title">Prism Split</h3>
         <p class="card__desc">Reveal hover effect on the image.</p>
         <div class="card__tags"><span class="card__tag">animation</span> <span class="card__tag">clip-path</span> <span class="card__tag">filter</span> <span class="card__tag">reveal</span></div>
@@ -434,6 +482,7 @@
         </div>
       </div>
       <div class="card__body">
+        <span class="card__badge">reveal</span>
         <h3 class="card__title">Swipe Reveal</h3>
         <p class="card__desc">Reveal hover effect on the image.</p>
         <div class="card__tags"><span class="card__tag">clip-path</span> <span class="card__tag">filter</span> <span class="card__tag">reveal</span> <span class="card__tag">transform</span></div>
@@ -455,6 +504,7 @@
         </div>
       </div>
       <div class="card__body">
+        <span class="card__badge">fade</span>
         <h3 class="card__title">Corner Frame</h3>
         <p class="card__desc">Fade hover effect on the image.</p>
         <div class="card__tags"><span class="card__tag">fade</span> <span class="card__tag">transform</span> <span class="card__tag">transition</span></div>
@@ -476,6 +526,7 @@
         </div>
       </div>
       <div class="card__body">
+        <span class="card__badge">shadow</span>
         <h3 class="card__title">Glow Border</h3>
         <p class="card__desc">Shadow hover effect on the image.</p>
         <div class="card__tags"><span class="card__tag">shadow</span> <span class="card__tag">transition</span></div>
@@ -488,6 +539,7 @@
         </div>
       </div>
       <div class="card__body">
+        <span class="card__badge">shadow</span>
         <h3 class="card__title">Neon Pulse</h3>
         <p class="card__desc">Shadow hover effect on the image.</p>
         <div class="card__tags"><span class="card__tag">animation</span> <span class="card__tag">shadow</span> <span class="card__tag">transition</span></div>
@@ -500,6 +552,7 @@
         </div>
       </div>
       <div class="card__body">
+        <span class="card__badge">shadow</span>
         <h3 class="card__title">Shadow Drop</h3>
         <p class="card__desc">Shadow hover effect on the image.</p>
         <div class="card__tags"><span class="card__tag">shadow</span> <span class="card__tag">transition</span></div>
@@ -512,6 +565,7 @@
         </div>
       </div>
       <div class="card__body">
+        <span class="card__badge">shadow</span>
         <h3 class="card__title">Shadow Lift</h3>
         <p class="card__desc">Shadow hover effect on the image.</p>
         <div class="card__tags"><span class="card__tag">shadow</span> <span class="card__tag">transition</span></div>
@@ -523,7 +577,7 @@
     <section class="section" id="cat-light">
       <header class="section__header">
         <h2 class="section__title">Light</h2>
-        <p class="section__count">6 effects</p>
+        <p class="section__count">5 effects</p>
       </header>
       <div class="grid">
     <a class="card" href="effects/holographic-shimmer/index.html" data-category="light">
@@ -533,6 +587,7 @@
         </div>
       </div>
       <div class="card__body">
+        <span class="card__badge">light</span>
         <h3 class="card__title">Holographic Shimmer</h3>
         <p class="card__desc">Light hover effect on the image.</p>
         <div class="card__tags"><span class="card__tag">animation</span> <span class="card__tag">filter</span> <span class="card__tag">light</span> <span class="card__tag">transform</span></div>
@@ -545,6 +600,7 @@
         </div>
       </div>
       <div class="card__body">
+        <span class="card__badge">light</span>
         <h3 class="card__title">Liquid Morph</h3>
         <p class="card__desc">Light hover effect on the image.</p>
         <div class="card__tags"><span class="card__tag">animation</span> <span class="card__tag">filter</span> <span class="card__tag">light</span> <span class="card__tag">transform</span></div>
@@ -557,19 +613,8 @@
         </div>
       </div>
       <div class="card__body">
+        <span class="card__badge">light</span>
         <h3 class="card__title">Magnetic Glow</h3>
-        <p class="card__desc">Light hover effect on the image.</p>
-        <div class="card__tags"><span class="card__tag">filter</span> <span class="card__tag">light</span> <span class="card__tag">transform</span> <span class="card__tag">transition</span></div>
-      </div>
-    </a>
-    <a class="card" href="effects/shine-sweep/index.html" data-category="light">
-      <div class="card__media">
-        <div class="hover-effect shine-sweep" aria-hidden="true">
-          <img src="https://picsum.photos/seed/shine-sweep/600/400" alt="" loading="lazy">
-        </div>
-      </div>
-      <div class="card__body">
-        <h3 class="card__title">Shine Sweep</h3>
         <p class="card__desc">Light hover effect on the image.</p>
         <div class="card__tags"><span class="card__tag">filter</span> <span class="card__tag">light</span> <span class="card__tag">transform</span> <span class="card__tag">transition</span></div>
       </div>
@@ -581,6 +626,7 @@
         </div>
       </div>
       <div class="card__body">
+        <span class="card__badge">light</span>
         <h3 class="card__title">Zoom Brightness</h3>
         <p class="card__desc">Light hover effect on the image.</p>
         <div class="card__tags"><span class="card__tag">filter</span> <span class="card__tag">light</span> <span class="card__tag">transform</span> <span class="card__tag">transition</span></div>
@@ -593,6 +639,7 @@
         </div>
       </div>
       <div class="card__body">
+        <span class="card__badge">light</span>
         <h3 class="card__title">Zoom In Slowmo</h3>
         <p class="card__desc">Light hover effect on the image.</p>
         <div class="card__tags"><span class="card__tag">filter</span> <span class="card__tag">light</span> <span class="card__tag">transform</span> <span class="card__tag">transition</span></div>
@@ -614,6 +661,7 @@
         </div>
       </div>
       <div class="card__body">
+        <span class="card__badge">overlay</span>
         <h3 class="card__title">Color Splash</h3>
         <p class="card__desc">Overlay hover effect on the image.</p>
         <div class="card__tags"><span class="card__tag">overlay</span> <span class="card__tag">transform</span> <span class="card__tag">transition</span></div>
@@ -626,6 +674,7 @@
         </div>
       </div>
       <div class="card__body">
+        <span class="card__badge">overlay</span>
         <h3 class="card__title">Glass Mosaic</h3>
         <p class="card__desc">Overlay hover effect on the image.</p>
         <div class="card__tags"><span class="card__tag">overlay</span> <span class="card__tag">transition</span></div>
@@ -638,6 +687,7 @@
         </div>
       </div>
       <div class="card__body">
+        <span class="card__badge">overlay</span>
         <h3 class="card__title">Ink Drop</h3>
         <p class="card__desc">Overlay hover effect on the image.</p>
         <div class="card__tags"><span class="card__tag">overlay</span> <span class="card__tag">transform</span> <span class="card__tag">transition</span></div>
@@ -650,6 +700,7 @@
         </div>
       </div>
       <div class="card__body">
+        <span class="card__badge">overlay</span>
         <h3 class="card__title">Overlay Fade In Neon Grid</h3>
         <p class="card__desc">Overlay hover effect on the image.</p>
         <div class="card__tags"><span class="card__tag">overlay</span> <span class="card__tag">transition</span></div>
@@ -662,6 +713,7 @@
         </div>
       </div>
       <div class="card__body">
+        <span class="card__badge">overlay</span>
         <h3 class="card__title">Radial In</h3>
         <p class="card__desc">Overlay hover effect on the image.</p>
         <div class="card__tags"><span class="card__tag">overlay</span> <span class="card__tag">transform</span> <span class="card__tag">transition</span></div>
@@ -674,6 +726,7 @@
         </div>
       </div>
       <div class="card__body">
+        <span class="card__badge">overlay</span>
         <h3 class="card__title">Radial Out</h3>
         <p class="card__desc">Overlay hover effect on the image.</p>
         <div class="card__tags"><span class="card__tag">overlay</span> <span class="card__tag">transform</span> <span class="card__tag">transition</span></div>
@@ -686,6 +739,7 @@
         </div>
       </div>
       <div class="card__body">
+        <span class="card__badge">overlay</span>
         <h3 class="card__title">Rectangle In</h3>
         <p class="card__desc">Overlay hover effect on the image.</p>
         <div class="card__tags"><span class="card__tag">overlay</span> <span class="card__tag">transform</span> <span class="card__tag">transition</span></div>
@@ -698,6 +752,7 @@
         </div>
       </div>
       <div class="card__body">
+        <span class="card__badge">overlay</span>
         <h3 class="card__title">Rectangle Out</h3>
         <p class="card__desc">Overlay hover effect on the image.</p>
         <div class="card__tags"><span class="card__tag">overlay</span> <span class="card__tag">transform</span> <span class="card__tag">transition</span></div>
@@ -710,6 +765,7 @@
         </div>
       </div>
       <div class="card__body">
+        <span class="card__badge">overlay</span>
         <h3 class="card__title">Refraction Lens</h3>
         <p class="card__desc">Overlay hover effect on the image.</p>
         <div class="card__tags"><span class="card__tag">overlay</span> <span class="card__tag">transform</span> <span class="card__tag">transition</span></div>
@@ -722,6 +778,7 @@
         </div>
       </div>
       <div class="card__body">
+        <span class="card__badge">overlay</span>
         <h3 class="card__title">Vignette</h3>
         <p class="card__desc">Overlay hover effect on the image.</p>
         <div class="card__tags"><span class="card__tag">overlay</span> <span class="card__tag">transform</span> <span class="card__tag">transition</span></div>
@@ -743,6 +800,7 @@
         </div>
       </div>
       <div class="card__body">
+        <span class="card__badge">composite</span>
         <h3 class="card__title">Horizontal Zoom &amp; Pan</h3>
         <p class="card__desc">Composite hover effect on the image.</p>
         <div class="card__tags"><span class="card__tag">composite</span> <span class="card__tag">transform</span> <span class="card__tag">transition</span></div>
@@ -755,6 +813,7 @@
         </div>
       </div>
       <div class="card__body">
+        <span class="card__badge">composite</span>
         <h3 class="card__title">Vertical Zoom &amp; Pan</h3>
         <p class="card__desc">Composite hover effect on the image.</p>
         <div class="card__tags"><span class="card__tag">composite</span> <span class="card__tag">transform</span> <span class="card__tag">transition</span></div>
@@ -767,6 +826,7 @@
         </div>
       </div>
       <div class="card__body">
+        <span class="card__badge">composite</span>
         <h3 class="card__title">Zoom Rotate</h3>
         <p class="card__desc">Composite hover effect on the image.</p>
         <div class="card__tags"><span class="card__tag">composite</span> <span class="card__tag">transform</span> <span class="card__tag">transition</span></div>
