@@ -69,3 +69,14 @@
 .hover-effect.zoom-bottom:hover img, .hover-effect.zoom-bottom:focus-visible img{
   transform: scale(1.5);
 }
+
+/* ---- zoom-left ---- */
+/* Subtle 1.5x scale-up anchored at the left edge so the right of
+   the image visually pulls inward. Moderate timing. */
+.hover-effect.zoom-left img{
+  transform-origin: 0% 50%;
+  transition: transform 0.45s ease;
+}
+.hover-effect.zoom-left:hover img, .hover-effect.zoom-left:focus-visible img{
+  transform: scale(1.5);
+}
