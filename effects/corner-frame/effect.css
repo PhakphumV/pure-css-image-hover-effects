@@ -1,0 +1,58 @@
+/* Corner Frame Effect - Camera-style corner brackets snap into place */
+
+.hover-effect.corner-frame{
+  position: relative;
+  overflow: visible;
+  padding: 10px;
+}
+
+.hover-effect.corner-frame img{
+  transition: transform 0.35s ease-out;
+}
+
+.hover-effect.corner-frame::before, .hover-effect.corner-frame::after{
+  content: '';
+  position: absolute;
+  width: 22px;
+  height: 22px;
+  border-color: var(--color-primary, #2563eb);
+  border-style: solid;
+  border-width: 0;
+  opacity: 0;
+  transition: opacity 0.3s ease-out, transform 0.3s ease-out;
+}
+
+.hover-effect.corner-frame::before{
+  top: 0; left: 0;
+  border-top-width: 3px;
+  border-left-width: 3px;
+  transform: translate(8px, 8px);
+}
+
+.hover-effect.corner-frame::after{
+  bottom: 0; right: 0;
+  border-bottom-width: 3px;
+  border-right-width: 3px;
+  transform: translate(-8px, -8px);
+}
+
+.hover-effect.corner-frame:hover::before, .hover-effect.corner-frame:hover::after, .hover-effect.corner-frame:focus-visible::before, .hover-effect.corner-frame:focus-visible::after{
+  opacity: 1;
+  transform: translate(0, 0);
+}
+
+.hover-effect.corner-frame:hover img, .hover-effect.corner-frame:focus-visible img{
+  transform: scale(1.03);
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .hover-effect.corner-frame::before, .hover-effect.corner-frame::after{
+    transition: opacity 0.2s ease;
+    transform: translate(0, 0);
+    opacity: 0.5;
+  }
+  .hover-effect.corner-frame:hover::before, .hover-effect.corner-frame:hover::after, .hover-effect.corner-frame:focus-visible::before, .hover-effect.corner-frame:focus-visible::after{
+    opacity: 1;
+  }
+}

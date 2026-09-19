@@ -1,0 +1,21 @@
+{
+  "id": "blur-sharpen",
+  "slug": "blur-sharpen",
+  "title": "Blur to Sharp",
+  "category": "filter",
+  "description": "Filter hover effect on the image.",
+  "tags": [
+    "filter",
+    "transform",
+    "transition"
+  ],
+  "complexity": "simple",
+  "css_features": [
+    "filter",
+    "transform",
+    "transition"
+  ],
+  "js_required": false,
+  "extra_markup": false,
+  "reduced_motion": "instant"
+}

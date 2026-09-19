@@ -1,0 +1,161 @@
+/* Origami Fold Effect - Paper folding 3D transforms */
+
+.hover-effect.origami-fold{
+  perspective: 1200px;
+  transform-style: preserve-3d;
+}
+
+.hover-effect.origami-fold img{
+  transform-style: preserve-3d;
+  transition: transform 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+              filter 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  will-change: transform;
+}
+
+/* Four triangular fold panels */
+.hover-effect.origami-fold::before, .hover-effect.origami-fold::after, .hover-effect.origami-fold .fold-tl, .hover-effect.origami-fold .fold-tr, .hover-effect.origami-fold .fold-bl, .hover-effect.origami-fold .fold-br{
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: inherit;
+  background-size: cover;
+  background-position: center;
+  top: 0;
+  left: 0;
+  transform-origin: center center;
+  backface-visibility: hidden;
+  pointer-events: none;
+  opacity: 0;
+  z-index: 1;
+  transition: opacity 0.3s ease, transform 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+/* Top-left triangle - folds down */
+.hover-effect.origami-fold::before{
+  clip-path: polygon(0 0, 100% 0, 0 100%);
+  transform-origin: 0 0;
+}
+
+/* Top-right triangle - folds down */
+.hover-effect.origami-fold::after{
+  clip-path: polygon(100% 0, 100% 100%, 0 0);
+  transform-origin: 100% 0;
+}
+
+/* Bottom-left triangle - folds up */
+.hover-effect.origami-fold .fold-bl{
+  clip-path: polygon(0 100%, 100% 100%, 0 0);
+  transform-origin: 0 100%;
+}
+
+/* Bottom-right triangle - folds up */
+.hover-effect.origami-fold .fold-br{
+  clip-path: polygon(100% 100%, 0 100%, 100% 0);
+  transform-origin: 100% 100%;
+}
+
+/* Center crease lines */
+.hover-effect.origami-fold .crease-h, .hover-effect.origami-fold .crease-v{
+  position: absolute;
+  background: linear-gradient(90deg, transparent, rgba(0,0,0,0.15), transparent);
+  opacity: 0;
+  pointer-events: none;
+  z-index: 2;
+  transition: opacity 0.4s ease;
+}
+
+.hover-effect.origami-fold .crease-h{
+  top: 50%;
+  left: 0;
+  right: 0;
+  height: 2px;
+  transform: translateY(-50%);
+}
+
+.hover-effect.origami-fold .crease-v{
+  left: 50%;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  transform: translateX(-50%);
+}
+
+/* Paper texture overlay */
+.hover-effect.origami-fold .paper-texture{
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+  background-size: 300px;
+  opacity: 0;
+  pointer-events: none;
+  mix-blend-mode: multiply;
+  z-index: 3;
+  transition: opacity 0.4s ease;
+  border-radius: 12px;
+}
+
+/* Hover state - folds activate */
+.hover-effect.origami-fold:hover::before, .hover-effect.origami-fold:focus-visible::before{
+  opacity: 1;
+  transform: rotateX(-110deg) translateZ(-30px);
+  box-shadow: 
+    inset 0 20px 40px rgba(0,0,0,0.2),
+    0 30px 60px -20px rgba(0,0,0,0.3);
+}
+
+.hover-effect.origami-fold:hover::after, .hover-effect.origami-fold:focus-visible::after{
+  opacity: 1;
+  transform: rotateX(-110deg) translateZ(-30px);
+  box-shadow: 
+    inset 0 20px 40px rgba(0,0,0,0.2),
+    0 30px 60px -20px rgba(0,0,0,0.3);
+}
+
+.hover-effect.origami-fold:hover .fold-bl, .hover-effect.origami-fold:focus-visible .fold-bl{
+  opacity: 1;
+  transform: rotateX(110deg) translateZ(-30px);
+  box-shadow: 
+    inset 0 -20px 40px rgba(0,0,0,0.2),
+    0 -30px 60px -20px rgba(0,0,0,0.3);
+}
+
+.hover-effect.origami-fold:hover .fold-br, .hover-effect.origami-fold:focus-visible .fold-br{
+  opacity: 1;
+  transform: rotateX(110deg) translateZ(-30px);
+  box-shadow: 
+    inset 0 -20px 40px rgba(0,0,0,0.2),
+    0 -30px 60px -20px rgba(0,0,0,0.3);
+}
+
+.hover-effect.origami-fold:hover .crease-h, .hover-effect.origami-fold:hover .crease-v, .hover-effect.origami-fold:hover .paper-texture, .hover-effect.origami-fold:focus-visible .crease-h, .hover-effect.origami-fold:focus-visible .crease-v, .hover-effect.origami-fold:focus-visible .paper-texture{
+  opacity: 1;
+}
+
+.hover-effect.origami-fold:hover img, .hover-effect.origami-fold:focus-visible img{
+  transform: scale(1.04);
+  filter: brightness(1.08) contrast(1.05);
+}
+
+/* Paper edge highlights on folded parts */
+.hover-effect.origami-fold::before, .hover-effect.origami-fold::after, .hover-effect.origami-fold .fold-bl, .hover-effect.origami-fold .fold-br{
+  box-shadow: 
+    inset 0 1px 0 rgba(255,255,255,0.1);
+}
+
+/* Subtle fold shadow on main image */
+.hover-effect.origami-fold::after{
+  filter: brightness(0.95);
+}
+
+.hover-effect.origami-fold .fold-bl, .hover-effect.origami-fold .fold-br{
+  filter: brightness(1.02);
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .hover-effect.origami-fold:hover::before, .hover-effect.origami-fold:hover::after, .hover-effect.origami-fold:hover .fold-bl, .hover-effect.origami-fold:hover .fold-br, .hover-effect.origami-fold:focus-visible::before, .hover-effect.origami-fold:focus-visible::after, .hover-effect.origami-fold:focus-visible .fold-bl, .hover-effect.origami-fold:focus-visible .fold-br{
+    transform: translateZ(-20px) scale(0.95);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+  }
+}

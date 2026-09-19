@@ -1,0 +1,10 @@
+/* placeholder */
+.hover-effect.slide-reveal-right{
+}
+.hover-effect.slide-reveal-right img{
+  right: 0;
+  transition: width 0.4s ease-out;
+}
+.hover-effect.slide-reveal-right:hover img, .hover-effect.slide-reveal-right:focus-visible img{
+  width: 100%;
+}

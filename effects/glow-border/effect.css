@@ -1,0 +1,14 @@
+/* Glow Border Effect */
+
+.hover-effect.glow-border{
+  overflow: visible; /* Allow box-shadow to extend beyond container */
+  transition: box-shadow 0.3s ease-in-out;
+}
+
+.hover-effect.glow-border img{
+  /* Image styling handled by base.css */
+}
+
+.hover-effect.glow-border:hover, .hover-effect.glow-border:focus-visible{
+  box-shadow: 0 0 20px 4px #2563eb;
+}

@@ -1,0 +1,19 @@
+{
+  "id": "glow-border",
+  "slug": "glow-border",
+  "title": "Glow Border",
+  "category": "shadow",
+  "description": "Shadow hover effect on the image.",
+  "tags": [
+    "shadow",
+    "transition"
+  ],
+  "complexity": "simple",
+  "css_features": [
+    "box-shadow",
+    "transition"
+  ],
+  "js_required": false,
+  "extra_markup": false,
+  "reduced_motion": "instant"
+}

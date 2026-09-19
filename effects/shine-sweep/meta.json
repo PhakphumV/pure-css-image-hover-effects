@@ -1,0 +1,23 @@
+{
+  "id": "shine-sweep",
+  "slug": "shine-sweep",
+  "title": "Shine Sweep",
+  "category": "light",
+  "description": "Light hover effect on the image.",
+  "tags": [
+    "filter",
+    "light",
+    "transform",
+    "transition"
+  ],
+  "complexity": "advanced",
+  "css_features": [
+    "filter",
+    "pseudo-element",
+    "transform",
+    "transition"
+  ],
+  "js_required": false,
+  "extra_markup": false,
+  "reduced_motion": "instant"
+}

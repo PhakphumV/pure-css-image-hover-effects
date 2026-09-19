@@ -1,0 +1,11 @@
+.hover-effect.zoom-brightness{
+}
+.hover-effect.zoom-brightness img{
+  transition: transform 2s, filter 1.5s ease-in-out;
+  transform-origin: center center;
+  filter: brightness(50%);
+}
+.hover-effect.zoom-brightness:hover img, .hover-effect.zoom-brightness:focus-visible img{
+  filter: brightness(100%);
+  transform: scale(1.3);
+}

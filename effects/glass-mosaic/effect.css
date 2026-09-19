@@ -1,0 +1,15 @@
+/* Glass Mosaic Effect */
+
+.hover-effect.glass-mosaic::after{
+  content: "";
+  position: absolute;
+  inset: 0;
+  backdrop-filter: blur(4px) saturate(150%);
+  opacity: 0.6;
+  pointer-events: none;
+  transition: opacity 0.3s;
+}
+
+.hover-effect.glass-mosaic:hover::after, .hover-effect.glass-mosaic:focus-visible::after{
+  opacity: 0.2;
+}

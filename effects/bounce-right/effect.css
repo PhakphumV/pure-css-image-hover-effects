@@ -1,0 +1,11 @@
+/* Bounce Right Effect */
+
+.hover-effect.bounce-right img{
+  position: relative;
+  left: 0;
+  transition: left 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+.hover-effect.bounce-right:hover img, .hover-effect.bounce-right:focus-visible img{
+  left: 100%;
+}
