@@ -66,3 +66,26 @@
     transform: none;
   }
 }
+
+/* ---- pan-top ---- */
+/* Image enlarged on the bottom, then slides up so the bottom edge
+   of the picture slides into view. */
+.hover-effect.pan-top{
+  overflow: hidden;
+}
+.hover-effect.pan-top img{
+  height: calc(100% + 30px);
+  transition: transform 0.45s ease;
+}
+.hover-effect.pan-top:hover img, .hover-effect.pan-top:focus-visible img{
+  transform: translateY(-30px);
+}
+@media (prefers-reduced-motion: reduce) {
+  .hover-effect.pan-top img{
+    transition: none;
+  }
+  .hover-effect.pan-top:hover img,
+  .hover-effect.pan-top:focus-visible img{
+    transform: none;
+  }
+}
