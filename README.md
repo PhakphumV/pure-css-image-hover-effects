@@ -20,12 +20,11 @@ in the same shape.
 └── effects/
     └── zoom/
         ├── zoom.css          # all zoom effect CSS (shared)
-        ├── zoom-in.html      # one page per effect (preview + code)
-        ├── zoom-out.html
-        ├── zoom-in-slowmo.html
+        ├── point-zoom.html   # one page per effect (preview + code)
         ├── quick-zoom.html
-        ├── point-zoom.html
-        └── slide-reveal.html
+        ├── slide-reveal.html
+        ├── zoom-in.html
+        └── zoom-out.html
 ```
 
 ## Adding a new effect
