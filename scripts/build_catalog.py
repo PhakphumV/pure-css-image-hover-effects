@@ -5,10 +5,14 @@ scripts/build_catalog.py
 
 Generates the root index.html catalog from every effects/<slug>/meta.json.
 
-The catalog is a single static HTML page with:
-- a CSS-only category filter (no JS — contract §1)
-- a responsive grid of effect cards grouped by the 13 categories
-- one click per card to open the effect detail page
+Design read (design-taste-frontend): developer-tooling showcase for CSS
+hover effects, editorial, calm. Dials: VARIANCE 5 / MOTION 3 / DENSITY 3.
+
+Page structure:
+- Hero (left-aligned, no version eyebrow)
+- Featured row (3 standout effects, larger cards)
+- Sticky CSS-only category filter (no JS - contract section 1)
+- All effects grouped by category, each card with a category badge
 
 Pure Python stdlib. Re-running produces byte-identical output (deterministic
 per the rebuild plan, issue #8).
@@ -17,7 +21,6 @@ Usage:
     python3 scripts/build_catalog.py
 """
 import json
-import re
 from collections import OrderedDict
 from html import escape
 from pathlib import Path
@@ -30,6 +33,10 @@ CATEGORIES = [
     "zoom", "pan", "rotate", "3d", "filter", "reveal", "fade",
     "shadow", "light", "border", "distortion", "overlay", "composite",
 ]
+
+# Three visually distinctive effects that represent different categories
+# and serve as the "featured" row at the top of the catalog.
+FEATURED_SLUGS = ["zoom-in", "shine-sweep", "glitch-shift"]
 
 
 def load_meta() -> list[dict]:
@@ -47,6 +54,10 @@ def load_meta() -> list[dict]:
     return out
 
 
+def by_slug(metas: list[dict]) -> dict[str, dict]:
+    return {m["_slug"]: m for m in metas}
+
+
 def group_by_category(metas: list[dict]) -> "OrderedDict[str, list[dict]]":
     grouped: "OrderedDict[str, list[dict]]" = OrderedDict((c, []) for c in CATEGORIES)
     for m in metas:
@@ -56,26 +67,31 @@ def group_by_category(metas: list[dict]) -> "OrderedDict[str, list[dict]]":
     return grouped
 
 
-def render_card(meta: dict) -> str:
+def render_card(meta: dict, featured: bool = False) -> str:
     slug = meta["_slug"]
     title = escape(meta["title"])
     desc = escape(meta["description"])
-    tags = " ".join(
+    cat = escape(meta["category"])
+    tags_html = " ".join(
         f'<span class="card__tag">{escape(t)}</span>'
         for t in meta.get("tags", [])[:4]
     )
+    klass = "card card--featured" if featured else "card"
+    media_klass = "card__media card__media--featured" if featured else "card__media"
+    img_size = "900/600" if featured else "600/400"
     return (
-        f'    <a class="card" href="effects/{slug}/index.html" '
-        f'data-category="{escape(meta["category"])}">\n'
-        f'      <div class="card__media">\n'
+        f'    <a class="{klass}" href="effects/{slug}/index.html" '
+        f'data-category="{cat}">\n'
+        f'      <div class="{media_klass}">\n'
         f'        <div class="hover-effect {slug}" aria-hidden="true">\n'
-        f'          <img src="https://picsum.photos/seed/{slug}/600/400" alt="" loading="lazy">\n'
+        f'          <img src="https://picsum.photos/seed/{slug}/{img_size}" alt="" loading="lazy">\n'
         f'        </div>\n'
         f'      </div>\n'
         f'      <div class="card__body">\n'
+        f'        <span class="card__badge">{cat}</span>\n'
         f'        <h3 class="card__title">{title}</h3>\n'
         f'        <p class="card__desc">{desc}</p>\n'
-        f'        <div class="card__tags">{tags}</div>\n'
+        f'        <div class="card__tags">{tags_html}</div>\n'
         f'      </div>\n'
         f'    </a>'
     )
@@ -94,17 +110,25 @@ def render_filter(groups: "OrderedDict[str, list[dict]]") -> str:
     return "\n      ".join(pills)
 
 
-def render_sections(groups: "OrderedDict[str, list[dict]]") -> str:
+def render_featured(by_sl: dict[str, dict]) -> str:
+    cards = "\n".join(render_card(by_sl[s], featured=True) for s in FEATURED_SLUGS if s in by_sl)
+    return f'    <section class="featured" aria-label="Featured effects">\n      <div class="featured__grid">\n{cards}\n      </div>\n    </section>'
+
+
+def render_sections(groups: "OrderedDict[str, list[dict]]", featured_slugs: set[str]) -> str:
     out = []
     for cat, items in groups.items():
         if not items:
             continue
-        cards = "\n".join(render_card(m) for m in items)
+        non_featured = [m for m in items if m["_slug"] not in featured_slugs]
+        if not non_featured:
+            continue
+        cards = "\n".join(render_card(m) for m in non_featured)
         out.append(
             f'    <section class="section" id="cat-{cat}">\n'
             f'      <header class="section__header">\n'
             f'        <h2 class="section__title">{cat.capitalize()}</h2>\n'
-            f'        <p class="section__count">{len(items)} effect{"s" if len(items) != 1 else ""}</p>\n'
+            f'        <p class="section__count">{len(non_featured)} effect{"s" if len(non_featured) != 1 else ""}</p>\n'
             f'      </header>\n'
             f'      <div class="grid">\n{cards}\n      </div>\n'
             f'    </section>'
@@ -115,6 +139,7 @@ def render_sections(groups: "OrderedDict[str, list[dict]]") -> str:
 def main():
     metas = load_meta()
     groups = group_by_category(metas)
+    by_sl = by_slug(metas)
     total = len(metas)
 
     page = f"""<!DOCTYPE html>
@@ -122,14 +147,13 @@ def main():
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Pure CSS Image Hover Effects</title>
+  <title>Pure CSS image hover effects</title>
   <meta name="description" content="A curated library of {total} pure-CSS image hover effects. Copy-paste ready. No JavaScript.">
   <link rel="stylesheet" href="styles/base.css">
   <link rel="stylesheet" href="styles/catalog.css">
 </head>
 <body>
   <header class="hero">
-    <p class="hero__eyebrow">v2.0 rebuild</p>
     <h1 class="hero__title">Pure CSS image hover effects</h1>
     <p class="hero__sub">{total} effects. One class on a div. No JavaScript.</p>
     <p class="hero__meta">
@@ -138,15 +162,19 @@ def main():
       <a href="META_SCHEMA.md">Schema</a>
       <span aria-hidden="true">/</span>
       <a href="BROWSER_SUPPORT.md">Browser support</a>
+      <span aria-hidden="true">/</span>
+      <a href="ACCESSIBILITY.md">Accessibility</a>
     </p>
   </header>
+
+{render_featured(by_sl)}
 
   <nav class="filter" aria-label="Filter by category">
       {render_filter(groups)}
   </nav>
 
   <main>
-{render_sections(groups)}
+{render_sections(groups, set(FEATURED_SLUGS))}
   </main>
 
   <footer class="site-footer">
