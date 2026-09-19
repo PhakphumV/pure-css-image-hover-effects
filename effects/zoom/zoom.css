@@ -91,3 +91,14 @@
 .hover-effect.zoom-right:hover img, .hover-effect.zoom-right:focus-visible img{
   transform: scale(1.5);
 }
+
+/* ---- zoom-top-left ---- */
+/* Subtle 1.5x scale-up anchored at the top-left corner so the
+   bottom-right visually pulls inward. Moderate timing. */
+.hover-effect.zoom-top-left img{
+  transform-origin: 0% 0%;
+  transition: transform 0.45s ease;
+}
+.hover-effect.zoom-top-left:hover img, .hover-effect.zoom-top-left:focus-visible img{
+  transform: scale(1.5);
+}
