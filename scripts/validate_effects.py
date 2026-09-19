@@ -555,7 +555,7 @@ def main() -> None:
         sys.exit(run_fixtures())
 
     schema = json.loads(SCHEMA.read_text())
-    base_errs = check_base_css()
+    base_errs = check_base_css() + check_catalog_featured_slugs()
     if base_errs:
         print("Repository-level a11y violations:")
         for e in base_errs:
@@ -585,6 +585,39 @@ def main() -> None:
             for e in errs:
                 print(f"      - {e}")
     sys.exit(1 if failed or base_errs else 0)
+
+
+
+def check_catalog_featured_slugs() -> list[str]:
+    """Verify that every slug listed as FEATURED in
+    scripts/build_catalog.py exists as a real effect directory and
+    passes the per-effect checks."""
+    errs: list[str] = []
+    bc = REPO / "scripts" / "build_catalog.py"
+    if not bc.exists():
+        return errs
+    src = bc.read_text()
+    # Extract FEATURED_SLUGS = [ ... ]
+    import re
+    m = re.search(r"FEATURED_SLUGS\s*=\s*\[([^\]]+)\]", src)
+    if not m:
+        return errs
+    slugs = re.findall(r'"([a-z0-9][a-z0-9-]*[a-z0-9])"', m.group(1))
+    schema = json.loads(SCHEMA.read_text())
+    for s in slugs:
+        if not (EFFECTS / s).is_dir():
+            errs.append(
+                f"scripts/build_catalog.py references featured slug "
+                f"'{s}' which has no effects/<slug>/ directory"
+            )
+            continue
+        effect_errs = check_effect(s, schema)
+        if effect_errs:
+            errs.append(
+                f"featured slug '{s}' fails validation: "
+                f"{'; '.join(effect_errs)}"
+            )
+    return errs
 
 
 # ----------------------------------------------------------------------
