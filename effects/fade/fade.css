@@ -87,3 +87,33 @@
     opacity: 0;
   }
 }
+
+/* ---- fade-overlay ---- */
+/* A semi-transparent black ::before overlay fades in on
+   hover/focus, dimming the image. The image remains visible
+   underneath. Wrapper picks up position: relative for the
+   overlay to be scoped to it. */
+.hover-effect.fade-overlay{
+  position: relative;
+}
+.hover-effect.fade-overlay::before{
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.4);
+  opacity: 0;
+  transition: opacity 0.45s ease;
+}
+.hover-effect.fade-overlay:hover::before,
+.hover-effect.fade-overlay:focus-visible::before{
+  opacity: 1;
+}
+@media (prefers-reduced-motion: reduce) {
+  .hover-effect.fade-overlay::before{
+    transition: none;
+  }
+  .hover-effect.fade-overlay:hover::before,
+  .hover-effect.fade-overlay:focus-visible::before{
+    opacity: 1;
+  }
+}
