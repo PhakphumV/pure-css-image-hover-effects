@@ -18,7 +18,10 @@
   (e.g. zoom/zoom.css when this template is filled for an effect
   under effects/zoom/).
 
-  Layout: two equal columns (50/50) via .detail in template.css.
+  Layout: two equal columns (50/50) via Pico's <.grid> + <.detail> override
+  on <main> > <div class="grid detail">. Pico's .grid gives display: grid
+  and the responsive gap; .detail in template.css forces the column count
+  to exactly 2. Below 768px the columns collapse to 1.
     Left column  = live preview stage.
     Right column = HTML and CSS snippets (VS Code dark+ colours via highlight.js vs2015).
 -->
@@ -49,7 +52,7 @@
 </header>
 
 <main class="container">
-  <div class="detail">
+  <div class="grid detail">
 
     <section class="preview" aria-label="Live preview">
       <div class="preview-stage">

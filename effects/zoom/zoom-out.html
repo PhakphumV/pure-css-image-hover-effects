@@ -14,7 +14,7 @@
 <body>
 
 <header class="container">
-  <nav>
+  <nav aria-label="Breadcrumb">
     <ul>
       <li><a href="../../index.html">&larr; Back to gallery</a></li>
     </ul>
@@ -26,9 +26,9 @@
 </header>
 
 <main class="container">
-  <div class="detail">
+  <div class="grid detail">
 
-    <section class="preview">
+    <section class="preview" aria-label="Live preview">
       <div class="preview-stage">
         <div class="hover-effect zoom-out">
           <img src="https://picsum.photos/seed/zoom-out/800/600" alt="Zoom Out demo">
@@ -37,7 +37,7 @@
       <p class="preview-hint">Hover or focus the image to see the effect.</p>
     </section>
 
-    <section>
+    <section aria-label="Source code">
       <h3>HTML</h3>
       <div class="code-block">
         <pre><code class="language-html">&lt;div class="hover-effect zoom-out">

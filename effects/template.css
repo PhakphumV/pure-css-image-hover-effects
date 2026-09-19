@@ -1,8 +1,13 @@
 /* Effect detail page template — shared by every effect page.
-   Layout: two equal columns (50/50), preview left, code right. */
+   Layout: two equal columns (50/50) via Pico's .grid + .detail override.
+
+   The wrapper is <div class="grid detail">. Pico's .grid provides
+   display: grid and the responsive gap. .detail forces the column
+   count to exactly 2 (Pico's default would auto-fit, which is not
+   what we want for a fixed preview + code split). Below 768px the
+   columns collapse to 1, matching Pico's mobile behaviour. */
 
 .detail {
-  display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 2rem;
   align-items: start;
