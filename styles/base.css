@@ -83,6 +83,10 @@ code {
    Individual effects MUST NOT override this.
    ============================================================ */
 @media (prefers-reduced-motion: reduce) {
+  /* CONTRACT.md §4: cancel motion AND any property whose animated
+     value changes the visible image (clip-path, filter, opacity).
+     Without this, e.g. a clip-path:inset(50%) effect would leave
+     the image half-hidden instead of showing it fully. */
   .hover-effect,
   .hover-effect > img,
   .hover-effect:hover > img,
@@ -90,6 +94,29 @@ code {
     transition: none !important;
     animation: none !important;
     transform: none !important;
+    clip-path: none !important;
+    filter: none !important;
+    opacity: 1 !important;
+  }
+}
+
+/* Higher-contrast baseline: thicken focus rings and outlines for
+   users who request more contrast (Windows High Contrast, forced
+   colors mode, etc.). */
+@media (prefers-contrast: more) {
+  .hover-effect:focus-visible {
+    outline-width: 4px;
+  }
+}
+
+/* Reduced transparency: the catalog sticky filter bar uses
+   backdrop-filter. Users who request reduced transparency get a
+   solid fill instead. */
+@media (prefers-reduced-transparency: reduce) {
+  .filter {
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+    background: var(--color-bg);
   }
 }
 
