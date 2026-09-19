@@ -139,3 +139,29 @@
     transform: none;
   }
 }
+
+/* ---- pan-top-right ---- */
+/* Image enlarged on the left and bottom, then slides toward the
+   top-right corner so the bottom-left of the picture slides into
+   view. */
+.hover-effect.pan-top-right{
+  overflow: hidden;
+}
+.hover-effect.pan-top-right img{
+  width: calc(100% + 30px);
+  height: calc(100% + 30px);
+  margin-top: -30px;
+  transition: transform 0.45s ease;
+}
+.hover-effect.pan-top-right:hover img, .hover-effect.pan-top-right:focus-visible img{
+  transform: translate(-30px, 30px);
+}
+@media (prefers-reduced-motion: reduce) {
+  .hover-effect.pan-top-right img{
+    transition: none;
+  }
+  .hover-effect.pan-top-right:hover img,
+  .hover-effect.pan-top-right:focus-visible img{
+    transform: none;
+  }
+}
