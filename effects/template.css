@@ -1,0 +1,84 @@
+/* Effect detail page template — shared by every effect page.
+   Layout: two equal columns (50/50), preview left, code right. */
+
+.detail {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  align-items: start;
+}
+
+/* Left column: live preview stage */
+.preview {
+  background: var(--pico-muted-border-color);
+  border-radius: 8px;
+  padding: 1.5rem;
+  position: sticky;
+  top: 1rem;
+}
+
+.preview-stage {
+  width: 100%;
+  max-width: 480px;
+  margin: 0 auto;
+  overflow: hidden;
+  border-radius: 8px;
+  background: #fff;
+}
+
+.preview-stage .hover-effect {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+}
+
+.preview-stage .hover-effect > img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.preview-hint {
+  text-align: center;
+  margin-top: 1rem;
+  color: var(--pico-muted-color);
+  font-size: 0.875rem;
+}
+
+/* Right column: code snippets, VS Code dark+ colours via highlight.js vs2015 */
+.code-block {
+  margin: 0 0 1.5rem;
+}
+
+/* Let highlight.js's .hljs class own the dark background instead of Pico's <pre> */
+.code-block pre {
+  margin: 0;
+  padding: 0;
+  background: transparent;
+  border: none;
+  border-radius: 6px;
+  font-size: 0.875rem;
+  line-height: 1.5;
+}
+
+.code-block pre code.hljs {
+  padding: 1rem 1.25rem;
+  display: block;
+  overflow-x: auto;
+  border-radius: 6px;
+  font-family: ui-monospace, "SFMono-Regular", "Menlo", "Consolas", monospace;
+}
+
+.copy-hint {
+  margin-top: 0;
+  color: var(--pico-muted-color);
+}
+
+@media (max-width: 768px) {
+  .detail {
+    grid-template-columns: 1fr;
+  }
+  .preview {
+    position: static;
+  }
+}
