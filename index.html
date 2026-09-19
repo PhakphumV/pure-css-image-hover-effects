@@ -13,7 +13,6 @@
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 1rem;
-    margin-top: 1rem;
   }
   @media (min-width: 640px) {
     .grid { grid-template-columns: repeat(4, 1fr); }
@@ -50,39 +49,33 @@
   }
   .card-body {
     padding: 0.625rem 0.875rem;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 0.5rem;
   }
   .card-body h3 {
     margin: 0;
     font-size: 1rem;
-    flex: 1;
-    min-width: 0;
-  }
-  .card-body .badge {
-    flex-shrink: 0;
-    padding: 0.125rem 0.5rem;
-    font-size: 0.6875rem;
-    font-weight: 600;
-    color: var(--pico-primary);
-    background: var(--pico-primary-background);
-    border-radius: 999px;
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
   }
 </style>
 </head>
 <body>
-<main class="container">
-  <h1>Pure CSS Image Hover Effects</h1>
-  <p>A library of pure CSS image hover effects. One class on a <code>&lt;div&gt;</code> that contains an <code>&lt;img&gt;</code>. No JavaScript. No build step.</p>
-  <p><small>Click any card to see the live preview and copy the HTML and CSS.</small></p>
 
-  <h2>Zoom</h2>
-  <p>4 effects</p>
-  <div class="grid">
+<header class="container">
+  <nav aria-label="Site">
+    <ul>
+      <li><strong>Pure CSS Image Hover Effects</strong></li>
+    </ul>
+  </nav>
+  <hgroup>
+    <h1>Pure CSS Image Hover Effects</h1>
+    <p>A library of pure CSS image hover effects. One class on a <code>&lt;div&gt;</code> that contains an <code>&lt;img&gt;</code>. No JavaScript. No build step.</p>
+  </hgroup>
+  <p><small>Click any card to see the live preview and copy the HTML and CSS.</small></p>
+</header>
+
+<main class="container">
+  <section>
+    <h2>Zoom</h2>
+    <p>4 effects</p>
+    <div class="grid">
       <article class="card">
         <a href="effects/zoom/point-zoom.html">
           <div class="demo">
@@ -92,7 +85,6 @@
           </div>
           <div class="card-body">
             <h3>Point Zoom</h3>
-            <span class="badge">transform</span>
           </div>
         </a>
       </article>
@@ -105,7 +97,6 @@
           </div>
           <div class="card-body">
             <h3>Quick Zoom</h3>
-            <span class="badge">transform</span>
           </div>
         </a>
       </article>
@@ -118,7 +109,6 @@
           </div>
           <div class="card-body">
             <h3>Zoom In</h3>
-            <span class="badge">transform</span>
           </div>
         </a>
       </article>
@@ -131,15 +121,16 @@
           </div>
           <div class="card-body">
             <h3>Zoom Out</h3>
-            <span class="badge">transform</span>
           </div>
         </a>
       </article>
-  </div>
-
-  <p style="margin-top: 3rem; font-size: 0.875rem; color: var(--pico-muted-color);">
-    More categories coming soon.
-  </p>
+    </div>
+  </section>
 </main>
+
+<footer class="container">
+  <small><a href="https://github.com/PhakphumV/pure-css-image-hover-effects">View source on GitHub</a> &middot; No JavaScript &middot; MIT</small>
+</footer>
+
 </body>
 </html>
