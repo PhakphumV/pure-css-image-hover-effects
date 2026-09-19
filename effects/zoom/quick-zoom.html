@@ -1,9 +1,10 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="light">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Quick Zoom · Pure CSS Image Hover Effects</title>
+<meta name="color-scheme" content="light">
+<title>Quick Zoom &middot; Pure CSS Image Hover Effects</title>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css">
 <link rel="stylesheet" href="zoom.css">
 <style>
@@ -77,16 +78,14 @@
 
     <section>
       <h3>HTML</h3>
-      <pre><code><div class="hover-effect quick-zoom">
-  <img src="image.jpg" alt="description">
-</div></code></pre>
+      <pre><code>&lt;div class="hover-effect quick-zoom"&gt;
+  &lt;img src="image.jpg" alt="description"&gt;
+&lt;/div&gt;</code></pre>
 
       <h3>CSS</h3>
-      <pre><code>.hover-effect.quick-zoom{
-}
-.hover-effect.quick-zoom img{
+      <pre><code>.hover-effect.quick-zoom img{
   transform-origin: 0 0;
-  transition: transform 0.25s, visibility 0.25s ease-in;
+  transition: transform 0.4s ease-in;
 }
 .hover-effect.quick-zoom:hover img, .hover-effect.quick-zoom:focus-visible img{
   transform: scale(2);

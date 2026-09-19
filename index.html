@@ -1,8 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="light">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light">
 <title>Pure CSS Image Hover Effects</title>
 <meta name="description" content="A library of pure CSS image hover effects. One class on a div containing an img. No JavaScript. Works on every modern desktop browser.">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css">
@@ -10,9 +11,18 @@
 <style>
   .grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    grid-template-columns: repeat(2, 1fr);
     gap: 1.25rem;
     margin-top: 1rem;
+  }
+  @media (min-width: 640px) {
+    .grid { grid-template-columns: repeat(4, 1fr); }
+  }
+  @media (min-width: 1024px) {
+    .grid { grid-template-columns: repeat(6, 1fr); }
+  }
+  @media (min-width: 1536px) {
+    .grid { grid-template-columns: repeat(8, 1fr); }
   }
   .card {
     background: var(--pico-card-background-color);

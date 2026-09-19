@@ -1,9 +1,10 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="light">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Slide Reveal · Pure CSS Image Hover Effects</title>
+<meta name="color-scheme" content="light">
+<title>Slide Reveal &middot; Pure CSS Image Hover Effects</title>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css">
 <link rel="stylesheet" href="zoom.css">
 <style>
@@ -77,22 +78,22 @@
 
     <section>
       <h3>HTML</h3>
-      <pre><code><div class="hover-effect slide-reveal">
-  <img src="image.jpg" alt="description">
-</div></code></pre>
+      <pre><code>&lt;div class="hover-effect slide-reveal"&gt;
+  &lt;img src="image.jpg" alt="description"&gt;
+&lt;/div&gt;</code></pre>
 
       <h3>CSS</h3>
       <pre><code>/* Slide Reveal Effect */
-
 .hover-effect.slide-reveal img{
   display: block;
-  width: 0;
+  width: 100%;
   height: 100%;
-  transition: width 0.4s ease-out;
+  clip-path: inset(0 100% 0 0);
+  transition: clip-path 0.4s ease-out;
 }
 
 .hover-effect.slide-reveal:hover img, .hover-effect.slide-reveal:focus-visible img{
-  width: 100%;
+  clip-path: inset(0 0 0 0);
 }</code></pre>
 
       <p><small>Select the code above and copy with <kbd>Ctrl+C</kbd> or <kbd>&#8984;C</kbd>.</small></p>

@@ -1,9 +1,10 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="light">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Point Zoom · Pure CSS Image Hover Effects</title>
+<meta name="color-scheme" content="light">
+<title>Point Zoom &middot; Pure CSS Image Hover Effects</title>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css">
 <link rel="stylesheet" href="zoom.css">
 <style>
@@ -77,16 +78,14 @@
 
     <section>
       <h3>HTML</h3>
-      <pre><code><div class="hover-effect point-zoom">
-  <img src="image.jpg" alt="description">
-</div></code></pre>
+      <pre><code>&lt;div class="hover-effect point-zoom"&gt;
+  &lt;img src="image.jpg" alt="description"&gt;
+&lt;/div&gt;</code></pre>
 
       <h3>CSS</h3>
-      <pre><code>.hover-effect.point-zoom{
-}
-.hover-effect.point-zoom img{
+      <pre><code>.hover-effect.point-zoom img{
   transform-origin: 65% 75%;
-  transition: transform 1s, filter 0.5s ease-out;
+  transition: transform 0.4s ease-out;
 }
 .hover-effect.point-zoom:hover img, .hover-effect.point-zoom:focus-visible img{
   transform: scale(5);
