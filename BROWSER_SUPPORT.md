@@ -20,6 +20,25 @@ Anything outside this matrix is unsupported. In particular:
   all hover/focus states on touch-only devices.
 - Embedded WebViews older than the matrix above: not supported.
 
+## Tested vs claimed
+
+The CI pipeline enforces the **structural** contract via
+`scripts/validate_effects.py` (every push and PR). That covers
+descendant-selector detection, `:focus-visible` mirror, `alt`
+attribute, schema validation, reduced-motion override detection,
+and the repo-level a11y guards in `styles/base.css`.
+
+**Visual / cross-browser testing is currently NOT automated.**
+`reports/visual-browser-qa.md` documents what was checked
+statically, what requires a real browser, and the reproduction
+procedure (`tests/standalone/generate.py` produces a standalone
+test page that exercises every effect at four aspect ratios with
+only `styles/base.css` + the effect's own `effect.css`).
+
+Until browser automation is added, the matrix above describes the
+**claimed** support baseline. Real-browser verification status for
+each effect is recorded in `reports/visual-browser-qa.md`.
+
 ## CSS features used
 
 Every effect MAY use the following CSS features. None of them require a
