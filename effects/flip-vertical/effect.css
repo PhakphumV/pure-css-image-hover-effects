@@ -1,0 +1,14 @@
+/* Flip Vertical Effect */
+
+.hover-effect.flip-vertical{
+  perspective: 1000px;
+}
+
+.hover-effect.flip-vertical img{
+  transition: transform 0.6s ease;
+  transform-style: preserve-3d;
+}
+
+.hover-effect.flip-vertical:hover img, .hover-effect.flip-vertical:focus-visible img{
+  transform: scaleY(-1);
+}

@@ -1,0 +1,11 @@
+/* Clip Reveal Effect */
+
+.hover-effect.clip-reveal img{
+  clip-path: inset(0 50% 0 50%);
+  transition: clip-path 0.5s ease-out, transform 0.5s ease-out;
+}
+
+.hover-effect.clip-reveal:hover img, .hover-effect.clip-reveal:focus-visible img{
+  clip-path: inset(0 0 0 0);
+  transform: scale(1.1);
+}

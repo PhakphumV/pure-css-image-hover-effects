@@ -1,0 +1,11 @@
+/* Bounce Top Effect */
+
+.hover-effect.bounce-top img{
+  position: relative;
+  top: 0;
+  transition: top 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+.hover-effect.bounce-top:hover img, .hover-effect.bounce-top:focus-visible img{
+  top: -100%;
+}

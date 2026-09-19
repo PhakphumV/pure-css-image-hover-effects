@@ -1,9 +1,0 @@
-.shadow-lift {
-}
-.shadow-lift img {
-  box-shadow: none;
-  transition: box-shadow 0.4s ease;
-}
-.shadow-lift:hover img {
-  box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.4);
-}

@@ -1,0 +1,24 @@
+{
+  "id": "parallax-tilt",
+  "slug": "parallax-tilt",
+  "title": "Parallax Tilt",
+  "category": "3d",
+  "description": "3d hover effect on the image.",
+  "tags": [
+    "3d",
+    "filter",
+    "transform",
+    "transition"
+  ],
+  "complexity": "advanced",
+  "css_features": [
+    "filter",
+    "perspective",
+    "pseudo-element",
+    "transform",
+    "transition"
+  ],
+  "js_required": false,
+  "extra_markup": false,
+  "reduced_motion": "disabled"
+}

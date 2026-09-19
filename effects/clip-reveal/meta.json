@@ -1,0 +1,22 @@
+{
+  "id": "clip-reveal",
+  "slug": "clip-reveal",
+  "title": "Clip Reveal",
+  "category": "reveal",
+  "description": "Reveal hover effect on the image.",
+  "tags": [
+    "clip-path",
+    "reveal",
+    "transform",
+    "transition"
+  ],
+  "complexity": "simple",
+  "css_features": [
+    "clip-path",
+    "transform",
+    "transition"
+  ],
+  "js_required": false,
+  "extra_markup": false,
+  "reduced_motion": "disabled"
+}

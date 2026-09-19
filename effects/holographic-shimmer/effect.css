@@ -1,0 +1,151 @@
+/* Holographic Shimmer Effect - Iridescent rainbow sweep */
+
+.hover-effect.holographic-shimmer{
+  position: relative;
+  overflow: visible; /* Allow pseudo-elements to extend */
+}
+
+/* Base holographic film layer */
+.hover-effect.holographic-shimmer::before{
+  content: '';
+  position: absolute;
+  inset: -20%;
+  background: 
+    conic-gradient(
+      from 0deg,
+      #ff0080, #ff8c00, #ffd700, #00ff80, #00ffff, #0080ff, #8000ff, #ff0080
+    );
+  opacity: 0;
+  pointer-events: none;
+  mix-blend-mode: screen;
+  animation: shimmer-rotate 8s linear infinite;
+  transition: opacity 0.4s ease;
+  z-index: 1;
+  border-radius: var(--radius);
+}
+
+/* Noise texture overlay */
+.hover-effect.holographic-shimmer::after{
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+  background-size: 200px;
+  opacity: 0;
+  pointer-events: none;
+  mix-blend-mode: overlay;
+  transition: opacity 0.4s ease;
+  z-index: 2;
+  border-radius: var(--radius);
+}
+
+/* Rainbow sweep gradient that moves across */
+.hover-effect.holographic-shimmer .sweep{
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    110deg,
+    transparent 0%,
+    rgba(255, 0, 128, 0.15) 20%,
+    rgba(255, 255, 0, 0.25) 35%,
+    rgba(0, 255, 255, 0.3) 50%,
+    rgba(0, 128, 255, 0.25) 65%,
+    rgba(128, 0, 255, 0.15) 80%,
+    transparent 100%
+  );
+  background-size: 200% 100%;
+  background-position: -100% 0;
+  opacity: 0;
+  pointer-events: none;
+  mix-blend-mode: screen;
+  transition: opacity 0.3s ease;
+  z-index: 3;
+  border-radius: var(--radius);
+}
+
+/* Prism edge highlights */
+.hover-effect.holographic-shimmer .edges{
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 4;
+  border-radius: var(--radius);
+}
+
+.hover-effect.holographic-shimmer .edges::before, .hover-effect.holographic-shimmer .edges::after{
+  content: '';
+  position: absolute;
+  inset: 0;
+  border: 2px solid transparent;
+  border-radius: var(--radius);
+  opacity: 0;
+  transition: opacity 0.4s ease, border-color 0.4s ease;
+}
+
+.hover-effect.holographic-shimmer .edges::before{
+  border-image: linear-gradient(45deg, #ff0080, #00ffff, #ffff00, #ff0080) 1;
+  animation: edge-flow 3s linear infinite;
+}
+
+.hover-effect.holographic-shimmer .edges::after{
+  border-image: linear-gradient(-45deg, #00ff80, #8000ff, #ff8c00, #00ff80) 1;
+  animation: edge-flow 3s linear infinite reverse;
+}
+
+/* Image transition */
+.hover-effect.holographic-shimmer img{
+  transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+              filter 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+/* Hover state - activate all layers */
+.hover-effect.holographic-shimmer:hover::before, .hover-effect.holographic-shimmer:focus-visible::before{
+  opacity: 0.35;
+}
+
+.hover-effect.holographic-shimmer:hover::after, .hover-effect.holographic-shimmer:focus-visible::after{
+  opacity: 0.15;
+}
+
+.hover-effect.holographic-shimmer:hover .sweep, .hover-effect.holographic-shimmer:focus-visible .sweep{
+  opacity: 1;
+  animation: sweep-across 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+}
+
+.hover-effect.holographic-shimmer:hover .edges::before, .hover-effect.holographic-shimmer:hover .edges::after, .hover-effect.holographic-shimmer:focus-visible .edges::before, .hover-effect.holographic-shimmer:focus-visible .edges::after{
+  opacity: 1;
+}
+
+.hover-effect.holographic-shimmer:hover img, .hover-effect.holographic-shimmer:focus-visible img{
+  transform: scale(1.02);
+  filter: brightness(1.05) saturate(1.1);
+}
+
+/* Animations */
+@keyframes shimmer-rotate {
+  0%   { transform: rotate(0deg) scale(1.4); }
+  100% { transform: rotate(360deg) scale(1.4); }
+}
+
+@keyframes sweep-across {
+  0%   { background-position: -100% 0; opacity: 0; }
+  20%  { opacity: 1; }
+  100% { background-position: 200% 0; opacity: 0; }
+}
+
+@keyframes edge-flow {
+  0%   { border-image-slice: 1; transform: rotate(0deg); }
+  100% { border-image-slice: 1; transform: rotate(360deg); }
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .hover-effect.holographic-shimmer::before, .hover-effect.holographic-shimmer .edges::before, .hover-effect.holographic-shimmer .edges::after{
+    animation: none;
+  }
+  .hover-effect.holographic-shimmer:hover .sweep, .hover-effect.holographic-shimmer:focus-visible .sweep{
+    animation: none;
+    background-position: 100% 0;
+    opacity: 0.5;
+  }
+}

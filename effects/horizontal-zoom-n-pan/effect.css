@@ -1,0 +1,16 @@
+/* Horizontal Zoom & Pan Effect */
+
+.hover-effect.horizontal-zoom-n-pan{
+  overflow: hidden; /* Required for the pan effect to clip */
+}
+
+.hover-effect.horizontal-zoom-n-pan img{
+  transform-origin: 0 center;
+  transition: transform 0.55s ease-in-out;
+  will-change: transform;
+  transform: scale(1.4);
+}
+
+.hover-effect.horizontal-zoom-n-pan:hover img, .hover-effect.horizontal-zoom-n-pan:focus-visible img{
+  transform: scale(1.5) translateX(-30%);
+}

@@ -1,0 +1,9 @@
+.hover-effect.quick-zoom{
+}
+.hover-effect.quick-zoom img{
+  transform-origin: 0 0;
+  transition: transform 0.25s, visibility 0.25s ease-in;
+}
+.hover-effect.quick-zoom:hover img, .hover-effect.quick-zoom:focus-visible img{
+  transform: scale(2);
+}

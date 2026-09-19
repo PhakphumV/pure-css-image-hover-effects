@@ -1,0 +1,11 @@
+/* Fade Colorize Effect */
+
+.hover-effect.fade-colorize img{
+  filter: grayscale(1);
+  transition: filter 0.4s ease-out, transform 0.4s ease-out;
+}
+
+.hover-effect.fade-colorize:hover img, .hover-effect.fade-colorize:focus-visible img{
+  filter: grayscale(0);
+  transform: scale(1.05);
+}

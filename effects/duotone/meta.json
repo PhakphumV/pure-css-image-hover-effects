@@ -1,0 +1,21 @@
+{
+  "id": "duotone",
+  "slug": "duotone",
+  "title": "Duotone Shift",
+  "category": "filter",
+  "description": "Filter hover effect on the image.",
+  "tags": [
+    "filter",
+    "transform",
+    "transition"
+  ],
+  "complexity": "simple",
+  "css_features": [
+    "filter",
+    "transform",
+    "transition"
+  ],
+  "js_required": false,
+  "extra_markup": false,
+  "reduced_motion": "instant"
+}

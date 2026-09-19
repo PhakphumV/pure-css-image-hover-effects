@@ -1,0 +1,14 @@
+/* Flip Horizontal Effect */
+
+.hover-effect.flip-horizontal{
+  perspective: 1000px;
+}
+
+.hover-effect.flip-horizontal img{
+  transition: transform 0.6s ease;
+  transform-style: preserve-3d;
+}
+
+.hover-effect.flip-horizontal:hover img, .hover-effect.flip-horizontal:focus-visible img{
+  transform: scaleX(-1);
+}

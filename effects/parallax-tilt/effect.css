@@ -1,0 +1,104 @@
+/* Parallax Tilt Effect - Multi-layer 3D parallax tilt toward cursor with depth separation */
+
+.hover-effect.parallax-tilt{
+  perspective: 1000px;
+  transform-style: preserve-3d;
+}
+
+.hover-effect.parallax-tilt img{
+  transform-style: preserve-3d;
+  transition: transform 0.1s ease-out, filter 0.3s ease-out;
+  will-change: transform;
+}
+
+/* Depth layers using pseudo-elements */
+.hover-effect.parallax-tilt::before, .hover-effect.parallax-tilt::after{
+  content: '';
+  position: absolute;
+  inset: -15%;
+  background: inherit;
+  background-size: cover;
+  background-position: center;
+  transform-style: preserve-3d;
+  pointer-events: none;
+  border-radius: 12px;
+  opacity: 0;
+  transition: opacity 0.2s ease-out, transform 0.1s ease-out;
+}
+
+/* Layer 1: Background blur (furthest back) */
+.hover-effect.parallax-tilt::before{
+  z-index: -2;
+  filter: brightness(0.6) blur(12px);
+  transform: translateZ(-60px) scale(1.2);
+}
+
+/* Layer 2: Mid-ground texture */
+.hover-effect.parallax-tilt::after{
+  z-index: -1;
+  filter: brightness(0.85) blur(4px);
+  transform: translateZ(-30px) scale(1.1);
+}
+
+/* Glare/reflection overlay */
+.hover-effect.parallax-tilt .glare{
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    135deg,
+    rgba(255,255,255,0) 0%,
+    rgba(255,255,255,0.12) 45%,
+    rgba(255,255,255,0.08) 50%,
+    rgba(255,255,255,0.12) 55%,
+    rgba(255,255,255,0) 100%
+  );
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease-out;
+  mix-blend-mode: overlay;
+  border-radius: 12px;
+  z-index: 2;
+}
+
+/* Hover state */
+.hover-effect.parallax-tilt:hover::before, .hover-effect.parallax-tilt:hover::after, .hover-effect.parallax-tilt:hover .glare, .hover-effect.parallax-tilt:focus-visible::before, .hover-effect.parallax-tilt:focus-visible::after, .hover-effect.parallax-tilt:focus-visible .glare{
+  opacity: 1;
+}
+
+.hover-effect.parallax-tilt:hover img, .hover-effect.parallax-tilt:focus-visible img{
+  filter: brightness(1.08) contrast(1.05) saturate(1.1);
+}
+
+/* Active tilt state (when JS adds .tilting class) */
+.hover-effect.parallax-tilt.tilting img, .hover-effect.parallax-tilt.tilting::before, .hover-effect.parallax-tilt.tilting::after{
+  transition: transform 0.05s ease-out;
+}
+
+/* CSS-only fallback: subtle tilt on hover without cursor tracking */
+.hover-effect.parallax-tilt:hover img, .hover-effect.parallax-tilt:focus-visible img{
+  transform: perspective(1000px) rotateX(2deg) rotateY(-2deg) scale(1.02);
+}
+
+.hover-effect.parallax-tilt:hover::before, .hover-effect.parallax-tilt:focus-visible::before{
+  transform: translateZ(-60px) scale(1.2) perspective(1000px) rotateX(1.5deg) rotateY(-1.5deg);
+}
+
+.hover-effect.parallax-tilt:hover::after, .hover-effect.parallax-tilt:focus-visible::after{
+  transform: translateZ(-30px) scale(1.1) perspective(1000px) rotateX(1deg) rotateY(-1deg);
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .hover-effect.parallax-tilt img, .hover-effect.parallax-tilt::before, .hover-effect.parallax-tilt::after, .hover-effect.parallax-tilt .glare{
+    transition: opacity 0.3s ease;
+  }
+  .hover-effect.parallax-tilt:hover img, .hover-effect.parallax-tilt:focus-visible img{
+    transform: scale(1.02);
+  }
+  .hover-effect.parallax-tilt:hover::before, .hover-effect.parallax-tilt:focus-visible::before{
+    transform: translateZ(-60px) scale(1.2);
+  }
+  .hover-effect.parallax-tilt:hover::after, .hover-effect.parallax-tilt:focus-visible::after{
+    transform: translateZ(-30px) scale(1.1);
+  }
+}

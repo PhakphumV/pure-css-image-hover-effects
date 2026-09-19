@@ -1,0 +1,19 @@
+{
+  "id": "contrast-soften",
+  "slug": "contrast-soften",
+  "title": "Contrast Soften",
+  "category": "filter",
+  "description": "Filter hover effect on the image.",
+  "tags": [
+    "filter",
+    "transition"
+  ],
+  "complexity": "simple",
+  "css_features": [
+    "filter",
+    "transition"
+  ],
+  "js_required": false,
+  "extra_markup": false,
+  "reduced_motion": "instant"
+}

@@ -1,0 +1,18 @@
+{
+  "id": "bounce-right",
+  "slug": "bounce-right",
+  "title": "Bounce Right",
+  "category": "pan",
+  "description": "Pan hover effect on the image.",
+  "tags": [
+    "pan",
+    "transition"
+  ],
+  "complexity": "simple",
+  "css_features": [
+    "transition"
+  ],
+  "js_required": false,
+  "extra_markup": false,
+  "reduced_motion": "disabled"
+}

@@ -1,0 +1,10 @@
+/* Contrast Soften Effect */
+
+.hover-effect.contrast-soften img{
+  filter: contrast(1);
+  transition: filter 0.3s ease;
+}
+
+.hover-effect.contrast-soften:hover img, .hover-effect.contrast-soften:focus-visible img{
+  filter: contrast(0.6);
+}

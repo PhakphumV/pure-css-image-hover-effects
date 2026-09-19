@@ -1,0 +1,18 @@
+/* Ink Drop Effect */
+
+.hover-effect.ink-drop::after{
+  content: "";
+  position: absolute;
+  inset: 50%;
+  width: 0;
+  height: 0;
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.1);
+  transform: translate(-50%, -50%);
+  transition: width 0.3s, height 0.3s;
+}
+
+.hover-effect.ink-drop:hover::after, .hover-effect.ink-drop:focus-visible::after{
+  width: 200%;
+  height: 200%;
+}

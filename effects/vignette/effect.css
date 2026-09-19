@@ -1,0 +1,28 @@
+/* Vignette Effect */
+
+.hover-effect.vignette{
+  position: relative;
+}
+
+.hover-effect.vignette img{
+  transition: transform 0.4s ease-out;
+}
+
+.hover-effect.vignette::after{
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at center, transparent 50%, rgba(0,0,0,0.6) 100%);
+  opacity: 0;
+  transition: opacity 0.4s ease-out;
+  pointer-events: none;
+  border-radius: var(--radius);
+}
+
+.hover-effect.vignette:hover::after, .hover-effect.vignette:focus-visible::after{
+  opacity: 1;
+}
+
+.hover-effect.vignette:hover img, .hover-effect.vignette:focus-visible img{
+  transform: scale(1.1);
+}

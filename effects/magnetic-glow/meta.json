@@ -1,0 +1,24 @@
+{
+  "id": "magnetic-glow",
+  "slug": "magnetic-glow",
+  "title": "Magnetic Glow",
+  "category": "light",
+  "description": "Light hover effect on the image.",
+  "tags": [
+    "filter",
+    "light",
+    "transform",
+    "transition"
+  ],
+  "complexity": "advanced",
+  "css_features": [
+    "box-shadow",
+    "filter",
+    "pseudo-element",
+    "transform",
+    "transition"
+  ],
+  "js_required": false,
+  "extra_markup": false,
+  "reduced_motion": "instant"
+}

@@ -1,0 +1,27 @@
+{
+  "id": "glitch-shift",
+  "slug": "glitch-shift",
+  "title": "Glitch Shift",
+  "category": "reveal",
+  "description": "Reveal hover effect on the image.",
+  "tags": [
+    "animation",
+    "clip-path",
+    "filter",
+    "reveal",
+    "transform",
+    "transition"
+  ],
+  "complexity": "advanced",
+  "css_features": [
+    "animation",
+    "clip-path",
+    "filter",
+    "pseudo-element",
+    "transform",
+    "transition"
+  ],
+  "js_required": false,
+  "extra_markup": false,
+  "reduced_motion": "disabled"
+}

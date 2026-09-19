@@ -1,0 +1,11 @@
+.hover-effect.zoom-in-slowmo{
+}
+.hover-effect.zoom-in-slowmo img{
+  transform-origin: 50% 65%;
+  transition: transform 5s, filter 3s ease-in-out;
+  filter: brightness(150%);
+}
+.hover-effect.zoom-in-slowmo:hover img, .hover-effect.zoom-in-slowmo:focus-visible img{
+  filter: brightness(100%);
+  transform: scale(3);
+}
