@@ -117,3 +117,32 @@
     opacity: 1;
   }
 }
+
+/* ---- fade-overlay-dark ---- */
+/* Heavier dark overlay (rgba(0,0,0,0.75)) that fades in on
+   hover/focus, leaving the image barely visible. Same pattern
+   as fade-overlay but with a darker, more opaque fill. */
+.hover-effect.fade-overlay-dark{
+  position: relative;
+}
+.hover-effect.fade-overlay-dark::before{
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.75);
+  opacity: 0;
+  transition: opacity 0.45s ease;
+}
+.hover-effect.fade-overlay-dark:hover::before,
+.hover-effect.fade-overlay-dark:focus-visible::before{
+  opacity: 1;
+}
+@media (prefers-reduced-motion: reduce) {
+  .hover-effect.fade-overlay-dark::before{
+    transition: none;
+  }
+  .hover-effect.fade-overlay-dark:hover::before,
+  .hover-effect.fade-overlay-dark:focus-visible::before{
+    opacity: 1;
+  }
+}
