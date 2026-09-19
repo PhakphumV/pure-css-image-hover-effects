@@ -6,94 +6,72 @@
 <meta name="color-scheme" content="light">
 <title>Quick Zoom &middot; Pure CSS Image Hover Effects</title>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.9.0/build/styles/vs2015.min.css">
+<link rel="stylesheet" href="../template.css">
 <link rel="stylesheet" href="zoom.css">
-<style>
-  .detail {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 2rem;
-    align-items: start;
-    margin-top: 1.5rem;
-  }
-  .preview {
-    background: var(--pico-muted-border-color);
-    border-radius: 8px;
-    padding: 1.5rem;
-    position: sticky;
-    top: 1rem;
-  }
-  .preview-stage {
-    width: 100%;
-    max-width: 480px;
-    margin: 0 auto;
-    overflow: hidden;
-    border-radius: 8px;
-  }
-  .preview-stage > img {
-    width: 100%;
-    height: 100%;
-    display: block;
-  }
-  .preview-stage .hover-effect {
-    width: 100%;
-    aspect-ratio: 4 / 3;
-  }
-  .preview-stage .hover-effect > img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: block;
-  }
-  .preview-hint {
-    text-align: center;
-    margin-top: 1rem;
-    color: var(--pico-muted-color);
-    font-size: 0.875rem;
-  }
-  pre { overflow-x: auto; }
-  pre code { font-size: 0.875rem; }
-  @media (max-width: 768px) {
-    .detail { grid-template-columns: 1fr; }
-    .preview { position: static; }
-  }
-</style>
+<script defer src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.9.0/build/highlight.min.js"></script>
 </head>
 <body>
-<main class="container">
-  <nav>
-    <ul><li><a href="../../index.html">&larr; Back to gallery</a></li></ul>
-  </nav>
-  <h1>Quick Zoom</h1>
-  <p>Zoom hover effect on the image.</p>
 
+<header class="container">
+  <nav>
+    <ul>
+      <li><a href="../../index.html">&larr; Back to gallery</a></li>
+    </ul>
+  </nav>
+  <hgroup>
+    <h1>Quick Zoom</h1>
+    <p>Snappy 2x zoom from the top-left corner.</p>
+  </hgroup>
+</header>
+
+<main class="container">
   <div class="detail">
+
     <section class="preview">
       <div class="preview-stage">
         <div class="hover-effect quick-zoom">
           <img src="https://picsum.photos/seed/quick-zoom/800/600" alt="Quick Zoom demo">
         </div>
       </div>
-      <p class="preview-hint">Hover or focus the image above to see the effect.</p>
+      <p class="preview-hint">Hover or focus the image to see the effect.</p>
     </section>
 
     <section>
       <h3>HTML</h3>
-      <pre><code>&lt;div class="hover-effect quick-zoom"&gt;
+      <div class="code-block">
+        <pre><code class="language-html">&lt;div class="hover-effect quick-zoom">
   &lt;img src="image.jpg" alt="description"&gt;
-&lt;/div&gt;</code></pre>
+&lt;/div></code></pre>
+      </div>
 
       <h3>CSS</h3>
-      <pre><code>.hover-effect.quick-zoom img{
+      <div class="code-block">
+        <pre><code class="language-css">.hover-effect.quick-zoom img{
   transform-origin: 0 0;
   transition: transform 0.3s ease-in;
 }
+
 .hover-effect.quick-zoom:hover img, .hover-effect.quick-zoom:focus-visible img{
   transform: scale(2);
 }</code></pre>
+      </div>
 
-      <p><small>Select the code above and copy with <kbd>Ctrl+C</kbd> or <kbd>&#8984;C</kbd>.</small></p>
+      <p class="copy-hint"><small>Select the code and copy with <kbd>Ctrl+C</kbd> or <kbd>&#8984;C</kbd>.</small></p>
     </section>
+
   </div>
 </main>
+
+<footer class="container">
+  <small><a href="../../index.html">Pure CSS Image Hover Effects</a> &middot; No JavaScript &middot; MIT</small>
+</footer>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    hljs.highlightAll();
+  });
+</script>
+
 </body>
 </html>
