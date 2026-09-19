@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Point Zoom · Pure CSS Image Hover Effects</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css">
+<link rel="stylesheet" href="zoom.css">
+<style>
+  .detail {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    align-items: start;
+    margin-top: 1.5rem;
+  }
+  .preview {
+    background: var(--pico-muted-border-color);
+    border-radius: 8px;
+    padding: 1.5rem;
+    position: sticky;
+    top: 1rem;
+  }
+  .preview-stage {
+    width: 100%;
+    max-width: 480px;
+    margin: 0 auto;
+    overflow: hidden;
+    border-radius: 8px;
+  }
+  .preview-stage > img {
+    width: 100%;
+    height: 100%;
+    display: block;
+  }
+  .preview-stage .hover-effect {
+    width: 100%;
+    aspect-ratio: 4 / 3;
+  }
+  .preview-stage .hover-effect > img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+  .preview-hint {
+    text-align: center;
+    margin-top: 1rem;
+    color: var(--pico-muted-color);
+    font-size: 0.875rem;
+  }
+  pre { overflow-x: auto; }
+  pre code { font-size: 0.875rem; }
+  @media (max-width: 768px) {
+    .detail { grid-template-columns: 1fr; }
+    .preview { position: static; }
+  }
+</style>
+</head>
+<body>
+<main class="container">
+  <nav>
+    <ul><li><a href="../../index.html">&larr; Back to gallery</a></li></ul>
+  </nav>
+  <h1>Point Zoom</h1>
+  <p>Zoom hover effect on the image.</p>
+
+  <div class="detail">
+    <section class="preview">
+      <div class="preview-stage">
+        <div class="hover-effect point-zoom">
+          <img src="https://picsum.photos/seed/point-zoom/800/600" alt="Point Zoom demo">
+        </div>
+      </div>
+      <p class="preview-hint">Hover or focus the image above to see the effect.</p>
+    </section>
+
+    <section>
+      <h3>HTML</h3>
+      <pre><code><div class="hover-effect point-zoom">
+  <img src="image.jpg" alt="description">
+</div></code></pre>
+
+      <h3>CSS</h3>
+      <pre><code>.hover-effect.point-zoom{
+}
+.hover-effect.point-zoom img{
+  transform-origin: 65% 75%;
+  transition: transform 1s, filter 0.5s ease-out;
+}
+.hover-effect.point-zoom:hover img, .hover-effect.point-zoom:focus-visible img{
+  transform: scale(5);
+}</code></pre>
+
+      <p><small>Select the code above and copy with <kbd>Ctrl+C</kbd> or <kbd>&#8984;C</kbd>.</small></p>
+    </section>
+  </div>
+</main>
+</body>
+</html>

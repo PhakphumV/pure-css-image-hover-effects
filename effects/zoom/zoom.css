@@ -1,0 +1,61 @@
+/* Zoom-category hover effects.
+   One class on .hover-effect.<slug>, scoped via the
+   unique slug class so multiple categories can coexist. */
+
+/* ---- point-zoom ---- */
+.hover-effect.point-zoom{
+}
+.hover-effect.point-zoom img{
+  transform-origin: 65% 75%;
+  transition: transform 1s, filter 0.5s ease-out;
+}
+.hover-effect.point-zoom:hover img, .hover-effect.point-zoom:focus-visible img{
+  transform: scale(5);
+}
+
+/* ---- quick-zoom ---- */
+.hover-effect.quick-zoom{
+}
+.hover-effect.quick-zoom img{
+  transform-origin: 0 0;
+  transition: transform 0.25s, visibility 0.25s ease-in;
+}
+.hover-effect.quick-zoom:hover img, .hover-effect.quick-zoom:focus-visible img{
+  transform: scale(2);
+}
+
+/* ---- slide-reveal ---- */
+/* Slide Reveal Effect */
+
+.hover-effect.slide-reveal img{
+  display: block;
+  width: 0;
+  height: 100%;
+  transition: width 0.4s ease-out;
+}
+
+.hover-effect.slide-reveal:hover img, .hover-effect.slide-reveal:focus-visible img{
+  width: 100%;
+}
+
+/* ---- zoom-in ---- */
+/* Zoom In Effect */
+
+.hover-effect.zoom-in img{
+  transition: transform 0.45s ease;
+}
+
+.hover-effect.zoom-in:hover img, .hover-effect.zoom-in:focus-visible img{
+  transform: scale(1.18);
+}
+
+/* ---- zoom-out ---- */
+.hover-effect.zoom-out{
+}
+.hover-effect.zoom-out img{
+  transition: transform .45s ease;
+  transform: scale(1.2);
+}
+.hover-effect.zoom-out:hover img, .hover-effect.zoom-out:focus-visible img{
+  transform: scale(1);
+}
