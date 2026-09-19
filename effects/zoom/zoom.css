@@ -58,3 +58,14 @@
 .hover-effect.zoom-top:hover img, .hover-effect.zoom-top:focus-visible img{
   transform: scale(1.5);
 }
+
+/* ---- zoom-bottom ---- */
+/* Subtle 1.5x scale-up anchored at the bottom edge so the top of
+   the image visually pulls inward. Moderate timing. */
+.hover-effect.zoom-bottom img{
+  transform-origin: 50% 100%;
+  transition: transform 0.45s ease;
+}
+.hover-effect.zoom-bottom:hover img, .hover-effect.zoom-bottom:focus-visible img{
+  transform: scale(1.5);
+}
