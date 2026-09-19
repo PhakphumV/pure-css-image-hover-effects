@@ -216,3 +216,29 @@
     transform: none;
   }
 }
+
+/* ---- pan-center ---- */
+/* Image starts zoomed in and offset toward the bottom-right so a
+   corner of the picture is in view. On hover/focus the image
+   scales back to 1 and translates to 0,0, centering the framing
+   and revealing the full picture. */
+.hover-effect.pan-center{
+  overflow: hidden;
+}
+.hover-effect.pan-center img{
+  transform: scale(1.15) translate(20px, 20px);
+  transition: transform 0.6s ease;
+}
+.hover-effect.pan-center:hover img, .hover-effect.pan-center:focus-visible img{
+  transform: scale(1) translate(0, 0);
+}
+@media (prefers-reduced-motion: reduce) {
+  .hover-effect.pan-center img{
+    transition: none;
+    transform: scale(1) translate(0, 0);
+  }
+  .hover-effect.pan-center:hover img,
+  .hover-effect.pan-center:focus-visible img{
+    transform: scale(1) translate(0, 0);
+  }
+}
