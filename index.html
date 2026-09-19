@@ -1,0 +1,783 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pure CSS Image Hover Effects</title>
+  <meta name="description" content="A curated library of 54 pure-CSS image hover effects. Copy-paste ready. No JavaScript.">
+  <link rel="stylesheet" href="styles/base.css">
+  <link rel="stylesheet" href="styles/catalog.css">
+</head>
+<body>
+  <header class="hero">
+    <p class="hero__eyebrow">v2.0 rebuild</p>
+    <h1 class="hero__title">Pure CSS image hover effects</h1>
+    <p class="hero__sub">54 effects. One class on a div. No JavaScript.</p>
+    <p class="hero__meta">
+      <a href="CONTRACT.md">Contract</a>
+      <span aria-hidden="true">/</span>
+      <a href="META_SCHEMA.md">Schema</a>
+      <span aria-hidden="true">/</span>
+      <a href="BROWSER_SUPPORT.md">Browser support</a>
+    </p>
+  </header>
+
+  <nav class="filter" aria-label="Filter by category">
+      <label class="filter__pill"><input type="radio" name="cat" value="all" checked><span>All <small>(54)</small></span></label>
+      <label class="filter__pill"><input type="radio" name="cat" value="zoom"><span>Zoom <small>(5)</small></span></label>
+      <label class="filter__pill"><input type="radio" name="cat" value="pan"><span>Pan <small>(5)</small></span></label>
+      <label class="filter__pill"><input type="radio" name="cat" value="3d"><span>3d <small>(8)</small></span></label>
+      <label class="filter__pill"><input type="radio" name="cat" value="filter"><span>Filter <small>(7)</small></span></label>
+      <label class="filter__pill"><input type="radio" name="cat" value="reveal"><span>Reveal <small>(5)</small></span></label>
+      <label class="filter__pill"><input type="radio" name="cat" value="fade"><span>Fade <small>(1)</small></span></label>
+      <label class="filter__pill"><input type="radio" name="cat" value="shadow"><span>Shadow <small>(4)</small></span></label>
+      <label class="filter__pill"><input type="radio" name="cat" value="light"><span>Light <small>(6)</small></span></label>
+      <label class="filter__pill"><input type="radio" name="cat" value="overlay"><span>Overlay <small>(10)</small></span></label>
+      <label class="filter__pill"><input type="radio" name="cat" value="composite"><span>Composite <small>(3)</small></span></label>
+  </nav>
+
+  <main>
+    <section class="section" id="cat-zoom">
+      <header class="section__header">
+        <h2 class="section__title">Zoom</h2>
+        <p class="section__count">5 effects</p>
+      </header>
+      <div class="grid">
+    <a class="card" href="effects/point-zoom/index.html" data-category="zoom">
+      <div class="card__media">
+        <div class="hover-effect point-zoom" aria-hidden="true">
+          <img src="https://picsum.photos/seed/point-zoom/600/400" alt="" loading="lazy">
+        </div>
+      </div>
+      <div class="card__body">
+        <h3 class="card__title">Point Zoom</h3>
+        <p class="card__desc">Zoom hover effect on the image.</p>
+        <div class="card__tags"><span class="card__tag">transform</span> <span class="card__tag">transition</span> <span class="card__tag">zoom</span></div>
+      </div>
+    </a>
+    <a class="card" href="effects/quick-zoom/index.html" data-category="zoom">
+      <div class="card__media">
+        <div class="hover-effect quick-zoom" aria-hidden="true">
+          <img src="https://picsum.photos/seed/quick-zoom/600/400" alt="" loading="lazy">
+        </div>
+      </div>
+      <div class="card__body">
+        <h3 class="card__title">Quick Zoom</h3>
+        <p class="card__desc">Zoom hover effect on the image.</p>
+        <div class="card__tags"><span class="card__tag">transform</span> <span class="card__tag">transition</span> <span class="card__tag">zoom</span></div>
+      </div>
+    </a>
+    <a class="card" href="effects/slide-reveal/index.html" data-category="zoom">
+      <div class="card__media">
+        <div class="hover-effect slide-reveal" aria-hidden="true">
+          <img src="https://picsum.photos/seed/slide-reveal/600/400" alt="" loading="lazy">
+        </div>
+      </div>
+      <div class="card__body">
+        <h3 class="card__title">Slide Reveal</h3>
+        <p class="card__desc">Zoom hover effect on the image.</p>
+        <div class="card__tags"><span class="card__tag">transition</span> <span class="card__tag">zoom</span></div>
+      </div>
+    </a>
+    <a class="card" href="effects/zoom-in/index.html" data-category="zoom">
+      <div class="card__media">
+        <div class="hover-effect zoom-in" aria-hidden="true">
+          <img src="https://picsum.photos/seed/zoom-in/600/400" alt="" loading="lazy">
+        </div>
+      </div>
+      <div class="card__body">
+        <h3 class="card__title">Zoom In</h3>
+        <p class="card__desc">Zoom hover effect on the image.</p>
+        <div class="card__tags"><span class="card__tag">transform</span> <span class="card__tag">transition</span> <span class="card__tag">zoom</span></div>
+      </div>
+    </a>
+    <a class="card" href="effects/zoom-out/index.html" data-category="zoom">
+      <div class="card__media">
+        <div class="hover-effect zoom-out" aria-hidden="true">
+          <img src="https://picsum.photos/seed/zoom-out/600/400" alt="" loading="lazy">
+        </div>
+      </div>
+      <div class="card__body">
+        <h3 class="card__title">Zoom Out</h3>
+        <p class="card__desc">Zoom hover effect on the image.</p>
+        <div class="card__tags"><span class="card__tag">transform</span> <span class="card__tag">transition</span> <span class="card__tag">zoom</span></div>
+      </div>
+    </a>
+      </div>
+    </section>
+
+    <section class="section" id="cat-pan">
+      <header class="section__header">
+        <h2 class="section__title">Pan</h2>
+        <p class="section__count">5 effects</p>
+      </header>
+      <div class="grid">
+    <a class="card" href="effects/bounce-bottom/index.html" data-category="pan">
+      <div class="card__media">
+        <div class="hover-effect bounce-bottom" aria-hidden="true">
+          <img src="https://picsum.photos/seed/bounce-bottom/600/400" alt="" loading="lazy">
+        </div>
+      </div>
+      <div class="card__body">
+        <h3 class="card__title">Bounce Bottom</h3>
+        <p class="card__desc">Pan hover effect on the image.</p>
+        <div class="card__tags"><span class="card__tag">pan</span> <span class="card__tag">transition</span></div>
+      </div>
+    </a>
+    <a class="card" href="effects/bounce-left/index.html" data-category="pan">
+      <div class="card__media">
+        <div class="hover-effect bounce-left" aria-hidden="true">
+          <img src="https://picsum.photos/seed/bounce-left/600/400" alt="" loading="lazy">
+        </div>
+      </div>
+      <div class="card__body">
+        <h3 class="card__title">Bounce Left</h3>
+        <p class="card__desc">Pan hover effect on the image.</p>
+        <div class="card__tags"><span class="card__tag">pan</span> <span class="card__tag">transition</span></div>
+      </div>
+    </a>
+    <a class="card" href="effects/bounce-right/index.html" data-category="pan">
+      <div class="card__media">
+        <div class="hover-effect bounce-right" aria-hidden="true">
+          <img src="https://picsum.photos/seed/bounce-right/600/400" alt="" loading="lazy">
+        </div>
+      </div>
+      <div class="card__body">
+        <h3 class="card__title">Bounce Right</h3>
+        <p class="card__desc">Pan hover effect on the image.</p>
+        <div class="card__tags"><span class="card__tag">pan</span> <span class="card__tag">transition</span></div>
+      </div>
+    </a>
+    <a class="card" href="effects/bounce-top/index.html" data-category="pan">
+      <div class="card__media">
+        <div class="hover-effect bounce-top" aria-hidden="true">
+          <img src="https://picsum.photos/seed/bounce-top/600/400" alt="" loading="lazy">
+        </div>
+      </div>
+      <div class="card__body">
+        <h3 class="card__title">Bounce Top</h3>
+        <p class="card__desc">Pan hover effect on the image.</p>
+        <div class="card__tags"><span class="card__tag">pan</span> <span class="card__tag">transition</span></div>
+      </div>
+    </a>
+    <a class="card" href="effects/slide-reveal-right/index.html" data-category="pan">
+      <div class="card__media">
+        <div class="hover-effect slide-reveal-right" aria-hidden="true">
+          <img src="https://picsum.photos/seed/slide-reveal-right/600/400" alt="" loading="lazy">
+        </div>
+      </div>
+      <div class="card__body">
+        <h3 class="card__title">Slide Reveal Right</h3>
+        <p class="card__desc">Pan hover effect on the image.</p>
+        <div class="card__tags"><span class="card__tag">pan</span> <span class="card__tag">transition</span></div>
+      </div>
+    </a>
+      </div>
+    </section>
+
+    <section class="section" id="cat-3d">
+      <header class="section__header">
+        <h2 class="section__title">3d</h2>
+        <p class="section__count">8 effects</p>
+      </header>
+      <div class="grid">
+    <a class="card" href="effects/rotate-3d/index.html" data-category="3d">
+      <div class="card__media">
+        <div class="hover-effect rotate-3d" aria-hidden="true">
+          <img src="https://picsum.photos/seed/rotate-3d/600/400" alt="" loading="lazy">
+        </div>
+      </div>
+      <div class="card__body">
+        <h3 class="card__title">3D Rotate</h3>
+        <p class="card__desc">3d hover effect on the image.</p>
+        <div class="card__tags"><span class="card__tag">3d</span> <span class="card__tag">transform</span> <span class="card__tag">transition</span></div>
+      </div>
+    </a>
+    <a class="card" href="effects/depth-layers/index.html" data-category="3d">
+      <div class="card__media">
+        <div class="hover-effect depth-layers" aria-hidden="true">
+          <img src="https://picsum.photos/seed/depth-layers/600/400" alt="" loading="lazy">
+        </div>
+      </div>
+      <div class="card__body">
+        <h3 class="card__title">Depth Layers</h3>
+        <p class="card__desc">3d hover effect on the image.</p>
+        <div class="card__tags"><span class="card__tag">3d</span> <span class="card__tag">animation</span> <span class="card__tag">filter</span> <span class="card__tag">transform</span></div>
+      </div>
+    </a>
+    <a class="card" href="effects/flip-horizontal/index.html" data-category="3d">
+      <div class="card__media">
+        <div class="hover-effect flip-horizontal" aria-hidden="true">
+          <img src="https://picsum.photos/seed/flip-horizontal/600/400" alt="" loading="lazy">
+        </div>
+      </div>
+      <div class="card__body">
+        <h3 class="card__title">Flip Horizontal</h3>
+        <p class="card__desc">3d hover effect on the image.</p>
+        <div class="card__tags"><span class="card__tag">3d</span> <span class="card__tag">transform</span> <span class="card__tag">transition</span></div>
+      </div>
+    </a>
+    <a class="card" href="effects/flip-vertical/index.html" data-category="3d">
+      <div class="card__media">
+        <div class="hover-effect flip-vertical" aria-hidden="true">
+          <img src="https://picsum.photos/seed/flip-vertical/600/400" alt="" loading="lazy">
+        </div>
+      </div>
+      <div class="card__body">
+        <h3 class="card__title">Flip Vertical</h3>
+        <p class="card__desc">3d hover effect on the image.</p>
+        <div class="card__tags"><span class="card__tag">3d</span> <span class="card__tag">transform</span> <span class="card__tag">transition</span></div>
+      </div>
+    </a>
+    <a class="card" href="effects/magnetic-tilt/index.html" data-category="3d">
+      <div class="card__media">
+        <div class="hover-effect magnetic-tilt" aria-hidden="true">
+          <img src="https://picsum.photos/seed/magnetic-tilt/600/400" alt="" loading="lazy">
+        </div>
+      </div>
+      <div class="card__body">
+        <h3 class="card__title">Magnetic Tilt</h3>
+        <p class="card__desc">3d hover effect on the image.</p>
+        <div class="card__tags"><span class="card__tag">3d</span> <span class="card__tag">filter</span> <span class="card__tag">transform</span> <span class="card__tag">transition</span></div>
+      </div>
+    </a>
+    <a class="card" href="effects/origami-fold/index.html" data-category="3d">
+      <div class="card__media">
+        <div class="hover-effect origami-fold" aria-hidden="true">
+          <img src="https://picsum.photos/seed/origami-fold/600/400" alt="" loading="lazy">
+        </div>
+      </div>
+      <div class="card__body">
+        <h3 class="card__title">Origami Fold</h3>
+        <p class="card__desc">3d hover effect on the image.</p>
+        <div class="card__tags"><span class="card__tag">3d</span> <span class="card__tag">clip-path</span> <span class="card__tag">filter</span> <span class="card__tag">transform</span></div>
+      </div>
+    </a>
+    <a class="card" href="effects/parallax-tilt/index.html" data-category="3d">
+      <div class="card__media">
+        <div class="hover-effect parallax-tilt" aria-hidden="true">
+          <img src="https://picsum.photos/seed/parallax-tilt/600/400" alt="" loading="lazy">
+        </div>
+      </div>
+      <div class="card__body">
+        <h3 class="card__title">Parallax Tilt</h3>
+        <p class="card__desc">3d hover effect on the image.</p>
+        <div class="card__tags"><span class="card__tag">3d</span> <span class="card__tag">filter</span> <span class="card__tag">transform</span> <span class="card__tag">transition</span></div>
+      </div>
+    </a>
+    <a class="card" href="effects/tilt-shadow/index.html" data-category="3d">
+      <div class="card__media">
+        <div class="hover-effect tilt-shadow" aria-hidden="true">
+          <img src="https://picsum.photos/seed/tilt-shadow/600/400" alt="" loading="lazy">
+        </div>
+      </div>
+      <div class="card__body">
+        <h3 class="card__title">Tilt Shadow</h3>
+        <p class="card__desc">3d hover effect on the image.</p>
+        <div class="card__tags"><span class="card__tag">3d</span> <span class="card__tag">transform</span> <span class="card__tag">transition</span></div>
+      </div>
+    </a>
+      </div>
+    </section>
+
+    <section class="section" id="cat-filter">
+      <header class="section__header">
+        <h2 class="section__title">Filter</h2>
+        <p class="section__count">7 effects</p>
+      </header>
+      <div class="grid">
+    <a class="card" href="effects/blur-sharpen/index.html" data-category="filter">
+      <div class="card__media">
+        <div class="hover-effect blur-sharpen" aria-hidden="true">
+          <img src="https://picsum.photos/seed/blur-sharpen/600/400" alt="" loading="lazy">
+        </div>
+      </div>
+      <div class="card__body">
+        <h3 class="card__title">Blur to Sharp</h3>
+        <p class="card__desc">Filter hover effect on the image.</p>
+        <div class="card__tags"><span class="card__tag">filter</span> <span class="card__tag">transform</span> <span class="card__tag">transition</span></div>
+      </div>
+    </a>
+    <a class="card" href="effects/contrast-punch/index.html" data-category="filter">
+      <div class="card__media">
+        <div class="hover-effect contrast-punch" aria-hidden="true">
+          <img src="https://picsum.photos/seed/contrast-punch/600/400" alt="" loading="lazy">
+        </div>
+      </div>
+      <div class="card__body">
+        <h3 class="card__title">Contrast Punch</h3>
+        <p class="card__desc">Filter hover effect on the image.</p>
+        <div class="card__tags"><span class="card__tag">filter</span> <span class="card__tag">transition</span></div>
+      </div>
+    </a>
+    <a class="card" href="effects/contrast-soften/index.html" data-category="filter">
+      <div class="card__media">
+        <div class="hover-effect contrast-soften" aria-hidden="true">
+          <img src="https://picsum.photos/seed/contrast-soften/600/400" alt="" loading="lazy">
+        </div>
+      </div>
+      <div class="card__body">
+        <h3 class="card__title">Contrast Soften</h3>
+        <p class="card__desc">Filter hover effect on the image.</p>
+        <div class="card__tags"><span class="card__tag">filter</span> <span class="card__tag">transition</span></div>
+      </div>
+    </a>
+    <a class="card" href="effects/duotone/index.html" data-category="filter">
+      <div class="card__media">
+        <div class="hover-effect duotone" aria-hidden="true">
+          <img src="https://picsum.photos/seed/duotone/600/400" alt="" loading="lazy">
+        </div>
+      </div>
+      <div class="card__body">
+        <h3 class="card__title">Duotone Shift</h3>
+        <p class="card__desc">Filter hover effect on the image.</p>
+        <div class="card__tags"><span class="card__tag">filter</span> <span class="card__tag">transform</span> <span class="card__tag">transition</span></div>
+      </div>
+    </a>
+    <a class="card" href="effects/fade-colorize/index.html" data-category="filter">
+      <div class="card__media">
+        <div class="hover-effect fade-colorize" aria-hidden="true">
+          <img src="https://picsum.photos/seed/fade-colorize/600/400" alt="" loading="lazy">
+        </div>
+      </div>
+      <div class="card__body">
+        <h3 class="card__title">Fade to Color</h3>
+        <p class="card__desc">Filter hover effect on the image.</p>
+        <div class="card__tags"><span class="card__tag">filter</span> <span class="card__tag">transform</span> <span class="card__tag">transition</span></div>
+      </div>
+    </a>
+    <a class="card" href="effects/invert-flash/index.html" data-category="filter">
+      <div class="card__media">
+        <div class="hover-effect invert-flash" aria-hidden="true">
+          <img src="https://picsum.photos/seed/invert-flash/600/400" alt="" loading="lazy">
+        </div>
+      </div>
+      <div class="card__body">
+        <h3 class="card__title">Invert Flash</h3>
+        <p class="card__desc">Filter hover effect on the image.</p>
+        <div class="card__tags"><span class="card__tag">animation</span> <span class="card__tag">filter</span> <span class="card__tag">transition</span></div>
+      </div>
+    </a>
+    <a class="card" href="effects/sepia-in/index.html" data-category="filter">
+      <div class="card__media">
+        <div class="hover-effect sepia-in" aria-hidden="true">
+          <img src="https://picsum.photos/seed/sepia-in/600/400" alt="" loading="lazy">
+        </div>
+      </div>
+      <div class="card__body">
+        <h3 class="card__title">Sepia In</h3>
+        <p class="card__desc">Filter hover effect on the image.</p>
+        <div class="card__tags"><span class="card__tag">filter</span> <span class="card__tag">transition</span></div>
+      </div>
+    </a>
+      </div>
+    </section>
+
+    <section class="section" id="cat-reveal">
+      <header class="section__header">
+        <h2 class="section__title">Reveal</h2>
+        <p class="section__count">5 effects</p>
+      </header>
+      <div class="grid">
+    <a class="card" href="effects/clip-reveal/index.html" data-category="reveal">
+      <div class="card__media">
+        <div class="hover-effect clip-reveal" aria-hidden="true">
+          <img src="https://picsum.photos/seed/clip-reveal/600/400" alt="" loading="lazy">
+        </div>
+      </div>
+      <div class="card__body">
+        <h3 class="card__title">Clip Reveal</h3>
+        <p class="card__desc">Reveal hover effect on the image.</p>
+        <div class="card__tags"><span class="card__tag">clip-path</span> <span class="card__tag">reveal</span> <span class="card__tag">transform</span> <span class="card__tag">transition</span></div>
+      </div>
+    </a>
+    <a class="card" href="effects/glitch-shift/index.html" data-category="reveal">
+      <div class="card__media">
+        <div class="hover-effect glitch-shift" aria-hidden="true">
+          <img src="https://picsum.photos/seed/glitch-shift/600/400" alt="" loading="lazy">
+        </div>
+      </div>
+      <div class="card__body">
+        <h3 class="card__title">Glitch Shift</h3>
+        <p class="card__desc">Reveal hover effect on the image.</p>
+        <div class="card__tags"><span class="card__tag">animation</span> <span class="card__tag">clip-path</span> <span class="card__tag">filter</span> <span class="card__tag">reveal</span></div>
+      </div>
+    </a>
+    <a class="card" href="effects/glitch-slice/index.html" data-category="reveal">
+      <div class="card__media">
+        <div class="hover-effect glitch-slice" aria-hidden="true">
+          <img src="https://picsum.photos/seed/glitch-slice/600/400" alt="" loading="lazy">
+        </div>
+      </div>
+      <div class="card__body">
+        <h3 class="card__title">Glitch Slice</h3>
+        <p class="card__desc">Reveal hover effect on the image.</p>
+        <div class="card__tags"><span class="card__tag">animation</span> <span class="card__tag">clip-path</span> <span class="card__tag">filter</span> <span class="card__tag">reveal</span></div>
+      </div>
+    </a>
+    <a class="card" href="effects/prism-split/index.html" data-category="reveal">
+      <div class="card__media">
+        <div class="hover-effect prism-split" aria-hidden="true">
+          <img src="https://picsum.photos/seed/prism-split/600/400" alt="" loading="lazy">
+        </div>
+      </div>
+      <div class="card__body">
+        <h3 class="card__title">Prism Split</h3>
+        <p class="card__desc">Reveal hover effect on the image.</p>
+        <div class="card__tags"><span class="card__tag">animation</span> <span class="card__tag">clip-path</span> <span class="card__tag">filter</span> <span class="card__tag">reveal</span></div>
+      </div>
+    </a>
+    <a class="card" href="effects/swipe-reveal/index.html" data-category="reveal">
+      <div class="card__media">
+        <div class="hover-effect swipe-reveal" aria-hidden="true">
+          <img src="https://picsum.photos/seed/swipe-reveal/600/400" alt="" loading="lazy">
+        </div>
+      </div>
+      <div class="card__body">
+        <h3 class="card__title">Swipe Reveal</h3>
+        <p class="card__desc">Reveal hover effect on the image.</p>
+        <div class="card__tags"><span class="card__tag">clip-path</span> <span class="card__tag">filter</span> <span class="card__tag">reveal</span> <span class="card__tag">transform</span></div>
+      </div>
+    </a>
+      </div>
+    </section>
+
+    <section class="section" id="cat-fade">
+      <header class="section__header">
+        <h2 class="section__title">Fade</h2>
+        <p class="section__count">1 effect</p>
+      </header>
+      <div class="grid">
+    <a class="card" href="effects/corner-frame/index.html" data-category="fade">
+      <div class="card__media">
+        <div class="hover-effect corner-frame" aria-hidden="true">
+          <img src="https://picsum.photos/seed/corner-frame/600/400" alt="" loading="lazy">
+        </div>
+      </div>
+      <div class="card__body">
+        <h3 class="card__title">Corner Frame</h3>
+        <p class="card__desc">Fade hover effect on the image.</p>
+        <div class="card__tags"><span class="card__tag">fade</span> <span class="card__tag">transform</span> <span class="card__tag">transition</span></div>
+      </div>
+    </a>
+      </div>
+    </section>
+
+    <section class="section" id="cat-shadow">
+      <header class="section__header">
+        <h2 class="section__title">Shadow</h2>
+        <p class="section__count">4 effects</p>
+      </header>
+      <div class="grid">
+    <a class="card" href="effects/glow-border/index.html" data-category="shadow">
+      <div class="card__media">
+        <div class="hover-effect glow-border" aria-hidden="true">
+          <img src="https://picsum.photos/seed/glow-border/600/400" alt="" loading="lazy">
+        </div>
+      </div>
+      <div class="card__body">
+        <h3 class="card__title">Glow Border</h3>
+        <p class="card__desc">Shadow hover effect on the image.</p>
+        <div class="card__tags"><span class="card__tag">shadow</span> <span class="card__tag">transition</span></div>
+      </div>
+    </a>
+    <a class="card" href="effects/neon-pulse/index.html" data-category="shadow">
+      <div class="card__media">
+        <div class="hover-effect neon-pulse" aria-hidden="true">
+          <img src="https://picsum.photos/seed/neon-pulse/600/400" alt="" loading="lazy">
+        </div>
+      </div>
+      <div class="card__body">
+        <h3 class="card__title">Neon Pulse</h3>
+        <p class="card__desc">Shadow hover effect on the image.</p>
+        <div class="card__tags"><span class="card__tag">animation</span> <span class="card__tag">shadow</span> <span class="card__tag">transition</span></div>
+      </div>
+    </a>
+    <a class="card" href="effects/shadow-drop/index.html" data-category="shadow">
+      <div class="card__media">
+        <div class="hover-effect shadow-drop" aria-hidden="true">
+          <img src="https://picsum.photos/seed/shadow-drop/600/400" alt="" loading="lazy">
+        </div>
+      </div>
+      <div class="card__body">
+        <h3 class="card__title">Shadow Drop</h3>
+        <p class="card__desc">Shadow hover effect on the image.</p>
+        <div class="card__tags"><span class="card__tag">shadow</span> <span class="card__tag">transition</span></div>
+      </div>
+    </a>
+    <a class="card" href="effects/shadow-lift/index.html" data-category="shadow">
+      <div class="card__media">
+        <div class="hover-effect shadow-lift" aria-hidden="true">
+          <img src="https://picsum.photos/seed/shadow-lift/600/400" alt="" loading="lazy">
+        </div>
+      </div>
+      <div class="card__body">
+        <h3 class="card__title">Shadow Lift</h3>
+        <p class="card__desc">Shadow hover effect on the image.</p>
+        <div class="card__tags"><span class="card__tag">shadow</span> <span class="card__tag">transition</span></div>
+      </div>
+    </a>
+      </div>
+    </section>
+
+    <section class="section" id="cat-light">
+      <header class="section__header">
+        <h2 class="section__title">Light</h2>
+        <p class="section__count">6 effects</p>
+      </header>
+      <div class="grid">
+    <a class="card" href="effects/holographic-shimmer/index.html" data-category="light">
+      <div class="card__media">
+        <div class="hover-effect holographic-shimmer" aria-hidden="true">
+          <img src="https://picsum.photos/seed/holographic-shimmer/600/400" alt="" loading="lazy">
+        </div>
+      </div>
+      <div class="card__body">
+        <h3 class="card__title">Holographic Shimmer</h3>
+        <p class="card__desc">Light hover effect on the image.</p>
+        <div class="card__tags"><span class="card__tag">animation</span> <span class="card__tag">filter</span> <span class="card__tag">light</span> <span class="card__tag">transform</span></div>
+      </div>
+    </a>
+    <a class="card" href="effects/liquid-morph/index.html" data-category="light">
+      <div class="card__media">
+        <div class="hover-effect liquid-morph" aria-hidden="true">
+          <img src="https://picsum.photos/seed/liquid-morph/600/400" alt="" loading="lazy">
+        </div>
+      </div>
+      <div class="card__body">
+        <h3 class="card__title">Liquid Morph</h3>
+        <p class="card__desc">Light hover effect on the image.</p>
+        <div class="card__tags"><span class="card__tag">animation</span> <span class="card__tag">filter</span> <span class="card__tag">light</span> <span class="card__tag">transform</span></div>
+      </div>
+    </a>
+    <a class="card" href="effects/magnetic-glow/index.html" data-category="light">
+      <div class="card__media">
+        <div class="hover-effect magnetic-glow" aria-hidden="true">
+          <img src="https://picsum.photos/seed/magnetic-glow/600/400" alt="" loading="lazy">
+        </div>
+      </div>
+      <div class="card__body">
+        <h3 class="card__title">Magnetic Glow</h3>
+        <p class="card__desc">Light hover effect on the image.</p>
+        <div class="card__tags"><span class="card__tag">filter</span> <span class="card__tag">light</span> <span class="card__tag">transform</span> <span class="card__tag">transition</span></div>
+      </div>
+    </a>
+    <a class="card" href="effects/shine-sweep/index.html" data-category="light">
+      <div class="card__media">
+        <div class="hover-effect shine-sweep" aria-hidden="true">
+          <img src="https://picsum.photos/seed/shine-sweep/600/400" alt="" loading="lazy">
+        </div>
+      </div>
+      <div class="card__body">
+        <h3 class="card__title">Shine Sweep</h3>
+        <p class="card__desc">Light hover effect on the image.</p>
+        <div class="card__tags"><span class="card__tag">filter</span> <span class="card__tag">light</span> <span class="card__tag">transform</span> <span class="card__tag">transition</span></div>
+      </div>
+    </a>
+    <a class="card" href="effects/zoom-brightness/index.html" data-category="light">
+      <div class="card__media">
+        <div class="hover-effect zoom-brightness" aria-hidden="true">
+          <img src="https://picsum.photos/seed/zoom-brightness/600/400" alt="" loading="lazy">
+        </div>
+      </div>
+      <div class="card__body">
+        <h3 class="card__title">Zoom Brightness</h3>
+        <p class="card__desc">Light hover effect on the image.</p>
+        <div class="card__tags"><span class="card__tag">filter</span> <span class="card__tag">light</span> <span class="card__tag">transform</span> <span class="card__tag">transition</span></div>
+      </div>
+    </a>
+    <a class="card" href="effects/zoom-in-slowmo/index.html" data-category="light">
+      <div class="card__media">
+        <div class="hover-effect zoom-in-slowmo" aria-hidden="true">
+          <img src="https://picsum.photos/seed/zoom-in-slowmo/600/400" alt="" loading="lazy">
+        </div>
+      </div>
+      <div class="card__body">
+        <h3 class="card__title">Zoom In Slowmo</h3>
+        <p class="card__desc">Light hover effect on the image.</p>
+        <div class="card__tags"><span class="card__tag">filter</span> <span class="card__tag">light</span> <span class="card__tag">transform</span> <span class="card__tag">transition</span></div>
+      </div>
+    </a>
+      </div>
+    </section>
+
+    <section class="section" id="cat-overlay">
+      <header class="section__header">
+        <h2 class="section__title">Overlay</h2>
+        <p class="section__count">10 effects</p>
+      </header>
+      <div class="grid">
+    <a class="card" href="effects/color-splash/index.html" data-category="overlay">
+      <div class="card__media">
+        <div class="hover-effect color-splash" aria-hidden="true">
+          <img src="https://picsum.photos/seed/color-splash/600/400" alt="" loading="lazy">
+        </div>
+      </div>
+      <div class="card__body">
+        <h3 class="card__title">Color Splash</h3>
+        <p class="card__desc">Overlay hover effect on the image.</p>
+        <div class="card__tags"><span class="card__tag">overlay</span> <span class="card__tag">transform</span> <span class="card__tag">transition</span></div>
+      </div>
+    </a>
+    <a class="card" href="effects/glass-mosaic/index.html" data-category="overlay">
+      <div class="card__media">
+        <div class="hover-effect glass-mosaic" aria-hidden="true">
+          <img src="https://picsum.photos/seed/glass-mosaic/600/400" alt="" loading="lazy">
+        </div>
+      </div>
+      <div class="card__body">
+        <h3 class="card__title">Glass Mosaic</h3>
+        <p class="card__desc">Overlay hover effect on the image.</p>
+        <div class="card__tags"><span class="card__tag">overlay</span> <span class="card__tag">transition</span></div>
+      </div>
+    </a>
+    <a class="card" href="effects/ink-drop/index.html" data-category="overlay">
+      <div class="card__media">
+        <div class="hover-effect ink-drop" aria-hidden="true">
+          <img src="https://picsum.photos/seed/ink-drop/600/400" alt="" loading="lazy">
+        </div>
+      </div>
+      <div class="card__body">
+        <h3 class="card__title">Ink Drop</h3>
+        <p class="card__desc">Overlay hover effect on the image.</p>
+        <div class="card__tags"><span class="card__tag">overlay</span> <span class="card__tag">transform</span> <span class="card__tag">transition</span></div>
+      </div>
+    </a>
+    <a class="card" href="effects/overlay-fade-in-neon-grid/index.html" data-category="overlay">
+      <div class="card__media">
+        <div class="hover-effect overlay-fade-in-neon-grid" aria-hidden="true">
+          <img src="https://picsum.photos/seed/overlay-fade-in-neon-grid/600/400" alt="" loading="lazy">
+        </div>
+      </div>
+      <div class="card__body">
+        <h3 class="card__title">Overlay Fade In Neon Grid</h3>
+        <p class="card__desc">Overlay hover effect on the image.</p>
+        <div class="card__tags"><span class="card__tag">overlay</span> <span class="card__tag">transition</span></div>
+      </div>
+    </a>
+    <a class="card" href="effects/radial-in/index.html" data-category="overlay">
+      <div class="card__media">
+        <div class="hover-effect radial-in" aria-hidden="true">
+          <img src="https://picsum.photos/seed/radial-in/600/400" alt="" loading="lazy">
+        </div>
+      </div>
+      <div class="card__body">
+        <h3 class="card__title">Radial In</h3>
+        <p class="card__desc">Overlay hover effect on the image.</p>
+        <div class="card__tags"><span class="card__tag">overlay</span> <span class="card__tag">transform</span> <span class="card__tag">transition</span></div>
+      </div>
+    </a>
+    <a class="card" href="effects/radial-out/index.html" data-category="overlay">
+      <div class="card__media">
+        <div class="hover-effect radial-out" aria-hidden="true">
+          <img src="https://picsum.photos/seed/radial-out/600/400" alt="" loading="lazy">
+        </div>
+      </div>
+      <div class="card__body">
+        <h3 class="card__title">Radial Out</h3>
+        <p class="card__desc">Overlay hover effect on the image.</p>
+        <div class="card__tags"><span class="card__tag">overlay</span> <span class="card__tag">transform</span> <span class="card__tag">transition</span></div>
+      </div>
+    </a>
+    <a class="card" href="effects/rectangle-in/index.html" data-category="overlay">
+      <div class="card__media">
+        <div class="hover-effect rectangle-in" aria-hidden="true">
+          <img src="https://picsum.photos/seed/rectangle-in/600/400" alt="" loading="lazy">
+        </div>
+      </div>
+      <div class="card__body">
+        <h3 class="card__title">Rectangle In</h3>
+        <p class="card__desc">Overlay hover effect on the image.</p>
+        <div class="card__tags"><span class="card__tag">overlay</span> <span class="card__tag">transform</span> <span class="card__tag">transition</span></div>
+      </div>
+    </a>
+    <a class="card" href="effects/rectangle-out/index.html" data-category="overlay">
+      <div class="card__media">
+        <div class="hover-effect rectangle-out" aria-hidden="true">
+          <img src="https://picsum.photos/seed/rectangle-out/600/400" alt="" loading="lazy">
+        </div>
+      </div>
+      <div class="card__body">
+        <h3 class="card__title">Rectangle Out</h3>
+        <p class="card__desc">Overlay hover effect on the image.</p>
+        <div class="card__tags"><span class="card__tag">overlay</span> <span class="card__tag">transform</span> <span class="card__tag">transition</span></div>
+      </div>
+    </a>
+    <a class="card" href="effects/refraction-lens/index.html" data-category="overlay">
+      <div class="card__media">
+        <div class="hover-effect refraction-lens" aria-hidden="true">
+          <img src="https://picsum.photos/seed/refraction-lens/600/400" alt="" loading="lazy">
+        </div>
+      </div>
+      <div class="card__body">
+        <h3 class="card__title">Refraction Lens</h3>
+        <p class="card__desc">Overlay hover effect on the image.</p>
+        <div class="card__tags"><span class="card__tag">overlay</span> <span class="card__tag">transform</span> <span class="card__tag">transition</span></div>
+      </div>
+    </a>
+    <a class="card" href="effects/vignette/index.html" data-category="overlay">
+      <div class="card__media">
+        <div class="hover-effect vignette" aria-hidden="true">
+          <img src="https://picsum.photos/seed/vignette/600/400" alt="" loading="lazy">
+        </div>
+      </div>
+      <div class="card__body">
+        <h3 class="card__title">Vignette</h3>
+        <p class="card__desc">Overlay hover effect on the image.</p>
+        <div class="card__tags"><span class="card__tag">overlay</span> <span class="card__tag">transform</span> <span class="card__tag">transition</span></div>
+      </div>
+    </a>
+      </div>
+    </section>
+
+    <section class="section" id="cat-composite">
+      <header class="section__header">
+        <h2 class="section__title">Composite</h2>
+        <p class="section__count">3 effects</p>
+      </header>
+      <div class="grid">
+    <a class="card" href="effects/horizontal-zoom-n-pan/index.html" data-category="composite">
+      <div class="card__media">
+        <div class="hover-effect horizontal-zoom-n-pan" aria-hidden="true">
+          <img src="https://picsum.photos/seed/horizontal-zoom-n-pan/600/400" alt="" loading="lazy">
+        </div>
+      </div>
+      <div class="card__body">
+        <h3 class="card__title">Horizontal Zoom &amp; Pan</h3>
+        <p class="card__desc">Composite hover effect on the image.</p>
+        <div class="card__tags"><span class="card__tag">composite</span> <span class="card__tag">transform</span> <span class="card__tag">transition</span></div>
+      </div>
+    </a>
+    <a class="card" href="effects/vertical-zoom-n-pan/index.html" data-category="composite">
+      <div class="card__media">
+        <div class="hover-effect vertical-zoom-n-pan" aria-hidden="true">
+          <img src="https://picsum.photos/seed/vertical-zoom-n-pan/600/400" alt="" loading="lazy">
+        </div>
+      </div>
+      <div class="card__body">
+        <h3 class="card__title">Vertical Zoom &amp; Pan</h3>
+        <p class="card__desc">Composite hover effect on the image.</p>
+        <div class="card__tags"><span class="card__tag">composite</span> <span class="card__tag">transform</span> <span class="card__tag">transition</span></div>
+      </div>
+    </a>
+    <a class="card" href="effects/zoom-rotate/index.html" data-category="composite">
+      <div class="card__media">
+        <div class="hover-effect zoom-rotate" aria-hidden="true">
+          <img src="https://picsum.photos/seed/zoom-rotate/600/400" alt="" loading="lazy">
+        </div>
+      </div>
+      <div class="card__body">
+        <h3 class="card__title">Zoom Rotate</h3>
+        <p class="card__desc">Composite hover effect on the image.</p>
+        <div class="card__tags"><span class="card__tag">composite</span> <span class="card__tag">transform</span> <span class="card__tag">transition</span></div>
+      </div>
+    </a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p>Generated by <code>scripts/build_catalog.py</code>. Source of truth: <code>effects/*/meta.json</code>.</p>
+  </footer>
+</body>
+</html>
