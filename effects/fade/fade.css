@@ -1,0 +1,41 @@
+/* Fade-category hover effects.
+   One class on .hover-effect.<slug>, scoped via the
+   unique slug class so multiple categories can coexist.
+
+   Pattern notes:
+     - fade-in / fade-out work on the image's own opacity.
+     - fade-to-color / fade-overlay / fade-overlay-dark use a
+       ::before pseudo-element on the wrapper as an overlay layer
+       (the wrapper must be position: relative for the overlay
+       to be scoped to it).
+
+   Transition timing rules:
+   - 300ms minimum (perceptually smooth)
+   - 2000ms maximum (dramatic, contemplative)
+   - Tune per effect: subtle fade -> shorter; rich overlay -> longer.
+
+   prefers-reduced-motion: reduce is honoured per effect: every
+   block below has a paired @media rule that drops the transition
+   (and, where it makes sense, snaps straight to the hover state
+   so the visual change still lands, just without animation). */
+
+/* ---- fade-in ---- */
+/* Image starts fully transparent; on hover/focus it fades in to
+   full opacity. */
+.hover-effect.fade-in img{
+  opacity: 0;
+  transition: opacity 0.45s ease;
+}
+.hover-effect.fade-in:hover img,
+.hover-effect.fade-in:focus-visible img{
+  opacity: 1;
+}
+@media (prefers-reduced-motion: reduce) {
+  .hover-effect.fade-in img{
+    transition: none;
+  }
+  .hover-effect.fade-in:hover img,
+  .hover-effect.fade-in:focus-visible img{
+    opacity: 1;
+  }
+}
