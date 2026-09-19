@@ -58,3 +58,32 @@
     opacity: 0;
   }
 }
+
+/* ---- fade-to-color ---- */
+/* A solid-color ::before overlay covers the image at rest and
+   fades to transparent on hover/focus, so the image "comes
+   through" the color treatment. The wrapper is position: relative
+   so the overlay is scoped to it. */
+.hover-effect.fade-to-color{
+  position: relative;
+}
+.hover-effect.fade-to-color::before{
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(70, 130, 180, 0.95);
+  transition: opacity 0.45s ease;
+}
+.hover-effect.fade-to-color:hover::before,
+.hover-effect.fade-to-color:focus-visible::before{
+  opacity: 0;
+}
+@media (prefers-reduced-motion: reduce) {
+  .hover-effect.fade-to-color::before{
+    transition: none;
+  }
+  .hover-effect.fade-to-color:hover::before,
+  .hover-effect.fade-to-color:focus-visible::before{
+    opacity: 0;
+  }
+}
