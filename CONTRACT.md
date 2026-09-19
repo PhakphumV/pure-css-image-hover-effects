@@ -49,9 +49,13 @@ touch‑only devices. This is not a contract violation — it is the contract.
 ## 5. Keyboard accessible
 
 - The hover state must be mirrored on `:focus-visible` so keyboard users see
-  the same affordance.
+  the same affordance when the wrapper is focusable.
 - Focus rings must be visible (the default browser ring is acceptable; do not
   suppress it with `outline: none` without a replacement).
+- Whether the wrapper is focusable is the consumer's decision
+  (see `ACCESSIBILITY.md` §04). The library does not force
+  `tabindex="0"`. The `:focus-visible` mirror works whenever the
+  consumer makes the wrapper reachable via keyboard.
 
 ## 6. Self‑contained
 
@@ -60,6 +64,14 @@ touch‑only devices. This is not a contract violation — it is the contract.
 - No effect may depend on another effect's CSS or HTML.
 - The only shared stylesheet is `styles/base.css`, which is owned by the
   library, not by any individual effect.
+
+## 7. Touch devices
+
+On devices that cannot hover (`@media (hover: none)`),
+`styles/base.css` suppresses the visual hover and focus-visible
+effects. The wrapper is still keyboard-focusable if the consumer
+adds a focus mechanism.
+
 
 ## What the contract forbids (cheat sheet)
 

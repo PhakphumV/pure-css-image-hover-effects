@@ -6,7 +6,8 @@
  * individual effect (CONTRACT.md §6).
  *
  * Implements CONTRACT.md clauses:
- *   §3 — desktop-only via @media (hover: hover)
+ *   §3 — desktop-only via @media (hover: hover) and suppressed
+ *        on touch devices via @media (hover: none)
  *   §4 — reduced-motion suppression
  *   §5 — :focus-visible mirrors :hover
  */
@@ -117,6 +118,23 @@ code {
     backdrop-filter: none;
     -webkit-backdrop-filter: none;
     background: var(--color-bg);
+  }
+}
+
+/* ============================================================
+   Touch devices — CONTRACT.md §3
+   Suppress all hover/focus visual effects on devices that cannot
+   hover. The :focus-visible outline is preserved so keyboard users
+   on hybrid devices (laptop with touchscreen) still see focus.
+   ============================================================ */
+@media (hover: none) {
+  .hover-effect:hover > img,
+  .hover-effect:focus-visible > img {
+    transform: none !important;
+    filter: none !important;
+    clip-path: none !important;
+    opacity: 1 !important;
+    transition: none !important;
   }
 }
 

@@ -4,7 +4,7 @@ A copy-paste library of pure-CSS image hover effects. One class on a `<div>`. No
 
 **54 effects across 10 categories:** zoom, pan, 3d, filter, reveal, fade, shadow, light, overlay, composite.
 
-[browse the catalog →](index.html) · [read the contract →](CONTRACT.md) · [metadata schema →](META_SCHEMA.md) · [browser support →](BROWSER_SUPPORT.md)
+[browse the catalog →](index.html) · [contract →](CONTRACT.md) · [accessibility →](ACCESSIBILITY.md) · [schema →](META_SCHEMA.md) · [browser support →](BROWSER_SUPPORT.md)
 
 ---
 

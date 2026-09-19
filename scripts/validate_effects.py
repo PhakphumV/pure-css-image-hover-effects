@@ -479,6 +479,40 @@ def check_meta_accuracy(slug: str, css_text: str, meta: dict, errs: list[str]) -
         )
 
 
+
+
+# ----------------------------------------------------------------------
+# Repo-level checks (run once, not per effect)
+# ----------------------------------------------------------------------
+
+def check_base_css() -> list[str]:
+    """Verify styles/base.css contains the a11y guards required by
+    CONTRACT.md §3, §4, §5, §7 and ACCESSIBILITY.md."""
+    errs: list[str] = []
+    base = (REPO / "styles" / "base.css").read_text()
+    if "@media (hover: none)" not in base:
+        errs.append(
+            "styles/base.css missing @media (hover: none) guard "
+            "(CONTRACT.md §7, ACCESSIBILITY.md §07)"
+        )
+    if "@media (prefers-reduced-motion: reduce)" not in base:
+        errs.append(
+            "styles/base.css missing @media (prefers-reduced-motion: reduce) "
+            "(CONTRACT.md §4)"
+        )
+    if "@media (prefers-contrast: more)" not in base:
+        errs.append(
+            "styles/base.css missing @media (prefers-contrast: more) "
+            "(ACCESSIBILITY.md §09)"
+        )
+    if ".hover-effect:focus-visible" not in base:
+        errs.append(
+            "styles/base.css missing .hover-effect:focus-visible outline "
+            "(CONTRACT.md §5)"
+        )
+    return errs
+
+
 # ----------------------------------------------------------------------
 # Orchestrator
 # ----------------------------------------------------------------------
@@ -521,6 +555,13 @@ def main() -> None:
         sys.exit(run_fixtures())
 
     schema = json.loads(SCHEMA.read_text())
+    base_errs = check_base_css()
+    if base_errs:
+        print("Repository-level a11y violations:")
+        for e in base_errs:
+            print(f"  - {e}")
+        if not (args.json or args.check_fixtures):
+            print()
     targets = [args.slug] if args.slug else [
         d.name for d in sorted(EFFECTS.iterdir())
         if d.is_dir() and not d.name.startswith("_") and (d / "meta.json").exists()
@@ -543,7 +584,7 @@ def main() -> None:
             print(f"  {slug:<32} {status}")
             for e in errs:
                 print(f"      - {e}")
-    sys.exit(1 if failed else 0)
+    sys.exit(1 if failed or base_errs else 0)
 
 
 # ----------------------------------------------------------------------
