@@ -12,7 +12,7 @@
   .grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: 1.25rem;
+    gap: 1rem;
     margin-top: 1rem;
   }
   @media (min-width: 640px) {
@@ -23,7 +23,7 @@
     border: 1px solid var(--pico-muted-border-color);
     border-radius: 8px;
     overflow: hidden;
-    transition: border-color 0.15s, transform 0.15s;
+    transition: border-color 0.3s ease, transform 0.3s ease;
   }
   .card:hover {
     border-color: var(--pico-primary);
@@ -37,7 +37,6 @@
   .demo {
     aspect-ratio: 4 / 3;
     overflow: hidden;
-    background: var(--pico-muted-border-color);
   }
   .demo .hover-effect {
     width: 100%;
@@ -50,16 +49,26 @@
     display: block;
   }
   .card-body {
-    padding: 0.875rem 1rem;
+    padding: 0.625rem 0.875rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.5rem;
   }
   .card-body h3 {
     margin: 0;
     font-size: 1rem;
+    flex: 1;
+    min-width: 0;
   }
-  .card-body .meta {
-    margin-top: 0.25rem;
-    font-size: 0.8125rem;
-    color: var(--pico-muted-color);
+  .card-body .badge {
+    flex-shrink: 0;
+    padding: 0.125rem 0.5rem;
+    font-size: 0.6875rem;
+    font-weight: 600;
+    color: var(--pico-primary);
+    background: var(--pico-primary-background);
+    border-radius: 999px;
     text-transform: uppercase;
     letter-spacing: 0.05em;
   }
@@ -72,7 +81,7 @@
   <p><small>Click any card to see the live preview and copy the HTML and CSS.</small></p>
 
   <h2>Zoom</h2>
-  <p>5 effects</p>
+  <p>4 effects</p>
   <div class="grid">
       <article class="card">
         <a href="effects/zoom/point-zoom.html">
@@ -83,7 +92,7 @@
           </div>
           <div class="card-body">
             <h3>Point Zoom</h3>
-            <div class="meta">simple</div>
+            <span class="badge">transform</span>
           </div>
         </a>
       </article>
@@ -96,20 +105,7 @@
           </div>
           <div class="card-body">
             <h3>Quick Zoom</h3>
-            <div class="meta">simple</div>
-          </div>
-        </a>
-      </article>
-      <article class="card">
-        <a href="effects/zoom/slide-reveal.html">
-          <div class="demo">
-            <div class="hover-effect slide-reveal">
-              <img src="https://picsum.photos/seed/slide-reveal/600/450" alt="Slide Reveal" loading="lazy">
-            </div>
-          </div>
-          <div class="card-body">
-            <h3>Slide Reveal</h3>
-            <div class="meta">simple</div>
+            <span class="badge">transform</span>
           </div>
         </a>
       </article>
@@ -122,7 +118,7 @@
           </div>
           <div class="card-body">
             <h3>Zoom In</h3>
-            <div class="meta">simple</div>
+            <span class="badge">transform</span>
           </div>
         </a>
       </article>
@@ -135,7 +131,7 @@
           </div>
           <div class="card-body">
             <h3>Zoom Out</h3>
-            <div class="meta">simple</div>
+            <span class="badge">transform</span>
           </div>
         </a>
       </article>
