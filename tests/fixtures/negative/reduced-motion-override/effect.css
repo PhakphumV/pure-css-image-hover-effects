@@ -1,0 +1,6 @@
+.hover-effect.reduced-motion-override > img { transition: transform 0.3s; }
+.hover-effect.reduced-motion-override:hover > img,
+.hover-effect.reduced-motion-override:focus-visible > img { transform: scale(1.1) !important; }
+@media (prefers-reduced-motion: reduce) {
+  .hover-effect.reduced-motion-override > img { transform: none !important; }
+}

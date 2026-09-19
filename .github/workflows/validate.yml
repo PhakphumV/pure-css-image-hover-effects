@@ -16,6 +16,8 @@ jobs:
           python-version: "3.11"
       - name: Validate effects against CONTRACT.md and meta schema
         run: python3 scripts/validate_effects.py
+      - name: Run validator fixture tests
+        run: python3 scripts/validate_effects.py --check-fixtures
       - name: Regenerate catalog (byte-determinism check)
         run: |
           cp index.html /tmp/before.html

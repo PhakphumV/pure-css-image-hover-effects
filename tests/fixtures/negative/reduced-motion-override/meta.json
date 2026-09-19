@@ -1,0 +1,1 @@
+{"id":"reduced-motion-override","slug":"reduced-motion-override","title":"Test","category":"zoom","description":"test","tags":[],"complexity":"simple","css_features":["transform","transition"],"js_required":false,"extra_markup":false,"reduced_motion":"disabled"}

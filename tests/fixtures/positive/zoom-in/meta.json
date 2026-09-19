@@ -1,0 +1,13 @@
+{
+  "id": "zoom-in",
+  "slug": "zoom-in",
+  "title": "Zoom In",
+  "category": "zoom",
+  "description": "Smooth scale-up of the image on hover.",
+  "tags": ["scale", "simple", "transform"],
+  "complexity": "simple",
+  "css_features": ["transform", "transition"],
+  "js_required": false,
+  "extra_markup": false,
+  "reduced_motion": "disabled"
+}

@@ -1,0 +1,4 @@
+.hover-effect.js-state-class > img { transition: transform 0.3s; }
+.hover-effect.js-state-class:hover > img,
+.hover-effect.js-state-class:focus-visible > img { transform: scale(1.1); }
+.hover-effect.js-state-class.is-hover > img { filter: brightness(1.2); }

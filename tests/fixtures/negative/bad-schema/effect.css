@@ -1,0 +1,3 @@
+.hover-effect.bad-schema > img { transition: transform 0.3s; }
+.hover-effect.bad-schema:hover > img,
+.hover-effect.bad-schema:focus-visible > img { transform: scale(1.1); }

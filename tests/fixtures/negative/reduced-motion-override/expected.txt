@@ -1,0 +1,1 @@
+redefines @media (prefers-reduced-motion)

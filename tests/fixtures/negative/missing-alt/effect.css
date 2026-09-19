@@ -1,0 +1,3 @@
+.hover-effect.missing-alt > img { transition: transform 0.3s; }
+.hover-effect.missing-alt:hover > img,
+.hover-effect.missing-alt:focus-visible > img { transform: scale(1.1); }
