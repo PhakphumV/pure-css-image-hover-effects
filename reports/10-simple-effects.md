@@ -1,0 +1,30 @@
+Checked: 28  Passed: 28  Failed: 0
+
+  blur-sharpen                     PASS
+  bounce-bottom                    PASS
+  bounce-left                      PASS
+  bounce-right                     PASS
+  bounce-top                       PASS
+  clip-reveal                      PASS
+  contrast-punch                   PASS
+  contrast-soften                  PASS
+  duotone                          PASS
+  fade-colorize                    PASS
+  flip-horizontal                  PASS
+  flip-vertical                    PASS
+  glow-border                      PASS
+  horizontal-zoom-n-pan            PASS
+  point-zoom                       PASS
+  quick-zoom                       PASS
+  rotate-3d                        PASS
+  sepia-in                         PASS
+  shadow-drop                      PASS
+  shadow-lift                      PASS
+  slide-reveal                     PASS
+  slide-reveal-right               PASS
+  vertical-zoom-n-pan              PASS
+  zoom-brightness                  PASS
+  zoom-in                          PASS
+  zoom-in-slowmo                   PASS
+  zoom-out                         PASS
+  zoom-rotate                      PASS
