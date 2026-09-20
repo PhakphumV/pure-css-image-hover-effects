@@ -146,3 +146,33 @@
     opacity: 1;
   }
 }
+
+/* ---- fade-overlay-light ---- */
+/* Mirror of fade-overlay but with a light tint: a semi-
+   transparent white ::before overlay fades in on hover/focus,
+   brightening the image while keeping it visible. The image
+   stays the focus; the overlay adds a soft luminous wash. */
+.hover-effect.fade-overlay-light{
+  position: relative;
+}
+.hover-effect.fade-overlay-light::before{
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(255, 255, 255, 0.6);
+  opacity: 0;
+  transition: opacity 0.45s ease;
+}
+.hover-effect.fade-overlay-light:hover::before,
+.hover-effect.fade-overlay-light:focus-visible::before{
+  opacity: 1;
+}
+@media (prefers-reduced-motion: reduce) {
+  .hover-effect.fade-overlay-light::before{
+    transition: none;
+  }
+  .hover-effect.fade-overlay-light:hover::before,
+  .hover-effect.fade-overlay-light:focus-visible::before{
+    opacity: 1;
+  }
+}
