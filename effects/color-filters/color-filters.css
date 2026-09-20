@@ -163,3 +163,25 @@
     filter: invert(100%);
   }
 }
+
+
+/* ---- warm-tone ---- */
+/* Image takes on a warm golden cast on hover/focus via a partial sepia
+   tint and a saturation boost, distinct from a full sepia transition. */
+.hover-effect.warm-tone img{
+  filter: brightness(1) saturate(1);
+  transition: filter 0.5s ease;
+}
+.hover-effect.warm-tone:hover img,
+.hover-effect.warm-tone:focus-visible img{
+  filter: sepia(0.4) saturate(1.6);
+}
+@media (prefers-reduced-motion: reduce) {
+  .hover-effect.warm-tone img{
+    transition: none;
+  }
+  .hover-effect.warm-tone:hover img,
+  .hover-effect.warm-tone:focus-visible img{
+    filter: sepia(0.4) saturate(1.6);
+  }
+}
