@@ -30,3 +30,24 @@
     transform: scale(1.4) skewX(15deg);
   }
 }
+
+
+/* ---- skew-vertical ---- */
+/* Image skews vertically on hover/focus. A 1.4 scale keeps the
+   skewed image covering the full viewport. */
+.hover-effect.skew-vertical img{
+  transition: transform 0.5s ease;
+}
+.hover-effect.skew-vertical:hover img,
+.hover-effect.skew-vertical:focus-visible img{
+  transform: scale(1.4) skewY(15deg);
+}
+@media (prefers-reduced-motion: reduce) {
+  .hover-effect.skew-vertical img{
+    transition: none;
+  }
+  .hover-effect.skew-vertical:hover img,
+  .hover-effect.skew-vertical:focus-visible img{
+    transform: scale(1.4) skewY(15deg);
+  }
+}
