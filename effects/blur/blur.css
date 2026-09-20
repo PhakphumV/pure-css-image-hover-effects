@@ -65,7 +65,7 @@
   position: relative;
 }
 .hover-effect.blur-focus-center img{
-  filter: blur(6px);
+  filter: blur(0);
   transition: filter 0.5s ease;
 }
 .hover-effect.blur-focus-center::before{
@@ -84,7 +84,7 @@
 }
 .hover-effect.blur-focus-center:hover img,
 .hover-effect.blur-focus-center:focus-visible img{
-  filter: blur(6px);
+  filter: blur(8px);
 }
 .hover-effect.blur-focus-center:hover::before,
 .hover-effect.blur-focus-center:focus-visible::before{
@@ -97,7 +97,7 @@
   }
   .hover-effect.blur-focus-center:hover img,
   .hover-effect.blur-focus-center:focus-visible img{
-    filter: blur(6px);
+    filter: blur(8px);
   }
   .hover-effect.blur-focus-center:hover::before,
   .hover-effect.blur-focus-center:focus-visible::before{
