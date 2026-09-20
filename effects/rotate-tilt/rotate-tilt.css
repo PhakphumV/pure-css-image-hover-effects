@@ -31,3 +31,24 @@
     transform: scale(1.4) rotate(15deg);
   }
 }
+
+
+/* ---- rotate-counter-clockwise ---- */
+/* Slight counter-clockwise rotation on hover/focus. A 1.4 scale keeps
+   the rotated image covering the full viewport. */
+.hover-effect.rotate-counter-clockwise img{
+  transition: transform 0.5s ease;
+}
+.hover-effect.rotate-counter-clockwise:hover img,
+.hover-effect.rotate-counter-clockwise:focus-visible img{
+  transform: scale(1.4) rotate(-15deg);
+}
+@media (prefers-reduced-motion: reduce) {
+  .hover-effect.rotate-counter-clockwise img{
+    transition: none;
+  }
+  .hover-effect.rotate-counter-clockwise:hover img,
+  .hover-effect.rotate-counter-clockwise:focus-visible img{
+    transform: scale(1.4) rotate(-15deg);
+  }
+}
