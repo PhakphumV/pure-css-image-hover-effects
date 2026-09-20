@@ -160,3 +160,26 @@
     transform: scale(1.4) rotate(-8deg);
   }
 }
+
+
+/* ---- tilt-top-right ---- */
+/* Image tilts with the top-right corner as the rotation pivot on
+   hover/focus. A 1.4 scale keeps the tilted image covering the
+   viewport. */
+.hover-effect.tilt-top-right img{
+  transform-origin: top right;
+  transition: transform 0.5s ease;
+}
+.hover-effect.tilt-top-right:hover img,
+.hover-effect.tilt-top-right:focus-visible img{
+  transform: scale(1.4) rotate(8deg);
+}
+@media (prefers-reduced-motion: reduce) {
+  .hover-effect.tilt-top-right img{
+    transition: none;
+  }
+  .hover-effect.tilt-top-right:hover img,
+  .hover-effect.tilt-top-right:focus-visible img{
+    transform: scale(1.4) rotate(8deg);
+  }
+}

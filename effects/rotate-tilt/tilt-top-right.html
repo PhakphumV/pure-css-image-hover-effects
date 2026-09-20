@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light">
+<title>Tilt Top-Right &middot; Pure CSS Image Hover Effects</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.9.0/build/styles/vs2015.min.css">
+<link rel="stylesheet" href="../template.css">
+<link rel="stylesheet" href="rotate-tilt.css">
+<script defer src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.9.0/build/highlight.min.js"></script>
+</head>
+<body>
+
+<header class="container">
+  <nav aria-label="Breadcrumb">
+    <ul>
+      <li><a href="../../index.html">&larr; Back to gallery</a></li>
+    </ul>
+  </nav>
+  <hgroup>
+    <h1>Tilt Top-Right</h1>
+    <p>Image tilts on hover/focus with the top-right corner as the rotation pivot, plus a small zoom to keep the viewport covered.</p>
+  </hgroup>
+</header>
+
+<main class="container">
+  <div class="grid detail">
+
+    <section class="preview" aria-label="Live preview">
+      <div class="preview-stage">
+        <div class="hover-effect tilt-top-right">
+          <img src="https://picsum.photos/seed/tilt-top-right/800/600" alt="Tilt Top-Right demo">
+        </div>
+      </div>
+      <p class="preview-hint">Hover or focus the image to see the effect.</p>
+    </section>
+
+    <section aria-label="Source code">
+      <h3>HTML</h3>
+      <div class="code-block">
+        <pre><code class="language-html"><div class="hover-effect tilt-top-right">
+  <img src="image.jpg" alt="description">
+</div></code></pre>
+      </div>
+
+      <h3>CSS</h3>
+      <div class="code-block">
+        <pre><code class="language-css">.hover-effect.tilt-top-right img{
+  transform-origin: top right;
+  transition: transform 0.5s ease;
+}
+.hover-effect.tilt-top-right:hover img,
+.hover-effect.tilt-top-right:focus-visible img{
+  transform: scale(1.4) rotate(8deg);
+}
+@media (prefers-reduced-motion: reduce) {
+  .hover-effect.tilt-top-right img{
+    transition: none;
+  }
+  .hover-effect.tilt-top-right:hover img,
+  .hover-effect.tilt-top-right:focus-visible img{
+    transform: scale(1.4) rotate(8deg);
+  }
+}</code></pre>
+      </div>
+
+      <p class="copy-hint"><small>The <code><img></code> animates <code>transform: scale(1.4) rotate(8deg)</code> with <code>transform-origin: top right</code>. The slight scale prevents blank corners. Select the code and copy with <kbd>Ctrl+C</kbd> or <kbd>&#8984;C</kbd>.</small></p>
+    </section>
+
+  </div>
+</main>
+
+<footer class="container">
+  <small><a href="../../index.html">Pure CSS Image Hover Effects</a> &middot; No JavaScript &middot; MIT</small>
+</footer>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    hljs.highlightAll();
+  });
+</script>
+
+</body>
+</html>
