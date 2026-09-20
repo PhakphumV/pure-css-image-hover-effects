@@ -135,3 +135,25 @@
     transform: scale(1.4) skewY(15deg);
   }
 }
+
+
+/* ---- skew-perspective ---- */
+/* Image skews with perspective for a 3D-style distortion on
+   hover/focus. A 1.4 scale keeps the skewed image covering the
+   full viewport. */
+.hover-effect.skew-perspective img{
+  transition: transform 0.5s ease;
+}
+.hover-effect.skew-perspective:hover img,
+.hover-effect.skew-perspective:focus-visible img{
+  transform: perspective(800px) scale(1.4) skewX(20deg) rotateY(8deg);
+}
+@media (prefers-reduced-motion: reduce) {
+  .hover-effect.skew-perspective img{
+    transition: none;
+  }
+  .hover-effect.skew-perspective:hover img,
+  .hover-effect.skew-perspective:focus-visible img{
+    transform: perspective(800px) scale(1.4) skewX(20deg) rotateY(8deg);
+  }
+}
