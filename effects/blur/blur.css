@@ -1,0 +1,60 @@
+/* Blur & Focus-category hover effects.
+
+   Pattern for every effect in this category:
+     - blur-in / blur-out: filter: blur() is applied directly to
+       the <img>; transition on filter handles the animation.
+     - blur-focus-*: the <img> stays blurred (filter: blur(6px))
+       throughout. A ::before pseudo carries the same image via
+       background-image, sized and positioned as a smaller sharp
+       region. The pseudo fades in on hover so a sharp window
+       appears over the otherwise-blurred image.
+
+   prefers-reduced-motion: every block has a paired @media rule
+   that drops the transitions but preserves the hover state so
+   the visual change still lands instantly.
+
+   Note for blur-focus-*: the URL inside background-image must
+   match the <img src="..."> in HTML. Edit both for your own
+   image. The one-img markup contract is preserved -- the second
+   image lives in CSS, not in additional HTML elements. */
+
+/* ---- blur-in ---- */
+/* Image starts visibly blurred and sharpens on hover/focus. */
+.hover-effect.blur-in img{
+  filter: blur(8px);
+  transition: filter 0.5s ease;
+}
+.hover-effect.blur-in:hover img,
+.hover-effect.blur-in:focus-visible img{
+  filter: blur(0);
+}
+@media (prefers-reduced-motion: reduce) {
+  .hover-effect.blur-in img{
+    transition: none;
+  }
+  .hover-effect.blur-in:hover img,
+  .hover-effect.blur-in:focus-visible img{
+  filter: blur(0);
+  }
+}
+
+/* ---- blur-out ---- */
+/* Image starts sharp and softens into a blurred state on hover/focus. */
+.hover-effect.blur-out img{
+
+  transition: filter 0.5s ease;
+}
+.hover-effect.blur-out:hover img,
+.hover-effect.blur-out:focus-visible img{
+  filter: blur(5px);
+}
+@media (prefers-reduced-motion: reduce) {
+  .hover-effect.blur-out img{
+    transition: none;
+  }
+  .hover-effect.blur-out:hover img,
+  .hover-effect.blur-out:focus-visible img{
+  filter: blur(5px);
+  }
+}
+
