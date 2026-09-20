@@ -293,3 +293,50 @@
   }
 }
 
+
+/* ---- blur-focus-diagonal ---- */
+/* A sharp diagonal band fades into view across an otherwise-blurred image on hover/focus. */
+.hover-effect.blur-focus-diagonal{
+  position: relative;
+}
+.hover-effect.blur-focus-diagonal img{
+  filter: blur(6px);
+  transition: filter 0.5s ease;
+}
+.hover-effect.blur-focus-diagonal::before{
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) rotate(45deg);
+  width: 70%;
+  height: 40%;  background-image: url("https://picsum.photos/seed/blur-focus-diagonal/800/600");
+  background-size: cover;
+  background-position: center;
+  filter: blur(0);
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+.hover-effect.blur-focus-diagonal:hover img,
+.hover-effect.blur-focus-diagonal:focus-visible img{
+  filter: blur(6px);
+}
+.hover-effect.blur-focus-diagonal:hover::before,
+.hover-effect.blur-focus-diagonal:focus-visible::before{
+  opacity: 1;
+}
+@media (prefers-reduced-motion: reduce) {
+  .hover-effect.blur-focus-diagonal img,
+  .hover-effect.blur-focus-diagonal::before{
+    transition: none;
+  }
+  .hover-effect.blur-focus-diagonal:hover img,
+  .hover-effect.blur-focus-diagonal:focus-visible img{
+    filter: blur(6px);
+  }
+  .hover-effect.blur-focus-diagonal:hover::before,
+  .hover-effect.blur-focus-diagonal:focus-visible::before{
+    opacity: 1;
+  }
+}
+
