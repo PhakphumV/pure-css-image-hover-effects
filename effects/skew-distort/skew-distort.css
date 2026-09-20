@@ -93,3 +93,24 @@
     transform: scale(1.4) skewX(15deg);
   }
 }
+
+
+/* ---- skew-top ---- */
+/* Image skews toward the top (skewY(-15deg)) on hover/focus. A 1.4
+   scale keeps the skewed image covering the full viewport. */
+.hover-effect.skew-top img{
+  transition: transform 0.5s ease;
+}
+.hover-effect.skew-top:hover img,
+.hover-effect.skew-top:focus-visible img{
+  transform: scale(1.4) skewY(-15deg);
+}
+@media (prefers-reduced-motion: reduce) {
+  .hover-effect.skew-top img{
+    transition: none;
+  }
+  .hover-effect.skew-top:hover img,
+  .hover-effect.skew-top:focus-visible img{
+    transform: scale(1.4) skewY(-15deg);
+  }
+}
