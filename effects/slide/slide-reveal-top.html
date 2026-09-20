@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light">
+<title>Slide Reveal Top &middot; Pure CSS Image Hover Effects</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.9.0/build/styles/vs2015.min.css">
+<link rel="stylesheet" href="../template.css">
+<link rel="stylesheet" href="slide.css">
+<script defer src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.9.0/build/highlight.min.js"></script>
+</head>
+<body>
+
+<header class="container">
+  <nav aria-label="Breadcrumb">
+    <ul>
+      <li><a href="../../index.html">&larr; Back to gallery</a></li>
+    </ul>
+  </nav>
+  <hgroup>
+    <h1>Slide Reveal Top</h1>
+    <p>Cover anchored to the bottom edge shrinks on hover, revealing the image from top to bottom.</p>
+  </hgroup>
+</header>
+
+<main class="container">
+  <div class="grid detail">
+
+    <section class="preview" aria-label="Live preview">
+      <div class="preview-stage">
+        <div class="hover-effect slide-reveal-top">
+          <img src="https://picsum.photos/seed/slide-reveal-top/800/600" alt="Slide Reveal Top demo">
+        </div>
+      </div>
+      <p class="preview-hint">Hover or focus the image to see the effect.</p>
+    </section>
+
+    <section aria-label="Source code">
+      <h3>HTML</h3>
+      <div class="code-block">
+        <pre><code class="language-html">&lt;div class="hover-effect slide-reveal-top"&gt;
+  &lt;img src="image.jpg" alt="description"&gt;
+&lt;/div&gt;</code></pre>
+      </div>
+
+      <h3>CSS</h3>
+      <div class="code-block">
+        <pre><code class="language-css">.hover-effect.slide-reveal-top{
+  position: relative;
+}
+.hover-effect.slide-reveal-top::before{
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  height: 100%;
+  background: #1a1a1a;
+  transition: height 0.5s ease;
+}
+.hover-effect.slide-reveal-top:hover::before,
+.hover-effect.slide-reveal-top:focus-visible::before{
+  height: 0;
+}
+@media (prefers-reduced-motion: reduce) {
+  .hover-effect.slide-reveal-top::before{
+    transition: none;
+  }
+  .hover-effect.slide-reveal-top:hover::before,
+  .hover-effect.slide-reveal-top:focus-visible::before{
+    height: 0;
+  }
+}</code></pre>
+      </div>
+
+      <p class="copy-hint"><small>The cover pseudo is anchored to the bottom edge and its height shrinks to zero on hover. Select the code and copy with <kbd>Ctrl+C</kbd> or <kbd>&#8984;C</kbd>.</small></p>
+    </section>
+
+  </div>
+</main>
+
+<footer class="container">
+  <small><a href="../../index.html">Pure CSS Image Hover Effects</a> &middot; No JavaScript &middot; MIT</small>
+</footer>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    hljs.highlightAll();
+  });
+</script>
+
+</body>
+</html>
