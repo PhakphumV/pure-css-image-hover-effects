@@ -1,5 +1,7 @@
 # Pure CSS Image Hover Effects
 
+<img width="738" height="484" alt="carbon" src="https://github.com/user-attachments/assets/8c278452-cd21-4c5a-8810-21504680d83f" />
+
 A copy-paste library of pure CSS image hover effects. One class on a
 `<div>` that contains an `<img>`. No JavaScript. No build step.
 
