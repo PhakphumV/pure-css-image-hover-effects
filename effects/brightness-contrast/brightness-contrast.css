@@ -163,3 +163,25 @@
     filter: contrast(1);
   }
 }
+
+
+/* ---- high-contrast focus ---- */
+/* Wrapper carries a third class "focus" as a marker. Image transitions
+   to clearly higher contrast on hover/focus-visible. Brightness, color,
+   blur, and geometry remain unchanged. */
+.hover-effect.high-contrast.focus img{
+  transition: filter 0.5s ease;
+}
+.hover-effect.high-contrast.focus:hover img,
+.hover-effect.high-contrast.focus:focus-visible img{
+  filter: contrast(1.8);
+}
+@media (prefers-reduced-motion: reduce) {
+  .hover-effect.high-contrast.focus img{
+    transition: none;
+  }
+  .hover-effect.high-contrast.focus:hover img,
+  .hover-effect.high-contrast.focus:focus-visible img{
+    filter: contrast(1.8);
+  }
+}
