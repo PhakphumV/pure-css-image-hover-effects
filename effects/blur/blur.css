@@ -58,3 +58,50 @@
   }
 }
 
+
+/* ---- blur-focus-center ---- */
+/* A central sharp region fades into view over an otherwise-blurred image on hover/focus. */
+.hover-effect.blur-focus-center{
+  position: relative;
+}
+.hover-effect.blur-focus-center img{
+  filter: blur(6px);
+  transition: filter 0.5s ease;
+}
+.hover-effect.blur-focus-center::before{
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 55%;
+  height: 55%;  background-image: url("https://picsum.photos/seed/blur-focus-center/800/600");
+  background-size: cover;
+  background-position: center;
+  border-radius: 50%;  filter: blur(0);
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+.hover-effect.blur-focus-center:hover img,
+.hover-effect.blur-focus-center:focus-visible img{
+  filter: blur(6px);
+}
+.hover-effect.blur-focus-center:hover::before,
+.hover-effect.blur-focus-center:focus-visible::before{
+  opacity: 1;
+}
+@media (prefers-reduced-motion: reduce) {
+  .hover-effect.blur-focus-center img,
+  .hover-effect.blur-focus-center::before{
+    transition: none;
+  }
+  .hover-effect.blur-focus-center:hover img,
+  .hover-effect.blur-focus-center:focus-visible img{
+    filter: blur(6px);
+  }
+  .hover-effect.blur-focus-center:hover::before,
+  .hover-effect.blur-focus-center:focus-visible::before{
+    opacity: 1;
+  }
+}
+
