@@ -76,3 +76,24 @@
     filter: contrast(1.6);
   }
 }
+
+
+/* ---- contrast-decrease ---- */
+/* Image transitions to lower contrast on hover/focus via filter: contrast(). */
+.hover-effect.contrast-decrease img{
+  filter: contrast(1);
+  transition: filter 0.5s ease;
+}
+.hover-effect.contrast-decrease:hover img,
+.hover-effect.contrast-decrease:focus-visible img{
+  filter: contrast(0.5);
+}
+@media (prefers-reduced-motion: reduce) {
+  .hover-effect.contrast-decrease img{
+    transition: none;
+  }
+  .hover-effect.contrast-decrease:hover img,
+  .hover-effect.contrast-decrease:focus-visible img{
+    filter: contrast(0.5);
+  }
+}
