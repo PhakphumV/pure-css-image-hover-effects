@@ -105,3 +105,33 @@
   }
 }
 
+
+/* ---- slide-reveal-bottom ---- */
+/* Cover anchored to the top edge shrinks on hover, revealing the image from bottom to top. */
+.hover-effect.slide-reveal-bottom{
+  position: relative;
+}
+.hover-effect.slide-reveal-bottom::before{
+  content: "";
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  height: 100%;
+  background: #1a1a1a;
+  transition: height 0.5s ease;
+}
+.hover-effect.slide-reveal-bottom:hover::before,
+.hover-effect.slide-reveal-bottom:focus-visible::before{
+  height: 0;
+}
+@media (prefers-reduced-motion: reduce) {
+  .hover-effect.slide-reveal-bottom::before{
+    transition: none;
+  }
+  .hover-effect.slide-reveal-bottom:hover::before,
+  .hover-effect.slide-reveal-bottom:focus-visible::before{
+    height: 0;
+  }
+}
+
