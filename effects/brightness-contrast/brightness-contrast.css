@@ -55,3 +55,24 @@
     filter: brightness(0.6);
   }
 }
+
+
+/* ---- contrast-increase ---- */
+/* Image transitions to higher contrast on hover/focus via filter: contrast(). */
+.hover-effect.contrast-increase img{
+  filter: contrast(1);
+  transition: filter 0.5s ease;
+}
+.hover-effect.contrast-increase:hover img,
+.hover-effect.contrast-increase:focus-visible img{
+  filter: contrast(1.6);
+}
+@media (prefers-reduced-motion: reduce) {
+  .hover-effect.contrast-increase img{
+    transition: none;
+  }
+  .hover-effect.contrast-increase:hover img,
+  .hover-effect.contrast-increase:focus-visible img{
+    filter: contrast(1.6);
+  }
+}
