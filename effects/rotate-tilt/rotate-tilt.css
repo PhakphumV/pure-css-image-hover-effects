@@ -115,3 +115,25 @@
     transform: perspective(800px) rotateX(15deg) scale(1.4);
   }
 }
+
+
+/* ---- tilt-down ---- */
+/* Image tilts downward (bottom recedes) on hover/focus via a
+   perspective rotateX. A 1.4 scale keeps the tilted image
+   covering the viewport. */
+.hover-effect.tilt-down img{
+  transition: transform 0.5s ease;
+}
+.hover-effect.tilt-down:hover img,
+.hover-effect.tilt-down:focus-visible img{
+  transform: perspective(800px) rotateX(-15deg) scale(1.4);
+}
+@media (prefers-reduced-motion: reduce) {
+  .hover-effect.tilt-down img{
+    transition: none;
+  }
+  .hover-effect.tilt-down:hover img,
+  .hover-effect.tilt-down:focus-visible img{
+    transform: perspective(800px) rotateX(-15deg) scale(1.4);
+  }
+}
