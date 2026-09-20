@@ -265,3 +265,26 @@
     opacity: 1;
   }
 }
+
+/* ---- fade-blur ---- */
+/* Image is sharp at rest and fades into a softened/blurred
+   state on hover/focus via filter: blur(5px). No pseudo-element
+   is needed: the blur is applied directly to the <img>, and the
+   wrapper inherits the same overflow: hidden from the preview
+   stage so the softened edges stay inside the frame. */
+.hover-effect.fade-blur img{
+  transition: filter 0.5s ease;
+}
+.hover-effect.fade-blur:hover img,
+.hover-effect.fade-blur:focus-visible img{
+  filter: blur(5px);
+}
+@media (prefers-reduced-motion: reduce) {
+  .hover-effect.fade-blur img{
+    transition: none;
+  }
+  .hover-effect.fade-blur:hover img,
+  .hover-effect.fade-blur:focus-visible img{
+    filter: blur(5px);
+  }
+}
