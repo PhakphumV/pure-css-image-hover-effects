@@ -349,7 +349,7 @@
   position: relative;
 }
 .hover-effect.blur-focus-depth img{
-  filter: blur(8px);
+  filter: blur(0);
   transition: filter 0.5s ease;
 }
 .hover-effect.blur-focus-depth::before{
