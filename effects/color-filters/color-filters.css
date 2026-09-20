@@ -1,0 +1,38 @@
+/* Color & Filters-category hover effects.
+
+   Pattern for every effect in this category:
+     - All transformations use the CSS filter property (grayscale,
+       sepia, hue-rotate, saturate, invert, brightness, contrast,
+       drop-shadow, etc.). Each effect targets exactly one filter
+       function so the visual change is unambiguously attributable
+       to that function.
+     - Idle state: filter: <fn>(0) (or no filter at all when 0 is
+       the natural value). Hover/focus state: filter: <fn>(<sensible
+       value>) that produces a clearly visible, immediately readable
+       change.
+     - transition: filter 0.5s ease on the img so the colour/filter
+       change animates smoothly.
+     - Mirror :hover onto :focus-visible so keyboard users see the
+       same affordance.
+     - prefers-reduced-motion: drop the transition but keep the end
+       state so the visual change still lands instantly. */
+
+/* ---- grayscale ---- */
+/* Image starts in full colour and transitions to full grayscale on hover/focus. */
+.hover-effect.grayscale img{
+  filter: grayscale(0);
+  transition: filter 0.5s ease;
+}
+.hover-effect.grayscale:hover img,
+.hover-effect.grayscale:focus-visible img{
+  filter: grayscale(100%);
+}
+@media (prefers-reduced-motion: reduce) {
+  .hover-effect.grayscale img{
+    transition: none;
+  }
+  .hover-effect.grayscale:hover img,
+  .hover-effect.grayscale:focus-visible img{
+    filter: grayscale(100%);
+  }
+}
