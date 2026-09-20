@@ -34,3 +34,24 @@
     filter: brightness(1.4);
   }
 }
+
+
+/* ---- darken ---- */
+/* Image transitions to a darker state on hover/focus via filter: brightness(). */
+.hover-effect.darken img{
+  filter: brightness(1);
+  transition: filter 0.5s ease;
+}
+.hover-effect.darken:hover img,
+.hover-effect.darken:focus-visible img{
+  filter: brightness(0.6);
+}
+@media (prefers-reduced-motion: reduce) {
+  .hover-effect.darken img{
+    transition: none;
+  }
+  .hover-effect.darken:hover img,
+  .hover-effect.darken:focus-visible img{
+    filter: brightness(0.6);
+  }
+}
