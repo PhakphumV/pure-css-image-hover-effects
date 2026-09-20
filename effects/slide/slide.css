@@ -292,3 +292,32 @@
   }
 }
 
+
+/* ---- slide-cover-right ---- */
+/* Cover anchored to the right edge grows from zero to full width on hover, covering the image from right to left. */
+.hover-effect.slide-cover-right{
+  position: relative;
+}
+.hover-effect.slide-cover-right::before{
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  background: #1a1a1a;
+  transition: width 0.5s ease;
+}
+.hover-effect.slide-cover-right:hover::before,
+.hover-effect.slide-cover-right:focus-visible::before{
+  width: 100%;
+}
+@media (prefers-reduced-motion: reduce) {
+  .hover-effect.slide-cover-right::before{
+    transition: none;
+  }
+  .hover-effect.slide-cover-right:hover::before,
+  .hover-effect.slide-cover-right:focus-visible::before{
+    width: 100%;
+  }
+}
+
