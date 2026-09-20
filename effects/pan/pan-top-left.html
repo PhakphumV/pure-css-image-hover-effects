@@ -51,15 +51,12 @@
   overflow: hidden;
 }
 .hover-effect.pan-top-left img{
-  width: calc(100% + 30px);
-  height: calc(100% + 30px);
-  margin-left: -30px;
-  margin-top: -30px;
-  transition: transform 0.45s ease;
+  transform: scale(1.2);
+  transition: transform 0.5s ease;
 }
 .hover-effect.pan-top-left:hover img,
 .hover-effect.pan-top-left:focus-visible img{
-  transform: translate(30px, 30px);
+  transform: scale(1.2) translate(-25px, -25px);
 }
 @media (prefers-reduced-motion: reduce) {
   .hover-effect.pan-top-left img{
@@ -67,7 +64,7 @@
   }
   .hover-effect.pan-top-left:hover img,
   .hover-effect.pan-top-left:focus-visible img{
-    transform: none;
+    transform: scale(1.2);
   }
 }</code></pre>
       </div>

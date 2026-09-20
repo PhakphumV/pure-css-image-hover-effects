@@ -3,35 +3,37 @@
    unique slug class so multiple categories can coexist.
 
    Pattern for every effect in this category:
-     - Enlarge the image so it always covers the wrapper, with the
-       extra image extending past the wrapper on the opposite side
-       of the pan direction.
-     - Clip the wrapper with overflow: hidden so the extra image is
-       not visible at rest, only revealed as the image translates.
-     - translate() on :hover / :focus-visible moves the image so
-       different parts of the picture come into view.
+     - The image is scaled 1.2x at rest (transform: scale(1.2))
+       so it overflows the wrapper on all sides. The wrapper
+       clips with overflow: hidden, so the visible area is
+       always fully covered by image content.
+     - On hover/focus the scaled image also translates 25px
+       in the effect's direction, panning within the over-sized
+       image. Because the image is already 1.2x the wrapper,
+       the translate never exposes an empty edge of the box,
+       so no blank space appears as the image moves.
+     - The translate amount (25px on a 480px-wide wrapper, ~5%)
+       is small enough to stay within the 10% extra room that
+       scale(1.2) provides on each side.
 
-   Transition timing rules:
-   - 300ms minimum (perceptually smooth)
-   - 2000ms maximum (dramatic, contemplative)
-   - Tune per effect: dramatic pan -> longer; subtle slide -> shorter.
-
-   prefers-reduced-motion: reduce is honoured per effect: every
-   block below has a paired @media rule that drops the transition
-   and the transform so the image stays put. */
+   Reduced-motion: every block has a paired @media rule that
+   drops the transition and freezes the image at scale(1.2)
+   without translate, so the visual zoom is preserved but
+   the pan is suppressed. */
 
 /* ---- pan-left ---- */
-/* Image enlarged on the right, then slides left so the right edge
-   of the picture slides into view. */
+/* Scaled 1.2x, slides 25px to the left on hover/focus so the
+   right edge of the picture comes into view. */
 .hover-effect.pan-left{
   overflow: hidden;
 }
 .hover-effect.pan-left img{
-  width: calc(100% + 30px);
-  transition: transform 0.45s ease;
+  transform: scale(1.2);
+  transition: transform 0.5s ease;
 }
-.hover-effect.pan-left:hover img, .hover-effect.pan-left:focus-visible img{
-  transform: translateX(-30px);
+.hover-effect.pan-left:hover img,
+.hover-effect.pan-left:focus-visible img{
+  transform: scale(1.2) translateX(-25px);
 }
 @media (prefers-reduced-motion: reduce) {
   .hover-effect.pan-left img{
@@ -39,23 +41,23 @@
   }
   .hover-effect.pan-left:hover img,
   .hover-effect.pan-left:focus-visible img{
-    transform: none;
+    transform: scale(1.2);
   }
 }
 
 /* ---- pan-right ---- */
-/* Image enlarged on the left, then slides right so the left edge
-   of the picture slides into view. */
+/* Scaled 1.2x, slides 25px to the right on hover/focus so the
+   left edge of the picture comes into view. */
 .hover-effect.pan-right{
   overflow: hidden;
 }
 .hover-effect.pan-right img{
-  width: calc(100% + 30px);
-  margin-left: -30px;
-  transition: transform 0.45s ease;
+  transform: scale(1.2);
+  transition: transform 0.5s ease;
 }
-.hover-effect.pan-right:hover img, .hover-effect.pan-right:focus-visible img{
-  transform: translateX(30px);
+.hover-effect.pan-right:hover img,
+.hover-effect.pan-right:focus-visible img{
+  transform: scale(1.2) translateX(25px);
 }
 @media (prefers-reduced-motion: reduce) {
   .hover-effect.pan-right img{
@@ -63,22 +65,23 @@
   }
   .hover-effect.pan-right:hover img,
   .hover-effect.pan-right:focus-visible img{
-    transform: none;
+    transform: scale(1.2);
   }
 }
 
 /* ---- pan-top ---- */
-/* Image enlarged on the bottom, then slides up so the bottom edge
-   of the picture slides into view. */
+/* Scaled 1.2x, slides 25px up on hover/focus so the bottom edge
+   of the picture comes into view. */
 .hover-effect.pan-top{
   overflow: hidden;
 }
 .hover-effect.pan-top img{
-  height: calc(100% + 30px);
-  transition: transform 0.45s ease;
+  transform: scale(1.2);
+  transition: transform 0.5s ease;
 }
-.hover-effect.pan-top:hover img, .hover-effect.pan-top:focus-visible img{
-  transform: translateY(-30px);
+.hover-effect.pan-top:hover img,
+.hover-effect.pan-top:focus-visible img{
+  transform: scale(1.2) translateY(-25px);
 }
 @media (prefers-reduced-motion: reduce) {
   .hover-effect.pan-top img{
@@ -86,22 +89,23 @@
   }
   .hover-effect.pan-top:hover img,
   .hover-effect.pan-top:focus-visible img{
-    transform: none;
+    transform: scale(1.2);
   }
 }
+
 /* ---- pan-bottom ---- */
-/* Image enlarged on the top, then slides down so the top edge
-   of the picture slides into view. */
+/* Scaled 1.2x, slides 25px down on hover/focus so the top edge
+   of the picture comes into view. */
 .hover-effect.pan-bottom{
   overflow: hidden;
 }
 .hover-effect.pan-bottom img{
-  height: calc(100% + 30px);
-  margin-top: -30px;
-  transition: transform 0.45s ease;
+  transform: scale(1.2);
+  transition: transform 0.5s ease;
 }
-.hover-effect.pan-bottom:hover img, .hover-effect.pan-bottom:focus-visible img{
-  transform: translateY(30px);
+.hover-effect.pan-bottom:hover img,
+.hover-effect.pan-bottom:focus-visible img{
+  transform: scale(1.2) translateY(25px);
 }
 @media (prefers-reduced-motion: reduce) {
   .hover-effect.pan-bottom img{
@@ -109,26 +113,23 @@
   }
   .hover-effect.pan-bottom:hover img,
   .hover-effect.pan-bottom:focus-visible img{
-    transform: none;
+    transform: scale(1.2);
   }
 }
 
 /* ---- pan-top-left ---- */
-/* Image enlarged on the right and bottom, then slides toward the
-   top-left corner so the bottom-right of the picture slides into
-   view. */
+/* Scaled 1.2x, slides diagonally toward the top-left on
+   hover/focus so the bottom-right of the picture comes into view. */
 .hover-effect.pan-top-left{
   overflow: hidden;
 }
 .hover-effect.pan-top-left img{
-  width: calc(100% + 30px);
-  height: calc(100% + 30px);
-  margin-left: -30px;
-  margin-top: -30px;
-  transition: transform 0.45s ease;
+  transform: scale(1.2);
+  transition: transform 0.5s ease;
 }
-.hover-effect.pan-top-left:hover img, .hover-effect.pan-top-left:focus-visible img{
-  transform: translate(30px, 30px);
+.hover-effect.pan-top-left:hover img,
+.hover-effect.pan-top-left:focus-visible img{
+  transform: scale(1.2) translate(-25px, -25px);
 }
 @media (prefers-reduced-motion: reduce) {
   .hover-effect.pan-top-left img{
@@ -136,25 +137,23 @@
   }
   .hover-effect.pan-top-left:hover img,
   .hover-effect.pan-top-left:focus-visible img{
-    transform: none;
+    transform: scale(1.2);
   }
 }
 
 /* ---- pan-top-right ---- */
-/* Image enlarged on the left and bottom, then slides toward the
-   top-right corner so the bottom-left of the picture slides into
-   view. */
+/* Scaled 1.2x, slides diagonally toward the top-right on
+   hover/focus so the bottom-left of the picture comes into view. */
 .hover-effect.pan-top-right{
   overflow: hidden;
 }
 .hover-effect.pan-top-right img{
-  width: calc(100% + 30px);
-  height: calc(100% + 30px);
-  margin-top: -30px;
-  transition: transform 0.45s ease;
+  transform: scale(1.2);
+  transition: transform 0.5s ease;
 }
-.hover-effect.pan-top-right:hover img, .hover-effect.pan-top-right:focus-visible img{
-  transform: translate(-30px, 30px);
+.hover-effect.pan-top-right:hover img,
+.hover-effect.pan-top-right:focus-visible img{
+  transform: scale(1.2) translate(25px, -25px);
 }
 @media (prefers-reduced-motion: reduce) {
   .hover-effect.pan-top-right img{
@@ -162,25 +161,23 @@
   }
   .hover-effect.pan-top-right:hover img,
   .hover-effect.pan-top-right:focus-visible img{
-    transform: none;
+    transform: scale(1.2);
   }
 }
 
 /* ---- pan-bottom-left ---- */
-/* Image enlarged on the right and top, then slides toward the
-   bottom-left corner so the top-right of the picture slides into
-   view. */
+/* Scaled 1.2x, slides diagonally toward the bottom-left on
+   hover/focus so the top-right of the picture comes into view. */
 .hover-effect.pan-bottom-left{
   overflow: hidden;
 }
 .hover-effect.pan-bottom-left img{
-  width: calc(100% + 30px);
-  height: calc(100% + 30px);
-  margin-left: -30px;
-  transition: transform 0.45s ease;
+  transform: scale(1.2);
+  transition: transform 0.5s ease;
 }
-.hover-effect.pan-bottom-left:hover img, .hover-effect.pan-bottom-left:focus-visible img{
-  transform: translate(30px, -30px);
+.hover-effect.pan-bottom-left:hover img,
+.hover-effect.pan-bottom-left:focus-visible img{
+  transform: scale(1.2) translate(-25px, 25px);
 }
 @media (prefers-reduced-motion: reduce) {
   .hover-effect.pan-bottom-left img{
@@ -188,24 +185,23 @@
   }
   .hover-effect.pan-bottom-left:hover img,
   .hover-effect.pan-bottom-left:focus-visible img{
-    transform: none;
+    transform: scale(1.2);
   }
 }
 
 /* ---- pan-bottom-right ---- */
-/* Image enlarged on the left and top, then slides toward the
-   bottom-right corner so the top-left of the picture slides into
-   view. */
+/* Scaled 1.2x, slides diagonally toward the bottom-right on
+   hover/focus so the top-left of the picture comes into view. */
 .hover-effect.pan-bottom-right{
   overflow: hidden;
 }
 .hover-effect.pan-bottom-right img{
-  width: calc(100% + 30px);
-  height: calc(100% + 30px);
-  transition: transform 0.45s ease;
+  transform: scale(1.2);
+  transition: transform 0.5s ease;
 }
-.hover-effect.pan-bottom-right:hover img, .hover-effect.pan-bottom-right:focus-visible img{
-  transform: translate(-30px, -30px);
+.hover-effect.pan-bottom-right:hover img,
+.hover-effect.pan-bottom-right:focus-visible img{
+  transform: scale(1.2) translate(25px, 25px);
 }
 @media (prefers-reduced-motion: reduce) {
   .hover-effect.pan-bottom-right img{
@@ -213,32 +209,33 @@
   }
   .hover-effect.pan-bottom-right:hover img,
   .hover-effect.pan-bottom-right:focus-visible img{
-    transform: none;
+    transform: scale(1.2);
   }
 }
 
 /* ---- pan-center ---- */
-/* Image starts zoomed in and offset toward the bottom-right so a
-   corner of the picture is in view. On hover/focus the image
-   scales back to 1 and translates to 0,0, centering the framing
-   and revealing the full picture. */
+/* Image starts at scale(1.2) and offset toward the bottom-right
+   (15px, 15px) so a corner of the picture is in view. On
+   hover/focus the translate drops to 0 while the scale stays at
+   1.2, so the image pans toward a centered framing while
+   remaining zoomed. */
 .hover-effect.pan-center{
   overflow: hidden;
 }
 .hover-effect.pan-center img{
-  transform: scale(1.15) translate(20px, 20px);
+  transform: scale(1.2) translate(15px, 15px);
   transition: transform 0.6s ease;
 }
-.hover-effect.pan-center:hover img, .hover-effect.pan-center:focus-visible img{
-  transform: scale(1) translate(0, 0);
+.hover-effect.pan-center:hover img,
+.hover-effect.pan-center:focus-visible img{
+  transform: scale(1.2) translate(0, 0);
 }
 @media (prefers-reduced-motion: reduce) {
   .hover-effect.pan-center img{
     transition: none;
-    transform: scale(1) translate(0, 0);
   }
   .hover-effect.pan-center:hover img,
   .hover-effect.pan-center:focus-visible img{
-    transform: scale(1) translate(0, 0);
+    transform: scale(1.2) translate(15px, 15px);
   }
 }
