@@ -121,3 +121,24 @@
     filter: saturate(2.5);
   }
 }
+
+
+/* ---- desaturate-to-color ---- */
+/* Image starts desaturated and restores full colour on hover/focus (inverse of grayscale). */
+.hover-effect.desaturate-to-color img{
+  filter: grayscale(100%);
+  transition: filter 0.5s ease;
+}
+.hover-effect.desaturate-to-color:hover img,
+.hover-effect.desaturate-to-color:focus-visible img{
+  filter: grayscale(0);
+}
+@media (prefers-reduced-motion: reduce) {
+  .hover-effect.desaturate-to-color img{
+    transition: none;
+  }
+  .hover-effect.desaturate-to-color:hover img,
+  .hover-effect.desaturate-to-color:focus-visible img{
+    filter: grayscale(0);
+  }
+}
