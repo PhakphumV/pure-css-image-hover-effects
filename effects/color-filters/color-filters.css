@@ -79,3 +79,24 @@
     filter: sepia(100%);
   }
 }
+
+
+/* ---- hue-rotate ---- */
+/* Image shifts halfway around the colour wheel on hover/focus. */
+.hover-effect.hue-rotate img{
+  filter: hue-rotate(0deg);
+  transition: filter 0.5s ease;
+}
+.hover-effect.hue-rotate:hover img,
+.hover-effect.hue-rotate:focus-visible img{
+  filter: hue-rotate(180deg);
+}
+@media (prefers-reduced-motion: reduce) {
+  .hover-effect.hue-rotate img{
+    transition: none;
+  }
+  .hover-effect.hue-rotate:hover img,
+  .hover-effect.hue-rotate:focus-visible img{
+    filter: hue-rotate(180deg);
+  }
+}
