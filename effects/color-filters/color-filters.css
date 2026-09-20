@@ -100,3 +100,24 @@
     filter: hue-rotate(180deg);
   }
 }
+
+
+/* ---- saturate ---- */
+/* Image transitions from natural saturation to boosted saturation on hover/focus. */
+.hover-effect.saturate img{
+  filter: saturate(1);
+  transition: filter 0.5s ease;
+}
+.hover-effect.saturate:hover img,
+.hover-effect.saturate:focus-visible img{
+  filter: saturate(2.5);
+}
+@media (prefers-reduced-motion: reduce) {
+  .hover-effect.saturate img{
+    transition: none;
+  }
+  .hover-effect.saturate:hover img,
+  .hover-effect.saturate:focus-visible img{
+    filter: saturate(2.5);
+  }
+}
