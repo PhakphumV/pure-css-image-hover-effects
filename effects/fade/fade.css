@@ -176,3 +176,45 @@
     opacity: 1;
   }
 }
+
+/* ---- fade-caption ---- */
+/* A caption text treatment fades in over the bottom of the
+   image on hover/focus. Because the markup contract requires
+   exactly one <img> and forbids extra HTML elements, the
+   caption text is provided via a ::after pseudo-element with
+   content: "...". To customize, edit the content string
+   below; the rest of the effect (positioning, fade-in,
+   wrapper scoping) is otherwise unchanged. The wrapper picks
+   up position: relative so the absolute-positioned pseudo
+   is scoped to it. */
+.hover-effect.fade-caption{
+  position: relative;
+}
+.hover-effect.fade-caption::after{
+  content: "Hover caption";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding: 0.75rem 1rem;
+  background: rgba(0, 0, 0, 0.65);
+  color: #fff;
+  font-size: 0.95rem;
+  line-height: 1.3;
+  text-align: center;
+  opacity: 0;
+  transition: opacity 0.45s ease;
+}
+.hover-effect.fade-caption:hover::after,
+.hover-effect.fade-caption:focus-visible::after{
+  opacity: 1;
+}
+@media (prefers-reduced-motion: reduce) {
+  .hover-effect.fade-caption::after{
+    transition: none;
+  }
+  .hover-effect.fade-caption:hover::after,
+  .hover-effect.fade-caption:focus-visible::after{
+    opacity: 1;
+  }
+}
