@@ -220,14 +220,19 @@
 }
 
 /* ---- fade-crossfade ---- */
-/* Crossfade between two visual states: full-color image with no
-   overlay, and a desaturated (filter: saturate(0.3)
-   brightness(1.1)) image with a subtle dark ::before overlay.
-   The pseudo-element overlay is added so the effect is more
-   than a single-state filter change -- the dim layer fading
-   in alongside the desaturated image gives the visual a true
-   crossfade between two distinct looks. Wrapper picks up
-   position: relative for the absolute overlay. */
+/* Crossfade between two real images while keeping the one-img
+   markup contract: the <img> is image #1, the ::before pseudo
+   carries image #2 via background-image. Image #1 starts at
+   full opacity; on hover/focus it fades out while image #2
+   fades in, both on the same 0.5s ease so the transition reads
+   as a true crossfade.
+
+   To customize: set the <img src="..."> in HTML for image #1
+   and the background-image URL below for image #2. The wrapper
+   picks up position: relative so the absolute-positioned pseudo
+   is scoped to it. The pseudo uses background-size: cover and
+   background-position: center to mirror the <img>'s object-fit
+   cover rendering. */
 .hover-effect.fade-crossfade{
   position: relative;
 }
@@ -235,17 +240,18 @@
   content: "";
   position: absolute;
   inset: 0;
-  background: rgba(0, 0, 0, 0.35);
+  background-image: url("https://picsum.photos/seed/fade-crossfade-alt/800/600");
+  background-size: cover;
+  background-position: center;
   opacity: 0;
   transition: opacity 0.5s ease;
-  pointer-events: none;
 }
 .hover-effect.fade-crossfade img{
-  transition: filter 0.5s ease;
+  transition: opacity 0.5s ease;
 }
 .hover-effect.fade-crossfade:hover img,
 .hover-effect.fade-crossfade:focus-visible img{
-  filter: saturate(0.3) brightness(1.1);
+  opacity: 0;
 }
 .hover-effect.fade-crossfade:hover::before,
 .hover-effect.fade-crossfade:focus-visible::before{
@@ -258,7 +264,7 @@
   }
   .hover-effect.fade-crossfade:hover img,
   .hover-effect.fade-crossfade:focus-visible img{
-    filter: saturate(0.3) brightness(1.1);
+    opacity: 0;
   }
   .hover-effect.fade-crossfade:hover::before,
   .hover-effect.fade-crossfade:focus-visible::before{

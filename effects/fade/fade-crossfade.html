@@ -21,7 +21,7 @@
   </nav>
   <hgroup>
     <h1>Fade Crossfade</h1>
-    <p>Crossfade between full-color and a desaturated, slightly brightened state. A subtle dark pseudo-element overlay fades in alongside the filter change for a true two-state crossfade.</p>
+    <p>Crossfade between two real images: the <img> is image #1 and the ::before pseudo carries image #2 via background-image. Edit both URLs to use your own images.</p>
   </hgroup>
 </header>
 
@@ -54,17 +54,18 @@
   content: "";
   position: absolute;
   inset: 0;
-  background: rgba(0, 0, 0, 0.35);
+  background-image: url("https://picsum.photos/seed/fade-crossfade-alt/800/600");
+  background-size: cover;
+  background-position: center;
   opacity: 0;
   transition: opacity 0.5s ease;
-  pointer-events: none;
 }
 .hover-effect.fade-crossfade img{
-  transition: filter 0.5s ease;
+  transition: opacity 0.5s ease;
 }
 .hover-effect.fade-crossfade:hover img,
 .hover-effect.fade-crossfade:focus-visible img{
-  filter: saturate(0.3) brightness(1.1);
+  opacity: 0;
 }
 .hover-effect.fade-crossfade:hover::before,
 .hover-effect.fade-crossfade:focus-visible::before{
@@ -77,7 +78,7 @@
   }
   .hover-effect.fade-crossfade:hover img,
   .hover-effect.fade-crossfade:focus-visible img{
-    filter: saturate(0.3) brightness(1.1);
+    opacity: 0;
   }
   .hover-effect.fade-crossfade:hover::before,
   .hover-effect.fade-crossfade:focus-visible::before{
@@ -86,7 +87,7 @@
 }</code></pre>
       </div>
 
-      <p class="copy-hint"><small>Select the code and copy with <kbd>Ctrl+C</kbd> or <kbd>&#8984;C</kbd>.</small></p>
+      <p class="copy-hint"><small>Set the <code><img src></code> for image #1 and the <code>background-image</code> URL inside <code>::before</code> for image #2. Select the code and copy with <kbd>Ctrl+C</kbd> or <kbd>&#8984;C</kbd>.</small></p>
     </section>
 
   </div>
