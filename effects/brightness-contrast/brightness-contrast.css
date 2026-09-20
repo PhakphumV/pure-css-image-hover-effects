@@ -141,3 +141,25 @@
     filter: brightness(1);
   }
 }
+
+
+/* ---- contrast-to-normal ---- */
+/* Image starts with reduced contrast and restores normal contrast on
+   hover/focus (inverse of contrast-decrease). */
+.hover-effect.contrast-to-normal img{
+  filter: contrast(0.5);
+  transition: filter 0.5s ease;
+}
+.hover-effect.contrast-to-normal:hover img,
+.hover-effect.contrast-to-normal:focus-visible img{
+  filter: contrast(1);
+}
+@media (prefers-reduced-motion: reduce) {
+  .hover-effect.contrast-to-normal img{
+    transition: none;
+  }
+  .hover-effect.contrast-to-normal:hover img,
+  .hover-effect.contrast-to-normal:focus-visible img{
+    filter: contrast(1);
+  }
+}
