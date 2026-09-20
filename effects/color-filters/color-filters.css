@@ -58,3 +58,24 @@
     filter: hue-rotate(30deg) saturate(3);
   }
 }
+
+
+/* ---- sepia ---- */
+/* Image transitions from full colour to full sepia on hover/focus. */
+.hover-effect.sepia img{
+  filter: sepia(0);
+  transition: filter 0.5s ease;
+}
+.hover-effect.sepia:hover img,
+.hover-effect.sepia:focus-visible img{
+  filter: sepia(100%);
+}
+@media (prefers-reduced-motion: reduce) {
+  .hover-effect.sepia img{
+    transition: none;
+  }
+  .hover-effect.sepia:hover img,
+  .hover-effect.sepia:focus-visible img{
+    filter: sepia(100%);
+  }
+}
