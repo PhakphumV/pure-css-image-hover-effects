@@ -94,3 +94,24 @@
     transform: scale(1.4) rotate(8deg);
   }
 }
+
+
+/* ---- tilt-up ---- */
+/* Image tilts upward (top recedes) on hover/focus via a perspective
+   rotateX. A 1.4 scale keeps the tilted image covering the viewport. */
+.hover-effect.tilt-up img{
+  transition: transform 0.5s ease;
+}
+.hover-effect.tilt-up:hover img,
+.hover-effect.tilt-up:focus-visible img{
+  transform: perspective(800px) rotateX(15deg) scale(1.4);
+}
+@media (prefers-reduced-motion: reduce) {
+  .hover-effect.tilt-up img{
+    transition: none;
+  }
+  .hover-effect.tilt-up:hover img,
+  .hover-effect.tilt-up:focus-visible img{
+    transform: perspective(800px) rotateX(15deg) scale(1.4);
+  }
+}
