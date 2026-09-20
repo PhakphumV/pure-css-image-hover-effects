@@ -1,0 +1,36 @@
+/* Brightness & Contrast-category hover effects.
+
+   Pattern for every effect in this category:
+     - All transformations use the CSS filter property (brightness,
+       contrast, or a controlled combination of both). Each effect
+       targets one of these as the defining behavior so the visual
+       change is unambiguously attributable.
+     - Idle state: filter: <fn>(1) (or no filter when 1 is the natural
+       value). Hover/focus state: filter: <fn>(<sensible value>) that
+       produces a clearly visible, immediately readable change.
+     - transition: filter 0.5s ease on the img so the brightness or
+       contrast change animates smoothly.
+     - Mirror :hover onto :focus-visible so keyboard users see the
+       same affordance.
+     - prefers-reduced-motion: drop the transition but keep the end
+       state so the visual change still lands instantly. */
+
+/* ---- brighten ---- */
+/* Image transitions to a brighter state on hover/focus via filter: brightness(). */
+.hover-effect.brighten img{
+  filter: brightness(1);
+  transition: filter 0.5s ease;
+}
+.hover-effect.brighten:hover img,
+.hover-effect.brighten:focus-visible img{
+  filter: brightness(1.4);
+}
+@media (prefers-reduced-motion: reduce) {
+  .hover-effect.brighten img{
+    transition: none;
+  }
+  .hover-effect.brighten:hover img,
+  .hover-effect.brighten:focus-visible img{
+    filter: brightness(1.4);
+  }
+}
