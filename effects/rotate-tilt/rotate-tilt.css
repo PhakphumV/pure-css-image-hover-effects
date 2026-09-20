@@ -73,3 +73,24 @@
     transform: scale(1.4) rotate(-8deg);
   }
 }
+
+
+/* ---- tilt-right ---- */
+/* Image tilts right (clockwise) on hover/focus. A 1.4 scale keeps
+   the tilted image covering the full viewport. */
+.hover-effect.tilt-right img{
+  transition: transform 0.5s ease;
+}
+.hover-effect.tilt-right:hover img,
+.hover-effect.tilt-right:focus-visible img{
+  transform: scale(1.4) rotate(8deg);
+}
+@media (prefers-reduced-motion: reduce) {
+  .hover-effect.tilt-right img{
+    transition: none;
+  }
+  .hover-effect.tilt-right:hover img,
+  .hover-effect.tilt-right:focus-visible img{
+    transform: scale(1.4) rotate(8deg);
+  }
+}
