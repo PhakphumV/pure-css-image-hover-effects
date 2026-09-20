@@ -206,7 +206,7 @@
   position: relative;
 }
 .hover-effect.blur-focus-left img{
-  filter: blur(6px);
+  filter: blur(0);
   transition: filter 0.5s ease;
 }
 .hover-effect.blur-focus-left::before{
@@ -225,7 +225,7 @@
 }
 .hover-effect.blur-focus-left:hover img,
 .hover-effect.blur-focus-left:focus-visible img{
-  filter: blur(6px);
+  filter: blur(8px);
 }
 .hover-effect.blur-focus-left:hover::before,
 .hover-effect.blur-focus-left:focus-visible::before{
@@ -238,7 +238,7 @@
   }
   .hover-effect.blur-focus-left:hover img,
   .hover-effect.blur-focus-left:focus-visible img{
-    filter: blur(6px);
+    filter: blur(8px);
   }
   .hover-effect.blur-focus-left:hover::before,
   .hover-effect.blur-focus-left:focus-visible::before{
