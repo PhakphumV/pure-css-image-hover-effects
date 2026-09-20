@@ -135,3 +135,35 @@
   }
 }
 
+
+/* ---- slide-reveal-top-left ---- */
+/* Cover anchored to the bottom-right corner shrinks on hover, revealing the image from the top-left. */
+.hover-effect.slide-reveal-top-left{
+  position: relative;
+}
+.hover-effect.slide-reveal-top-left::before{
+  content: "";
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+  background: #1a1a1a;
+  transition: width, height 0.5s ease;
+}
+.hover-effect.slide-reveal-top-left:hover::before,
+.hover-effect.slide-reveal-top-left:focus-visible::before{
+  width: 0;
+  height: 0;
+}
+@media (prefers-reduced-motion: reduce) {
+  .hover-effect.slide-reveal-top-left::before{
+    transition: none;
+  }
+  .hover-effect.slide-reveal-top-left:hover::before,
+  .hover-effect.slide-reveal-top-left:focus-visible::before{
+    width: 0;
+    height: 0;
+  }
+}
+
