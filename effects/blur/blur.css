@@ -246,3 +246,50 @@
   }
 }
 
+
+/* ---- blur-focus-right ---- */
+/* A sharp vertical band fades into view on the right of an otherwise-blurred image on hover/focus. */
+.hover-effect.blur-focus-right{
+  position: relative;
+}
+.hover-effect.blur-focus-right img{
+  filter: blur(6px);
+  transition: filter 0.5s ease;
+}
+.hover-effect.blur-focus-right::before{
+  content: "";
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 30%;
+  height: 60%;  background-image: url("https://picsum.photos/seed/blur-focus-right/800/600");
+  background-size: cover;
+  background-position: center;
+  filter: blur(0);
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+.hover-effect.blur-focus-right:hover img,
+.hover-effect.blur-focus-right:focus-visible img{
+  filter: blur(6px);
+}
+.hover-effect.blur-focus-right:hover::before,
+.hover-effect.blur-focus-right:focus-visible::before{
+  opacity: 1;
+}
+@media (prefers-reduced-motion: reduce) {
+  .hover-effect.blur-focus-right img,
+  .hover-effect.blur-focus-right::before{
+    transition: none;
+  }
+  .hover-effect.blur-focus-right:hover img,
+  .hover-effect.blur-focus-right:focus-visible img{
+    filter: blur(6px);
+  }
+  .hover-effect.blur-focus-right:hover::before,
+  .hover-effect.blur-focus-right:focus-visible::before{
+    opacity: 1;
+  }
+}
+
