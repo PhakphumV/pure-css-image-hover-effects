@@ -119,3 +119,25 @@
     filter: brightness(1);
   }
 }
+
+
+/* ---- darken-to-normal ---- */
+/* Image starts brightened and restores normal brightness on hover/focus
+   (inverse of brighten). Brightness recovery, not a fade. */
+.hover-effect.darken-to-normal img{
+  filter: brightness(1.4);
+  transition: filter 0.5s ease;
+}
+.hover-effect.darken-to-normal:hover img,
+.hover-effect.darken-to-normal:focus-visible img{
+  filter: brightness(1);
+}
+@media (prefers-reduced-motion: reduce) {
+  .hover-effect.darken-to-normal img{
+    transition: none;
+  }
+  .hover-effect.darken-to-normal:hover img,
+  .hover-effect.darken-to-normal:focus-visible img{
+    filter: brightness(1);
+  }
+}
