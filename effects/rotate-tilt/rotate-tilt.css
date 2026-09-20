@@ -52,3 +52,24 @@
     transform: scale(1.4) rotate(-15deg);
   }
 }
+
+
+/* ---- tilt-left ---- */
+/* Image tilts left (counter-clockwise) on hover/focus. A 1.4 scale
+   keeps the tilted image covering the full viewport. */
+.hover-effect.tilt-left img{
+  transition: transform 0.5s ease;
+}
+.hover-effect.tilt-left:hover img,
+.hover-effect.tilt-left:focus-visible img{
+  transform: scale(1.4) rotate(-8deg);
+}
+@media (prefers-reduced-motion: reduce) {
+  .hover-effect.tilt-left img{
+    transition: none;
+  }
+  .hover-effect.tilt-left:hover img,
+  .hover-effect.tilt-left:focus-visible img{
+    transform: scale(1.4) rotate(-8deg);
+  }
+}
