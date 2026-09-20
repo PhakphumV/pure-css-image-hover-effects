@@ -340,3 +340,53 @@
   }
 }
 
+
+/* ---- blur-focus-depth ---- */
+/* A deeper blur (8px, vs the 6px used elsewhere) plus a wider, taller
+   foreground band with rounded top corners that fades in on hover/focus,
+   suggesting a foreground subject in focus against a softened background. */
+.hover-effect.blur-focus-depth{
+  position: relative;
+}
+.hover-effect.blur-focus-depth img{
+  filter: blur(8px);
+  transition: filter 0.5s ease;
+}
+.hover-effect.blur-focus-depth::before{
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 65%;
+  height: 45%;  background-image: url("https://picsum.photos/seed/blur-focus-depth/800/600");
+  background-size: cover;
+  background-position: center;
+  border-radius: 12px 12px 0 0;
+  filter: blur(0);
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+.hover-effect.blur-focus-depth:hover img,
+.hover-effect.blur-focus-depth:focus-visible img{
+  filter: blur(8px);
+}
+.hover-effect.blur-focus-depth:hover::before,
+.hover-effect.blur-focus-depth:focus-visible::before{
+  opacity: 1;
+}
+@media (prefers-reduced-motion: reduce) {
+  .hover-effect.blur-focus-depth img,
+  .hover-effect.blur-focus-depth::before{
+    transition: none;
+  }
+  .hover-effect.blur-focus-depth:hover img,
+  .hover-effect.blur-focus-depth:focus-visible img{
+    filter: blur(8px);
+  }
+  .hover-effect.blur-focus-depth:hover::before,
+  .hover-effect.blur-focus-depth:focus-visible::before{
+    opacity: 1;
+  }
+}
+
