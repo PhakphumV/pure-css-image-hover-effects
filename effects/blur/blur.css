@@ -105,3 +105,50 @@
   }
 }
 
+
+/* ---- blur-focus-top ---- */
+/* A sharp horizontal band fades into view at the top of an otherwise-blurred image on hover/focus. */
+.hover-effect.blur-focus-top{
+  position: relative;
+}
+.hover-effect.blur-focus-top img{
+  filter: blur(6px);
+  transition: filter 0.5s ease;
+}
+.hover-effect.blur-focus-top::before{
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60%;
+  height: 30%;  background-image: url("https://picsum.photos/seed/blur-focus-top/800/600");
+  background-size: cover;
+  background-position: center;
+  filter: blur(0);
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+.hover-effect.blur-focus-top:hover img,
+.hover-effect.blur-focus-top:focus-visible img{
+  filter: blur(6px);
+}
+.hover-effect.blur-focus-top:hover::before,
+.hover-effect.blur-focus-top:focus-visible::before{
+  opacity: 1;
+}
+@media (prefers-reduced-motion: reduce) {
+  .hover-effect.blur-focus-top img,
+  .hover-effect.blur-focus-top::before{
+    transition: none;
+  }
+  .hover-effect.blur-focus-top:hover img,
+  .hover-effect.blur-focus-top:focus-visible img{
+    filter: blur(6px);
+  }
+  .hover-effect.blur-focus-top:hover::before,
+  .hover-effect.blur-focus-top:focus-visible::before{
+    opacity: 1;
+  }
+}
+
