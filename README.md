@@ -5,7 +5,7 @@
 A copy-paste library of pure CSS image hover effects. One class on a
 `<div>` that contains an `<img>`. No JavaScript. No build step.
 
-Open [`index.html`](./index.html) to browse the gallery. Click any
+Open [`Index`](https://phakphumv.github.io/pure-css-image-hover-effects/) page to browse the gallery. Click any
 card to see a live preview and the HTML and CSS for that effect.
 
 ## Status
