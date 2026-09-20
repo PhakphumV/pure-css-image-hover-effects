@@ -1,0 +1,33 @@
+/* Rotate & Tilt-category hover effects.
+
+   Pattern for every effect in this category:
+     - The wrapper carries the standard `.hover-effect.SLUG` class.
+     - Rotation/tilt is achieved via the CSS `transform` property
+       (rotate, skew, or both) on the <img> child.
+     - A slight `scale()` is applied together with the rotation so the
+       rotated image keeps covering the effect viewport without
+       exposing blank corners/edges.
+     - Hover state is mirrored to `:focus-visible`.
+     - `:focus-visible` mirrors `:hover` (a11y parity).
+     - `prefers-reduced-motion: reduce` disables transitions but keeps
+       the final interactive state. */
+
+/* ---- rotate-clockwise ---- */
+/* Slight clockwise rotation on hover/focus. A 1.4 scale keeps the
+   rotated image covering the full viewport. */
+.hover-effect.rotate-clockwise img{
+  transition: transform 0.5s ease;
+}
+.hover-effect.rotate-clockwise:hover img,
+.hover-effect.rotate-clockwise:focus-visible img{
+  transform: scale(1.4) rotate(15deg);
+}
+@media (prefers-reduced-motion: reduce) {
+  .hover-effect.rotate-clockwise img{
+    transition: none;
+  }
+  .hover-effect.rotate-clockwise:hover img,
+  .hover-effect.rotate-clockwise:focus-visible img{
+    transform: scale(1.4) rotate(15deg);
+  }
+}
