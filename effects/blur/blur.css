@@ -199,3 +199,50 @@
   }
 }
 
+
+/* ---- blur-focus-left ---- */
+/* A sharp vertical band fades into view on the left of an otherwise-blurred image on hover/focus. */
+.hover-effect.blur-focus-left{
+  position: relative;
+}
+.hover-effect.blur-focus-left img{
+  filter: blur(6px);
+  transition: filter 0.5s ease;
+}
+.hover-effect.blur-focus-left::before{
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 30%;
+  height: 60%;  background-image: url("https://picsum.photos/seed/blur-focus-left/800/600");
+  background-size: cover;
+  background-position: center;
+  filter: blur(0);
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+.hover-effect.blur-focus-left:hover img,
+.hover-effect.blur-focus-left:focus-visible img{
+  filter: blur(6px);
+}
+.hover-effect.blur-focus-left:hover::before,
+.hover-effect.blur-focus-left:focus-visible::before{
+  opacity: 1;
+}
+@media (prefers-reduced-motion: reduce) {
+  .hover-effect.blur-focus-left img,
+  .hover-effect.blur-focus-left::before{
+    transition: none;
+  }
+  .hover-effect.blur-focus-left:hover img,
+  .hover-effect.blur-focus-left:focus-visible img{
+    filter: blur(6px);
+  }
+  .hover-effect.blur-focus-left:hover::before,
+  .hover-effect.blur-focus-left:focus-visible::before{
+    opacity: 1;
+  }
+}
+
