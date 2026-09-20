@@ -218,3 +218,50 @@
     opacity: 1;
   }
 }
+
+/* ---- fade-crossfade ---- */
+/* Crossfade between two visual states: full-color image with no
+   overlay, and a desaturated (filter: saturate(0.3)
+   brightness(1.1)) image with a subtle dark ::before overlay.
+   The pseudo-element overlay is added so the effect is more
+   than a single-state filter change -- the dim layer fading
+   in alongside the desaturated image gives the visual a true
+   crossfade between two distinct looks. Wrapper picks up
+   position: relative for the absolute overlay. */
+.hover-effect.fade-crossfade{
+  position: relative;
+}
+.hover-effect.fade-crossfade::before{
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.35);
+  opacity: 0;
+  transition: opacity 0.5s ease;
+  pointer-events: none;
+}
+.hover-effect.fade-crossfade img{
+  transition: filter 0.5s ease;
+}
+.hover-effect.fade-crossfade:hover img,
+.hover-effect.fade-crossfade:focus-visible img{
+  filter: saturate(0.3) brightness(1.1);
+}
+.hover-effect.fade-crossfade:hover::before,
+.hover-effect.fade-crossfade:focus-visible::before{
+  opacity: 1;
+}
+@media (prefers-reduced-motion: reduce) {
+  .hover-effect.fade-crossfade img,
+  .hover-effect.fade-crossfade::before{
+    transition: none;
+  }
+  .hover-effect.fade-crossfade:hover img,
+  .hover-effect.fade-crossfade:focus-visible img{
+    filter: saturate(0.3) brightness(1.1);
+  }
+  .hover-effect.fade-crossfade:hover::before,
+  .hover-effect.fade-crossfade:focus-visible::before{
+    opacity: 1;
+  }
+}
