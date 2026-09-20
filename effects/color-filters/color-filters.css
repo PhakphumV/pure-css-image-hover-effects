@@ -36,3 +36,25 @@
     filter: grayscale(100%);
   }
 }
+
+
+/* ---- colorize ---- */
+/* Image intensifies and shifts in hue on hover/focus, producing a vivid
+   colourised look without an overlay element. */
+.hover-effect.colorize img{
+  filter: hue-rotate(0deg) saturate(1);
+  transition: filter 0.5s ease;
+}
+.hover-effect.colorize:hover img,
+.hover-effect.colorize:focus-visible img{
+  filter: hue-rotate(30deg) saturate(3);
+}
+@media (prefers-reduced-motion: reduce) {
+  .hover-effect.colorize img{
+    transition: none;
+  }
+  .hover-effect.colorize:hover img,
+  .hover-effect.colorize:focus-visible img{
+    filter: hue-rotate(30deg) saturate(3);
+  }
+}
