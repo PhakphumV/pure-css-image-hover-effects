@@ -184,3 +184,25 @@
     transform: perspective(800px) translateZ(-50px) scale(1.1);
   }
 }
+
+
+/* ---- perspective-shift ---- */
+/* Image shifts in 3D space on hover/focus via translateZ plus a
+   horizontal translate, creating an off-axis perspective shift
+   rather than flat zoom. */
+.hover-effect.perspective-shift img{
+  transition: transform 0.5s ease;
+}
+.hover-effect.perspective-shift:hover img,
+.hover-effect.perspective-shift:focus-visible img{
+  transform: perspective(800px) translateZ(40px) translateX(-25px) scale(1.1);
+}
+@media (prefers-reduced-motion: reduce) {
+  .hover-effect.perspective-shift img{
+    transition: none;
+  }
+  .hover-effect.perspective-shift:hover img,
+  .hover-effect.perspective-shift:focus-visible img{
+    transform: perspective(800px) translateZ(40px) translateX(-25px) scale(1.1);
+  }
+}
