@@ -199,3 +199,26 @@
     transform: scale(1.2, 1.4);
   }
 }
+
+
+/* ---- compress ---- */
+/* Image starts slightly zoomed in (covering the viewport) and
+   compresses to its natural size on hover/focus. The slight zoom
+   at rest keeps the image filling the effect viewport. */
+.hover-effect.compress img{
+  transform: scale(1.4);
+  transition: transform 0.5s ease;
+}
+.hover-effect.compress:hover img,
+.hover-effect.compress:focus-visible img{
+  transform: scale(1);
+}
+@media (prefers-reduced-motion: reduce) {
+  .hover-effect.compress img{
+    transition: none;
+  }
+  .hover-effect.compress:hover img,
+  .hover-effect.compress:focus-visible img{
+    transform: scale(1);
+  }
+}
