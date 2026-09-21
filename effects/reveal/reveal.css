@@ -158,3 +158,34 @@
     clip-path: polygon(0 0, 0 0, 0 0, 0 0);
   }
 }
+
+/* ---- corner-reveal ---- */
+/* Overlay covers the image at idle, then shrinks to a small
+   triangle at the bottom-right corner on hover/focus, revealing
+   the rest of the image as a corner-tuck wipe. */
+.hover-effect.corner-reveal{
+  position: relative;
+  display: block;
+}
+.hover-effect.corner-reveal::before{
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(15, 23, 42, 0.85);
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+  transition: clip-path 0.5s ease;
+  pointer-events: none;
+}
+.hover-effect.corner-reveal:hover::before,
+.hover-effect.corner-reveal:focus-visible::before{
+  clip-path: polygon(100% 100%, 100% 50%, 50% 100%);
+}
+@media (prefers-reduced-motion: reduce) {
+  .hover-effect.corner-reveal::before{
+    transition: none;
+  }
+  .hover-effect.corner-reveal:hover::before,
+  .hover-effect.corner-reveal:focus-visible::before{
+    clip-path: polygon(100% 100%, 100% 50%, 50% 100%);
+  }
+}
