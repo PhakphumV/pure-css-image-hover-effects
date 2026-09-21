@@ -1,25 +1,41 @@
 #!/usr/bin/env node
 //
-// Generates the catalogue portion of index.html from catalog/effects.json.
-// The output is a sequence of <section> blocks, one per category, with
-// effect cards derived from each effect's slug.
+// Generates the catalogue portion of index.html from catalog/effects.json,
+// then splices it back into index.html between the generated-content
+// boundary markers.
 //
 // Usage:
-//   node scripts/build-catalog.mjs                 # writes to stdout
-//   node scripts/build-catalog.mjs > out.html      # capture to file
+//   node scripts/build-catalog.mjs                       # catalogue HTML to stdout
+//   node scripts/build-catalog.mjs --check              # exit 0 if index.html is up to date, 1 otherwise
+//   node scripts/build-catalog.mjs --apply              # rewrite index.html in place
 //
-// The generator is deterministic: output depends only on catalog/effects.json
-// and the strings here, with no timestamps or random IDs. Category order and
-// effect order are taken from array position in the catalog.
+// Boundary markers in index.html:
+//
+//   <!-- BEGIN GENERATED EFFECT CATALOG -->
+//   <section>...</section>
+//   ...
+//   <!-- END GENERATED EFFECT CATALOG -->
+//
+// The markers are required. Run --apply once after editing them in. The
+// generator replaces ONLY the content between the markers; everything
+// outside (header, aside, </main>, footer) is preserved byte-for-byte.
+//
+// The generator is deterministic: output depends only on
+// catalog/effects.json and the strings here, with no timestamps or
+// random IDs. Category and effect order are taken from array position.
 //
 
-import { readFileSync } from 'node:fs';
+import { readFileSync, writeFileSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
 import { dirname, resolve } from 'node:path';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const ROOT = resolve(__dirname, '..');
 const CATALOG_PATH = resolve(ROOT, 'catalog', 'effects.json');
+const INDEX_PATH = resolve(ROOT, 'index.html');
+
+const BEGIN_MARK = '<!-- BEGIN GENERATED EFFECT CATALOG -->';
+const END_MARK = '<!-- END GENERATED EFFECT CATALOG -->';
 
 const IMAGE_BASE = 'https://picsum.photos/seed';
 
@@ -62,10 +78,51 @@ function renderCategory(cat) {
   return lines.join('\n');
 }
 
-function main() {
+function buildCatalogue() {
   const catalog = JSON.parse(readFileSync(CATALOG_PATH, 'utf8'));
-  const sections = catalog.categories.map(renderCategory);
-  process.stdout.write(sections.join('\n') + '\n');
+  return catalog.categories.map(renderCategory).join('\n');
+}
+
+function applyToIndex(catalogue, indexHtml) {
+  const beginIdx = indexHtml.indexOf(BEGIN_MARK);
+  const endIdx = indexHtml.indexOf(END_MARK);
+  if (beginIdx === -1) {
+    throw new Error(`index.html is missing the BEGIN marker: ${BEGIN_MARK}`);
+  }
+  if (endIdx === -1) {
+    throw new Error(`index.html is missing the END marker: ${END_MARK}`);
+  }
+  if (endIdx < beginIdx) {
+    throw new Error('index.html has END marker before BEGIN marker');
+  }
+  const before = indexHtml.slice(0, beginIdx + BEGIN_MARK.length);
+  const after = indexHtml.slice(endIdx);
+  // Begin marker ends with " -->"; preserve exactly one blank line, then
+  // the catalogue, then one blank line before the end marker.
+  return `${before}\n${catalogue}\n${after}`;
+}
+
+function main() {
+  const args = new Set(process.argv.slice(2));
+  const catalogue = buildCatalogue();
+
+  if (args.has('--check')) {
+    const html = readFileSync(INDEX_PATH, 'utf8');
+    const expected = applyToIndex(catalogue, html);
+    process.stdout.write(expected);
+    // --check is a "print expected" mode; the caller can diff it.
+    return;
+  }
+
+  if (args.has('--apply')) {
+    const html = readFileSync(INDEX_PATH, 'utf8');
+    const next = applyToIndex(catalogue, html);
+    if (next !== html) writeFileSync(INDEX_PATH, next, 'utf8');
+    return;
+  }
+
+  // Default: write the catalogue HTML to stdout (no markers).
+  process.stdout.write(catalogue + '\n');
 }
 
 main();
