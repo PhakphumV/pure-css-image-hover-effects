@@ -278,7 +278,7 @@ keyboard users see the same affordance. Effects respect
 
 The runtime site is plain HTML/CSS with no build step. These
 commands are contributor tooling for the metadata-driven
-catalogue pipeline. All three read from `catalog/effects.json`
+catalogue pipeline. All of them read from `catalog/effects.json`
 and write to `index.html` and `README.md` only inside their
 generated-content markers.
 
@@ -290,3 +290,29 @@ Prerequisites: Node.js 18 or newer.
 | `npm run build` | Regenerates `index.html` and `README.md` catalogue sections, then assembles `dist/`. Idempotent: re-runs produce no further changes once output is up to date. |
 | `npm run verify` | Builds `dist/` into a fresh temporary directory and compares every file against the committed `dist/`. Exits non-zero if anything is missing, unexpected, or stale. Catches the cases the catalogue generators cannot (whole-file drift in `dist/`). |
 | `npm run check` | Runs `validate`, the catalogue generation checks for `index.html` and `README.md`, and `verify`. The one command to run before opening a PR. Exits non-zero on any drift. |
+
+## Deployment
+
+The published site at <https://phakphumv.github.io/pure-css-image-hover-effects/>
+is built and deployed by `.github/workflows/pages.yml` on every
+push to `main`:
+
+```
+checkout → npm ci → npm run check → npm run build → upload dist/ → deploy
+```
+
+The `npm run check` gate means the workflow fails before any
+deployment happens if the catalog is inconsistent, if
+`index.html` or `README.md` is stale relative to source, or
+if `dist/` has drifted. Only a clean, verified build can
+publish.
+
+One-time setup: in the repository's Settings → Pages, set
+**Source** to **GitHub Actions**. Until this is changed,
+GitHub Pages will continue to serve the branch root rather
+than the deployed artifact, and `pages.yml` will appear to
+succeed without effect.
+
+A second workflow, `.github/workflows/catalog-check.yml`,
+runs `npm run check` on every push and pull request so PRs
+get the same verification without a deploy.
