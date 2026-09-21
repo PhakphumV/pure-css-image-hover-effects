@@ -28,3 +28,26 @@
     transform: perspective(800px) translateZ(60px) scale(1.25);
   }
 }
+
+
+/* ---- flip-horizontal ---- */
+/* Image flips horizontally on hover/focus via rotateY(180deg)
+   with a perspective context. A 1.25 scale keeps the flipped
+   image close to its original size. */
+.hover-effect.flip-horizontal img{
+  transform: scale(1.25);
+  transition: transform 0.5s ease;
+}
+.hover-effect.flip-horizontal:hover img,
+.hover-effect.flip-horizontal:focus-visible img{
+  transform: perspective(800px) scale(1.25) rotateY(180deg);
+}
+@media (prefers-reduced-motion: reduce) {
+  .hover-effect.flip-horizontal img{
+    transition: none;
+  }
+  .hover-effect.flip-horizontal:hover img,
+  .hover-effect.flip-horizontal:focus-visible img{
+    transform: perspective(800px) scale(1.25) rotateY(180deg);
+  }
+}
