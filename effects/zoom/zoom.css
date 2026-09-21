@@ -2,10 +2,19 @@
    One class on .hover-effect.<slug>, scoped via the
    unique slug class so multiple categories can coexist.
 
-   Transition timing rules:
-   - 300ms minimum (perceptually smooth)
-   - 2000ms maximum (dramatic, contemplative)
-   - Tune per effect: dramatic zoom -> longer; subtle scale -> shorter. */
+   All zoom wrappers clip the scaled <img> so the zoomed-in
+   content stays contained within the wrapper's bounds instead
+   of overflowing into adjacent layout. */
+
+.hover-effect:is(
+  .point-zoom, .quick-zoom,
+  .zoom-in, .zoom-out,
+  .zoom-top, .zoom-bottom, .zoom-left, .zoom-right,
+  .zoom-top-left, .zoom-top-right,
+  .zoom-bottom-left, .zoom-bottom-right
+){
+  overflow: hidden;
+}
 
 /* ---- point-zoom ---- */
 /* Dramatic 5x zoom with off-centre origin. Long transition so the
