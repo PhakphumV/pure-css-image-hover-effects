@@ -178,3 +178,24 @@
     transform: scale(1.4, 1.2);
   }
 }
+
+
+/* ---- stretch-vertical ---- */
+/* Image stretches vertically on hover/focus. A slight horizontal
+   zoom keeps the stretched image covering the viewport. */
+.hover-effect.stretch-vertical img{
+  transition: transform 0.5s ease;
+}
+.hover-effect.stretch-vertical:hover img,
+.hover-effect.stretch-vertical:focus-visible img{
+  transform: scale(1.2, 1.4);
+}
+@media (prefers-reduced-motion: reduce) {
+  .hover-effect.stretch-vertical img{
+    transition: none;
+  }
+  .hover-effect.stretch-vertical:hover img,
+  .hover-effect.stretch-vertical:focus-visible img{
+    transform: scale(1.2, 1.4);
+  }
+}
