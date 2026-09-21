@@ -287,5 +287,6 @@ Prerequisites: Node.js 18 or newer.
 | Command | What it does |
 | --- | --- |
 | `npm run validate` | Checks `catalog/effects.json` against the effect implementations under `effects/`. Prints a ✓/✗ summary; exits non-zero on any failure. Never modifies files. |
-| `npm run build` | Regenerates the catalogue sections of `index.html` and `README.md` from the metadata. Idempotent: re-runs produce no further changes once output is up to date. |
-| `npm run check` | Runs `validate` plus a generation check for both files. Exits non-zero if either file is out of date or the metadata is invalid. The one command to run before opening a PR. |
+| `npm run build` | Regenerates `index.html` and `README.md` catalogue sections, then assembles `dist/`. Idempotent: re-runs produce no further changes once output is up to date. |
+| `npm run verify` | Builds `dist/` into a fresh temporary directory and compares every file against the committed `dist/`. Exits non-zero if anything is missing, unexpected, or stale. Catches the cases the catalogue generators cannot (whole-file drift in `dist/`). |
+| `npm run check` | Runs `validate`, the catalogue generation checks for `index.html` and `README.md`, and `verify`. The one command to run before opening a PR. Exits non-zero on any drift. |
