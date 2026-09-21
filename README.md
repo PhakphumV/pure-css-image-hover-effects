@@ -284,6 +284,11 @@ generated-content markers.
 
 Prerequisites: Node.js 18 or newer.
 
+For a deeper contributor guide — including the source vs generated file
+boundary, the end-to-end effect addition workflow, and the deployment
+pipeline — see [CONTRIBUTING.md](CONTRIBUTING.md) and
+[ARCHITECTURE.md](ARCHITECTURE.md).
+
 | Command | What it does |
 | --- | --- |
 | `npm run validate` | Checks `catalog/effects.json` against the effect implementations under `effects/`. Prints a ✓/✗ summary; exits non-zero on any failure. Never modifies files. |
