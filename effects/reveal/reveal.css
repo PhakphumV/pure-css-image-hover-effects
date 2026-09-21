@@ -162,7 +162,12 @@
 /* ---- corner-reveal ---- */
 /* Overlay covers the image at idle, then shrinks to a small
    triangle at the bottom-right corner on hover/focus, revealing
-   the rest of the image as a corner-tuck wipe. */
+   the rest of the image as a corner-tuck wipe.
+   NOTE: both polygons use 4 vertices — browsers cannot
+   interpolate between polygons of different vertex counts, so
+   keeping the count equal is what makes the transition animate.
+   Two of the hover vertices coincide at (100%, 100%) to form a
+   visible triangle identical to a 3-vertex polygon. */
 .hover-effect.corner-reveal{
   position: relative;
   display: block;
@@ -178,7 +183,7 @@
 }
 .hover-effect.corner-reveal:hover::before,
 .hover-effect.corner-reveal:focus-visible::before{
-  clip-path: polygon(100% 100%, 100% 50%, 50% 100%);
+  clip-path: polygon(100% 100%, 100% 100%, 100% 50%, 50% 100%);
 }
 @media (prefers-reduced-motion: reduce) {
   .hover-effect.corner-reveal::before{
@@ -186,7 +191,7 @@
   }
   .hover-effect.corner-reveal:hover::before,
   .hover-effect.corner-reveal:focus-visible::before{
-    clip-path: polygon(100% 100%, 100% 50%, 50% 100%);
+    clip-path: polygon(100% 100%, 100% 100%, 100% 50%, 50% 100%);
   }
 }
 
