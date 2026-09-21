@@ -162,3 +162,25 @@
     transform: perspective(800px) translateZ(80px) scale(1.15);
   }
 }
+
+
+/* ---- push-3d ---- */
+/* Image pushes back into 3D space on hover/focus via negative
+   translateZ plus a slight scale, producing a "pushed into the
+   page" feel rather than flat zoom. */
+.hover-effect.push-3d img{
+  transition: transform 0.5s ease;
+}
+.hover-effect.push-3d:hover img,
+.hover-effect.push-3d:focus-visible img{
+  transform: perspective(800px) translateZ(-50px) scale(1.1);
+}
+@media (prefers-reduced-motion: reduce) {
+  .hover-effect.push-3d img{
+    transition: none;
+  }
+  .hover-effect.push-3d:hover img,
+  .hover-effect.push-3d:focus-visible img{
+    transform: perspective(800px) translateZ(-50px) scale(1.1);
+  }
+}
