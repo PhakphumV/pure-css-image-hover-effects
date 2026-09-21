@@ -124,7 +124,7 @@
   width: 60%;
   height: 30%;  background-image: url("https://picsum.photos/seed/blur-focus-top/800/600");
   background-size: cover;
-  background-position: center;
+  background-position: top center;
   filter: blur(0);
   opacity: 0;
   transition: opacity 0.5s ease;
@@ -171,7 +171,7 @@
   width: 60%;
   height: 30%;  background-image: url("https://picsum.photos/seed/blur-focus-bottom/800/600");
   background-size: cover;
-  background-position: center;
+  background-position: bottom center;
   filter: blur(0);
   opacity: 0;
   transition: opacity 0.5s ease;
@@ -218,7 +218,7 @@
   width: 30%;
   height: 60%;  background-image: url("https://picsum.photos/seed/blur-focus-left/800/600");
   background-size: cover;
-  background-position: center;
+  background-position: left center;
   filter: blur(0);
   opacity: 0;
   transition: opacity 0.5s ease;
@@ -265,7 +265,7 @@
   width: 30%;
   height: 60%;  background-image: url("https://picsum.photos/seed/blur-focus-right/800/600");
   background-size: cover;
-  background-position: center;
+  background-position: right center;
   filter: blur(0);
   opacity: 0;
   transition: opacity 0.5s ease;
@@ -308,9 +308,13 @@
   position: absolute;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%) rotate(45deg);
-  width: 70%;
-  height: 40%;  background-image: url("https://picsum.photos/seed/blur-focus-diagonal/800/600");
+  /* Larger than the wrapper so the rotated band sweeps
+     diagonally across the image (top-left -> bottom-right);
+     the wrapper clips it to a visible diagonal stripe. */
+  width: 180%;
+  height: 38%;
+  transform: translate(-50%, -50%) rotate(-45deg);
+  background-image: url("https://picsum.photos/seed/blur-focus-diagonal/800/600");
   background-size: cover;
   background-position: center;
   filter: blur(0);
@@ -361,7 +365,7 @@
   width: 65%;
   height: 45%;  background-image: url("https://picsum.photos/seed/blur-focus-depth/800/600");
   background-size: cover;
-  background-position: center;
+  background-position: bottom center;
   border-radius: 12px 12px 0 0;
   filter: blur(0);
   opacity: 0;
