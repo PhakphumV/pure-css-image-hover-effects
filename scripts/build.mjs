@@ -101,7 +101,15 @@ function rimraf(p) {
 function copyRecursive(srcDir, destDir) {
   if (!existsSync(srcDir)) return;
   mkdirSync(destDir, { recursive: true });
-  for (const entry of readdirSync(srcDir, { withFileTypes: true })) {
+  // Sort entries by name so the traversal order is stable across
+  // filesystems. The output itself is order-independent (each file is
+  // copied once to its destination), but explicit sorting means the
+  // build cannot accidentally emit in a filesystem-dependent order
+  // even if that ordering ever leaked into the output.
+  const entries = readdirSync(srcDir, { withFileTypes: true })
+    .slice()
+    .sort((a, b) => a.name.localeCompare(b.name));
+  for (const entry of entries) {
     const srcPath = join(srcDir, entry.name);
     const destPath = join(destDir, entry.name);
     if (entry.isDirectory()) {
