@@ -126,3 +126,35 @@
     clip-path: inset(0 0 0 100%);
   }
 }
+
+/* ---- diagonal-reveal ---- */
+/* Overlay covers the image at idle, then collapses to the
+   top-left point via clip-path: polygon(...full...) ->
+   polygon(0 0, 0 0, 0 0, 0 0) on hover/focus, producing a
+   diagonal wipe. */
+.hover-effect.diagonal-reveal{
+  position: relative;
+  display: block;
+}
+.hover-effect.diagonal-reveal::before{
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(15, 23, 42, 0.85);
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+  transition: clip-path 0.5s ease;
+  pointer-events: none;
+}
+.hover-effect.diagonal-reveal:hover::before,
+.hover-effect.diagonal-reveal:focus-visible::before{
+  clip-path: polygon(0 0, 0 0, 0 0, 0 0);
+}
+@media (prefers-reduced-motion: reduce) {
+  .hover-effect.diagonal-reveal::before{
+    transition: none;
+  }
+  .hover-effect.diagonal-reveal:hover::before,
+  .hover-effect.diagonal-reveal:focus-visible::before{
+    clip-path: polygon(0 0, 0 0, 0 0, 0 0);
+  }
+}
