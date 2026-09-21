@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light">
+<title>Animated Frame &middot; Pure CSS Image Hover Effects</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.9.0/build/styles/vs2015.min.css">
+<link rel="stylesheet" href="../template.css">
+<link rel="stylesheet" href="border-frame.css">
+<script defer src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.9.0/build/highlight.min.js"></script>
+</head>
+<body>
+
+<header class="container">
+  <nav aria-label="Breadcrumb">
+    <ul>
+      <li><a href="../../index.html">&larr; Back to gallery</a></li>
+    </ul>
+  </nav>
+  <hgroup>
+    <h1>Animated Frame</h1>
+    <p>A conic-gradient ring rotates around the image on hover/focus, creating a colorful animated frame.</p>
+  </hgroup>
+</header>
+
+<main class="container">
+  <div class="grid detail">
+
+    <section class="preview" aria-label="Live preview">
+      <div class="preview-stage">
+        <div class="hover-effect animated-frame">
+          <img src="https://picsum.photos/seed/animated-frame/800/600" alt="Animated Frame demo">
+        </div>
+      </div>
+      <p class="preview-hint">Hover or focus the image to see the effect.</p>
+    </section>
+
+    <section aria-label="Source code">
+      <h3>HTML</h3>
+      <div class="code-block">
+        <pre><code class="language-html"><div class="hover-effect animated-frame">
+  <img src="image.jpg" alt="description">
+</div></code></pre>
+      </div>
+
+      <h3>CSS</h3>
+      <div class="code-block">
+        <pre><code class="language-css">.hover-effect.animated-frame{
+  position: relative;
+  display: block;
+}
+.hover-effect.animated-frame::before{
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 6px;
+  padding: 4px;
+  background: conic-gradient(
+    from 0deg,
+    #2563eb 0deg,
+    #ec4899 90deg,
+    #f59e0b 180deg,
+    #10b981 270deg,
+    #2563eb 360deg
+  );
+  -webkit-mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+          mask-composite: exclude;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+}
+.hover-effect.animated-frame:hover::before,
+.hover-effect.animated-frame:focus-visible::before{
+  opacity: 1;
+  animation: animated-frame-spin 1.6s linear infinite;
+}
+@keyframes animated-frame-spin{
+  to{ transform: rotate(360deg); }
+}</code></pre>
+      </div>
+
+      <p class="copy-hint"><small>The <code>::before</code> pseudo-element uses a conic gradient masked to a 4px border ring that rotates on hover/focus. Select the code and copy with <kbd>Ctrl+C</kbd> or <kbd>&#8984;C</kbd>.</small></p>
+    </section>
+
+  </div>
+</main>
+
+<footer class="container">
+  <small><a href="../../index.html">Pure CSS Image Hover Effects</a> &middot; No JavaScript &middot; MIT</small>
+</footer>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    hljs.highlightAll();
+  });
+</script>
+
+</body>
+</html>

@@ -4,6 +4,51 @@
    ::before or ::after pseudo-element so the <img> itself stays
    untouched. The border/frame is the dominant visual behavior;
    do not combine with zoom/rotate/3D transforms here. */
+
+/* ---- animated-frame ---- */
+/* A conic-gradient ring rotates around the image on hover/focus
+   to give an animated, "loading-spinner"-style frame. */
+.hover-effect.animated-frame{
+  position: relative;
+  display: block;
+}
+.hover-effect.animated-frame::before{
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 6px;
+  padding: 4px;
+  background: conic-gradient(
+    from 0deg,
+    #2563eb 0deg,
+    #ec4899 90deg,
+    #f59e0b 180deg,
+    #10b981 270deg,
+    #2563eb 360deg
+  );
+  -webkit-mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+          mask-composite: exclude;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+}
+.hover-effect.animated-frame:hover::before,
+.hover-effect.animated-frame:focus-visible::before{
+  opacity: 1;
+  animation: animated-frame-spin 1.6s linear infinite;
+}
+@keyframes animated-frame-spin{
+  to{ transform: rotate(360deg); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .hover-effect.animated-frame:hover::before,
+  .hover-effect.animated-frame:focus-visible::before{
+    animation: none;
+  }
+}
 .hover-effect.border-reveal{
   position: relative;
   display: block;
