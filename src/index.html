@@ -1,0 +1,1562 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light">
+<title>Pure CSS Image Hover Effects</title>
+<meta name="description" content="A library of pure CSS image hover effects. One class on a div containing an img. No JavaScript. Works on every modern desktop browser.">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css">
+<link rel="stylesheet" href="../effects/zoom/zoom.css">
+<link rel="stylesheet" href="../effects/pan/pan.css">
+<link rel="stylesheet" href="../effects/fade/fade.css">
+  <link rel="stylesheet" href="../effects/blur/blur.css">
+<link rel="stylesheet" href="../effects/slide/slide.css">
+<link rel="stylesheet" href="../effects/color-filters/color-filters.css">
+<link rel="stylesheet" href="../effects/brightness-contrast/brightness-contrast.css">
+<link rel="stylesheet" href="../effects/reduced-motion-notice/reduced-motion-notice.css">
+<link rel="stylesheet" href="../effects/rotate-tilt/rotate-tilt.css">
+<link rel="stylesheet" href="../effects/skew-distort/skew-distort.css">
+<link rel="stylesheet" href="../effects/three-d/three-d.css">
+<link rel="stylesheet" href="../effects/border-frame/border-frame.css">
+<link rel="stylesheet" href="../effects/shadow-depth/shadow-depth.css">
+<link rel="stylesheet" href="../effects/overlay/overlay.css">
+<link rel="stylesheet" href="../effects/reveal/reveal.css">
+<style>
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+  }
+  @media (min-width: 640px) {
+    .grid { grid-template-columns: repeat(4, 1fr); }
+  }
+  .card {
+    background: var(--pico-card-background-color);
+    border: 1px solid var(--pico-muted-border-color);
+    border-radius: 8px;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  }
+  .card:hover {
+    border-color: var(--pico-primary);
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+  }
+  .card a {
+    display: block;
+    color: inherit;
+    text-decoration: none;
+  }
+  .demo {
+    aspect-ratio: 4 / 3;
+    padding: 20px;
+    box-sizing: border-box;
+    background: #fff;
+  }
+  .demo .hover-effect {
+    width: 100%;
+    height: 100%;
+  }
+  .demo .hover-effect > img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+  .card-body {
+    padding: 0.625rem 0.875rem;
+  }
+  .card-body h3 {
+    margin: 0;
+    font-size: 1rem;
+  }
+</style>
+</head>
+<body>
+
+<header class="container">
+  <hgroup>
+    <h1>Pure CSS Image Hover Effects</h1>
+    <p>A library of pure CSS image hover effects. One class on a <code>&lt;div&gt;</code> that contains an <code>&lt;img&gt;</code>. No JavaScript. No build step.</p>
+  </hgroup>
+  <p><small>Click any card to see the live preview and copy the HTML and CSS.</small></p>
+</header>
+
+<main class="container">
+  <aside class="reduced-motion-notice" role="status" aria-live="polite">
+    <strong>Reduced motion enabled</strong>
+    <p>Your browser is configured to prefer reduced motion. The hover-effect demonstrations on this page may appear simplified or different.</p>
+  </aside>
+<!-- BEGIN GENERATED EFFECT CATALOG -->
+  <section>
+    <h2>Rotate &amp; Tilt</h2>
+    <p>10 effects</p>
+    <div class="grid">
+      <article class="card">
+        <a href="../effects/rotate-tilt/rotate-clockwise.html">
+          <div class="demo">
+            <div class="hover-effect rotate-clockwise">
+              <img src="https://picsum.photos/seed/rotate-clockwise/600/450" alt="Rotate Clockwise" loading="lazy">
+            </div>
+          </div>
+          <div class="card-body">
+            <h3>Rotate Clockwise</h3>
+          </div>
+        </a>
+      </article>
+      <article class="card">
+        <a href="../effects/rotate-tilt/rotate-counter-clockwise.html">
+          <div class="demo">
+            <div class="hover-effect rotate-counter-clockwise">
+              <img src="https://picsum.photos/seed/rotate-counter-clockwise/600/450" alt="Rotate Counter-Clockwise" loading="lazy">
+            </div>
+          </div>
+          <div class="card-body">
+            <h3>Rotate Counter-Clockwise</h3>
+          </div>
+        </a>
+      </article>
+      <article class="card">
+        <a href="../effects/rotate-tilt/tilt-left.html">
+          <div class="demo">
+            <div class="hover-effect tilt-left">
+              <img src="https://picsum.photos/seed/tilt-left/600/450" alt="Tilt Left" loading="lazy">
+            </div>
+          </div>
+          <div class="card-body">
+            <h3>Tilt Left</h3>
+          </div>
+        </a>
+      </article>
+      <article class="card">
+        <a href="../effects/rotate-tilt/tilt-right.html">
+          <div class="demo">
+            <div class="hover-effect tilt-right">
+              <img src="https://picsum.photos/seed/tilt-right/600/450" alt="Tilt Right" loading="lazy">
+            </div>
+          </div>
+          <div class="card-body">
+            <h3>Tilt Right</h3>
+          </div>
+        </a>
+      </article>
+      <article class="card">
+        <a href="../effects/rotate-tilt/tilt-up.html">
+          <div class="demo">
+            <div class="hover-effect tilt-up">
+              <img src="https://picsum.photos/seed/tilt-up/600/450" alt="Tilt Up" loading="lazy">
+            </div>
+          </div>
+          <div class="card-body">
+            <h3>Tilt Up</h3>
+          </div>
+        </a>
+      </article>
+      <article class="card">
+        <a href="../effects/rotate-tilt/tilt-down.html">
+          <div class="demo">
+            <div class="hover-effect tilt-down">
+              <img src="https://picsum.photos/seed/tilt-down/600/450" alt="Tilt Down" loading="lazy">
+            </div>
+          </div>
+          <div class="card-body">
+            <h3>Tilt Down</h3>
+          </div>
+        </a>
+      </article>
+      <article class="card">
+        <a href="../effects/rotate-tilt/tilt-top-left.html">
+          <div class="demo">
+            <div class="hover-effect tilt-top-left">
+              <img src="https://picsum.photos/seed/tilt-top-left/600/450" alt="Tilt Top-Left" loading="lazy">
+            </div>
+          </div>
+          <div class="card-body">
+            <h3>Tilt Top-Left</h3>
+          </div>
+        </a>
+      </article>
+      <article class="card">
+        <a href="../effects/rotate-tilt/tilt-top-right.html">
+          <div class="demo">
+            <div class="hover-effect tilt-top-right">
+              <img src="https://picsum.photos/seed/tilt-top-right/600/450" alt="Tilt Top-Right" loading="lazy">
+            </div>
+          </div>
+          <div class="card-body">
+            <h3>Tilt Top-Right</h3>
+          </div>
+        </a>
+      </article>
+      <article class="card">
+        <a href="../effects/rotate-tilt/tilt-bottom-left.html">
+          <div class="demo">
+            <div class="hover-effect tilt-bottom-left">
+              <img src="https://picsum.photos/seed/tilt-bottom-left/600/450" alt="Tilt Bottom-Left" loading="lazy">
+            </div>
+          </div>
+          <div class="card-body">
+            <h3>Tilt Bottom-Left</h3>
+          </div>
+        </a>
+      </article>
+      <article class="card">
+        <a href="../effects/rotate-tilt/tilt-bottom-right.html">
+          <div class="demo">
+            <div class="hover-effect tilt-bottom-right">
+              <img src="https://picsum.photos/seed/tilt-bottom-right/600/450" alt="Tilt Bottom-Right" loading="lazy">
+            </div>
+          </div>
+          <div class="card-body">
+            <h3>Tilt Bottom-Right</h3>
+          </div>
+        </a>
+      </article>
+    </div>
+  </section>
+  <section>
+    <h2>Skew &amp; Distort</h2>
+    <p>10 effects</p>
+    <div class="grid">
+      <article class="card">
+        <a href="../effects/skew-distort/skew-horizontal.html">
+          <div class="demo">
+            <div class="hover-effect skew-horizontal">
+              <img src="https://picsum.photos/seed/skew-horizontal/600/450" alt="Horizontal Skew" loading="lazy">
+            </div>
+          </div>
+          <div class="card-body">
+            <h3>Horizontal Skew</h3>
+          </div>
+        </a>
+      </article>
+      <article class="card">
+        <a href="../effects/skew-distort/skew-vertical.html">
+          <div class="demo">
+            <div class="hover-effect skew-vertical">
+              <img src="https://picsum.photos/seed/skew-vertical/600/450" alt="Vertical Skew" loading="lazy">
+            </div>
+          </div>
+          <div class="card-body">
+            <h3>Vertical Skew</h3>
+          </div>
+        </a>
+      </article>
+      <article class="card">
+        <a href="../effects/skew-distort/skew-left.html">
+          <div class="demo">
+            <div class="hover-effect skew-left">
+              <img src="https://picsum.photos/seed/skew-left/600/450" alt="Skew Left" loading="lazy">
+            </div>
+          </div>
+          <div class="card-body">
+            <h3>Skew Left</h3>
+          </div>
+        </a>
+      </article>
+      <article class="card">
+        <a href="../effects/skew-distort/skew-right.html">
+          <div class="demo">
+            <div class="hover-effect skew-right">
+              <img src="https://picsum.photos/seed/skew-right/600/450" alt="Skew Right" loading="lazy">
+            </div>
+          </div>
+          <div class="card-body">
+            <h3>Skew Right</h3>
+          </div>
+        </a>
+      </article>
+      <article class="card">
+        <a href="../effects/skew-distort/skew-top.html">
+          <div class="demo">
+            <div class="hover-effect skew-top">
+              <img src="https://picsum.photos/seed/skew-top/600/450" alt="Skew Top" loading="lazy">
+            </div>
+          </div>
+          <div class="card-body">
+            <h3>Skew Top</h3>
+          </div>
+        </a>
+      </article>
+      <article class="card">
+        <a href="../effects/skew-distort/skew-bottom.html">
+          <div class="demo">
+            <div class="hover-effect skew-bottom">
+              <img src="https://picsum.photos/seed/skew-bottom/600/450" alt="Skew Bottom" loading="lazy">
+            </div>
+          </div>
+          <div class="card-body">
+            <h3>Skew Bottom</h3>
+          </div>
+        </a>
+      </article>
+      <article class="card">
+        <a href="../effects/skew-distort/skew-perspective.html">
+          <div class="demo">
+            <div class="hover-effect skew-perspective">
+              <img src="https://picsum.photos/seed/skew-perspective/600/450" alt="Perspective Skew" loading="lazy">
+            </div>
+          </div>
+          <div class="card-body">
+            <h3>Perspective Skew</h3>
+          </div>
+        </a>
+      </article>
+      <article class="card">
+        <a href="../effects/skew-distort/stretch-horizontal.html">
+          <div class="demo">
+            <div class="hover-effect stretch-horizontal">
+              <img src="https://picsum.photos/seed/stretch-horizontal/600/450" alt="Horizontal Stretch" loading="lazy">
+            </div>
+          </div>
+          <div class="card-body">
+            <h3>Horizontal Stretch</h3>
+          </div>
+        </a>
+      </article>
+      <article class="card">
+        <a href="../effects/skew-distort/stretch-vertical.html">
+          <div class="demo">
+            <div class="hover-effect stretch-vertical">
+              <img src="https://picsum.photos/seed/stretch-vertical/600/450" alt="Vertical Stretch" loading="lazy">
+            </div>
+          </div>
+          <div class="card-body">
+            <h3>Vertical Stretch</h3>
+          </div>
+        </a>
+      </article>
+      <article class="card">
+        <a href="../effects/skew-distort/compress.html">
+          <div class="demo">
+            <div class="hover-effect compress">
+              <img src="https://picsum.photos/seed/compress/600/450" alt="Compress" loading="lazy">
+            </div>
+          </div>
+          <div class="card-body">
+            <h3>Compress</h3>
+          </div>
+        </a>
+      </article>
+    </div>
+  </section>
+  <section>
+    <h2>3D &amp; Perspective</h2>
+    <p>10 effects</p>
+    <div class="grid">
+      <article class="card">
+        <a href="../effects/three-d/perspective-zoom.html">
+          <div class="demo">
+            <div class="hover-effect perspective-zoom">
+              <img src="https://picsum.photos/seed/perspective-zoom/600/450" alt="3D Perspective Zoom" loading="lazy">
+            </div>
+          </div>
+          <div class="card-body">
+            <h3>3D Perspective Zoom</h3>
+          </div>
+        </a>
+      </article>
+      <article class="card">
+        <a href="../effects/three-d/flip-horizontal.html">
+          <div class="demo">
+            <div class="hover-effect flip-horizontal">
+              <img src="https://picsum.photos/seed/flip-horizontal/600/450" alt="Flip Horizontal" loading="lazy">
+            </div>
+          </div>
+          <div class="card-body">
+            <h3>Flip Horizontal</h3>
+          </div>
+        </a>
+      </article>
+      <article class="card">
+        <a href="../effects/three-d/flip-vertical.html">
+          <div class="demo">
+            <div class="hover-effect flip-vertical">
+              <img src="https://picsum.photos/seed/flip-vertical/600/450" alt="Flip Vertical" loading="lazy">
+            </div>
+          </div>
+          <div class="card-body">
+            <h3>Flip Vertical</h3>
+          </div>
+        </a>
+      </article>
+      <article class="card">
+        <a href="../effects/three-d/rotate-x.html">
+          <div class="demo">
+            <div class="hover-effect rotate-x">
+              <img src="https://picsum.photos/seed/rotate-x/600/450" alt="Rotate X" loading="lazy">
+            </div>
+          </div>
+          <div class="card-body">
+            <h3>Rotate X</h3>
+          </div>
+        </a>
+      </article>
+      <article class="card">
+        <a href="../effects/three-d/rotate-y.html">
+          <div class="demo">
+            <div class="hover-effect rotate-y">
+              <img src="https://picsum.photos/seed/rotate-y/600/450" alt="Rotate Y" loading="lazy">
+            </div>
+          </div>
+          <div class="card-body">
+            <h3>Rotate Y</h3>
+          </div>
+        </a>
+      </article>
+      <article class="card">
+        <a href="../effects/three-d/tilt-3d.html">
+          <div class="demo">
+            <div class="hover-effect tilt-3d">
+              <img src="https://picsum.photos/seed/tilt-3d/600/450" alt="3D Tilt" loading="lazy">
+            </div>
+          </div>
+          <div class="card-body">
+            <h3>3D Tilt</h3>
+          </div>
+        </a>
+      </article>
+      <article class="card">
+        <a href="../effects/three-d/lift-3d.html">
+          <div class="demo">
+            <div class="hover-effect lift-3d">
+              <img src="https://picsum.photos/seed/lift-3d/600/450" alt="3D Lift" loading="lazy">
+            </div>
+          </div>
+          <div class="card-body">
+            <h3>3D Lift</h3>
+          </div>
+        </a>
+      </article>
+      <article class="card">
+        <a href="../effects/three-d/push-3d.html">
+          <div class="demo">
+            <div class="hover-effect push-3d">
+              <img src="https://picsum.photos/seed/push-3d/600/450" alt="3D Push" loading="lazy">
+            </div>
+          </div>
+          <div class="card-body">
+            <h3>3D Push</h3>
+          </div>
+        </a>
+      </article>
+      <article class="card">
+        <a href="../effects/three-d/perspective-shift.html">
+          <div class="demo">
+            <div class="hover-effect perspective-shift">
+              <img src="https://picsum.photos/seed/perspective-shift/600/450" alt="Perspective Shift" loading="lazy">
+            </div>
+          </div>
+          <div class="card-body">
+            <h3>Perspective Shift</h3>
+          </div>
+        </a>
+      </article>
+      <article class="card">
+        <a href="../effects/three-d/card-3d.html">
+          <div class="demo">
+            <div class="hover-effect card-3d">
+              <img src="https://picsum.photos/seed/card-3d/600/450" alt="Card-like 3D" loading="lazy">
+            </div>
+          </div>
+          <div class="card-body">
+            <h3>Card-like 3D</h3>
+          </div>
+        </a>
+      </article>
+    </div>
+  </section>
+  <section>
+    <h2>Border &amp; Frame</h2>
+    <p>5 effects</p>
+    <div class="grid">
+      <article class="card">
+        <a href="../effects/border-frame/border-reveal.html">
+          <div class="demo">
+            <div class="hover-effect border-reveal">
+              <img src="https://picsum.photos/seed/border-reveal/600/450" alt="Border Reveal" loading="lazy">
+            </div>
+          </div>
+          <div class="card-body">
+            <h3>Border Reveal</h3>
+          </div>
+        </a>
+      </article>
+      <article class="card">
+        <a href="../effects/border-frame/animated-frame.html">
+          <div class="demo">
+            <div class="hover-effect animated-frame">
+              <img src="https://picsum.photos/seed/animated-frame/600/450" alt="Animated Frame" loading="lazy">
+            </div>
+          </div>
+          <div class="card-body">
+            <h3>Animated Frame</h3>
+          </div>
+        </a>
+      </article>
+      <article class="card">
+        <a href="../effects/border-frame/corner-frame.html">
+          <div class="demo">
+            <div class="hover-effect corner-frame">
+              <img src="https://picsum.photos/seed/corner-frame/600/450" alt="Corner Frame" loading="lazy">
+            </div>
+          </div>
+          <div class="card-body">
+            <h3>Corner Frame</h3>
+          </div>
+        </a>
+      </article>
+      <article class="card">
+        <a href="../effects/border-frame/inset-frame.html">
+          <div class="demo">
+            <div class="hover-effect inset-frame">
+              <img src="https://picsum.photos/seed/inset-frame/600/450" alt="Inset Frame" loading="lazy">
+            </div>
+          </div>
+          <div class="card-body">
+            <h3>Inset Frame</h3>
+          </div>
+        </a>
+      </article>
+      <article class="card">
+        <a href="../effects/border-frame/expanding-frame.html">
+          <div class="demo">
+            <div class="hover-effect expanding-frame">
+              <img src="https://picsum.photos/seed/expanding-frame/600/450" alt="Expanding Frame" loading="lazy">
+            </div>
+          </div>
+          <div class="card-body">
+            <h3>Expanding Frame</h3>
+          </div>
+        </a>
+      </article>
+    </div>
+  </section>
+  <section>
+    <h2>Shadow &amp; Depth</h2>
+    <p>4 effects</p>
+    <div class="grid">
+      <article class="card">
+        <a href="../effects/shadow-depth/shadow-reveal.html">
+          <div class="demo">
+            <div class="hover-effect shadow-reveal">
+              <img src="https://picsum.photos/seed/shadow-reveal/600/450" alt="Shadow Reveal" loading="lazy">
+            </div>
+          </div>
+          <div class="card-body">
+            <h3>Shadow Reveal</h3>
+          </div>
+        </a>
+      </article>
+      <article class="card">
+        <a href="../effects/shadow-depth/press-depth.html">
+          <div class="demo">
+            <div class="hover-effect press-depth">
+              <img src="https://picsum.photos/seed/press-depth/600/450" alt="Press Depth" loading="lazy">
+            </div>
+          </div>
+          <div class="card-body">
+            <h3>Press Depth</h3>
+          </div>
+        </a>
+      </article>
+      <article class="card">
+        <a href="../effects/shadow-depth/glow.html">
+          <div class="demo">
+            <div class="hover-effect glow">
+              <img src="https://picsum.photos/seed/glow/600/450" alt="Glow" loading="lazy">
+            </div>
+          </div>
+          <div class="card-body">
+            <h3>Glow</h3>
+          </div>
+        </a>
+      </article>
+      <article class="card">
+        <a href="../effects/shadow-depth/directional-shadow.html">
+          <div class="demo">
+            <div class="hover-effect directional-shadow">
+              <img src="https://picsum.photos/seed/directional-shadow/600/450" alt="Directional Shadow" loading="lazy">
+            </div>
+          </div>
+          <div class="card-body">
+            <h3>Directional Shadow</h3>
+          </div>
+        </a>
+      </article>
+    </div>
+  </section>
+  <section>
+    <h2>Overlay</h2>
+    <p>5 effects</p>
+    <div class="grid">
+      <article class="card">
+        <a href="../effects/overlay/solid-overlay.html">
+          <div class="demo">
+            <div class="hover-effect solid-overlay">
+              <img src="https://picsum.photos/seed/solid-overlay/600/450" alt="Solid Overlay" loading="lazy">
+            </div>
+          </div>
+          <div class="card-body">
+            <h3>Solid Overlay</h3>
+          </div>
+        </a>
+      </article>
+      <article class="card">
+        <a href="../effects/overlay/gradient-overlay.html">
+          <div class="demo">
+            <div class="hover-effect gradient-overlay">
+              <img src="https://picsum.photos/seed/gradient-overlay/600/450" alt="Gradient Overlay" loading="lazy">
+            </div>
+          </div>
+          <div class="card-body">
+            <h3>Gradient Overlay</h3>
+          </div>
+        </a>
+      </article>
+      <article class="card">
+        <a href="../effects/overlay/directional-overlay.html">
+          <div class="demo">
+            <div class="hover-effect directional-overlay">
+              <img src="https://picsum.photos/seed/directional-overlay/600/450" alt="Directional Overlay" loading="lazy">
+            </div>
+          </div>
+          <div class="card-body">
+            <h3>Directional Overlay</h3>
+          </div>
+        </a>
+      </article>
+      <article class="card">
+        <a href="../effects/overlay/split-overlay.html">
+          <div class="demo">
+            <div class="hover-effect split-overlay">
+              <img src="https://picsum.photos/seed/split-overlay/600/450" alt="Split Overlay" loading="lazy">
+            </div>
+          </div>
+          <div class="card-body">
+            <h3>Split Overlay</h3>
+          </div>
+        </a>
+      </article>
+      <article class="card">
+        <a href="../effects/overlay/reveal-overlay.html">
+          <div class="demo">
+            <div class="hover-effect reveal-overlay">
+              <img src="https://picsum.photos/seed/reveal-overlay/600/450" alt="Reveal Overlay" loading="lazy">
+            </div>
+          </div>
+          <div class="card-body">
+            <h3>Reveal Overlay</h3>
+          </div>
+        </a>
+      </article>
+    </div>
+  </section>
+  <section>
+    <h2>Reveal</h2>
+    <p>10 effects</p>
+    <div class="grid">
+      <article class="card">
+        <a href="../effects/reveal/circle-reveal.html">
+          <div class="demo">
+            <div class="hover-effect circle-reveal">
+              <img src="https://picsum.photos/seed/circle-reveal/600/450" alt="Circle Reveal" loading="lazy">
+            </div>
+          </div>
+          <div class="card-body">
+            <h3>Circle Reveal</h3>
+          </div>
+        </a>
+      </article>
+      <article class="card">
+        <a href="../effects/reveal/circle-conceal.html">
+          <div class="demo">
+            <div class="hover-effect circle-conceal">
+              <img src="https://picsum.photos/seed/circle-conceal/600/450" alt="Circle Conceal" loading="lazy">
+            </div>
+          </div>
+          <div class="card-body">
+            <h3>Circle Conceal</h3>
+          </div>
+        </a>
+      </article>
+      <article class="card">
+        <a href="../effects/reveal/inset-reveal.html">
+          <div class="demo">
+            <div class="hover-effect inset-reveal">
+              <img src="https://picsum.photos/seed/inset-reveal/600/450" alt="Inset Reveal" loading="lazy">
+            </div>
+          </div>
+          <div class="card-body">
+            <h3>Inset Reveal</h3>
+          </div>
+        </a>
+      </article>
+      <article class="card">
+        <a href="../effects/reveal/wipe-reveal.html">
+          <div class="demo">
+            <div class="hover-effect wipe-reveal">
+              <img src="https://picsum.photos/seed/wipe-reveal/600/450" alt="Wipe Reveal" loading="lazy">
+            </div>
+          </div>
+          <div class="card-body">
+            <h3>Wipe Reveal</h3>
+          </div>
+        </a>
+      </article>
+      <article class="card">
+        <a href="../effects/reveal/diagonal-reveal.html">
+          <div class="demo">
+            <div class="hover-effect diagonal-reveal">
+              <img src="https://picsum.photos/seed/diagonal-reveal/600/450" alt="Diagonal Reveal" loading="lazy">
+            </div>
+          </div>
+          <div class="card-body">
+            <h3>Diagonal Reveal</h3>
+          </div>
+        </a>
+      </article>
+      <article class="card">
+        <a href="../effects/reveal/corner-reveal.html">
+          <div class="demo">
+            <div class="hover-effect corner-reveal">
+              <img src="https://picsum.photos/seed/corner-reveal/600/450" alt="Corner Reveal" loading="lazy">
+            </div>
+          </div>
+          <div class="card-body">
+            <h3>Corner Reveal</h3>
+          </div>
+        </a>
+      </article>
+      <article class="card">
+        <a href="../effects/reveal/horizontal-split.html">
+          <div class="demo">
+            <div class="hover-effect horizontal-split">
+              <img src="https://picsum.photos/seed/horizontal-split/600/450" alt="Horizontal Split" loading="lazy">
+            </div>
+          </div>
+          <div class="card-body">
+            <h3>Horizontal Split</h3>
+          </div>
+        </a>
+      </article>
+      <article class="card">
+        <a href="../effects/reveal/vertical-split.html">
+          <div class="demo">
+            <div class="hover-effect vertical-split">
+              <img src="https://picsum.photos/seed/vertical-split/600/450" alt="Vertical Split" loading="lazy">
+            </div>
+          </div>
+          <div class="card-body">
+            <h3>Vertical Split</h3>
+          </div>
+        </a>
+      </article>
+      <article class="card">
+        <a href="../effects/reveal/diamond-reveal.html">
+          <div class="demo">
+            <div class="hover-effect diamond-reveal">
+              <img src="https://picsum.photos/seed/diamond-reveal/600/450" alt="Diamond Reveal" loading="lazy">
+            </div>
+          </div>
+          <div class="card-body">
+            <h3>Diamond Reveal</h3>
+          </div>
+        </a>
+      </article>
+      <article class="card">
+        <a href="../effects/reveal/rounded-reveal.html">
+          <div class="demo">
+            <div class="hover-effect rounded-reveal">
+              <img src="https://picsum.photos/seed/rounded-reveal/600/450" alt="Rounded Reveal" loading="lazy">
+            </div>
+          </div>
+          <div class="card-body">
+            <h3>Rounded Reveal</h3>
+          </div>
+        </a>
+      </article>
+    </div>
+  </section>
+  <section>
+    <h2>Zoom</h2>
+    <p>12 effects</p>
+    <div class="grid">
+      <article class="card">
+        <a href="../effects/zoom/point-zoom.html">
+          <div class="demo">
+            <div class="hover-effect point-zoom">
+              <img src="https://picsum.photos/seed/point-zoom/600/450" alt="Point Zoom" loading="lazy">
+            </div>
+          </div>
+          <div class="card-body">
+            <h3>Point Zoom</h3>
+          </div>
+        </a>
+      </article>
+      <article class="card">
+        <a href="../effects/zoom/quick-zoom.html">
+          <div class="demo">
+            <div class="hover-effect quick-zoom">
+              <img src="https://picsum.photos/seed/quick-zoom/600/450" alt="Quick Zoom" loading="lazy">
+            </div>
+          </div>
+          <div class="card-body">
+            <h3>Quick Zoom</h3>
+          </div>
+        </a>
+      </article>
+      <article class="card">
+        <a href="../effects/zoom/zoom-in.html">
+          <div class="demo">
+            <div class="hover-effect zoom-in">
+              <img src="https://picsum.photos/seed/zoom-in/600/450" alt="Zoom In" loading="lazy">
+            </div>
+          </div>
+          <div class="card-body">
+            <h3>Zoom In</h3>
+          </div>
+        </a>
+      </article>
+      <article class="card">
+        <a href="../effects/zoom/zoom-out.html">
+          <div class="demo">
+            <div class="hover-effect zoom-out">
+              <img src="https://picsum.photos/seed/zoom-out/600/450" alt="Zoom Out" loading="lazy">
+            </div>
+          </div>
+          <div class="card-body">
+            <h3>Zoom Out</h3>
+          </div>
+        </a>
+      </article>
+      <article class="card">
+        <a href="../effects/zoom/zoom-top.html">
+          <div class="demo">
+            <div class="hover-effect zoom-top">
+              <img src="https://picsum.photos/seed/zoom-top/600/450" alt="Zoom Top" loading="lazy">
+            </div>
+          </div>
+          <div class="card-body">
+            <h3>Zoom Top</h3>
+          </div>
+        </a>
+      </article>
+      <article class="card">
+        <a href="../effects/zoom/zoom-bottom.html">
+          <div class="demo">
+            <div class="hover-effect zoom-bottom">
+              <img src="https://picsum.photos/seed/zoom-bottom/600/450" alt="Zoom Bottom" loading="lazy">
+            </div>
+          </div>
+          <div class="card-body">
+            <h3>Zoom Bottom</h3>
+          </div>
+        </a>
+      </article>
+      <article class="card">
+        <a href="../effects/zoom/zoom-left.html">
+          <div class="demo">
+            <div class="hover-effect zoom-left">
+              <img src="https://picsum.photos/seed/zoom-left/600/450" alt="Zoom Left" loading="lazy">
+            </div>
+          </div>
+          <div class="card-body">
+            <h3>Zoom Left</h3>
+          </div>
+        </a>
+      </article>
+      <article class="card">
+        <a href="../effects/zoom/zoom-right.html">
+          <div class="demo">
+            <div class="hover-effect zoom-right">
+              <img src="https://picsum.photos/seed/zoom-right/600/450" alt="Zoom Right" loading="lazy">
+            </div>
+          </div>
+          <div class="card-body">
+            <h3>Zoom Right</h3>
+          </div>
+        </a>
+      </article>
+      <article class="card">
+        <a href="../effects/zoom/zoom-top-left.html">
+          <div class="demo">
+            <div class="hover-effect zoom-top-left">
+              <img src="https://picsum.photos/seed/zoom-top-left/600/450" alt="Zoom Top Left" loading="lazy">
+            </div>
+          </div>
+          <div class="card-body">
+            <h3>Zoom Top Left</h3>
+          </div>
+        </a>
+      </article>
+      <article class="card">
+        <a href="../effects/zoom/zoom-top-right.html">
+          <div class="demo">
+            <div class="hover-effect zoom-top-right">
+              <img src="https://picsum.photos/seed/zoom-top-right/600/450" alt="Zoom Top Right" loading="lazy">
+            </div>
+          </div>
+          <div class="card-body">
+            <h3>Zoom Top Right</h3>
+          </div>
+        </a>
+      </article>
+      <article class="card">
+        <a href="../effects/zoom/zoom-bottom-left.html">
+          <div class="demo">
+            <div class="hover-effect zoom-bottom-left">
+              <img src="https://picsum.photos/seed/zoom-bottom-left/600/450" alt="Zoom Bottom Left" loading="lazy">
+            </div>
+          </div>
+          <div class="card-body">
+            <h3>Zoom Bottom Left</h3>
+          </div>
+        </a>
+      </article>
+      <article class="card">
+        <a href="../effects/zoom/zoom-bottom-right.html">
+          <div class="demo">
+            <div class="hover-effect zoom-bottom-right">
+              <img src="https://picsum.photos/seed/zoom-bottom-right/600/450" alt="Zoom Bottom Right" loading="lazy">
+            </div>
+          </div>
+          <div class="card-body">
+            <h3>Zoom Bottom Right</h3>
+          </div>
+        </a>
+      </article>
+    </div>
+  </section>
+  <section>
+    <h2>Pan &amp; Move</h2>
+    <p>9 effects</p>
+    <div class="grid">
+      <article class="card">
+        <a href="../effects/pan/pan-left.html">
+          <div class="demo">
+            <div class="hover-effect pan-left">
+              <img src="https://picsum.photos/seed/pan-left/600/450" alt="Pan Left" loading="lazy">
+            </div>
+          </div>
+          <div class="card-body">
+            <h3>Pan Left</h3>
+          </div>
+        </a>
+      </article>
+      <article class="card">
+        <a href="../effects/pan/pan-right.html">
+          <div class="demo">
+            <div class="hover-effect pan-right">
+              <img src="https://picsum.photos/seed/pan-right/600/450" alt="Pan Right" loading="lazy">
+            </div>
+          </div>
+          <div class="card-body">
+            <h3>Pan Right</h3>
+          </div>
+        </a>
+      </article>
+      <article class="card">
+        <a href="../effects/pan/pan-top.html">
+          <div class="demo">
+            <div class="hover-effect pan-top">
+              <img src="https://picsum.photos/seed/pan-top/600/450" alt="Pan Top" loading="lazy">
+            </div>
+          </div>
+          <div class="card-body">
+            <h3>Pan Top</h3>
+          </div>
+        </a>
+      </article>
+      <article class="card">
+        <a href="../effects/pan/pan-bottom.html">
+          <div class="demo">
+            <div class="hover-effect pan-bottom">
+              <img src="https://picsum.photos/seed/pan-bottom/600/450" alt="Pan Bottom" loading="lazy">
+            </div>
+          </div>
+          <div class="card-body">
+            <h3>Pan Bottom</h3>
+          </div>
+        </a>
+      </article>
+      <article class="card">
+        <a href="../effects/pan/pan-top-left.html">
+          <div class="demo">
+            <div class="hover-effect pan-top-left">
+              <img src="https://picsum.photos/seed/pan-top-left/600/450" alt="Pan Top Left" loading="lazy">
+            </div>
+          </div>
+          <div class="card-body">
+            <h3>Pan Top Left</h3>
+          </div>
+        </a>
+      </article>
+      <article class="card">
+        <a href="../effects/pan/pan-top-right.html">
+          <div class="demo">
+            <div class="hover-effect pan-top-right">
+              <img src="https://picsum.photos/seed/pan-top-right/600/450" alt="Pan Top Right" loading="lazy">
+            </div>
+          </div>
+          <div class="card-body">
+            <h3>Pan Top Right</h3>
+          </div>
+        </a>
+      </article>
+      <article class="card">
+        <a href="../effects/pan/pan-bottom-left.html">
+          <div class="demo">
+            <div class="hover-effect pan-bottom-left">
+              <img src="https://picsum.photos/seed/pan-bottom-left/600/450" alt="Pan Bottom Left" loading="lazy">
+            </div>
+          </div>
+          <div class="card-body">
+            <h3>Pan Bottom Left</h3>
+          </div>
+        </a>
+      </article>
+      <article class="card">
+        <a href="../effects/pan/pan-bottom-right.html">
+          <div class="demo">
+            <div class="hover-effect pan-bottom-right">
+              <img src="https://picsum.photos/seed/pan-bottom-right/600/450" alt="Pan Bottom Right" loading="lazy">
+            </div>
+          </div>
+          <div class="card-body">
+            <h3>Pan Bottom Right</h3>
+          </div>
+        </a>
+      </article>
+      <article class="card">
+        <a href="../effects/pan/pan-center.html">
+          <div class="demo">
+            <div class="hover-effect pan-center">
+              <img src="https://picsum.photos/seed/pan-center/600/450" alt="Pan Center" loading="lazy">
+            </div>
+          </div>
+          <div class="card-body">
+            <h3>Pan Center</h3>
+          </div>
+        </a>
+      </article>
+    </div>
+  </section>
+  <section>
+    <h2>Fade</h2>
+    <p>9 effects</p>
+    <div class="grid">
+      <article class="card">
+        <a href="../effects/fade/fade-in.html">
+          <div class="demo">
+            <div class="hover-effect fade-in">
+              <img src="https://picsum.photos/seed/fade-in/600/450" alt="Fade In" loading="lazy">
+            </div>
+          </div>
+          <div class="card-body">
+            <h3>Fade In</h3>
+          </div>
+        </a>
+      </article>
+      <article class="card">
+        <a href="../effects/fade/fade-out.html">
+          <div class="demo">
+            <div class="hover-effect fade-out">
+              <img src="https://picsum.photos/seed/fade-out/600/450" alt="Fade Out" loading="lazy">
+            </div>
+          </div>
+          <div class="card-body">
+            <h3>Fade Out</h3>
+          </div>
+        </a>
+      </article>
+      <article class="card">
+        <a href="../effects/fade/fade-to-color.html">
+          <div class="demo">
+            <div class="hover-effect fade-to-color">
+              <img src="https://picsum.photos/seed/fade-to-color/600/450" alt="Fade to Color" loading="lazy">
+            </div>
+          </div>
+          <div class="card-body">
+            <h3>Fade to Color</h3>
+          </div>
+        </a>
+      </article>
+      <article class="card">
+        <a href="../effects/fade/fade-overlay.html">
+          <div class="demo">
+            <div class="hover-effect fade-overlay">
+              <img src="https://picsum.photos/seed/fade-overlay/600/450" alt="Fade Overlay" loading="lazy">
+            </div>
+          </div>
+          <div class="card-body">
+            <h3>Fade Overlay</h3>
+          </div>
+        </a>
+      </article>
+      <article class="card">
+        <a href="../effects/fade/fade-overlay-dark.html">
+          <div class="demo">
+            <div class="hover-effect fade-overlay-dark">
+              <img src="https://picsum.photos/seed/fade-overlay-dark/600/450" alt="Fade Overlay Dark" loading="lazy">
+            </div>
+          </div>
+          <div class="card-body">
+            <h3>Fade Overlay Dark</h3>
+          </div>
+        </a>
+      </article>
+      <article class="card">
+        <a href="../effects/fade/fade-overlay-light.html">
+          <div class="demo">
+            <div class="hover-effect fade-overlay-light">
+              <img src="https://picsum.photos/seed/fade-overlay-light/600/450" alt="Fade Overlay Light" loading="lazy">
+            </div>
+          </div>
+          <div class="card-body">
+            <h3>Fade Overlay Light</h3>
+          </div>
+        </a>
+      </article>
+      <article class="card">
+        <a href="../effects/fade/fade-caption.html">
+          <div class="demo">
+            <div class="hover-effect fade-caption">
+              <img src="https://picsum.photos/seed/fade-caption/600/450" alt="Fade Caption" loading="lazy">
+            </div>
+          </div>
+          <div class="card-body">
+            <h3>Fade Caption</h3>
+          </div>
+        </a>
+      </article>
+      <article class="card">
+        <a href="../effects/fade/fade-crossfade.html">
+          <div class="demo">
+            <div class="hover-effect fade-crossfade">
+              <img src="https://picsum.photos/seed/fade-crossfade/600/450" alt="Fade Crossfade" loading="lazy">
+            </div>
+          </div>
+          <div class="card-body">
+            <h3>Fade Crossfade</h3>
+          </div>
+        </a>
+      </article>
+      <article class="card">
+        <a href="../effects/fade/fade-blur.html">
+          <div class="demo">
+            <div class="hover-effect fade-blur">
+              <img src="https://picsum.photos/seed/fade-blur/600/450" alt="Fade Blur" loading="lazy">
+            </div>
+          </div>
+          <div class="card-body">
+            <h3>Fade Blur</h3>
+          </div>
+        </a>
+      </article>
+    </div>
+  </section>
+  <section>
+    <h2>Slide &amp; Reveal</h2>
+    <p>12 effects</p>
+    <div class="grid">
+      <article class="card">
+        <a href="../effects/slide/slide-reveal-left.html">
+          <div class="demo">
+            <div class="hover-effect slide-reveal-left">
+              <img src="https://picsum.photos/seed/slide-reveal-left/600/450" alt="Slide Reveal Left" loading="lazy">
+            </div>
+          </div>
+          <div class="card-body">
+            <h3>Slide Reveal Left</h3>
+          </div>
+        </a>
+      </article>
+      <article class="card">
+        <a href="../effects/slide/slide-reveal-right.html">
+          <div class="demo">
+            <div class="hover-effect slide-reveal-right">
+              <img src="https://picsum.photos/seed/slide-reveal-right/600/450" alt="Slide Reveal Right" loading="lazy">
+            </div>
+          </div>
+          <div class="card-body">
+            <h3>Slide Reveal Right</h3>
+          </div>
+        </a>
+      </article>
+      <article class="card">
+        <a href="../effects/slide/slide-reveal-top.html">
+          <div class="demo">
+            <div class="hover-effect slide-reveal-top">
+              <img src="https://picsum.photos/seed/slide-reveal-top/600/450" alt="Slide Reveal Top" loading="lazy">
+            </div>
+          </div>
+          <div class="card-body">
+            <h3>Slide Reveal Top</h3>
+          </div>
+        </a>
+      </article>
+      <article class="card">
+        <a href="../effects/slide/slide-reveal-bottom.html">
+          <div class="demo">
+            <div class="hover-effect slide-reveal-bottom">
+              <img src="https://picsum.photos/seed/slide-reveal-bottom/600/450" alt="Slide Reveal Bottom" loading="lazy">
+            </div>
+          </div>
+          <div class="card-body">
+            <h3>Slide Reveal Bottom</h3>
+          </div>
+        </a>
+      </article>
+      <article class="card">
+        <a href="../effects/slide/slide-reveal-top-left.html">
+          <div class="demo">
+            <div class="hover-effect slide-reveal-top-left">
+              <img src="https://picsum.photos/seed/slide-reveal-top-left/600/450" alt="Slide Reveal Top Left" loading="lazy">
+            </div>
+          </div>
+          <div class="card-body">
+            <h3>Slide Reveal Top Left</h3>
+          </div>
+        </a>
+      </article>
+      <article class="card">
+        <a href="../effects/slide/slide-reveal-top-right.html">
+          <div class="demo">
+            <div class="hover-effect slide-reveal-top-right">
+              <img src="https://picsum.photos/seed/slide-reveal-top-right/600/450" alt="Slide Reveal Top Right" loading="lazy">
+            </div>
+          </div>
+          <div class="card-body">
+            <h3>Slide Reveal Top Right</h3>
+          </div>
+        </a>
+      </article>
+      <article class="card">
+        <a href="../effects/slide/slide-reveal-bottom-left.html">
+          <div class="demo">
+            <div class="hover-effect slide-reveal-bottom-left">
+              <img src="https://picsum.photos/seed/slide-reveal-bottom-left/600/450" alt="Slide Reveal Bottom Left" loading="lazy">
+            </div>
+          </div>
+          <div class="card-body">
+            <h3>Slide Reveal Bottom Left</h3>
+          </div>
+        </a>
+      </article>
+      <article class="card">
+        <a href="../effects/slide/slide-reveal-bottom-right.html">
+          <div class="demo">
+            <div class="hover-effect slide-reveal-bottom-right">
+              <img src="https://picsum.photos/seed/slide-reveal-bottom-right/600/450" alt="Slide Reveal Bottom Right" loading="lazy">
+            </div>
+          </div>
+          <div class="card-body">
+            <h3>Slide Reveal Bottom Right</h3>
+          </div>
+        </a>
+      </article>
+      <article class="card">
+        <a href="../effects/slide/slide-cover-left.html">
+          <div class="demo">
+            <div class="hover-effect slide-cover-left">
+              <img src="https://picsum.photos/seed/slide-cover-left/600/450" alt="Slide Cover Left" loading="lazy">
+            </div>
+          </div>
+          <div class="card-body">
+            <h3>Slide Cover Left</h3>
+          </div>
+        </a>
+      </article>
+      <article class="card">
+        <a href="../effects/slide/slide-cover-right.html">
+          <div class="demo">
+            <div class="hover-effect slide-cover-right">
+              <img src="https://picsum.photos/seed/slide-cover-right/600/450" alt="Slide Cover Right" loading="lazy">
+            </div>
+          </div>
+          <div class="card-body">
+            <h3>Slide Cover Right</h3>
+          </div>
+        </a>
+      </article>
+      <article class="card">
+        <a href="../effects/slide/slide-cover-top.html">
+          <div class="demo">
+            <div class="hover-effect slide-cover-top">
+              <img src="https://picsum.photos/seed/slide-cover-top/600/450" alt="Slide Cover Top" loading="lazy">
+            </div>
+          </div>
+          <div class="card-body">
+            <h3>Slide Cover Top</h3>
+          </div>
+        </a>
+      </article>
+      <article class="card">
+        <a href="../effects/slide/slide-cover-bottom.html">
+          <div class="demo">
+            <div class="hover-effect slide-cover-bottom">
+              <img src="https://picsum.photos/seed/slide-cover-bottom/600/450" alt="Slide Cover Bottom" loading="lazy">
+            </div>
+          </div>
+          <div class="card-body">
+            <h3>Slide Cover Bottom</h3>
+          </div>
+        </a>
+      </article>
+    </div>
+  </section>
+  <section>
+    <h2>Blur &amp; Focus</h2>
+    <p>2 effects</p>
+    <div class="grid">
+      <article class="card">
+        <a href="../effects/blur/blur-in.html">
+          <div class="demo">
+            <div class="hover-effect blur-in">
+              <img src="https://picsum.photos/seed/blur-in/600/450" alt="Blur In" loading="lazy">
+            </div>
+          </div>
+          <div class="card-body">
+            <h3>Blur In</h3>
+          </div>
+        </a>
+      </article>
+      <article class="card">
+        <a href="../effects/blur/blur-out.html">
+          <div class="demo">
+            <div class="hover-effect blur-out">
+              <img src="https://picsum.photos/seed/blur-out/600/450" alt="Blur Out" loading="lazy">
+            </div>
+          </div>
+          <div class="card-body">
+            <h3>Blur Out</h3>
+          </div>
+        </a>
+      </article>
+    </div>
+  </section>
+  <section>
+    <h2>Color &amp; Filters</h2>
+    <p>9 effects</p>
+    <div class="grid">
+      <article class="card">
+        <a href="../effects/color-filters/grayscale.html">
+          <div class="demo">
+            <div class="hover-effect grayscale">
+              <img src="https://picsum.photos/seed/grayscale/600/450" alt="Grayscale" loading="lazy">
+            </div>
+          </div>
+          <div class="card-body">
+            <h3>Grayscale</h3>
+          </div>
+        </a>
+      </article>
+      <article class="card">
+        <a href="../effects/color-filters/colorize.html">
+          <div class="demo">
+            <div class="hover-effect colorize">
+              <img src="https://picsum.photos/seed/colorize/600/450" alt="Colorize" loading="lazy">
+            </div>
+          </div>
+          <div class="card-body">
+            <h3>Colorize</h3>
+          </div>
+        </a>
+      </article>
+      <article class="card">
+        <a href="../effects/color-filters/sepia.html">
+          <div class="demo">
+            <div class="hover-effect sepia">
+              <img src="https://picsum.photos/seed/sepia/600/450" alt="Sepia" loading="lazy">
+            </div>
+          </div>
+          <div class="card-body">
+            <h3>Sepia</h3>
+          </div>
+        </a>
+      </article>
+      <article class="card">
+        <a href="../effects/color-filters/hue-rotate.html">
+          <div class="demo">
+            <div class="hover-effect hue-rotate">
+              <img src="https://picsum.photos/seed/hue-rotate/600/450" alt="Hue Rotate" loading="lazy">
+            </div>
+          </div>
+          <div class="card-body">
+            <h3>Hue Rotate</h3>
+          </div>
+        </a>
+      </article>
+      <article class="card">
+        <a href="../effects/color-filters/saturate.html">
+          <div class="demo">
+            <div class="hover-effect saturate">
+              <img src="https://picsum.photos/seed/saturate/600/450" alt="Saturate" loading="lazy">
+            </div>
+          </div>
+          <div class="card-body">
+            <h3>Saturate</h3>
+          </div>
+        </a>
+      </article>
+      <article class="card">
+        <a href="../effects/color-filters/desaturate-to-color.html">
+          <div class="demo">
+            <div class="hover-effect desaturate-to-color">
+              <img src="https://picsum.photos/seed/desaturate-to-color/600/450" alt="Desaturate to Color" loading="lazy">
+            </div>
+          </div>
+          <div class="card-body">
+            <h3>Desaturate to Color</h3>
+          </div>
+        </a>
+      </article>
+      <article class="card">
+        <a href="../effects/color-filters/invert.html">
+          <div class="demo">
+            <div class="hover-effect invert">
+              <img src="https://picsum.photos/seed/invert/600/450" alt="Invert" loading="lazy">
+            </div>
+          </div>
+          <div class="card-body">
+            <h3>Invert</h3>
+          </div>
+        </a>
+      </article>
+      <article class="card">
+        <a href="../effects/color-filters/warm-tone.html">
+          <div class="demo">
+            <div class="hover-effect warm-tone">
+              <img src="https://picsum.photos/seed/warm-tone/600/450" alt="Warm Tone" loading="lazy">
+            </div>
+          </div>
+          <div class="card-body">
+            <h3>Warm Tone</h3>
+          </div>
+        </a>
+      </article>
+      <article class="card">
+        <a href="../effects/color-filters/cool-tone.html">
+          <div class="demo">
+            <div class="hover-effect cool-tone">
+              <img src="https://picsum.photos/seed/cool-tone/600/450" alt="Cool Tone" loading="lazy">
+            </div>
+          </div>
+          <div class="card-body">
+            <h3>Cool Tone</h3>
+          </div>
+        </a>
+      </article>
+    </div>
+  </section>
+  <section>
+    <h2>Brightness &amp; Contrast</h2>
+    <p>8 effects</p>
+    <div class="grid">
+      <article class="card">
+        <a href="../effects/brightness-contrast/brighten.html">
+          <div class="demo">
+            <div class="hover-effect brighten">
+              <img src="https://picsum.photos/seed/brighten/600/450" alt="Brighten" loading="lazy">
+            </div>
+          </div>
+          <div class="card-body">
+            <h3>Brighten</h3>
+          </div>
+        </a>
+      </article>
+      <article class="card">
+        <a href="../effects/brightness-contrast/darken.html">
+          <div class="demo">
+            <div class="hover-effect darken">
+              <img src="https://picsum.photos/seed/darken/600/450" alt="Darken" loading="lazy">
+            </div>
+          </div>
+          <div class="card-body">
+            <h3>Darken</h3>
+          </div>
+        </a>
+      </article>
+      <article class="card">
+        <a href="../effects/brightness-contrast/contrast-increase.html">
+          <div class="demo">
+            <div class="hover-effect contrast-increase">
+              <img src="https://picsum.photos/seed/contrast-increase/600/450" alt="Contrast Increase" loading="lazy">
+            </div>
+          </div>
+          <div class="card-body">
+            <h3>Contrast Increase</h3>
+          </div>
+        </a>
+      </article>
+      <article class="card">
+        <a href="../effects/brightness-contrast/contrast-decrease.html">
+          <div class="demo">
+            <div class="hover-effect contrast-decrease">
+              <img src="https://picsum.photos/seed/contrast-decrease/600/450" alt="Contrast Decrease" loading="lazy">
+            </div>
+          </div>
+          <div class="card-body">
+            <h3>Contrast Decrease</h3>
+          </div>
+        </a>
+      </article>
+      <article class="card">
+        <a href="../effects/brightness-contrast/brighten-to-normal.html">
+          <div class="demo">
+            <div class="hover-effect brighten-to-normal">
+              <img src="https://picsum.photos/seed/brighten-to-normal/600/450" alt="Brighten to Normal" loading="lazy">
+            </div>
+          </div>
+          <div class="card-body">
+            <h3>Brighten to Normal</h3>
+          </div>
+        </a>
+      </article>
+      <article class="card">
+        <a href="../effects/brightness-contrast/darken-to-normal.html">
+          <div class="demo">
+            <div class="hover-effect darken-to-normal">
+              <img src="https://picsum.photos/seed/darken-to-normal/600/450" alt="Darken to Normal" loading="lazy">
+            </div>
+          </div>
+          <div class="card-body">
+            <h3>Darken to Normal</h3>
+          </div>
+        </a>
+      </article>
+      <article class="card">
+        <a href="../effects/brightness-contrast/contrast-to-normal.html">
+          <div class="demo">
+            <div class="hover-effect contrast-to-normal">
+              <img src="https://picsum.photos/seed/contrast-to-normal/600/450" alt="Contrast to Normal" loading="lazy">
+            </div>
+          </div>
+          <div class="card-body">
+            <h3>Contrast to Normal</h3>
+          </div>
+        </a>
+      </article>
+      <article class="card">
+        <a href="../effects/brightness-contrast/high-contrast-focus.html">
+          <div class="demo">
+            <div class="hover-effect high-contrast focus" tabindex="0">
+              <img src="https://picsum.photos/seed/high-contrast-focus/600/450" alt="High-Contrast Focus" loading="lazy">
+            </div>
+          </div>
+          <div class="card-body">
+            <h3>High-Contrast Focus</h3>
+          </div>
+        </a>
+      </article>
+    </div>
+  </section>
+<!-- END GENERATED EFFECT CATALOG -->
+</main>
+
+<footer class="container">
+  <small><a href="https://github.com/PhakphumV/pure-css-image-hover-effects">View source on GitHub</a> &middot; No JavaScript &middot; MIT</small>
+</footer>
+
+</body>
+</html>
