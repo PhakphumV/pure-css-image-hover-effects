@@ -43,6 +43,41 @@
 @keyframes animated-frame-spin{
   to{ transform: rotate(360deg); }
 }
+
+/* ---- corner-frame ---- */
+/* Four L-shaped corner brackets appear on hover/focus, like a
+   photo viewfinder or crop marks. Built with a single ::before
+   composed of eight linear gradients. */
+.hover-effect.corner-frame{
+  position: relative;
+  display: block;
+}
+.hover-effect.corner-frame::before{
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  background:
+    linear-gradient(to right,  #111 100%, transparent 100%) top    left  / 36px 3px no-repeat,
+    linear-gradient(to bottom, #111 100%, transparent 100%) top    left  / 3px 36px no-repeat,
+    linear-gradient(to left,   #111 100%, transparent 100%) top    right / 36px 3px no-repeat,
+    linear-gradient(to bottom, #111 100%, transparent 100%) top    right / 3px 36px no-repeat,
+    linear-gradient(to right,  #111 100%, transparent 100%) bottom left  / 36px 3px no-repeat,
+    linear-gradient(to top,    #111 100%, transparent 100%) bottom left  / 3px 36px no-repeat,
+    linear-gradient(to left,   #111 100%, transparent 100%) bottom right / 36px 3px no-repeat,
+    linear-gradient(to top,    #111 100%, transparent 100%) bottom right / 3px 36px no-repeat;
+}
+.hover-effect.corner-frame:hover::before,
+.hover-effect.corner-frame:focus-visible::before{
+  opacity: 1;
+}
+@media (prefers-reduced-motion: reduce) {
+  .hover-effect.corner-frame::before{
+    transition: none;
+  }
+}
 @media (prefers-reduced-motion: reduce) {
   .hover-effect.animated-frame:hover::before,
   .hover-effect.animated-frame:focus-visible::before{
