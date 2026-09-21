@@ -75,3 +75,29 @@
       0 0 60px 12px rgba(124, 58, 237, 0.25);
   }
 }
+
+/* ---- directional-shadow ---- */
+/* Shadow grows out toward the bottom-right corner on hover/focus,
+   as if lit from the upper-left, creating a directional
+   long-shadow effect. */
+.hover-effect.directional-shadow img{
+  transition: box-shadow 0.4s ease;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.18);
+}
+.hover-effect.directional-shadow:hover img,
+.hover-effect.directional-shadow:focus-visible img{
+  box-shadow:
+    16px 16px 28px rgba(0, 0, 0, 0.35),
+    24px 24px 40px rgba(0, 0, 0, 0.15);
+}
+@media (prefers-reduced-motion: reduce) {
+  .hover-effect.directional-shadow img{
+    transition: none;
+  }
+  .hover-effect.directional-shadow:hover img,
+  .hover-effect.directional-shadow:focus-visible img{
+    box-shadow:
+      16px 16px 28px rgba(0, 0, 0, 0.35),
+      24px 24px 40px rgba(0, 0, 0, 0.15);
+  }
+}
