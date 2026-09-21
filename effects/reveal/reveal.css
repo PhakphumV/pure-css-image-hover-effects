@@ -32,3 +32,34 @@
     clip-path: circle(0% at 50% 50%);
   }
 }
+
+/* ---- circle-conceal ---- */
+/* Inverse of circle-reveal: at idle the image is visible, on
+   hover/focus a colored circle grows from center to cover the
+   image (concealing it). */
+.hover-effect.circle-conceal{
+  position: relative;
+  display: block;
+}
+.hover-effect.circle-conceal::before{
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(15, 23, 42, 0.85);
+  clip-path: circle(0% at 50% 50%);
+  transition: clip-path 0.5s ease;
+  pointer-events: none;
+}
+.hover-effect.circle-conceal:hover::before,
+.hover-effect.circle-conceal:focus-visible::before{
+  clip-path: circle(150% at 50% 50%);
+}
+@media (prefers-reduced-motion: reduce) {
+  .hover-effect.circle-conceal::before{
+    transition: none;
+  }
+  .hover-effect.circle-conceal:hover::before,
+  .hover-effect.circle-conceal:focus-visible::before{
+    clip-path: circle(150% at 50% 50%);
+  }
+}
