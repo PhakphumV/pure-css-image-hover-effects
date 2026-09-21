@@ -206,3 +206,25 @@
     transform: perspective(800px) translateZ(40px) translateX(-25px) scale(1.1);
   }
 }
+
+
+/* ---- card-3d ---- */
+/* Image presents as a tilted physical card on hover/focus via
+   combined restrained rotateX + rotateY + translateZ, giving
+   the impression of a card lifted off the surface. */
+.hover-effect.card-3d img{
+  transition: transform 0.5s ease;
+}
+.hover-effect.card-3d:hover img,
+.hover-effect.card-3d:focus-visible img{
+  transform: perspective(1000px) rotateX(8deg) rotateY(-12deg) translateZ(20px) scale(1.05);
+}
+@media (prefers-reduced-motion: reduce) {
+  .hover-effect.card-3d img{
+    transition: none;
+  }
+  .hover-effect.card-3d:hover img,
+  .hover-effect.card-3d:focus-visible img{
+    transform: perspective(1000px) rotateX(8deg) rotateY(-12deg) translateZ(20px) scale(1.05);
+  }
+}
