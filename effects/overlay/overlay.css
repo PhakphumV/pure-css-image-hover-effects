@@ -1,0 +1,32 @@
+/* Overlay category hover effects. */
+/* Pattern: each effect covers the image with a ::before layer
+   (solid color, gradient, directional, split, or animated
+   reveal) on hover/focus-visible. The overlay is the dominant
+   visual behavior; do not combine with 3D transforms or
+   rotation here. The underlying <img> stays untouched. */
+.hover-effect.solid-overlay{
+  position: relative;
+  display: block;
+}
+.hover-effect.solid-overlay::before{
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  pointer-events: none;
+}
+.hover-effect.solid-overlay:hover::before,
+.hover-effect.solid-overlay:focus-visible::before{
+  opacity: 1;
+}
+@media (prefers-reduced-motion: reduce) {
+  .hover-effect.solid-overlay::before{
+    transition: none;
+  }
+  .hover-effect.solid-overlay:hover::before,
+  .hover-effect.solid-overlay:focus-visible::before{
+    opacity: 1;
+  }
+}
