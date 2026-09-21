@@ -95,3 +95,53 @@
     transform: translateX(0);
   }
 }
+
+/* ---- split-overlay ---- */
+/* Two halves (left/right) slide inward from opposite edges on
+   hover/focus and meet in the middle, forming a split-screen
+   overlay using ::before and ::after. */
+.hover-effect.split-overlay{
+  position: relative;
+  display: block;
+  overflow: hidden;
+}
+.hover-effect.split-overlay::before,
+.hover-effect.split-overlay::after{
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 50%;
+  pointer-events: none;
+  transition: transform 0.4s ease;
+}
+.hover-effect.split-overlay::before{
+  left: 0;
+  background: rgba(236, 72, 153, 0.55);
+  transform: translateX(-100%);
+}
+.hover-effect.split-overlay::after{
+  right: 0;
+  background: rgba(37, 99, 235, 0.55);
+  transform: translateX(100%);
+}
+.hover-effect.split-overlay:hover::before,
+.hover-effect.split-overlay:focus-visible::before{
+  transform: translateX(0);
+}
+.hover-effect.split-overlay:hover::after,
+.hover-effect.split-overlay:focus-visible::after{
+  transform: translateX(0);
+}
+@media (prefers-reduced-motion: reduce) {
+  .hover-effect.split-overlay::before,
+  .hover-effect.split-overlay::after{
+    transition: none;
+  }
+  .hover-effect.split-overlay:hover::before,
+  .hover-effect.split-overlay:focus-visible::before,
+  .hover-effect.split-overlay:hover::after,
+  .hover-effect.split-overlay:focus-visible::after{
+    transform: translateX(0);
+  }
+}
