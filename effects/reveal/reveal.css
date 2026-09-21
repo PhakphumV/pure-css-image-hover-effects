@@ -295,3 +295,35 @@
     transform: translateY(100%);
   }
 }
+
+/* ---- diamond-reveal ---- */
+/* Overlay covers the image at idle, then shrinks from a full
+   rectangle to a centered diamond polygon (50% 0, 100% 50%,
+   50% 100%, 0 50%) on hover/focus, revealing the four corners
+   of the image first while keeping a diamond-shaped overlay. */
+.hover-effect.diamond-reveal{
+  position: relative;
+  display: block;
+}
+.hover-effect.diamond-reveal::before{
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(15, 23, 42, 0.85);
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+  transition: clip-path 0.5s ease;
+  pointer-events: none;
+}
+.hover-effect.diamond-reveal:hover::before,
+.hover-effect.diamond-reveal:focus-visible::before{
+  clip-path: polygon(50% 0, 100% 50%, 50% 100%, 0 50%);
+}
+@media (prefers-reduced-motion: reduce) {
+  .hover-effect.diamond-reveal::before{
+    transition: none;
+  }
+  .hover-effect.diamond-reveal:hover::before,
+  .hover-effect.diamond-reveal:focus-visible::before{
+    clip-path: polygon(50% 0, 100% 50%, 50% 100%, 0 50%);
+  }
+}
