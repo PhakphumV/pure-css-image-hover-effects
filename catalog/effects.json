@@ -1,0 +1,678 @@
+{
+  "version": 1,
+  "categories": [
+    {
+      "slug": "rotate-tilt",
+      "name": "Rotate & Tilt",
+      "description": "Rotation and tilt-based transforms applied to the image on hover.",
+      "effects": [
+        {
+          "slug": "rotate-clockwise",
+          "name": "Rotate Clockwise",
+          "description": "Rotates the image 15 degrees clockwise on hover."
+        },
+        {
+          "slug": "rotate-counter-clockwise",
+          "name": "Rotate Counter-Clockwise",
+          "description": "Rotates the image 15 degrees counter-clockwise on hover."
+        },
+        {
+          "slug": "tilt-left",
+          "name": "Tilt Left",
+          "description": "Tilts the image 8 degrees to the left on hover."
+        },
+        {
+          "slug": "tilt-right",
+          "name": "Tilt Right",
+          "description": "Tilts the image 8 degrees to the right on hover."
+        },
+        {
+          "slug": "tilt-up",
+          "name": "Tilt Up",
+          "description": "Tilts the image backward (top edge away) with 3D perspective on hover."
+        },
+        {
+          "slug": "tilt-down",
+          "name": "Tilt Down",
+          "description": "Tilts the image forward (top edge toward viewer) with 3D perspective on hover."
+        },
+        {
+          "slug": "tilt-top-left",
+          "name": "Tilt Top-Left",
+          "description": "Tilts the image 8 degrees from its top-left corner on hover."
+        },
+        {
+          "slug": "tilt-top-right",
+          "name": "Tilt Top-Right",
+          "description": "Tilts the image 8 degrees from its top-right corner on hover."
+        },
+        {
+          "slug": "tilt-bottom-left",
+          "name": "Tilt Bottom-Left",
+          "description": "Tilts the image 8 degrees from its bottom-left corner on hover."
+        },
+        {
+          "slug": "tilt-bottom-right",
+          "name": "Tilt Bottom-Right",
+          "description": "Tilts the image 8 degrees from its bottom-right corner on hover."
+        }
+      ]
+    },
+    {
+      "slug": "skew-distort",
+      "name": "Skew & Distort",
+      "description": "Skew transformations and asymmetric scaling effects applied to the image on hover.",
+      "effects": [
+        {
+          "slug": "skew-horizontal",
+          "name": "Horizontal Skew",
+          "description": "Skews the image horizontally by 15 degrees on hover."
+        },
+        {
+          "slug": "skew-vertical",
+          "name": "Vertical Skew",
+          "description": "Skews the image vertically by 15 degrees on hover."
+        },
+        {
+          "slug": "skew-left",
+          "name": "Skew Left",
+          "description": "Skews the image toward the left on hover."
+        },
+        {
+          "slug": "skew-right",
+          "name": "Skew Right",
+          "description": "Skews the image toward the right on hover."
+        },
+        {
+          "slug": "skew-top",
+          "name": "Skew Top",
+          "description": "Skews the image toward the top on hover."
+        },
+        {
+          "slug": "skew-bottom",
+          "name": "Skew Bottom",
+          "description": "Skews the image toward the bottom on hover."
+        },
+        {
+          "slug": "skew-perspective",
+          "name": "Perspective Skew",
+          "description": "Applies a 3D perspective skew and rotateY to the image on hover."
+        },
+        {
+          "slug": "stretch-horizontal",
+          "name": "Horizontal Stretch",
+          "description": "Stretches the image wider on hover (scale 1.4, 1.2)."
+        },
+        {
+          "slug": "stretch-vertical",
+          "name": "Vertical Stretch",
+          "description": "Stretches the image taller on hover (scale 1.2, 1.4)."
+        },
+        {
+          "slug": "compress",
+          "name": "Compress",
+          "description": "Image starts enlarged and compresses to its original size on hover."
+        }
+      ]
+    },
+    {
+      "slug": "3d-perspective",
+      "name": "3D & Perspective",
+      "description": "3D perspective transforms applied to the image on hover.",
+      "effects": [
+        {
+          "slug": "perspective-zoom",
+          "name": "3D Perspective Zoom",
+          "description": "Zooms the image forward in 3D space (translateZ 60px) on hover."
+        },
+        {
+          "slug": "flip-horizontal",
+          "name": "Flip Horizontal",
+          "description": "Flips the image around the Y-axis (mirror flip) on hover."
+        },
+        {
+          "slug": "flip-vertical",
+          "name": "Flip Vertical",
+          "description": "Flips the image around the X-axis (upside-down) on hover."
+        },
+        {
+          "slug": "rotate-x",
+          "name": "Rotate X",
+          "description": "Rotates the image 25 degrees around the X-axis on hover."
+        },
+        {
+          "slug": "rotate-y",
+          "name": "Rotate Y",
+          "description": "Rotates the image 25 degrees around the Y-axis on hover."
+        },
+        {
+          "slug": "tilt-3d",
+          "name": "3D Tilt",
+          "description": "Tilts the image in 3D space on both axes on hover."
+        },
+        {
+          "slug": "lift-3d",
+          "name": "3D Lift",
+          "description": "Lifts the image forward toward the viewer on hover."
+        },
+        {
+          "slug": "push-3d",
+          "name": "3D Push",
+          "description": "Pushes the image back away from the viewer on hover."
+        },
+        {
+          "slug": "perspective-shift",
+          "name": "Perspective Shift",
+          "description": "Shifts the image laterally in 3D space on hover."
+        },
+        {
+          "slug": "card-3d",
+          "name": "Card-like 3D",
+          "description": "Tilts the image like a physical card in 3D space on hover."
+        }
+      ]
+    },
+    {
+      "slug": "border-frame",
+      "name": "Border & Frame",
+      "description": "Decorative borders and frames that appear around the image on hover.",
+      "effects": [
+        {
+          "slug": "border-reveal",
+          "name": "Border Reveal",
+          "description": "A solid border fades in around the image on hover."
+        },
+        {
+          "slug": "animated-frame",
+          "name": "Animated Frame",
+          "description": "An animated gradient ring orbits around the image on hover."
+        },
+        {
+          "slug": "corner-frame",
+          "name": "Corner Frame",
+          "description": "L-shaped corner brackets fade in at each corner of the image on hover."
+        },
+        {
+          "slug": "inset-frame",
+          "name": "Inset Frame",
+          "description": "An inset shadow border appears inside the image edges on hover."
+        },
+        {
+          "slug": "expanding-frame",
+          "name": "Expanding Frame",
+          "description": "An outer border expands outward from the image on hover."
+        }
+      ]
+    },
+    {
+      "slug": "shadow-depth",
+      "name": "Shadow & Depth",
+      "description": "Box-shadow effects that suggest depth and elevation on hover.",
+      "effects": [
+        {
+          "slug": "shadow-reveal",
+          "name": "Shadow Reveal",
+          "description": "A drop shadow appears beneath the image on hover."
+        },
+        {
+          "slug": "press-depth",
+          "name": "Press Depth",
+          "description": "Image appears to press down with a growing inset shadow on hover."
+        },
+        {
+          "slug": "glow",
+          "name": "Glow",
+          "description": "A violet halo glow appears around the image on hover."
+        },
+        {
+          "slug": "directional-shadow",
+          "name": "Directional Shadow",
+          "description": "A directional drop shadow appears beneath the image on hover."
+        }
+      ]
+    },
+    {
+      "slug": "overlay",
+      "name": "Overlay",
+      "description": "Translucent color overlays that fade, slide, or split across the image on hover.",
+      "effects": [
+        {
+          "slug": "solid-overlay",
+          "name": "Solid Overlay",
+          "description": "A solid dark overlay fades in on hover."
+        },
+        {
+          "slug": "gradient-overlay",
+          "name": "Gradient Overlay",
+          "description": "A dark gradient fades in from top on hover."
+        },
+        {
+          "slug": "directional-overlay",
+          "name": "Directional Overlay",
+          "description": "A blue overlay slides in from the left on hover."
+        },
+        {
+          "slug": "split-overlay",
+          "name": "Split Overlay",
+          "description": "Two colored halves close in from opposite sides on hover."
+        },
+        {
+          "slug": "reveal-overlay",
+          "name": "Reveal Overlay",
+          "description": "A dark overlay slides up to reveal the image on hover."
+        }
+      ]
+    },
+    {
+      "slug": "reveal",
+      "name": "Reveal",
+      "description": "Mask-based reveals using clip-path, border-radius, or split animations on hover.",
+      "effects": [
+        {
+          "slug": "circle-reveal",
+          "name": "Circle Reveal",
+          "description": "A circular clip-path recedes to reveal the image on hover."
+        },
+        {
+          "slug": "circle-conceal",
+          "name": "Circle Conceal",
+          "description": "A circular clip-path grows to conceal the image on hover."
+        },
+        {
+          "slug": "inset-reveal",
+          "name": "Inset Reveal",
+          "description": "An inset clip-path expands inward to reveal the image on hover."
+        },
+        {
+          "slug": "wipe-reveal",
+          "name": "Wipe Reveal",
+          "description": "A clip-path wipes from left to right to reveal the image on hover."
+        },
+        {
+          "slug": "diagonal-reveal",
+          "name": "Diagonal Reveal",
+          "description": "A clip-path triangle recedes to reveal the image on hover."
+        },
+        {
+          "slug": "corner-reveal",
+          "name": "Corner Reveal",
+          "description": "A clip-path corner recedes to reveal the image on hover."
+        },
+        {
+          "slug": "horizontal-split",
+          "name": "Horizontal Split",
+          "description": "Image splits into two halves that separate horizontally on hover."
+        },
+        {
+          "slug": "vertical-split",
+          "name": "Vertical Split",
+          "description": "Image splits into two halves that separate vertically on hover."
+        },
+        {
+          "slug": "diamond-reveal",
+          "name": "Diamond Reveal",
+          "description": "A diamond clip-path reveals the image on hover."
+        },
+        {
+          "slug": "rounded-reveal",
+          "name": "Rounded Reveal",
+          "description": "A growing border-radius reveals the image on hover."
+        }
+      ]
+    },
+    {
+      "slug": "zoom",
+      "name": "Zoom",
+      "description": "Scale-based image zoom effects on hover.",
+      "effects": [
+        {
+          "slug": "point-zoom",
+          "name": "Point Zoom",
+          "description": "Zooms the image toward a specific anchor point on hover."
+        },
+        {
+          "slug": "quick-zoom",
+          "name": "Quick Zoom",
+          "description": "A fast scale-up on hover."
+        },
+        {
+          "slug": "zoom-in",
+          "name": "Zoom In",
+          "description": "A subtle scale-up on hover."
+        },
+        {
+          "slug": "zoom-out",
+          "name": "Zoom Out",
+          "description": "A subtle scale-down on hover."
+        },
+        {
+          "slug": "zoom-top",
+          "name": "Zoom Top",
+          "description": "Zooms toward the top of the image on hover."
+        },
+        {
+          "slug": "zoom-bottom",
+          "name": "Zoom Bottom",
+          "description": "Zooms toward the bottom of the image on hover."
+        },
+        {
+          "slug": "zoom-left",
+          "name": "Zoom Left",
+          "description": "Zooms toward the left of the image on hover."
+        },
+        {
+          "slug": "zoom-right",
+          "name": "Zoom Right",
+          "description": "Zooms toward the right of the image on hover."
+        },
+        {
+          "slug": "zoom-top-left",
+          "name": "Zoom Top Left",
+          "description": "Zooms toward the top-left of the image on hover."
+        },
+        {
+          "slug": "zoom-top-right",
+          "name": "Zoom Top Right",
+          "description": "Zooms toward the top-right of the image on hover."
+        },
+        {
+          "slug": "zoom-bottom-left",
+          "name": "Zoom Bottom Left",
+          "description": "Zooms toward the bottom-left of the image on hover."
+        },
+        {
+          "slug": "zoom-bottom-right",
+          "name": "Zoom Bottom Right",
+          "description": "Zooms toward the bottom-right of the image on hover."
+        }
+      ]
+    },
+    {
+      "slug": "pan-move",
+      "name": "Pan & Move",
+      "description": "Translate-based pan effects paired with a slight scale-up on hover.",
+      "effects": [
+        {
+          "slug": "pan-left",
+          "name": "Pan Left",
+          "description": "Pans the image left while slightly scaling up on hover."
+        },
+        {
+          "slug": "pan-right",
+          "name": "Pan Right",
+          "description": "Pans the image right while slightly scaling up on hover."
+        },
+        {
+          "slug": "pan-top",
+          "name": "Pan Top",
+          "description": "Pans the image up while slightly scaling up on hover."
+        },
+        {
+          "slug": "pan-bottom",
+          "name": "Pan Bottom",
+          "description": "Pans the image down while slightly scaling up on hover."
+        },
+        {
+          "slug": "pan-top-left",
+          "name": "Pan Top Left",
+          "description": "Pans the image toward the top-left while slightly scaling up on hover."
+        },
+        {
+          "slug": "pan-top-right",
+          "name": "Pan Top Right",
+          "description": "Pans the image toward the top-right while slightly scaling up on hover."
+        },
+        {
+          "slug": "pan-bottom-left",
+          "name": "Pan Bottom Left",
+          "description": "Pans the image toward the bottom-left while slightly scaling up on hover."
+        },
+        {
+          "slug": "pan-bottom-right",
+          "name": "Pan Bottom Right",
+          "description": "Pans the image toward the bottom-right while slightly scaling up on hover."
+        },
+        {
+          "slug": "pan-center",
+          "name": "Pan Center",
+          "description": "Slightly scales the image up on hover (no pan)."
+        }
+      ]
+    },
+    {
+      "slug": "fade",
+      "name": "Fade",
+      "description": "Opacity-based fade effects applied to the image or an overlay on hover.",
+      "effects": [
+        {
+          "slug": "fade-in",
+          "name": "Fade In",
+          "description": "Image starts transparent and fades in to full opacity on hover."
+        },
+        {
+          "slug": "fade-out",
+          "name": "Fade Out",
+          "description": "Image fades from full opacity to transparent on hover."
+        },
+        {
+          "slug": "fade-to-color",
+          "name": "Fade to Color",
+          "description": "Image fades to transparent revealing a colored background on hover."
+        },
+        {
+          "slug": "fade-overlay",
+          "name": "Fade Overlay",
+          "description": "A semi-transparent dark overlay fades in on hover."
+        },
+        {
+          "slug": "fade-overlay-dark",
+          "name": "Fade Overlay Dark",
+          "description": "A dark overlay fades in on hover."
+        },
+        {
+          "slug": "fade-overlay-light",
+          "name": "Fade Overlay Light",
+          "description": "A light overlay fades in on hover."
+        },
+        {
+          "slug": "fade-caption",
+          "name": "Fade Caption",
+          "description": "A caption overlay fades in over the image on hover."
+        },
+        {
+          "slug": "fade-crossfade",
+          "name": "Fade Crossfade",
+          "description": "Image crossfades to a duplicate image on hover."
+        },
+        {
+          "slug": "fade-blur",
+          "name": "Fade Blur",
+          "description": "Image fades to a blurred state on hover."
+        }
+      ]
+    },
+    {
+      "slug": "slide-reveal",
+      "name": "Slide & Reveal",
+      "description": "Width/height-driven slide-in and cover animations on hover.",
+      "effects": [
+        {
+          "slug": "slide-reveal-left",
+          "name": "Slide Reveal Left",
+          "description": "A left-anchored overlay slides left to reveal the image on hover."
+        },
+        {
+          "slug": "slide-reveal-right",
+          "name": "Slide Reveal Right",
+          "description": "A right-anchored overlay slides right to reveal the image on hover."
+        },
+        {
+          "slug": "slide-reveal-top",
+          "name": "Slide Reveal Top",
+          "description": "A top-anchored overlay slides up to reveal the image on hover."
+        },
+        {
+          "slug": "slide-reveal-bottom",
+          "name": "Slide Reveal Bottom",
+          "description": "A bottom-anchored overlay slides down to reveal the image on hover."
+        },
+        {
+          "slug": "slide-reveal-top-left",
+          "name": "Slide Reveal Top Left",
+          "description": "A top-left-anchored overlay slides diagonally to reveal the image on hover."
+        },
+        {
+          "slug": "slide-reveal-top-right",
+          "name": "Slide Reveal Top Right",
+          "description": "A top-right-anchored overlay slides diagonally to reveal the image on hover."
+        },
+        {
+          "slug": "slide-reveal-bottom-left",
+          "name": "Slide Reveal Bottom Left",
+          "description": "A bottom-left-anchored overlay slides diagonally to reveal the image on hover."
+        },
+        {
+          "slug": "slide-reveal-bottom-right",
+          "name": "Slide Reveal Bottom Right",
+          "description": "A bottom-right-anchored overlay slides diagonally to reveal the image on hover."
+        },
+        {
+          "slug": "slide-cover-left",
+          "name": "Slide Cover Left",
+          "description": "A dark overlay slides in from the left to cover the image on hover."
+        },
+        {
+          "slug": "slide-cover-right",
+          "name": "Slide Cover Right",
+          "description": "A dark overlay slides in from the right to cover the image on hover."
+        },
+        {
+          "slug": "slide-cover-top",
+          "name": "Slide Cover Top",
+          "description": "A dark overlay slides in from the top to cover the image on hover."
+        },
+        {
+          "slug": "slide-cover-bottom",
+          "name": "Slide Cover Bottom",
+          "description": "A dark overlay slides in from the bottom to cover the image on hover."
+        }
+      ]
+    },
+    {
+      "slug": "blur-focus",
+      "name": "Blur & Focus",
+      "description": "Blur transitions on hover (image starts blurred and sharpens, or vice versa).",
+      "effects": [
+        {
+          "slug": "blur-in",
+          "name": "Blur In",
+          "description": "Image starts blurred and sharpens on hover."
+        },
+        {
+          "slug": "blur-out",
+          "name": "Blur Out",
+          "description": "Image starts sharp and softens into a blurred state on hover."
+        }
+      ]
+    },
+    {
+      "slug": "color-filters",
+      "name": "Color & Filters",
+      "description": "Color filter effects on hover (grayscale, sepia, invert, hue rotate, etc.).",
+      "effects": [
+        {
+          "slug": "grayscale",
+          "name": "Grayscale",
+          "description": "Removes color from the image on hover."
+        },
+        {
+          "slug": "colorize",
+          "name": "Colorize",
+          "description": "Applies a colored hue-rotate and saturation boost on hover."
+        },
+        {
+          "slug": "sepia",
+          "name": "Sepia",
+          "description": "Applies a sepia tone to the image on hover."
+        },
+        {
+          "slug": "hue-rotate",
+          "name": "Hue Rotate",
+          "description": "Rotates the hue of the image by 180 degrees on hover."
+        },
+        {
+          "slug": "saturate",
+          "name": "Saturate",
+          "description": "Increases color saturation on hover."
+        },
+        {
+          "slug": "desaturate-to-color",
+          "name": "Desaturate to Color",
+          "description": "Image starts grayscale and returns to full color on hover."
+        },
+        {
+          "slug": "invert",
+          "name": "Invert",
+          "description": "Inverts the image colors on hover."
+        },
+        {
+          "slug": "warm-tone",
+          "name": "Warm Tone",
+          "description": "Applies a warm sepia-and-saturate tone on hover."
+        },
+        {
+          "slug": "cool-tone",
+          "name": "Cool Tone",
+          "description": "Applies a cool hue-rotated tone on hover."
+        }
+      ]
+    },
+    {
+      "slug": "brightness-contrast",
+      "name": "Brightness & Contrast",
+      "description": "Brightness and contrast adjustments on hover.",
+      "effects": [
+        {
+          "slug": "brighten",
+          "name": "Brighten",
+          "description": "Brightens the image on hover."
+        },
+        {
+          "slug": "darken",
+          "name": "Darken",
+          "description": "Darkens the image on hover."
+        },
+        {
+          "slug": "contrast-increase",
+          "name": "Contrast Increase",
+          "description": "Increases image contrast on hover."
+        },
+        {
+          "slug": "contrast-decrease",
+          "name": "Contrast Decrease",
+          "description": "Decreases image contrast on hover."
+        },
+        {
+          "slug": "brighten-to-normal",
+          "name": "Brighten to Normal",
+          "description": "Image starts darkened and brightens to normal on hover."
+        },
+        {
+          "slug": "darken-to-normal",
+          "name": "Darken to Normal",
+          "description": "Image starts brightened and darkens to normal on hover."
+        },
+        {
+          "slug": "contrast-to-normal",
+          "name": "Contrast to Normal",
+          "description": "Image starts low-contrast and returns to normal on hover."
+        },
+        {
+          "slug": "high-contrast-focus",
+          "name": "High-Contrast Focus",
+          "description": "Image sharpens with high contrast when focused (keyboard accessible)."
+        }
+      ]
+    }
+  ]
+}
