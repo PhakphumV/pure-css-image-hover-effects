@@ -118,3 +118,25 @@
     transform: perspective(800px) rotateY(25deg) scale(1.25);
   }
 }
+
+
+/* ---- tilt-3d ---- */
+/* Image tilts on both X and Y axes on hover/focus via a
+   perspective context, for a 3D card-style tilt. A 1.25 scale
+   keeps the tilted image covering the viewport. */
+.hover-effect.tilt-3d img{
+  transition: transform 0.5s ease;
+}
+.hover-effect.tilt-3d:hover img,
+.hover-effect.tilt-3d:focus-visible img{
+  transform: perspective(800px) rotateX(15deg) rotateY(15deg) scale(1.25);
+}
+@media (prefers-reduced-motion: reduce) {
+  .hover-effect.tilt-3d img{
+    transition: none;
+  }
+  .hover-effect.tilt-3d:hover img,
+  .hover-effect.tilt-3d:focus-visible img{
+    transform: perspective(800px) rotateX(15deg) rotateY(15deg) scale(1.25);
+  }
+}
