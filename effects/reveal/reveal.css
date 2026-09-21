@@ -94,3 +94,35 @@
     clip-path: inset(40%);
   }
 }
+
+/* ---- wipe-reveal ---- */
+/* Overlay covers the image at idle, then wipes off to the left
+   on hover/focus via clip-path: inset(0 0 0 0) -> inset(0 0 0
+   100%), progressively revealing the image like a horizontal
+   wipe. */
+.hover-effect.wipe-reveal{
+  position: relative;
+  display: block;
+}
+.hover-effect.wipe-reveal::before{
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(15, 23, 42, 0.85);
+  clip-path: inset(0 0 0 0);
+  transition: clip-path 0.5s ease;
+  pointer-events: none;
+}
+.hover-effect.wipe-reveal:hover::before,
+.hover-effect.wipe-reveal:focus-visible::before{
+  clip-path: inset(0 0 0 100%);
+}
+@media (prefers-reduced-motion: reduce) {
+  .hover-effect.wipe-reveal::before{
+    transition: none;
+  }
+  .hover-effect.wipe-reveal:hover::before,
+  .hover-effect.wipe-reveal:focus-visible::before{
+    clip-path: inset(0 0 0 100%);
+  }
+}
