@@ -63,3 +63,34 @@
     clip-path: circle(150% at 50% 50%);
   }
 }
+
+/* ---- inset-reveal ---- */
+/* Overlay covers the image at idle, then shrinks inward from
+   each edge on hover/focus (clip-path: inset 0 -> inset 40%),
+   revealing a centered "window" of the image. */
+.hover-effect.inset-reveal{
+  position: relative;
+  display: block;
+}
+.hover-effect.inset-reveal::before{
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(15, 23, 42, 0.85);
+  clip-path: inset(0);
+  transition: clip-path 0.5s ease;
+  pointer-events: none;
+}
+.hover-effect.inset-reveal:hover::before,
+.hover-effect.inset-reveal:focus-visible::before{
+  clip-path: inset(40%);
+}
+@media (prefers-reduced-motion: reduce) {
+  .hover-effect.inset-reveal::before{
+    transition: none;
+  }
+  .hover-effect.inset-reveal:hover::before,
+  .hover-effect.inset-reveal:focus-visible::before{
+    clip-path: inset(40%);
+  }
+}
