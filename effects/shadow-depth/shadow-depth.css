@@ -1,103 +1,122 @@
 /* Shadow & Depth category hover effects. */
-/* Pattern: each effect adds a box-shadow (or layered shadows)
-   to the image on hover/focus to convey depth, elevation, or
-   atmospheric separation from the background. The shadow is
-   the dominant visual behavior; do not combine with 3D
-   transforms or other transforms here. */
-.hover-effect.shadow-reveal img{
-  transition: box-shadow 0.4s ease;
-  box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
+/* Pattern: each effect applies a box-shadow to the
+   .hover-effect wrapper (not the <img>) so the shadow can
+   extend outside the image bounds without being clipped by
+   the image's own dimensions or by overflow:hidden parents.
+   The shadow is the dominant visual behavior; do not combine
+   with 3D transforms or other transforms here. */
+
+/* ---- shadow-reveal ---- */
+/* Idle: tight, subtle shadow. On hover/focus the wrapper
+   lifts and casts a large, layered drop-shadow that visibly
+   separates the image from the surface. */
+.hover-effect.shadow-reveal{
+  transition: box-shadow 0.4s ease, transform 0.4s ease;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08);
 }
-.hover-effect.shadow-reveal:hover img,
-.hover-effect.shadow-reveal:focus-visible img{
-  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.25), 0 4px 10px rgba(0, 0, 0, 0.15);
+.hover-effect.shadow-reveal:hover,
+.hover-effect.shadow-reveal:focus-visible{
+  box-shadow:
+    0 30px 60px -10px rgba(0, 0, 0, 0.45),
+    0 18px 36px -18px rgba(0, 0, 0, 0.35),
+    0 8px 16px -8px rgba(0, 0, 0, 0.25);
+  transform: translateY(-4px);
 }
 @media (prefers-reduced-motion: reduce) {
-  .hover-effect.shadow-reveal img{
+  .hover-effect.shadow-reveal{
     transition: none;
   }
-  .hover-effect.shadow-reveal:hover img,
-  .hover-effect.shadow-reveal:focus-visible img{
-    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.25), 0 4px 10px rgba(0, 0, 0, 0.15);
+  .hover-effect.shadow-reveal:hover,
+  .hover-effect.shadow-reveal:focus-visible{
+    box-shadow:
+      0 30px 60px -10px rgba(0, 0, 0, 0.45),
+      0 18px 36px -18px rgba(0, 0, 0, 0.35),
+      0 8px 16px -8px rgba(0, 0, 0, 0.25);
+    transform: none;
   }
 }
 
 /* ---- press-depth ---- */
-/* Image appears pressed INTO the page on hover/focus: the
-   drop-shadow shrinks to a small tight shadow (or moves
-   closer to the surface) while the inset-shadow grows at the
-   edges, simulating depression. */
-.hover-effect.press-depth img{
-  transition: box-shadow 0.35s ease;
+/* Idle: image looks raised with a moderate shadow. On
+   hover/focus the wrapper drops into the page: drop-shadow
+   shrinks tight, an inset shadow darkens the image edges,
+   and the wrapper translates slightly downward. */
+.hover-effect.press-depth{
+  transition: box-shadow 0.35s ease, transform 0.35s ease;
   box-shadow:
-    0 8px 16px rgba(0, 0, 0, 0.3),
+    0 14px 24px rgba(0, 0, 0, 0.3),
     inset 0 0 0 0 rgba(0, 0, 0, 0);
+  transform: translateY(0);
 }
-.hover-effect.press-depth:hover img,
-.hover-effect.press-depth:focus-visible img{
+.hover-effect.press-depth:hover,
+.hover-effect.press-depth:focus-visible{
   box-shadow:
     0 2px 4px rgba(0, 0, 0, 0.18),
-    inset 0 0 0 6px rgba(0, 0, 0, 0.18);
+    inset 0 0 0 8px rgba(0, 0, 0, 0.3);
+  transform: translateY(4px);
 }
 @media (prefers-reduced-motion: reduce) {
-  .hover-effect.press-depth img{
+  .hover-effect.press-depth{
     transition: none;
   }
-  .hover-effect.press-depth:hover img,
-  .hover-effect.press-depth:focus-visible img{
+  .hover-effect.press-depth:hover,
+  .hover-effect.press-depth:focus-visible{
     box-shadow:
       0 2px 4px rgba(0, 0, 0, 0.18),
-      inset 0 0 0 6px rgba(0, 0, 0, 0.18);
+      inset 0 0 0 8px rgba(0, 0, 0, 0.3);
+    transform: none;
   }
 }
 
 /* ---- glow ---- */
-/* A colored box-shadow halo blooms around the image on
-   hover/focus, creating a luminous glow effect. */
-.hover-effect.glow img{
+/* Idle: no glow. On hover/focus a vivid two-layer violet
+   halo blooms around the wrapper. */
+.hover-effect.glow{
   transition: box-shadow 0.4s ease;
   box-shadow: 0 0 0 0 rgba(124, 58, 237, 0);
 }
-.hover-effect.glow:hover img,
-.hover-effect.glow:focus-visible img{
+.hover-effect.glow:hover,
+.hover-effect.glow:focus-visible{
   box-shadow:
-    0 0 30px 6px rgba(124, 58, 237, 0.55),
-    0 0 60px 12px rgba(124, 58, 237, 0.25);
+    0 0 24px 4px rgba(124, 58, 237, 0.7),
+    0 0 60px 16px rgba(124, 58, 237, 0.45),
+    0 0 120px 32px rgba(124, 58, 237, 0.25);
 }
 @media (prefers-reduced-motion: reduce) {
-  .hover-effect.glow img{
+  .hover-effect.glow{
     transition: none;
   }
-  .hover-effect.glow:hover img,
-  .hover-effect.glow:focus-visible img{
+  .hover-effect.glow:hover,
+  .hover-effect.glow:focus-visible{
     box-shadow:
-      0 0 30px 6px rgba(124, 58, 237, 0.55),
-      0 0 60px 12px rgba(124, 58, 237, 0.25);
+      0 0 24px 4px rgba(124, 58, 237, 0.7),
+      0 0 60px 16px rgba(124, 58, 237, 0.45),
+      0 0 120px 32px rgba(124, 58, 237, 0.25);
   }
 }
 
 /* ---- directional-shadow ---- */
-/* Shadow grows out toward the bottom-right corner on hover/focus,
-   as if lit from the upper-left, creating a directional
-   long-shadow effect. */
-.hover-effect.directional-shadow img{
+/* Idle: tight centered shadow. On hover/focus the shadow
+   stretches toward the bottom-right (16-32px offset), as if
+   lit from the upper-left. */
+.hover-effect.directional-shadow{
   transition: box-shadow 0.4s ease;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.18);
 }
-.hover-effect.directional-shadow:hover img,
-.hover-effect.directional-shadow:focus-visible img{
+.hover-effect.directional-shadow:hover,
+.hover-effect.directional-shadow:focus-visible{
   box-shadow:
-    16px 16px 28px rgba(0, 0, 0, 0.35),
-    24px 24px 40px rgba(0, 0, 0, 0.15);
+    20px 20px 30px rgba(0, 0, 0, 0.4),
+    36px 36px 60px rgba(0, 0, 0, 0.22);
 }
 @media (prefers-reduced-motion: reduce) {
-  .hover-effect.directional-shadow img{
+  .hover-effect.directional-shadow{
     transition: none;
   }
-  .hover-effect.directional-shadow:hover img,
-  .hover-effect.directional-shadow:focus-visible img{
+  .hover-effect.directional-shadow:hover,
+  .hover-effect.directional-shadow:focus-visible{
     box-shadow:
-      16px 16px 28px rgba(0, 0, 0, 0.35),
-      24px 24px 40px rgba(0, 0, 0, 0.15);
+      20px 20px 30px rgba(0, 0, 0, 0.4),
+      36px 36px 60px rgba(0, 0, 0, 0.22);
   }
 }

@@ -26,9 +26,10 @@
   width: 100%;
   max-width: 480px;
   margin: 0 auto;
-  overflow: hidden;
   border-radius: 8px;
   background: #fff;
+  padding: 36px;
+  box-sizing: border-box;
 }
 
 .preview-stage .hover-effect {
