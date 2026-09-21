@@ -157,3 +157,24 @@
     transform: perspective(800px) scale(1.4) skewX(20deg) rotateY(8deg);
   }
 }
+
+
+/* ---- stretch-horizontal ---- */
+/* Image stretches horizontally on hover/focus. A slight vertical
+   zoom keeps the stretched image covering the viewport. */
+.hover-effect.stretch-horizontal img{
+  transition: transform 0.5s ease;
+}
+.hover-effect.stretch-horizontal:hover img,
+.hover-effect.stretch-horizontal:focus-visible img{
+  transform: scale(1.4, 1.2);
+}
+@media (prefers-reduced-motion: reduce) {
+  .hover-effect.stretch-horizontal img{
+    transition: none;
+  }
+  .hover-effect.stretch-horizontal:hover img,
+  .hover-effect.stretch-horizontal:focus-visible img{
+    transform: scale(1.4, 1.2);
+  }
+}
