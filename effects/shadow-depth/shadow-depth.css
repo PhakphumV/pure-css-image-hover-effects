@@ -1,0 +1,23 @@
+/* Shadow & Depth category hover effects. */
+/* Pattern: each effect adds a box-shadow (or layered shadows)
+   to the image on hover/focus to convey depth, elevation, or
+   atmospheric separation from the background. The shadow is
+   the dominant visual behavior; do not combine with 3D
+   transforms or other transforms here. */
+.hover-effect.shadow-reveal img{
+  transition: box-shadow 0.4s ease;
+  box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
+}
+.hover-effect.shadow-reveal:hover img,
+.hover-effect.shadow-reveal:focus-visible img{
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.25), 0 4px 10px rgba(0, 0, 0, 0.15);
+}
+@media (prefers-reduced-motion: reduce) {
+  .hover-effect.shadow-reveal img{
+    transition: none;
+  }
+  .hover-effect.shadow-reveal:hover img,
+  .hover-effect.shadow-reveal:focus-visible img{
+    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.25), 0 4px 10px rgba(0, 0, 0, 0.15);
+  }
+}
