@@ -116,7 +116,7 @@
       ]
     },
     {
-      "slug": "3d-perspective",
+      "slug": "three-d",
       "name": "3D & Perspective",
       "description": "3D perspective transforms applied to the image on hover.",
       "effects": [
@@ -388,7 +388,7 @@
       ]
     },
     {
-      "slug": "pan-move",
+      "slug": "pan",
       "name": "Pan & Move",
       "description": "Translate-based pan effects paired with a slight scale-up on hover.",
       "effects": [
@@ -492,7 +492,7 @@
       ]
     },
     {
-      "slug": "slide-reveal",
+      "slug": "slide",
       "name": "Slide & Reveal",
       "description": "Width/height-driven slide-in and cover animations on hover.",
       "effects": [
@@ -559,7 +559,7 @@
       ]
     },
     {
-      "slug": "blur-focus",
+      "slug": "blur",
       "name": "Blur & Focus",
       "description": "Blur transitions on hover (image starts blurred and sharpens, or vice versa).",
       "effects": [
