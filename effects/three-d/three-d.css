@@ -96,3 +96,25 @@
     transform: perspective(800px) rotateX(25deg) scale(1.25);
   }
 }
+
+
+/* ---- rotate-y ---- */
+/* Image rotates around the Y axis on hover/focus via perspective
+   context. A 1.25 scale keeps the rotated image covering the
+   viewport. */
+.hover-effect.rotate-y img{
+  transition: transform 0.5s ease;
+}
+.hover-effect.rotate-y:hover img,
+.hover-effect.rotate-y:focus-visible img{
+  transform: perspective(800px) rotateY(25deg) scale(1.25);
+}
+@media (prefers-reduced-motion: reduce) {
+  .hover-effect.rotate-y img{
+    transition: none;
+  }
+  .hover-effect.rotate-y:hover img,
+  .hover-effect.rotate-y:focus-visible img{
+    transform: perspective(800px) rotateY(25deg) scale(1.25);
+  }
+}
