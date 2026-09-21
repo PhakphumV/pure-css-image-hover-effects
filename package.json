@@ -4,9 +4,9 @@
   "private": true,
   "description": "A copy-paste library of pure CSS image hover effects. The runtime site is plain HTML/CSS with no build step; these npm scripts are contributor tooling for the metadata-driven catalogue pipeline.",
   "scripts": {
-    "build": "node scripts/build-site.mjs && node scripts/build-catalog.mjs --apply && node scripts/build-readme.mjs --apply",
+    "build": "node scripts/build-site.mjs && node scripts/build-catalog.mjs --apply && node scripts/build-readme.mjs --apply && node scripts/build.mjs",
     "validate": "node scripts/validate-catalog.js",
-    "check": "node scripts/validate-catalog.js && node scripts/build-site.mjs --check && node scripts/build-catalog.mjs --check && node scripts/build-readme.mjs --check"
+    "check": "node scripts/validate-catalog.js && node scripts/build-site.mjs --check && node scripts/build-catalog.mjs --check && node scripts/build-readme.mjs --check && node scripts/build.mjs --check"
   },
   "engines": {
     "node": ">=18"

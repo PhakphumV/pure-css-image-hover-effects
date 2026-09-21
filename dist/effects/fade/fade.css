@@ -1,0 +1,296 @@
+/* Fade-category hover effects.
+   One class on .hover-effect.<slug>, scoped via the
+   unique slug class so multiple categories can coexist.
+
+   Pattern notes:
+     - fade-in / fade-out work on the image's own opacity.
+     - fade-to-color / fade-overlay / fade-overlay-dark use a
+       ::before pseudo-element on the wrapper as an overlay layer
+       (the wrapper must be position: relative for the overlay
+       to be scoped to it).
+
+   Transition timing rules:
+   - 300ms minimum (perceptually smooth)
+   - 2000ms maximum (dramatic, contemplative)
+   - Tune per effect: subtle fade -> shorter; rich overlay -> longer.
+
+   prefers-reduced-motion: reduce is honoured per effect: every
+   block below has a paired @media rule that drops the transition
+   (and, where it makes sense, snaps straight to the hover state
+   so the visual change still lands, just without animation). */
+
+/* ---- fade-in ---- */
+/* Image starts fully transparent; on hover/focus it fades in to
+   full opacity. */
+.hover-effect.fade-in img{
+  opacity: 0;
+  transition: opacity 0.45s ease;
+}
+.hover-effect.fade-in:hover img,
+.hover-effect.fade-in:focus-visible img{
+  opacity: 1;
+}
+@media (prefers-reduced-motion: reduce) {
+  .hover-effect.fade-in img{
+    transition: none;
+  }
+  .hover-effect.fade-in:hover img,
+  .hover-effect.fade-in:focus-visible img{
+    opacity: 1;
+  }
+}
+/* ---- fade-out ---- */
+/* Image starts fully opaque; on hover/focus it fades out to
+   fully transparent. */
+.hover-effect.fade-out img{
+  transition: opacity 0.45s ease;
+}
+.hover-effect.fade-out:hover img,
+.hover-effect.fade-out:focus-visible img{
+  opacity: 0;
+}
+@media (prefers-reduced-motion: reduce) {
+  .hover-effect.fade-out img{
+    transition: none;
+  }
+  .hover-effect.fade-out:hover img,
+  .hover-effect.fade-out:focus-visible img{
+    opacity: 0;
+  }
+}
+
+/* ---- fade-to-color ---- */
+/* A solid-color ::before overlay covers the image at rest and
+   fades to transparent on hover/focus, so the image "comes
+   through" the color treatment. The wrapper is position: relative
+   so the overlay is scoped to it. */
+.hover-effect.fade-to-color{
+  position: relative;
+}
+.hover-effect.fade-to-color::before{
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(70, 130, 180, 0.95);
+  transition: opacity 0.45s ease;
+}
+.hover-effect.fade-to-color:hover::before,
+.hover-effect.fade-to-color:focus-visible::before{
+  opacity: 0;
+}
+@media (prefers-reduced-motion: reduce) {
+  .hover-effect.fade-to-color::before{
+    transition: none;
+  }
+  .hover-effect.fade-to-color:hover::before,
+  .hover-effect.fade-to-color:focus-visible::before{
+    opacity: 0;
+  }
+}
+
+/* ---- fade-overlay ---- */
+/* A semi-transparent black ::before overlay fades in on
+   hover/focus, dimming the image. The image remains visible
+   underneath. Wrapper picks up position: relative for the
+   overlay to be scoped to it. */
+.hover-effect.fade-overlay{
+  position: relative;
+}
+.hover-effect.fade-overlay::before{
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.4);
+  opacity: 0;
+  transition: opacity 0.45s ease;
+}
+.hover-effect.fade-overlay:hover::before,
+.hover-effect.fade-overlay:focus-visible::before{
+  opacity: 1;
+}
+@media (prefers-reduced-motion: reduce) {
+  .hover-effect.fade-overlay::before{
+    transition: none;
+  }
+  .hover-effect.fade-overlay:hover::before,
+  .hover-effect.fade-overlay:focus-visible::before{
+    opacity: 1;
+  }
+}
+
+/* ---- fade-overlay-dark ---- */
+/* Heavier dark overlay (rgba(0,0,0,0.75)) that fades in on
+   hover/focus, leaving the image barely visible. Same pattern
+   as fade-overlay but with a darker, more opaque fill. */
+.hover-effect.fade-overlay-dark{
+  position: relative;
+}
+.hover-effect.fade-overlay-dark::before{
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.75);
+  opacity: 0;
+  transition: opacity 0.45s ease;
+}
+.hover-effect.fade-overlay-dark:hover::before,
+.hover-effect.fade-overlay-dark:focus-visible::before{
+  opacity: 1;
+}
+@media (prefers-reduced-motion: reduce) {
+  .hover-effect.fade-overlay-dark::before{
+    transition: none;
+  }
+  .hover-effect.fade-overlay-dark:hover::before,
+  .hover-effect.fade-overlay-dark:focus-visible::before{
+    opacity: 1;
+  }
+}
+
+/* ---- fade-overlay-light ---- */
+/* Mirror of fade-overlay but with a light tint: a semi-
+   transparent white ::before overlay fades in on hover/focus,
+   brightening the image while keeping it visible. The image
+   stays the focus; the overlay adds a soft luminous wash. */
+.hover-effect.fade-overlay-light{
+  position: relative;
+}
+.hover-effect.fade-overlay-light::before{
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(255, 255, 255, 0.6);
+  opacity: 0;
+  transition: opacity 0.45s ease;
+}
+.hover-effect.fade-overlay-light:hover::before,
+.hover-effect.fade-overlay-light:focus-visible::before{
+  opacity: 1;
+}
+@media (prefers-reduced-motion: reduce) {
+  .hover-effect.fade-overlay-light::before{
+    transition: none;
+  }
+  .hover-effect.fade-overlay-light:hover::before,
+  .hover-effect.fade-overlay-light:focus-visible::before{
+    opacity: 1;
+  }
+}
+
+/* ---- fade-caption ---- */
+/* A caption text treatment fades in over the bottom of the
+   image on hover/focus. Because the markup contract requires
+   exactly one <img> and forbids extra HTML elements, the
+   caption text is provided via a ::after pseudo-element with
+   content: "...". To customize, edit the content string
+   below; the rest of the effect (positioning, fade-in,
+   wrapper scoping) is otherwise unchanged. The wrapper picks
+   up position: relative so the absolute-positioned pseudo
+   is scoped to it. */
+.hover-effect.fade-caption{
+  position: relative;
+}
+.hover-effect.fade-caption::after{
+  content: "Hover caption";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding: 0.75rem 1rem;
+  background: rgba(0, 0, 0, 0.65);
+  color: #fff;
+  font-size: 0.95rem;
+  line-height: 1.3;
+  text-align: center;
+  opacity: 0;
+  transition: opacity 0.45s ease;
+}
+.hover-effect.fade-caption:hover::after,
+.hover-effect.fade-caption:focus-visible::after{
+  opacity: 1;
+}
+@media (prefers-reduced-motion: reduce) {
+  .hover-effect.fade-caption::after{
+    transition: none;
+  }
+  .hover-effect.fade-caption:hover::after,
+  .hover-effect.fade-caption:focus-visible::after{
+    opacity: 1;
+  }
+}
+
+/* ---- fade-crossfade ---- */
+/* Crossfade between two real images while keeping the one-img
+   markup contract: the <img> is image #1, the ::before pseudo
+   carries image #2 via background-image. Image #1 starts at
+   full opacity; on hover/focus it fades out while image #2
+   fades in, both on the same 0.5s ease so the transition reads
+   as a true crossfade.
+
+   To customize: set the <img src="..."> in HTML for image #1
+   and the background-image URL below for image #2. The wrapper
+   picks up position: relative so the absolute-positioned pseudo
+   is scoped to it. The pseudo uses background-size: cover and
+   background-position: center to mirror the <img>'s object-fit
+   cover rendering. */
+.hover-effect.fade-crossfade{
+  position: relative;
+}
+.hover-effect.fade-crossfade::before{
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: url("https://picsum.photos/seed/fade-crossfade-alt/800/600");
+  background-size: cover;
+  background-position: center;
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+.hover-effect.fade-crossfade img{
+  transition: opacity 0.5s ease;
+}
+.hover-effect.fade-crossfade:hover img,
+.hover-effect.fade-crossfade:focus-visible img{
+  opacity: 0;
+}
+.hover-effect.fade-crossfade:hover::before,
+.hover-effect.fade-crossfade:focus-visible::before{
+  opacity: 1;
+}
+@media (prefers-reduced-motion: reduce) {
+  .hover-effect.fade-crossfade img,
+  .hover-effect.fade-crossfade::before{
+    transition: none;
+  }
+  .hover-effect.fade-crossfade:hover img,
+  .hover-effect.fade-crossfade:focus-visible img{
+    opacity: 0;
+  }
+  .hover-effect.fade-crossfade:hover::before,
+  .hover-effect.fade-crossfade:focus-visible::before{
+    opacity: 1;
+  }
+}
+
+/* ---- fade-blur ---- */
+/* Image is sharp at rest and fades into a softened/blurred
+   state on hover/focus via filter: blur(5px). No pseudo-element
+   is needed: the blur is applied directly to the <img>, and the
+   wrapper inherits the same overflow: hidden from the preview
+   stage so the softened edges stay inside the frame. */
+.hover-effect.fade-blur img{
+  transition: filter 0.5s ease;
+}
+.hover-effect.fade-blur:hover img,
+.hover-effect.fade-blur:focus-visible img{
+  filter: blur(5px);
+}
+@media (prefers-reduced-motion: reduce) {
+  .hover-effect.fade-blur img{
+    transition: none;
+  }
+  .hover-effect.fade-blur:hover img,
+  .hover-effect.fade-blur:focus-visible img{
+    filter: blur(5px);
+  }
+}

@@ -1,0 +1,179 @@
+/* Overlay category hover effects. */
+/* Pattern: each effect covers the image with a ::before layer
+   (solid color, gradient, directional, split, or animated
+   reveal) on hover/focus-visible. The overlay is the dominant
+   visual behavior; do not combine with 3D transforms or
+   rotation here. The underlying <img> stays untouched. */
+.hover-effect.solid-overlay{
+  position: relative;
+  display: block;
+}
+.hover-effect.solid-overlay::before{
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  pointer-events: none;
+}
+.hover-effect.solid-overlay:hover::before,
+.hover-effect.solid-overlay:focus-visible::before{
+  opacity: 1;
+}
+@media (prefers-reduced-motion: reduce) {
+  .hover-effect.solid-overlay::before{
+    transition: none;
+  }
+  .hover-effect.solid-overlay:hover::before,
+  .hover-effect.solid-overlay:focus-visible::before{
+    opacity: 1;
+  }
+}
+
+/* ---- gradient-overlay ---- */
+/* A linear-gradient overlay fades in on hover/focus, e.g. top
+   transparent to bottom dark, for a cinematic vignette feel. */
+.hover-effect.gradient-overlay{
+  position: relative;
+  display: block;
+}
+.hover-effect.gradient-overlay::before{
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0) 0%,
+    rgba(0, 0, 0, 0.7) 100%
+  );
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  pointer-events: none;
+}
+.hover-effect.gradient-overlay:hover::before,
+.hover-effect.gradient-overlay:focus-visible::before{
+  opacity: 1;
+}
+@media (prefers-reduced-motion: reduce) {
+  .hover-effect.gradient-overlay::before{
+    transition: none;
+  }
+  .hover-effect.gradient-overlay:hover::before,
+  .hover-effect.gradient-overlay:focus-visible::before{
+    opacity: 1;
+  }
+}
+
+/* ---- directional-overlay ---- */
+/* Overlay slides in from the left edge on hover/focus via
+   transform: translateX(-100%) -> translateX(0). */
+.hover-effect.directional-overlay{
+  position: relative;
+  display: block;
+  overflow: hidden;
+}
+.hover-effect.directional-overlay::before{
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(37, 99, 235, 0.55);
+  transform: translateX(-100%);
+  transition: transform 0.4s ease;
+  pointer-events: none;
+}
+.hover-effect.directional-overlay:hover::before,
+.hover-effect.directional-overlay:focus-visible::before{
+  transform: translateX(0);
+}
+@media (prefers-reduced-motion: reduce) {
+  .hover-effect.directional-overlay::before{
+    transition: none;
+  }
+  .hover-effect.directional-overlay:hover::before,
+  .hover-effect.directional-overlay:focus-visible::before{
+    transform: translateX(0);
+  }
+}
+
+/* ---- split-overlay ---- */
+/* Two halves (left/right) slide inward from opposite edges on
+   hover/focus and meet in the middle, forming a split-screen
+   overlay using ::before and ::after. */
+.hover-effect.split-overlay{
+  position: relative;
+  display: block;
+  overflow: hidden;
+}
+.hover-effect.split-overlay::before,
+.hover-effect.split-overlay::after{
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 50%;
+  pointer-events: none;
+  transition: transform 0.4s ease;
+}
+.hover-effect.split-overlay::before{
+  left: 0;
+  background: rgba(236, 72, 153, 0.55);
+  transform: translateX(-100%);
+}
+.hover-effect.split-overlay::after{
+  right: 0;
+  background: rgba(37, 99, 235, 0.55);
+  transform: translateX(100%);
+}
+.hover-effect.split-overlay:hover::before,
+.hover-effect.split-overlay:focus-visible::before{
+  transform: translateX(0);
+}
+.hover-effect.split-overlay:hover::after,
+.hover-effect.split-overlay:focus-visible::after{
+  transform: translateX(0);
+}
+@media (prefers-reduced-motion: reduce) {
+  .hover-effect.split-overlay::before,
+  .hover-effect.split-overlay::after{
+    transition: none;
+  }
+  .hover-effect.split-overlay:hover::before,
+  .hover-effect.split-overlay:focus-visible::before,
+  .hover-effect.split-overlay:hover::after,
+  .hover-effect.split-overlay:focus-visible::after{
+    transform: translateX(0);
+  }
+}
+
+/* ---- reveal-overlay ---- */
+/* Overlay starts covering the image and slides upward on
+   hover/focus, progressively revealing the image beneath
+   (like a curtain being pulled up). */
+.hover-effect.reveal-overlay{
+  position: relative;
+  display: block;
+  overflow: hidden;
+}
+.hover-effect.reveal-overlay::before{
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(15, 23, 42, 0.75);
+  transform: translateY(0);
+  transition: transform 0.5s ease;
+  pointer-events: none;
+}
+.hover-effect.reveal-overlay:hover::before,
+.hover-effect.reveal-overlay:focus-visible::before{
+  transform: translateY(-100%);
+}
+@media (prefers-reduced-motion: reduce) {
+  .hover-effect.reveal-overlay::before{
+    transition: none;
+  }
+  .hover-effect.reveal-overlay:hover::before,
+  .hover-effect.reveal-overlay:focus-visible::before{
+    transform: translateY(-100%);
+  }
+}

@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light">
+<title>Hue Rotate &middot; Pure CSS Image Hover Effects</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.9.0/build/styles/vs2015.min.css">
+<link rel="stylesheet" href="../template.css">
+<link rel="stylesheet" href="color-filters.css">
+<script defer src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.9.0/build/highlight.min.js"></script>
+</head>
+<body>
+
+<header class="container">
+  <nav aria-label="Breadcrumb">
+    <ul>
+      <li><a href="../../index.html">&larr; Back to gallery</a></li>
+    </ul>
+  </nav>
+  <hgroup>
+    <h1>Hue Rotate</h1>
+    <p>The image shifts halfway around the colour wheel on hover/focus.</p>
+  </hgroup>
+</header>
+
+<main class="container">
+  <div class="grid detail">
+
+    <section class="preview" aria-label="Live preview">
+      <div class="preview-stage">
+        <div class="hover-effect hue-rotate">
+          <img src="https://picsum.photos/seed/hue-rotate/800/600" alt="Hue Rotate demo">
+        </div>
+      </div>
+      <p class="preview-hint">Hover or focus the image to see the effect.</p>
+    </section>
+
+    <section aria-label="Source code">
+      <h3>HTML</h3>
+      <div class="code-block">
+        <pre><code class="language-html"><div class="hover-effect hue-rotate">
+  <img src="image.jpg" alt="description">
+</div></code></pre>
+      </div>
+
+      <h3>CSS</h3>
+      <div class="code-block">
+        <pre><code class="language-css">.hover-effect.hue-rotate img{
+  filter: hue-rotate(0deg);
+  transition: filter 0.5s ease;
+}
+.hover-effect.hue-rotate:hover img,
+.hover-effect.hue-rotate:focus-visible img{
+  filter: hue-rotate(180deg);
+}
+@media (prefers-reduced-motion: reduce) {
+  .hover-effect.hue-rotate img{
+    transition: none;
+  }
+  .hover-effect.hue-rotate:hover img,
+  .hover-effect.hue-rotate:focus-visible img{
+    filter: hue-rotate(180deg);
+  }
+}</code></pre>
+      </div>
+
+      <p class="copy-hint"><small>The <code><img></code> animates <code>filter: hue-rotate()</code> from <code>0deg</code> to <code>180deg</code>. Select the code and copy with <kbd>Ctrl+C</kbd> or <kbd>&#8984;C</kbd>.</small></p>
+    </section>
+
+  </div>
+</main>
+
+<footer class="container">
+  <small><a href="../../index.html">Pure CSS Image Hover Effects</a> &middot; No JavaScript &middot; MIT</small>
+</footer>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    hljs.highlightAll();
+  });
+</script>
+
+</body>
+</html>

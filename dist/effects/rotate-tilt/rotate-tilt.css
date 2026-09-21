@@ -1,0 +1,231 @@
+/* Rotate & Tilt-category hover effects.
+
+   Pattern for every effect in this category:
+     - The wrapper carries the standard `.hover-effect.SLUG` class.
+     - Rotation/tilt is achieved via the CSS `transform` property
+       (rotate, skew, or both) on the <img> child.
+     - A slight `scale()` is applied together with the rotation so the
+       rotated image keeps covering the effect viewport without
+       exposing blank corners/edges.
+     - Hover state is mirrored to `:focus-visible`.
+     - `:focus-visible` mirrors `:hover` (a11y parity).
+     - `prefers-reduced-motion: reduce` disables transitions but keeps
+       the final interactive state. */
+
+/* ---- rotate-clockwise ---- */
+/* Slight clockwise rotation on hover/focus. A 1.4 scale keeps the
+   rotated image covering the full viewport. */
+.hover-effect.rotate-clockwise img{
+  transition: transform 0.5s ease;
+}
+.hover-effect.rotate-clockwise:hover img,
+.hover-effect.rotate-clockwise:focus-visible img{
+  transform: scale(1.4) rotate(15deg);
+}
+@media (prefers-reduced-motion: reduce) {
+  .hover-effect.rotate-clockwise img{
+    transition: none;
+  }
+  .hover-effect.rotate-clockwise:hover img,
+  .hover-effect.rotate-clockwise:focus-visible img{
+    transform: scale(1.4) rotate(15deg);
+  }
+}
+
+
+/* ---- rotate-counter-clockwise ---- */
+/* Slight counter-clockwise rotation on hover/focus. A 1.4 scale keeps
+   the rotated image covering the full viewport. */
+.hover-effect.rotate-counter-clockwise img{
+  transition: transform 0.5s ease;
+}
+.hover-effect.rotate-counter-clockwise:hover img,
+.hover-effect.rotate-counter-clockwise:focus-visible img{
+  transform: scale(1.4) rotate(-15deg);
+}
+@media (prefers-reduced-motion: reduce) {
+  .hover-effect.rotate-counter-clockwise img{
+    transition: none;
+  }
+  .hover-effect.rotate-counter-clockwise:hover img,
+  .hover-effect.rotate-counter-clockwise:focus-visible img{
+    transform: scale(1.4) rotate(-15deg);
+  }
+}
+
+
+/* ---- tilt-left ---- */
+/* Image tilts left (counter-clockwise) on hover/focus. A 1.4 scale
+   keeps the tilted image covering the full viewport. */
+.hover-effect.tilt-left img{
+  transition: transform 0.5s ease;
+}
+.hover-effect.tilt-left:hover img,
+.hover-effect.tilt-left:focus-visible img{
+  transform: scale(1.4) rotate(-8deg);
+}
+@media (prefers-reduced-motion: reduce) {
+  .hover-effect.tilt-left img{
+    transition: none;
+  }
+  .hover-effect.tilt-left:hover img,
+  .hover-effect.tilt-left:focus-visible img{
+    transform: scale(1.4) rotate(-8deg);
+  }
+}
+
+
+/* ---- tilt-right ---- */
+/* Image tilts right (clockwise) on hover/focus. A 1.4 scale keeps
+   the tilted image covering the full viewport. */
+.hover-effect.tilt-right img{
+  transition: transform 0.5s ease;
+}
+.hover-effect.tilt-right:hover img,
+.hover-effect.tilt-right:focus-visible img{
+  transform: scale(1.4) rotate(8deg);
+}
+@media (prefers-reduced-motion: reduce) {
+  .hover-effect.tilt-right img{
+    transition: none;
+  }
+  .hover-effect.tilt-right:hover img,
+  .hover-effect.tilt-right:focus-visible img{
+    transform: scale(1.4) rotate(8deg);
+  }
+}
+
+
+/* ---- tilt-up ---- */
+/* Image tilts upward (top recedes) on hover/focus via a perspective
+   rotateX. A 1.4 scale keeps the tilted image covering the viewport. */
+.hover-effect.tilt-up img{
+  transition: transform 0.5s ease;
+}
+.hover-effect.tilt-up:hover img,
+.hover-effect.tilt-up:focus-visible img{
+  transform: perspective(800px) rotateX(15deg) scale(1.4);
+}
+@media (prefers-reduced-motion: reduce) {
+  .hover-effect.tilt-up img{
+    transition: none;
+  }
+  .hover-effect.tilt-up:hover img,
+  .hover-effect.tilt-up:focus-visible img{
+    transform: perspective(800px) rotateX(15deg) scale(1.4);
+  }
+}
+
+
+/* ---- tilt-down ---- */
+/* Image tilts downward (bottom recedes) on hover/focus via a
+   perspective rotateX. A 1.4 scale keeps the tilted image
+   covering the viewport. */
+.hover-effect.tilt-down img{
+  transition: transform 0.5s ease;
+}
+.hover-effect.tilt-down:hover img,
+.hover-effect.tilt-down:focus-visible img{
+  transform: perspective(800px) rotateX(-15deg) scale(1.4);
+}
+@media (prefers-reduced-motion: reduce) {
+  .hover-effect.tilt-down img{
+    transition: none;
+  }
+  .hover-effect.tilt-down:hover img,
+  .hover-effect.tilt-down:focus-visible img{
+    transform: perspective(800px) rotateX(-15deg) scale(1.4);
+  }
+}
+
+
+/* ---- tilt-top-left ---- */
+/* Image tilts with the top-left corner as the rotation pivot on
+   hover/focus. A 1.4 scale keeps the tilted image covering the
+   viewport. */
+.hover-effect.tilt-top-left img{
+  transform-origin: top left;
+  transition: transform 0.5s ease;
+}
+.hover-effect.tilt-top-left:hover img,
+.hover-effect.tilt-top-left:focus-visible img{
+  transform: scale(1.4) rotate(-8deg);
+}
+@media (prefers-reduced-motion: reduce) {
+  .hover-effect.tilt-top-left img{
+    transition: none;
+  }
+  .hover-effect.tilt-top-left:hover img,
+  .hover-effect.tilt-top-left:focus-visible img{
+    transform: scale(1.4) rotate(-8deg);
+  }
+}
+
+
+/* ---- tilt-top-right ---- */
+/* Image tilts with the top-right corner as the rotation pivot on
+   hover/focus. A 1.4 scale keeps the tilted image covering the
+   viewport. */
+.hover-effect.tilt-top-right img{
+  transform-origin: top right;
+  transition: transform 0.5s ease;
+}
+.hover-effect.tilt-top-right:hover img,
+.hover-effect.tilt-top-right:focus-visible img{
+  transform: scale(1.4) rotate(8deg);
+}
+@media (prefers-reduced-motion: reduce) {
+  .hover-effect.tilt-top-right img{
+    transition: none;
+  }
+  .hover-effect.tilt-top-right:hover img,
+  .hover-effect.tilt-top-right:focus-visible img{
+    transform: scale(1.4) rotate(8deg);
+  }
+}
+
+
+/* ---- tilt-bottom-left ---- */
+/* Image tilts with the bottom-left corner as the rotation pivot on
+   hover/focus. A 1.4 scale keeps the tilted image covering the
+   viewport. */
+.hover-effect.tilt-bottom-left img{
+  transform-origin: bottom left;
+  transition: transform 0.5s ease;
+}
+.hover-effect.tilt-bottom-left:hover img,
+.hover-effect.tilt-bottom-left:focus-visible img{
+  transform: scale(1.4) rotate(8deg);
+}
+@media (prefers-reduced-motion: reduce) {
+  .hover-effect.tilt-bottom-left img{
+    transition: none;
+  }
+  .hover-effect.tilt-bottom-left:hover img,
+  .hover-effect.tilt-bottom-left:focus-visible img{
+    transform: scale(1.4) rotate(8deg);
+  }
+}
+
+
+/* ---- tilt-bottom-right ---- */
+/* Image tilts with the bottom-right corner as the rotation pivot on
+   hover/focus. A 1.4 scale keeps the tilted image covering the
+   viewport. */
+.hover-effect.tilt-bottom-right img{
+  transform-origin: bottom right;
+  transition: transform 0.5s ease;
+}
+.hover-effect.tilt-bottom-right:hover img,
+.hover-effect.tilt-bottom-right:focus-visible img{
+  transform: scale(1.4) rotate(-8deg);
+}
+@media (prefers-reduced-motion: reduce) {
+  .hover-effect.tilt-bottom-right img{
+    transition: none;
+  }
+  .hover-effect.tilt-bottom-right:hover img,
+  .hover-effect.tilt-bottom-right:focus-visible img{
+    transform: scale(1.4) rotate(-8deg);
+  }
+}

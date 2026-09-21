@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light">
+<title>Vertical Skew &middot; Pure CSS Image Hover Effects</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.9.0/build/styles/vs2015.min.css">
+<link rel="stylesheet" href="../template.css">
+<link rel="stylesheet" href="skew-distort.css">
+<script defer src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.9.0/build/highlight.min.js"></script>
+</head>
+<body>
+
+<header class="container">
+  <nav aria-label="Breadcrumb">
+    <ul>
+      <li><a href="../../index.html">&larr; Back to gallery</a></li>
+    </ul>
+  </nav>
+  <hgroup>
+    <h1>Vertical Skew</h1>
+    <p>Image skews vertically on hover/focus, with a small zoom to keep the viewport covered.</p>
+  </hgroup>
+</header>
+
+<main class="container">
+  <div class="grid detail">
+
+    <section class="preview" aria-label="Live preview">
+      <div class="preview-stage">
+        <div class="hover-effect skew-vertical">
+          <img src="https://picsum.photos/seed/skew-vertical/800/600" alt="Vertical Skew demo">
+        </div>
+      </div>
+      <p class="preview-hint">Hover or focus the image to see the effect.</p>
+    </section>
+
+    <section aria-label="Source code">
+      <h3>HTML</h3>
+      <div class="code-block">
+        <pre><code class="language-html"><div class="hover-effect skew-vertical">
+  <img src="image.jpg" alt="description">
+</div></code></pre>
+      </div>
+
+      <h3>CSS</h3>
+      <div class="code-block">
+        <pre><code class="language-css">.hover-effect.skew-vertical img{
+  transition: transform 0.5s ease;
+}
+.hover-effect.skew-vertical:hover img,
+.hover-effect.skew-vertical:focus-visible img{
+  transform: scale(1.4) skewY(15deg);
+}
+@media (prefers-reduced-motion: reduce) {
+  .hover-effect.skew-vertical img{
+    transition: none;
+  }
+  .hover-effect.skew-vertical:hover img,
+  .hover-effect.skew-vertical:focus-visible img{
+    transform: scale(1.4) skewY(15deg);
+  }
+}</code></pre>
+      </div>
+
+      <p class="copy-hint"><small>The <code><img></code> animates <code>transform: scale(1.4) skewY(15deg)</code>. The slight scale prevents blank corners as the image skews. Select the code and copy with <kbd>Ctrl+C</kbd> or <kbd>&#8984;C</kbd>.</small></p>
+    </section>
+
+  </div>
+</main>
+
+<footer class="container">
+  <small><a href="../../index.html">Pure CSS Image Hover Effects</a> &middot; No JavaScript &middot; MIT</small>
+</footer>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    hljs.highlightAll();
+  });
+</script>
+
+</body>
+</html>

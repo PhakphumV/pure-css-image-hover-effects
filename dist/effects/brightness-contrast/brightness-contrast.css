@@ -1,0 +1,187 @@
+/* Brightness & Contrast-category hover effects.
+
+   Pattern for every effect in this category:
+     - All transformations use the CSS filter property (brightness,
+       contrast, or a controlled combination of both). Each effect
+       targets one of these as the defining behavior so the visual
+       change is unambiguously attributable.
+     - Idle state: filter: <fn>(1) (or no filter when 1 is the natural
+       value). Hover/focus state: filter: <fn>(<sensible value>) that
+       produces a clearly visible, immediately readable change.
+     - transition: filter 0.5s ease on the img so the brightness or
+       contrast change animates smoothly.
+     - Mirror :hover onto :focus-visible so keyboard users see the
+       same affordance.
+     - prefers-reduced-motion: drop the transition but keep the end
+       state so the visual change still lands instantly. */
+
+/* ---- brighten ---- */
+/* Image transitions to a brighter state on hover/focus via filter: brightness(). */
+.hover-effect.brighten img{
+  filter: brightness(1);
+  transition: filter 0.5s ease;
+}
+.hover-effect.brighten:hover img,
+.hover-effect.brighten:focus-visible img{
+  filter: brightness(1.4);
+}
+@media (prefers-reduced-motion: reduce) {
+  .hover-effect.brighten img{
+    transition: none;
+  }
+  .hover-effect.brighten:hover img,
+  .hover-effect.brighten:focus-visible img{
+    filter: brightness(1.4);
+  }
+}
+
+
+/* ---- darken ---- */
+/* Image transitions to a darker state on hover/focus via filter: brightness(). */
+.hover-effect.darken img{
+  filter: brightness(1);
+  transition: filter 0.5s ease;
+}
+.hover-effect.darken:hover img,
+.hover-effect.darken:focus-visible img{
+  filter: brightness(0.6);
+}
+@media (prefers-reduced-motion: reduce) {
+  .hover-effect.darken img{
+    transition: none;
+  }
+  .hover-effect.darken:hover img,
+  .hover-effect.darken:focus-visible img{
+    filter: brightness(0.6);
+  }
+}
+
+
+/* ---- contrast-increase ---- */
+/* Image transitions to higher contrast on hover/focus via filter: contrast(). */
+.hover-effect.contrast-increase img{
+  filter: contrast(1);
+  transition: filter 0.5s ease;
+}
+.hover-effect.contrast-increase:hover img,
+.hover-effect.contrast-increase:focus-visible img{
+  filter: contrast(1.6);
+}
+@media (prefers-reduced-motion: reduce) {
+  .hover-effect.contrast-increase img{
+    transition: none;
+  }
+  .hover-effect.contrast-increase:hover img,
+  .hover-effect.contrast-increase:focus-visible img{
+    filter: contrast(1.6);
+  }
+}
+
+
+/* ---- contrast-decrease ---- */
+/* Image transitions to lower contrast on hover/focus via filter: contrast(). */
+.hover-effect.contrast-decrease img{
+  filter: contrast(1);
+  transition: filter 0.5s ease;
+}
+.hover-effect.contrast-decrease:hover img,
+.hover-effect.contrast-decrease:focus-visible img{
+  filter: contrast(0.5);
+}
+@media (prefers-reduced-motion: reduce) {
+  .hover-effect.contrast-decrease img{
+    transition: none;
+  }
+  .hover-effect.contrast-decrease:hover img,
+  .hover-effect.contrast-decrease:focus-visible img{
+    filter: contrast(0.5);
+  }
+}
+
+
+/* ---- brighten-to-normal ---- */
+/* Image starts darkened and restores normal brightness on hover/focus
+   (inverse of darken). Brightness recovery, not a fade. */
+.hover-effect.brighten-to-normal img{
+  filter: brightness(0.6);
+  transition: filter 0.5s ease;
+}
+.hover-effect.brighten-to-normal:hover img,
+.hover-effect.brighten-to-normal:focus-visible img{
+  filter: brightness(1);
+}
+@media (prefers-reduced-motion: reduce) {
+  .hover-effect.brighten-to-normal img{
+    transition: none;
+  }
+  .hover-effect.brighten-to-normal:hover img,
+  .hover-effect.brighten-to-normal:focus-visible img{
+    filter: brightness(1);
+  }
+}
+
+
+/* ---- darken-to-normal ---- */
+/* Image starts brightened and restores normal brightness on hover/focus
+   (inverse of brighten). Brightness recovery, not a fade. */
+.hover-effect.darken-to-normal img{
+  filter: brightness(1.4);
+  transition: filter 0.5s ease;
+}
+.hover-effect.darken-to-normal:hover img,
+.hover-effect.darken-to-normal:focus-visible img{
+  filter: brightness(1);
+}
+@media (prefers-reduced-motion: reduce) {
+  .hover-effect.darken-to-normal img{
+    transition: none;
+  }
+  .hover-effect.darken-to-normal:hover img,
+  .hover-effect.darken-to-normal:focus-visible img{
+    filter: brightness(1);
+  }
+}
+
+
+/* ---- contrast-to-normal ---- */
+/* Image starts with reduced contrast and restores normal contrast on
+   hover/focus (inverse of contrast-decrease). */
+.hover-effect.contrast-to-normal img{
+  filter: contrast(0.5);
+  transition: filter 0.5s ease;
+}
+.hover-effect.contrast-to-normal:hover img,
+.hover-effect.contrast-to-normal:focus-visible img{
+  filter: contrast(1);
+}
+@media (prefers-reduced-motion: reduce) {
+  .hover-effect.contrast-to-normal img{
+    transition: none;
+  }
+  .hover-effect.contrast-to-normal:hover img,
+  .hover-effect.contrast-to-normal:focus-visible img{
+    filter: contrast(1);
+  }
+}
+
+
+/* ---- high-contrast focus ---- */
+/* Wrapper carries a third class "focus" as a marker. Image transitions
+   to clearly higher contrast on hover/focus-visible. Brightness, color,
+   blur, and geometry remain unchanged. */
+.hover-effect.high-contrast.focus img{
+  transition: filter 0.5s ease;
+}
+.hover-effect.high-contrast.focus:hover img,
+.hover-effect.high-contrast.focus:focus-visible img{
+  filter: contrast(1.8);
+}
+@media (prefers-reduced-motion: reduce) {
+  .hover-effect.high-contrast.focus img{
+    transition: none;
+  }
+  .hover-effect.high-contrast.focus:hover img,
+  .hover-effect.high-contrast.focus:focus-visible img{
+    filter: contrast(1.8);
+  }
+}

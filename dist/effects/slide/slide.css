@@ -1,0 +1,385 @@
+/* Slide & Reveal-category hover effects.
+
+   Pattern for every effect in this category:
+     - The wrapper has position: relative so the absolute-positioned
+       ::before cover is scoped to it.
+     - The ::before pseudo is a solid-color cover that sits over
+       the <img>. It is anchored to one edge (slide-cover-*) or
+       one corner (slide-reveal-*) of the wrapper, and its width
+       and/or height transitions between 0 and 100% on hover.
+
+   slide-reveal-*: cover starts at full size (hiding the image)
+     and shrinks to zero on hover, revealing the image from the
+     named direction.
+   slide-cover-*: cover starts at zero size and grows to full on
+     hover, covering the image from the named direction.
+
+   prefers-reduced-motion: every block has a paired @media rule
+   that drops the transition but preserves the hover state
+   change so the visual swap still lands instantly. */
+
+/* ---- slide-reveal-left ---- */
+/* Cover anchored to the right edge shrinks on hover, revealing the image from left to right. */
+.hover-effect.slide-reveal-left{
+  position: relative;
+}
+.hover-effect.slide-reveal-left::before{
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  background: #1a1a1a;
+  transition: width 0.5s ease;
+}
+.hover-effect.slide-reveal-left:hover::before,
+.hover-effect.slide-reveal-left:focus-visible::before{
+  width: 0;
+}
+@media (prefers-reduced-motion: reduce) {
+  .hover-effect.slide-reveal-left::before{
+    transition: none;
+  }
+  .hover-effect.slide-reveal-left:hover::before,
+  .hover-effect.slide-reveal-left:focus-visible::before{
+    width: 0;
+  }
+}
+
+/* ---- slide-reveal-right ---- */
+/* Cover anchored to the left edge shrinks on hover, revealing the image from right to left. */
+.hover-effect.slide-reveal-right{
+  position: relative;
+}
+.hover-effect.slide-reveal-right::before{
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background: #1a1a1a;
+  transition: width 0.5s ease;
+}
+.hover-effect.slide-reveal-right:hover::before,
+.hover-effect.slide-reveal-right:focus-visible::before{
+  width: 0;
+}
+@media (prefers-reduced-motion: reduce) {
+  .hover-effect.slide-reveal-right::before{
+    transition: none;
+  }
+  .hover-effect.slide-reveal-right:hover::before,
+  .hover-effect.slide-reveal-right:focus-visible::before{
+    width: 0;
+  }
+}
+
+/* ---- slide-reveal-top ---- */
+/* Cover anchored to the bottom edge shrinks on hover, revealing the image from top to bottom. */
+.hover-effect.slide-reveal-top{
+  position: relative;
+}
+.hover-effect.slide-reveal-top::before{
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  height: 100%;
+  background: #1a1a1a;
+  transition: height 0.5s ease;
+}
+.hover-effect.slide-reveal-top:hover::before,
+.hover-effect.slide-reveal-top:focus-visible::before{
+  height: 0;
+}
+@media (prefers-reduced-motion: reduce) {
+  .hover-effect.slide-reveal-top::before{
+    transition: none;
+  }
+  .hover-effect.slide-reveal-top:hover::before,
+  .hover-effect.slide-reveal-top:focus-visible::before{
+    height: 0;
+  }
+}
+
+
+/* ---- slide-reveal-bottom ---- */
+/* Cover anchored to the top edge shrinks on hover, revealing the image from bottom to top. */
+.hover-effect.slide-reveal-bottom{
+  position: relative;
+}
+.hover-effect.slide-reveal-bottom::before{
+  content: "";
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  height: 100%;
+  background: #1a1a1a;
+  transition: height 0.5s ease;
+}
+.hover-effect.slide-reveal-bottom:hover::before,
+.hover-effect.slide-reveal-bottom:focus-visible::before{
+  height: 0;
+}
+@media (prefers-reduced-motion: reduce) {
+  .hover-effect.slide-reveal-bottom::before{
+    transition: none;
+  }
+  .hover-effect.slide-reveal-bottom:hover::before,
+  .hover-effect.slide-reveal-bottom:focus-visible::before{
+    height: 0;
+  }
+}
+
+
+/* ---- slide-reveal-top-left ---- */
+/* Cover anchored to the bottom-right corner shrinks on hover, revealing the image from the top-left. */
+.hover-effect.slide-reveal-top-left{
+  position: relative;
+}
+.hover-effect.slide-reveal-top-left::before{
+  content: "";
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+  background: #1a1a1a;
+  transition: width 0.5s ease, height 0.5s ease;
+}
+.hover-effect.slide-reveal-top-left:hover::before,
+.hover-effect.slide-reveal-top-left:focus-visible::before{
+  width: 0;
+  height: 0;
+}
+@media (prefers-reduced-motion: reduce) {
+  .hover-effect.slide-reveal-top-left::before{
+    transition: none;
+  }
+  .hover-effect.slide-reveal-top-left:hover::before,
+  .hover-effect.slide-reveal-top-left:focus-visible::before{
+    width: 0;
+    height: 0;
+  }
+}
+
+
+/* ---- slide-reveal-top-right ---- */
+/* Cover anchored to the bottom-left corner shrinks on hover, revealing the image from the top-right. */
+.hover-effect.slide-reveal-top-right{
+  position: relative;
+}
+.hover-effect.slide-reveal-top-right::before{
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #1a1a1a;
+  transition: width 0.5s ease, height 0.5s ease;
+}
+.hover-effect.slide-reveal-top-right:hover::before,
+.hover-effect.slide-reveal-top-right:focus-visible::before{
+  width: 0;
+  height: 0;
+}
+@media (prefers-reduced-motion: reduce) {
+  .hover-effect.slide-reveal-top-right::before{
+    transition: none;
+  }
+  .hover-effect.slide-reveal-top-right:hover::before,
+  .hover-effect.slide-reveal-top-right:focus-visible::before{
+    width: 0;
+    height: 0;
+  }
+}
+
+
+/* ---- slide-reveal-bottom-left ---- */
+/* Cover anchored to the top-right corner shrinks on hover, revealing the image from the bottom-left. */
+.hover-effect.slide-reveal-bottom-left{
+  position: relative;
+}
+.hover-effect.slide-reveal-bottom-left::before{
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  background: #1a1a1a;
+  transition: width 0.5s ease, height 0.5s ease;
+}
+.hover-effect.slide-reveal-bottom-left:hover::before,
+.hover-effect.slide-reveal-bottom-left:focus-visible::before{
+  width: 0;
+  height: 0;
+}
+@media (prefers-reduced-motion: reduce) {
+  .hover-effect.slide-reveal-bottom-left::before{
+    transition: none;
+  }
+  .hover-effect.slide-reveal-bottom-left:hover::before,
+  .hover-effect.slide-reveal-bottom-left:focus-visible::before{
+    width: 0;
+    height: 0;
+  }
+}
+
+
+/* ---- slide-reveal-bottom-right ---- */
+/* Cover anchored to the top-left corner shrinks on hover, revealing the image from the bottom-right. */
+.hover-effect.slide-reveal-bottom-right{
+  position: relative;
+}
+.hover-effect.slide-reveal-bottom-right::before{
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #1a1a1a;
+  transition: width 0.5s ease, height 0.5s ease;
+}
+.hover-effect.slide-reveal-bottom-right:hover::before,
+.hover-effect.slide-reveal-bottom-right:focus-visible::before{
+  width: 0;
+  height: 0;
+}
+@media (prefers-reduced-motion: reduce) {
+  .hover-effect.slide-reveal-bottom-right::before{
+    transition: none;
+  }
+  .hover-effect.slide-reveal-bottom-right:hover::before,
+  .hover-effect.slide-reveal-bottom-right:focus-visible::before{
+    width: 0;
+    height: 0;
+  }
+}
+
+
+/* ---- slide-cover-left ---- */
+/* Cover anchored to the left edge grows from zero to full width on hover, covering the image from left to right. */
+.hover-effect.slide-cover-left{
+  position: relative;
+}
+.hover-effect.slide-cover-left::before{
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  background: #1a1a1a;
+  transition: width 0.5s ease;
+}
+.hover-effect.slide-cover-left:hover::before,
+.hover-effect.slide-cover-left:focus-visible::before{
+  width: 100%;
+}
+@media (prefers-reduced-motion: reduce) {
+  .hover-effect.slide-cover-left::before{
+    transition: none;
+  }
+  .hover-effect.slide-cover-left:hover::before,
+  .hover-effect.slide-cover-left:focus-visible::before{
+    width: 100%;
+  }
+}
+
+
+/* ---- slide-cover-right ---- */
+/* Cover anchored to the right edge grows from zero to full width on hover, covering the image from right to left. */
+.hover-effect.slide-cover-right{
+  position: relative;
+}
+.hover-effect.slide-cover-right::before{
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: 0;
+  background: #1a1a1a;
+  transition: width 0.5s ease;
+}
+.hover-effect.slide-cover-right:hover::before,
+.hover-effect.slide-cover-right:focus-visible::before{
+  width: 100%;
+}
+@media (prefers-reduced-motion: reduce) {
+  .hover-effect.slide-cover-right::before{
+    transition: none;
+  }
+  .hover-effect.slide-cover-right:hover::before,
+  .hover-effect.slide-cover-right:focus-visible::before{
+    width: 100%;
+  }
+}
+
+
+/* ---- slide-cover-top ---- */
+/* Cover anchored to the top edge grows from zero to full height on hover, covering the image from top to bottom. */
+.hover-effect.slide-cover-top{
+  position: relative;
+}
+.hover-effect.slide-cover-top::before{
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  height: 0;
+  background: #1a1a1a;
+  transition: height 0.5s ease;
+}
+.hover-effect.slide-cover-top:hover::before,
+.hover-effect.slide-cover-top:focus-visible::before{
+  height: 100%;
+}
+@media (prefers-reduced-motion: reduce) {
+  .hover-effect.slide-cover-top::before{
+    transition: none;
+  }
+  .hover-effect.slide-cover-top:hover::before,
+  .hover-effect.slide-cover-top:focus-visible::before{
+    height: 100%;
+  }
+}
+
+
+/* ---- slide-cover-bottom ---- */
+/* Cover anchored to the bottom edge grows from zero to full height on hover, covering the image from bottom to top. */
+.hover-effect.slide-cover-bottom{
+  position: relative;
+}
+.hover-effect.slide-cover-bottom::before{
+  content: "";
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  height: 0;
+  background: #1a1a1a;
+  transition: height 0.5s ease;
+}
+.hover-effect.slide-cover-bottom:hover::before,
+.hover-effect.slide-cover-bottom:focus-visible::before{
+  height: 100%;
+}
+@media (prefers-reduced-motion: reduce) {
+  .hover-effect.slide-cover-bottom::before{
+    transition: none;
+  }
+  .hover-effect.slide-cover-bottom:hover::before,
+  .hover-effect.slide-cover-bottom:focus-visible::before{
+    height: 100%;
+  }
+}
+

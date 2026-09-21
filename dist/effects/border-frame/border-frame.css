@@ -1,0 +1,182 @@
+/* Border & Frame category hover effects. */
+/* Pattern: each effect adds a decorative border, frame, or
+   outline to the image on hover/focus, typically via a
+   ::before or ::after pseudo-element so the <img> itself stays
+   untouched. The border/frame is the dominant visual behavior;
+   do not combine with zoom/rotate/3D transforms here. */
+
+/* ---- animated-frame ---- */
+/* A conic-gradient ring rotates around the image on hover/focus
+   to give an animated, "loading-spinner"-style frame. */
+.hover-effect.animated-frame{
+  position: relative;
+  display: block;
+}
+.hover-effect.animated-frame::before{
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 6px;
+  padding: 4px;
+  background: conic-gradient(
+    from 0deg,
+    #2563eb 0deg,
+    #ec4899 90deg,
+    #f59e0b 180deg,
+    #10b981 270deg,
+    #2563eb 360deg
+  );
+  -webkit-mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+          mask-composite: exclude;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+}
+.hover-effect.animated-frame:hover::before,
+.hover-effect.animated-frame:focus-visible::before{
+  opacity: 1;
+  animation: animated-frame-spin 1.6s linear infinite;
+}
+@keyframes animated-frame-spin{
+  to{ transform: rotate(360deg); }
+}
+
+/* ---- corner-frame ---- */
+/* Four L-shaped corner brackets appear on hover/focus, like a
+   photo viewfinder or crop marks. Built with a single ::before
+   composed of eight linear gradients. */
+.hover-effect.corner-frame{
+  position: relative;
+  display: block;
+}
+.hover-effect.corner-frame::before{
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  background:
+    linear-gradient(to right,  #111 100%, transparent 100%) top    left  / 36px 3px no-repeat,
+    linear-gradient(to bottom, #111 100%, transparent 100%) top    left  / 3px 36px no-repeat,
+    linear-gradient(to left,   #111 100%, transparent 100%) top    right / 36px 3px no-repeat,
+    linear-gradient(to bottom, #111 100%, transparent 100%) top    right / 3px 36px no-repeat,
+    linear-gradient(to right,  #111 100%, transparent 100%) bottom left  / 36px 3px no-repeat,
+    linear-gradient(to top,    #111 100%, transparent 100%) bottom left  / 3px 36px no-repeat,
+    linear-gradient(to left,   #111 100%, transparent 100%) bottom right / 36px 3px no-repeat,
+    linear-gradient(to top,    #111 100%, transparent 100%) bottom right / 3px 36px no-repeat;
+}
+.hover-effect.corner-frame:hover::before,
+.hover-effect.corner-frame:focus-visible::before{
+  opacity: 1;
+}
+@media (prefers-reduced-motion: reduce) {
+  .hover-effect.corner-frame::before{
+    transition: none;
+  }
+}
+
+/* ---- inset-frame ---- */
+/* An inset box-shadow frame appears on hover/focus, sitting
+   inside the image bounds like a thin colored halo at the
+   perimeter. */
+.hover-effect.inset-frame{
+  position: relative;
+  display: block;
+}
+.hover-effect.inset-frame::before{
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  border-radius: inherit;
+  box-shadow: inset 0 0 0 0 #2563eb;
+  transition: box-shadow 0.4s ease;
+}
+.hover-effect.inset-frame:hover::before,
+.hover-effect.inset-frame:focus-visible::before{
+  box-shadow: inset 0 0 0 6px #2563eb;
+}
+@media (prefers-reduced-motion: reduce) {
+  .hover-effect.inset-frame::before{
+    transition: none;
+  }
+  .hover-effect.inset-frame:hover::before,
+  .hover-effect.inset-frame:focus-visible::before{
+    box-shadow: inset 0 0 0 6px #2563eb;
+  }
+}
+
+/* ---- expanding-frame ---- */
+/* An outer border expands outward from the image on hover/focus
+   via scale(0.8) -> scale(1), giving the impression of a frame
+   growing to enclose the image. */
+.hover-effect.expanding-frame{
+  position: relative;
+  display: block;
+}
+.hover-effect.expanding-frame::before{
+  content: "";
+  position: absolute;
+  inset: -8px;
+  border: 2px solid #10b981;
+  border-radius: 8px;
+  opacity: 0;
+  transform: scale(0.8);
+  transition: opacity 0.4s ease, transform 0.4s ease;
+  pointer-events: none;
+}
+.hover-effect.expanding-frame:hover::before,
+.hover-effect.expanding-frame:focus-visible::before{
+  opacity: 1;
+  transform: scale(1);
+}
+@media (prefers-reduced-motion: reduce) {
+  .hover-effect.expanding-frame::before{
+    transition: none;
+  }
+  .hover-effect.expanding-frame:hover::before,
+  .hover-effect.expanding-frame:focus-visible::before{
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .hover-effect.animated-frame:hover::before,
+  .hover-effect.animated-frame:focus-visible::before{
+    animation: none;
+  }
+}
+.hover-effect.border-reveal{
+  position: relative;
+  display: block;
+}
+.hover-effect.border-reveal::before{
+  content: "";
+  position: absolute;
+  inset: 12px;
+  border: 2px solid #2563eb;
+  border-radius: 4px;
+  opacity: 0;
+  transform: scale(0.85);
+  transition: opacity 0.4s ease, transform 0.4s ease;
+  pointer-events: none;
+}
+.hover-effect.border-reveal:hover::before,
+.hover-effect.border-reveal:focus-visible::before{
+  opacity: 1;
+  transform: scale(1);
+}
+@media (prefers-reduced-motion: reduce) {
+  .hover-effect.border-reveal::before{
+    transition: none;
+  }
+  .hover-effect.border-reveal:hover::before,
+  .hover-effect.border-reveal:focus-visible::before{
+    opacity: 1;
+    transform: scale(1);
+  }
+}

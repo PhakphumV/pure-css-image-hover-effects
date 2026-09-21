@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light">
+<title>Fade Crossfade &middot; Pure CSS Image Hover Effects</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.9.0/build/styles/vs2015.min.css">
+<link rel="stylesheet" href="../template.css">
+<link rel="stylesheet" href="fade.css">
+<script defer src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.9.0/build/highlight.min.js"></script>
+</head>
+<body>
+
+<header class="container">
+  <nav aria-label="Breadcrumb">
+    <ul>
+      <li><a href="../../index.html">&larr; Back to gallery</a></li>
+    </ul>
+  </nav>
+  <hgroup>
+    <h1>Fade Crossfade</h1>
+    <p>Crossfade between two real images: the <img> is image #1 and the ::before pseudo carries image #2 via background-image. Edit both URLs to use your own images.</p>
+  </hgroup>
+</header>
+
+<main class="container">
+  <div class="grid detail">
+
+    <section class="preview" aria-label="Live preview">
+      <div class="preview-stage">
+        <div class="hover-effect fade-crossfade">
+          <img src="https://picsum.photos/seed/fade-crossfade/800/600" alt="Fade Crossfade demo">
+        </div>
+      </div>
+      <p class="preview-hint">Hover or focus the image to see the effect.</p>
+    </section>
+
+    <section aria-label="Source code">
+      <h3>HTML</h3>
+      <div class="code-block">
+        <pre><code class="language-html">&lt;div class="hover-effect fade-crossfade"&gt;
+  &lt;img src="image.jpg" alt="description"&gt;
+&lt;/div&gt;</code></pre>
+      </div>
+
+      <h3>CSS</h3>
+      <div class="code-block">
+        <pre><code class="language-css">.hover-effect.fade-crossfade{
+  position: relative;
+}
+.hover-effect.fade-crossfade::before{
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: url("https://picsum.photos/seed/fade-crossfade-alt/800/600");
+  background-size: cover;
+  background-position: center;
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+.hover-effect.fade-crossfade img{
+  transition: opacity 0.5s ease;
+}
+.hover-effect.fade-crossfade:hover img,
+.hover-effect.fade-crossfade:focus-visible img{
+  opacity: 0;
+}
+.hover-effect.fade-crossfade:hover::before,
+.hover-effect.fade-crossfade:focus-visible::before{
+  opacity: 1;
+}
+@media (prefers-reduced-motion: reduce) {
+  .hover-effect.fade-crossfade img,
+  .hover-effect.fade-crossfade::before{
+    transition: none;
+  }
+  .hover-effect.fade-crossfade:hover img,
+  .hover-effect.fade-crossfade:focus-visible img{
+    opacity: 0;
+  }
+  .hover-effect.fade-crossfade:hover::before,
+  .hover-effect.fade-crossfade:focus-visible::before{
+    opacity: 1;
+  }
+}</code></pre>
+      </div>
+
+      <p class="copy-hint"><small>Set the <code><img src></code> for image #1 and the <code>background-image</code> URL inside <code>::before</code> for image #2. Select the code and copy with <kbd>Ctrl+C</kbd> or <kbd>&#8984;C</kbd>.</small></p>
+    </section>
+
+  </div>
+</main>
+
+<footer class="container">
+  <small><a href="../../index.html">Pure CSS Image Hover Effects</a> &middot; No JavaScript &middot; MIT</small>
+</footer>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    hljs.highlightAll();
+  });
+</script>
+
+</body>
+</html>

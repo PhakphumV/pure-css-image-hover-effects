@@ -1,0 +1,224 @@
+/* Skew & Distort-category hover effects.
+
+   Pattern for every effect in this category:
+     - The wrapper carries the standard `.hover-effect.SLUG` class.
+     - Skew/distortion is achieved via the CSS `transform` property
+       (skew, or skew combined with rotate).
+     - A slight `scale()` is applied together with the skew so the
+       skewed image keeps covering the effect viewport without
+       exposing blank corners/edges.
+     - Hover state is mirrored to `:focus-visible`.
+     - `prefers-reduced-motion: reduce` disables transitions but keeps
+       the final interactive state. */
+
+/* ---- skew-horizontal ---- */
+/* Image skews horizontally on hover/focus. A 1.4 scale keeps the
+   skewed image covering the full viewport. */
+.hover-effect.skew-horizontal img{
+  transition: transform 0.5s ease;
+}
+.hover-effect.skew-horizontal:hover img,
+.hover-effect.skew-horizontal:focus-visible img{
+  transform: scale(1.4) skewX(15deg);
+}
+@media (prefers-reduced-motion: reduce) {
+  .hover-effect.skew-horizontal img{
+    transition: none;
+  }
+  .hover-effect.skew-horizontal:hover img,
+  .hover-effect.skew-horizontal:focus-visible img{
+    transform: scale(1.4) skewX(15deg);
+  }
+}
+
+
+/* ---- skew-vertical ---- */
+/* Image skews vertically on hover/focus. A 1.4 scale keeps the
+   skewed image covering the full viewport. */
+.hover-effect.skew-vertical img{
+  transition: transform 0.5s ease;
+}
+.hover-effect.skew-vertical:hover img,
+.hover-effect.skew-vertical:focus-visible img{
+  transform: scale(1.4) skewY(15deg);
+}
+@media (prefers-reduced-motion: reduce) {
+  .hover-effect.skew-vertical img{
+    transition: none;
+  }
+  .hover-effect.skew-vertical:hover img,
+  .hover-effect.skew-vertical:focus-visible img{
+    transform: scale(1.4) skewY(15deg);
+  }
+}
+
+
+/* ---- skew-left ---- */
+/* Image skews toward the left (skewX(-15deg)) on hover/focus. A 1.4
+   scale keeps the skewed image covering the full viewport. */
+.hover-effect.skew-left img{
+  transition: transform 0.5s ease;
+}
+.hover-effect.skew-left:hover img,
+.hover-effect.skew-left:focus-visible img{
+  transform: scale(1.4) skewX(-15deg);
+}
+@media (prefers-reduced-motion: reduce) {
+  .hover-effect.skew-left img{
+    transition: none;
+  }
+  .hover-effect.skew-left:hover img,
+  .hover-effect.skew-left:focus-visible img{
+    transform: scale(1.4) skewX(-15deg);
+  }
+}
+
+
+/* ---- skew-right ---- */
+/* Image skews toward the right (skewX(15deg)) on hover/focus. A 1.4
+   scale keeps the skewed image covering the full viewport. */
+.hover-effect.skew-right img{
+  transition: transform 0.5s ease;
+}
+.hover-effect.skew-right:hover img,
+.hover-effect.skew-right:focus-visible img{
+  transform: scale(1.4) skewX(15deg);
+}
+@media (prefers-reduced-motion: reduce) {
+  .hover-effect.skew-right img{
+    transition: none;
+  }
+  .hover-effect.skew-right:hover img,
+  .hover-effect.skew-right:focus-visible img{
+    transform: scale(1.4) skewX(15deg);
+  }
+}
+
+
+/* ---- skew-top ---- */
+/* Image skews toward the top (skewY(-15deg)) on hover/focus. A 1.4
+   scale keeps the skewed image covering the full viewport. */
+.hover-effect.skew-top img{
+  transition: transform 0.5s ease;
+}
+.hover-effect.skew-top:hover img,
+.hover-effect.skew-top:focus-visible img{
+  transform: scale(1.4) skewY(-15deg);
+}
+@media (prefers-reduced-motion: reduce) {
+  .hover-effect.skew-top img{
+    transition: none;
+  }
+  .hover-effect.skew-top:hover img,
+  .hover-effect.skew-top:focus-visible img{
+    transform: scale(1.4) skewY(-15deg);
+  }
+}
+
+
+/* ---- skew-bottom ---- */
+/* Image skews toward the bottom (skewY(15deg)) on hover/focus. A 1.4
+   scale keeps the skewed image covering the full viewport. */
+.hover-effect.skew-bottom img{
+  transition: transform 0.5s ease;
+}
+.hover-effect.skew-bottom:hover img,
+.hover-effect.skew-bottom:focus-visible img{
+  transform: scale(1.4) skewY(15deg);
+}
+@media (prefers-reduced-motion: reduce) {
+  .hover-effect.skew-bottom img{
+    transition: none;
+  }
+  .hover-effect.skew-bottom:hover img,
+  .hover-effect.skew-bottom:focus-visible img{
+    transform: scale(1.4) skewY(15deg);
+  }
+}
+
+
+/* ---- skew-perspective ---- */
+/* Image skews with perspective for a 3D-style distortion on
+   hover/focus. A 1.4 scale keeps the skewed image covering the
+   full viewport. */
+.hover-effect.skew-perspective img{
+  transition: transform 0.5s ease;
+}
+.hover-effect.skew-perspective:hover img,
+.hover-effect.skew-perspective:focus-visible img{
+  transform: perspective(800px) scale(1.4) skewX(20deg) rotateY(8deg);
+}
+@media (prefers-reduced-motion: reduce) {
+  .hover-effect.skew-perspective img{
+    transition: none;
+  }
+  .hover-effect.skew-perspective:hover img,
+  .hover-effect.skew-perspective:focus-visible img{
+    transform: perspective(800px) scale(1.4) skewX(20deg) rotateY(8deg);
+  }
+}
+
+
+/* ---- stretch-horizontal ---- */
+/* Image stretches horizontally on hover/focus. A slight vertical
+   zoom keeps the stretched image covering the viewport. */
+.hover-effect.stretch-horizontal img{
+  transition: transform 0.5s ease;
+}
+.hover-effect.stretch-horizontal:hover img,
+.hover-effect.stretch-horizontal:focus-visible img{
+  transform: scale(1.4, 1.2);
+}
+@media (prefers-reduced-motion: reduce) {
+  .hover-effect.stretch-horizontal img{
+    transition: none;
+  }
+  .hover-effect.stretch-horizontal:hover img,
+  .hover-effect.stretch-horizontal:focus-visible img{
+    transform: scale(1.4, 1.2);
+  }
+}
+
+
+/* ---- stretch-vertical ---- */
+/* Image stretches vertically on hover/focus. A slight horizontal
+   zoom keeps the stretched image covering the viewport. */
+.hover-effect.stretch-vertical img{
+  transition: transform 0.5s ease;
+}
+.hover-effect.stretch-vertical:hover img,
+.hover-effect.stretch-vertical:focus-visible img{
+  transform: scale(1.2, 1.4);
+}
+@media (prefers-reduced-motion: reduce) {
+  .hover-effect.stretch-vertical img{
+    transition: none;
+  }
+  .hover-effect.stretch-vertical:hover img,
+  .hover-effect.stretch-vertical:focus-visible img{
+    transform: scale(1.2, 1.4);
+  }
+}
+
+
+/* ---- compress ---- */
+/* Image starts slightly zoomed in (covering the viewport) and
+   compresses to its natural size on hover/focus. The slight zoom
+   at rest keeps the image filling the effect viewport. */
+.hover-effect.compress img{
+  transform: scale(1.4);
+  transition: transform 0.5s ease;
+}
+.hover-effect.compress:hover img,
+.hover-effect.compress:focus-visible img{
+  transform: scale(1);
+}
+@media (prefers-reduced-motion: reduce) {
+  .hover-effect.compress img{
+    transition: none;
+  }
+  .hover-effect.compress:hover img,
+  .hover-effect.compress:focus-visible img{
+    transform: scale(1);
+  }
+}
