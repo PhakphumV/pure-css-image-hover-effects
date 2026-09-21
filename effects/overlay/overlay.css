@@ -30,3 +30,37 @@
     opacity: 1;
   }
 }
+
+/* ---- gradient-overlay ---- */
+/* A linear-gradient overlay fades in on hover/focus, e.g. top
+   transparent to bottom dark, for a cinematic vignette feel. */
+.hover-effect.gradient-overlay{
+  position: relative;
+  display: block;
+}
+.hover-effect.gradient-overlay::before{
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0) 0%,
+    rgba(0, 0, 0, 0.7) 100%
+  );
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  pointer-events: none;
+}
+.hover-effect.gradient-overlay:hover::before,
+.hover-effect.gradient-overlay:focus-visible::before{
+  opacity: 1;
+}
+@media (prefers-reduced-motion: reduce) {
+  .hover-effect.gradient-overlay::before{
+    transition: none;
+  }
+  .hover-effect.gradient-overlay:hover::before,
+  .hover-effect.gradient-overlay:focus-visible::before{
+    opacity: 1;
+  }
+}
