@@ -327,3 +327,35 @@
     clip-path: polygon(50% 0, 100% 50%, 50% 100%, 0 50%);
   }
 }
+
+/* ---- rounded-reveal ---- */
+/* Overlay covers the image at idle, then grows a large
+   border-radius on hover/focus so its corners retract inward,
+   revealing the four corners of the image as an elliptical/
+   rounded overlay. */
+.hover-effect.rounded-reveal{
+  position: relative;
+  display: block;
+}
+.hover-effect.rounded-reveal::before{
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(15, 23, 42, 0.85);
+  border-radius: 0;
+  transition: border-radius 0.5s ease;
+  pointer-events: none;
+}
+.hover-effect.rounded-reveal:hover::before,
+.hover-effect.rounded-reveal:focus-visible::before{
+  border-radius: 50%;
+}
+@media (prefers-reduced-motion: reduce) {
+  .hover-effect.rounded-reveal::before{
+    transition: none;
+  }
+  .hover-effect.rounded-reveal:hover::before,
+  .hover-effect.rounded-reveal:focus-visible::before{
+    border-radius: 50%;
+  }
+}
