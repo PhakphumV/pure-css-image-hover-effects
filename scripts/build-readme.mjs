@@ -84,8 +84,13 @@ function main() {
 
   if (args.has('--check')) {
     const readme = readFileSync(README_PATH, 'utf8');
-    process.stdout.write(applyToReadme(catalogue, readme));
-    return;
+    const expected = applyToReadme(catalogue, readme);
+    if (readme === expected) {
+      console.log('README.md is up to date.');
+      return;
+    }
+    console.error('README.md is OUT OF DATE. Run `node scripts/build-readme.mjs --apply`.');
+    process.exit(1);
   }
 
   if (args.has('--apply')) {

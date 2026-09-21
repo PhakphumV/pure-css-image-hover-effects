@@ -109,9 +109,12 @@ function main() {
   if (args.has('--check')) {
     const html = readFileSync(INDEX_PATH, 'utf8');
     const expected = applyToIndex(catalogue, html);
-    process.stdout.write(expected);
-    // --check is a "print expected" mode; the caller can diff it.
-    return;
+    if (html === expected) {
+      console.log('index.html is up to date.');
+      return;
+    }
+    console.error('index.html is OUT OF DATE. Run `node scripts/build-catalog.mjs --apply`.');
+    process.exit(1);
   }
 
   if (args.has('--apply')) {

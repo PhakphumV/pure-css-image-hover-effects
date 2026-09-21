@@ -273,3 +273,19 @@ and Safari. Desktop only.
 Each effect mirrors its `:hover` state onto `:focus-visible`, so
 keyboard users see the same affordance. Effects respect
 `prefers-reduced-motion: reduce`.
+
+## Build commands
+
+The runtime site is plain HTML/CSS with no build step. These
+commands are contributor tooling for the metadata-driven
+catalogue pipeline. All three read from `catalog/effects.json`
+and write to `index.html` and `README.md` only inside their
+generated-content markers.
+
+Prerequisites: Node.js 18 or newer.
+
+| Command | What it does |
+| --- | --- |
+| `npm run validate` | Checks `catalog/effects.json` against the effect implementations under `effects/`. Prints a ✓/✗ summary; exits non-zero on any failure. Never modifies files. |
+| `npm run build` | Regenerates the catalogue sections of `index.html` and `README.md` from the metadata. Idempotent: re-runs produce no further changes once output is up to date. |
+| `npm run check` | Runs `validate` plus a generation check for both files. Exits non-zero if either file is out of date or the metadata is invalid. The one command to run before opening a PR. |
