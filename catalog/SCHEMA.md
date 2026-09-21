@@ -40,6 +40,8 @@ demo pages) is derived from this file.
 | `slug` | string | yes | Lowercase, hyphen-separated. Canonical identity. Must be unique project-wide. |
 | `name` | string | yes | Display name shown on cards. |
 | `description` | string | yes | One-line effect description. |
+| `wrapperClasses` | array of strings | no | Extra CSS classes for the wrapper, in addition to `hover-effect`. Defaults to `[<slug>]` when omitted. Use this for effects whose CSS selector is a chained-class selector (e.g. `["high-contrast", "focus"]`). |
+| `tabindex` | integer | no | When set, the generated wrapper carries `tabindex="<value>"`. Use this for effects that intentionally take focus (keyboard accessibility). |
 
 ## Slug conventions
 

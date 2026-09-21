@@ -670,7 +670,12 @@
         {
           "slug": "high-contrast-focus",
           "name": "High-Contrast Focus",
-          "description": "Image sharpens with high contrast when focused (keyboard accessible)."
+          "description": "Image sharpens with high contrast when focused (keyboard accessible).",
+          "wrapperClasses": [
+            "high-contrast",
+            "focus"
+          ],
+          "tabindex": 0
         }
       ]
     }
