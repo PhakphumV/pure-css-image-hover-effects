@@ -189,3 +189,56 @@
     clip-path: polygon(100% 100%, 100% 50%, 50% 100%);
   }
 }
+
+/* ---- horizontal-split ---- */
+/* Two halves (::before and ::after) cover the image at idle,
+   then slide apart (translateX(0) -> translateX(±100%)) on
+   hover/focus, revealing the image as the overlay splits
+   horizontally. */
+.hover-effect.horizontal-split{
+  position: relative;
+  display: block;
+  overflow: hidden;
+}
+.hover-effect.horizontal-split::before,
+.hover-effect.horizontal-split::after{
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 50%;
+  pointer-events: none;
+  transition: transform 0.5s ease;
+}
+.hover-effect.horizontal-split::before{
+  left: 0;
+  background: rgba(15, 23, 42, 0.85);
+  transform: translateX(0);
+}
+.hover-effect.horizontal-split::after{
+  right: 0;
+  background: rgba(15, 23, 42, 0.85);
+  transform: translateX(0);
+}
+.hover-effect.horizontal-split:hover::before,
+.hover-effect.horizontal-split:focus-visible::before{
+  transform: translateX(-100%);
+}
+.hover-effect.horizontal-split:hover::after,
+.hover-effect.horizontal-split:focus-visible::after{
+  transform: translateX(100%);
+}
+@media (prefers-reduced-motion: reduce) {
+  .hover-effect.horizontal-split::before,
+  .hover-effect.horizontal-split::after{
+    transition: none;
+  }
+  .hover-effect.horizontal-split:hover::before,
+  .hover-effect.horizontal-split:focus-visible::before{
+    transform: translateX(-100%);
+  }
+  .hover-effect.horizontal-split:hover::after,
+  .hover-effect.horizontal-split:focus-visible::after{
+    transform: translateX(100%);
+  }
+}
