@@ -1,0 +1,36 @@
+/* Border & Frame category hover effects. */
+/* Pattern: each effect adds a decorative border, frame, or
+   outline to the image on hover/focus, typically via a
+   ::before or ::after pseudo-element so the <img> itself stays
+   untouched. The border/frame is the dominant visual behavior;
+   do not combine with zoom/rotate/3D transforms here. */
+.hover-effect.border-reveal{
+  position: relative;
+  display: block;
+}
+.hover-effect.border-reveal::before{
+  content: "";
+  position: absolute;
+  inset: 12px;
+  border: 2px solid #2563eb;
+  border-radius: 4px;
+  opacity: 0;
+  transform: scale(0.85);
+  transition: opacity 0.4s ease, transform 0.4s ease;
+  pointer-events: none;
+}
+.hover-effect.border-reveal:hover::before,
+.hover-effect.border-reveal:focus-visible::before{
+  opacity: 1;
+  transform: scale(1);
+}
+@media (prefers-reduced-motion: reduce) {
+  .hover-effect.border-reveal::before{
+    transition: none;
+  }
+  .hover-effect.border-reveal:hover::before,
+  .hover-effect.border-reveal:focus-visible::before{
+    opacity: 1;
+    transform: scale(1);
+  }
+}
