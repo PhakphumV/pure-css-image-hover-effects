@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light">
+<title>3D Perspective Zoom &middot; Pure CSS Image Hover Effects</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.9.0/build/styles/vs2015.min.css">
+<link rel="stylesheet" href="../template.css">
+<link rel="stylesheet" href="three-d.css">
+<script defer src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.9.0/build/highlight.min.js"></script>
+</head>
+<body>
+
+<header class="container">
+  <nav aria-label="Breadcrumb">
+    <ul>
+      <li><a href="../../index.html">&larr; Back to gallery</a></li>
+    </ul>
+  </nav>
+  <hgroup>
+    <h1>3D Perspective Zoom</h1>
+    <p>Image moves forward in 3D space on hover/focus, creating apparent depth via translateZ plus a controlled scale.</p>
+  </hgroup>
+</header>
+
+<main class="container">
+  <div class="grid detail">
+
+    <section class="preview" aria-label="Live preview">
+      <div class="preview-stage">
+        <div class="hover-effect perspective-zoom">
+          <img src="https://picsum.photos/seed/perspective-zoom/800/600" alt="3D Perspective Zoom demo">
+        </div>
+      </div>
+      <p class="preview-hint">Hover or focus the image to see the effect.</p>
+    </section>
+
+    <section aria-label="Source code">
+      <h3>HTML</h3>
+      <div class="code-block">
+        <pre><code class="language-html"><div class="hover-effect perspective-zoom">
+  <img src="image.jpg" alt="description">
+</div></code></pre>
+      </div>
+
+      <h3>CSS</h3>
+      <div class="code-block">
+        <pre><code class="language-css">.hover-effect.perspective-zoom img{
+  transition: transform 0.5s ease;
+}
+.hover-effect.perspective-zoom:hover img,
+.hover-effect.perspective-zoom:focus-visible img{
+  transform: perspective(800px) translateZ(60px) scale(1.25);
+}
+@media (prefers-reduced-motion: reduce) {
+  .hover-effect.perspective-zoom img{
+    transition: none;
+  }
+  .hover-effect.perspective-zoom:hover img,
+  .hover-effect.perspective-zoom:focus-visible img{
+    transform: perspective(800px) translateZ(60px) scale(1.25);
+  }
+}</code></pre>
+      </div>
+
+      <p class="copy-hint"><small>The <code><img></code> animates <code>transform: perspective(800px) translateZ(60px) scale(1.25)</code> for a 3D pop-forward effect. Select the code and copy with <kbd>Ctrl+C</kbd> or <kbd>&#8984;C</kbd>.</small></p>
+    </section>
+
+  </div>
+</main>
+
+<footer class="container">
+  <small><a href="../../index.html">Pure CSS Image Hover Effects</a> &middot; No JavaScript &middot; MIT</small>
+</footer>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    hljs.highlightAll();
+  });
+</script>
+
+</body>
+</html>

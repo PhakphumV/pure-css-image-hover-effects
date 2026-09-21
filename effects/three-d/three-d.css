@@ -1,0 +1,30 @@
+/* 3D & Perspective-category hover effects.
+
+   Pattern for every effect in this category:
+     - The wrapper carries the standard `.hover-effect.SLUG` class.
+     - 3D depth is achieved via CSS `transform: perspective()` together
+       with translateZ / rotateX / rotateY so the image gains apparent
+       depth rather than acting like ordinary 2D zoom.
+     - Hover state is mirrored to `:focus-visible`.
+     - `prefers-reduced-motion: reduce` disables transitions but keeps
+       the final interactive state. */
+
+/* ---- perspective-zoom ---- */
+/* Image moves forward in 3D space via translateZ plus a controlled
+   scale, creating apparent depth rather than flat zoom. */
+.hover-effect.perspective-zoom img{
+  transition: transform 0.5s ease;
+}
+.hover-effect.perspective-zoom:hover img,
+.hover-effect.perspective-zoom:focus-visible img{
+  transform: perspective(800px) translateZ(60px) scale(1.25);
+}
+@media (prefers-reduced-motion: reduce) {
+  .hover-effect.perspective-zoom img{
+    transition: none;
+  }
+  .hover-effect.perspective-zoom:hover img,
+  .hover-effect.perspective-zoom:focus-visible img{
+    transform: perspective(800px) translateZ(60px) scale(1.25);
+  }
+}
